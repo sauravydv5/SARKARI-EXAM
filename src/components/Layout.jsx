@@ -101,6 +101,14 @@ export default function Layout() {
         </div>
       </div>
 
+      <div className="bg-yellow-50 border-b-2 border-yellow-400 py-2 px-4">
+        <div className="mx-auto max-w-[1100px] text-center">
+          <p className="text-sm font-semibold text-yellow-800">
+            ⚠️ This website is under development. Please wait for updates!
+          </p>
+        </div>
+      </div>
+
       <div className="mx-auto w-full px-2 sm:px-4 py-1">
         <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-5 px-3 sm:px-4 py-2 sm:py-3">
