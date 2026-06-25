@@ -104,10 +104,10 @@ export default function Layout() {
       <div className="mx-auto w-full px-2 sm:px-4 py-1">
         <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-5 px-3 sm:px-4 py-2 sm:py-3">
-            <div className="shrink-0">
+            <Link to="/" className="shrink-0 hover:opacity-90 transition">
               <img src={HeroLogo} alt="SarkariJobsHub" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
-            </div>
-            <div className="flex-1 text-center sm:text-left min-w-0">
+            </Link>
+            <Link to="/" className="flex-1 text-center sm:text-left min-w-0 no-underline cursor-pointer hover:opacity-90 transition">
               <h1 className="text-lg sm:text-2xl md:text-3xl font-extrabold leading-tight break-words">
                 <span className="text-[#0F172A]">Sarkari</span>
                 <span className="text-red-600">Jobs</span>
@@ -116,8 +116,7 @@ export default function Layout() {
                 India&apos;s No.1 Government Jobs Website. Find latest Government Jobs, Online Forms, Results, Admit Cards, Answer Keys, Syllabus & more — all in one place.
               </p>
               </h1>
-              
-            </div>
+            </Link>
             <div className="w-full sm:w-auto sm:flex-shrink-0 md:w-[300px] lg:w-[340px]">
               <form onSubmit={handleSearch} className="relative">
                 <input
