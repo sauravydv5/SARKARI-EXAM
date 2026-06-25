@@ -1,6 +1,5 @@
 ﻿import React, { useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
-import Marquee from "../components/Marquee";
 import {
   latestJobs,
   results,
@@ -10,7 +9,7 @@ import {
   admission,
   important,
   certificateVerification,
-} from "../mock";
+} from "../data";
 import { ChevronRight } from "lucide-react";
 
 const categoryMap = {
@@ -76,7 +75,6 @@ const CategoryPage = () => {
 
   return (
     <div className="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-      <Marquee />
       <div className="max-w-[1100px] mx-auto px-3 py-4">
         <div className="flex items-center text-[12.5px] text-gray-600 mb-3 dark:text-slate-300">
           <Link to="/" className="hover:text-[#cc0000]">Home</Link>

@@ -1,6 +1,6 @@
 ﻿import React, { useMemo } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
-import { getJobDetail } from "../mock";
+import { getJobDetail } from "../data";
 import { ChevronRight, Calendar, IndianRupee } from "lucide-react";
 import JobTitleBlock from "../components/job/JobTitleBlock";
 import JobInfoTable from "../components/job/JobInfoTable";
@@ -15,6 +15,8 @@ const JobDetail = () => {
   const title = location.state?.title;
   const job = useMemo(() => getJobDetail(id, title), [id, title]);
 
+  const lastDateRow = job.importantDates?.find((d) => /last date/i.test(d.label));
+
   return (
     <div className="max-w-[1100px] mx-auto px-3 py-4">
       <div className="flex items-center text-[12.5px] text-gray-600 mb-3 flex-wrap">
@@ -25,7 +27,7 @@ const JobDetail = () => {
         <span className="font-semibold text-gray-900 line-clamp-1">{job.title}</span>
       </div>
 
-      <JobTitleBlock title={job.title} postDate={job.postDate} shortInfo={job.shortInfo} />
+      <JobTitleBlock title={job.title} postDate={job.postDate} shortInfo={job.shortInfo} links={job.links} id={job.id} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
         <JobInfoTable title="Important Dates" color="#1a3a8a" rows={job.importantDates} Icon={Calendar} />
@@ -34,11 +36,11 @@ const JobDetail = () => {
 
       <AgeLimitBox ageLimit={job.ageLimit} />
       <VacancyTable rows={job.vacancyDetails} />
-      <ActionLinks links={job.links} />
+      <ActionLinks links={job.links} lastDate={lastDateRow?.value} />
       <HowToApplyBox steps={job.howToApply} />
 
       <div className="mt-4 p-3 border border-dashed border-gray-300 text-[12px] text-gray-600 bg-gray-50 rounded-sm">
-        <strong>Disclaimer:</strong> This page is part of a demo clone and the data shown is mocked for illustrative purposes only.
+        <strong>Official Notice:</strong> This page displays official recruitment-related information and links from verified sources.
       </div>
     </div>
   );
