@@ -86,6 +86,9 @@ const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+      <div className="bg-[#fef3c7] text-[#713f12] dark:bg-[#4b341e] dark:text-[#fef3c7] border-b border-[#fde68a] px-4 py-3 text-center text-sm font-semibold">
+        This website is currently under development. The information shown here is provisional and should be verified with official sources. Please be patient — it will start working properly in a few days.
+      </div>
       <div className="border-b border-slate-200 bg-white py-0.5 text-[10px] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
         <div className="mx-auto flex max-w-[1100px] flex-wrap items-center justify-between gap-1 px-3">
           <span className="font-medium">{currentDateTime}</span>
