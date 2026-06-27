@@ -10,6 +10,8 @@ const SectionHeader = ({ title, color }) => (
 );
 
 const JobInfoTable = ({ title, color, rows, Icon }) => {
+  if (!rows || rows.length === 0) return null;
+
   return (
     <div className="border" style={{ borderColor: color }}>
       <SectionHeader title={title} color={color} />

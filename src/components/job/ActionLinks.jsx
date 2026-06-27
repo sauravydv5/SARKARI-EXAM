@@ -5,11 +5,7 @@ import { SectionHeader } from "./JobInfoTable";
 const Row = ({ title, url, lastDate, color = "bg-red-700", icon }) => (
   <tr className="border border-gray-300">
     <td className="px-4 py-3 font-semibold w-[45%]">{title}</td>
-
-    <td className="px-4 py-3 text-center w-[25%]">
-      {lastDate || "-"}
-    </td>
-
+    <td className="px-4 py-3 text-center w-[25%]">{lastDate || "-"}</td>
     <td className="px-4 py-3 text-center">
       <a
         href={url}
@@ -24,17 +20,71 @@ const Row = ({ title, url, lastDate, color = "bg-red-700", icon }) => (
   </tr>
 );
 
-export default function ActionLinks({ links }) {
+const downloadLabels = {
+  latestJobs: null,
+  result: "Download Result",
+  admitCards: "Download Admit Card",
+  answerKeys: "Download Answer Key",
+  syllabus: "Download Syllabus",
+  admissions: "Download Admission Notice",
+  certificates: "Download Certificate",
+  important: "Download Notice",
+};
+
+const ActionLinks = ({ record, moduleType }) => {
+  const actions = [];
+  const downloadLabel = downloadLabels[moduleType];
+  const downloadUrl = record?.downloadUrl;
+
+  if (record?.notificationPdf) {
+    actions.push({
+      id: "notification",
+      title: moduleType === "important" ? "Download Notice" : "Download Notification",
+      url: record.notificationPdf,
+      color: "bg-blue-700",
+      icon: <Download size={15} />,
+    });
+  }
+
+  if (record?.applyLink) {
+    actions.push({
+      id: "apply",
+      title: "Apply Online",
+      url: record.applyLink,
+      color: "bg-red-700",
+      icon: <FileText size={15} />,
+    });
+  }
+
+  if (record?.officialWebsite) {
+    actions.push({
+      id: "official",
+      title: "Official Website",
+      url: record.officialWebsite,
+      color: "bg-cyan-700",
+      icon: <ExternalLink size={15} />,
+    });
+  }
+
+  if (downloadLabel && downloadUrl) {
+    actions.push({
+      id: "download",
+      title: downloadLabel,
+      url: downloadUrl,
+      color: "bg-green-700",
+      icon: <Download size={15} />,
+    });
+  }
+
+  if (actions.length === 0) {
+    return null;
+  }
+
   return (
     <div className="mt-5 border-2 border-red-700 bg-white">
-      <SectionHeader
-        title="Some Useful Important Links"
-        color="#cc0000"
-      />
-
+      <SectionHeader title="Some Useful Important Links" color="#cc0000" />
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
-
           <thead className="bg-red-700 text-white">
             <tr>
               <th className="py-3">Action</th>
@@ -42,101 +92,15 @@ export default function ActionLinks({ links }) {
               <th>Link</th>
             </tr>
           </thead>
-
           <tbody>
-
-            <Row
-              title="Apply Online"
-              url={links.applyOnline || "#"}
-              lastDate={links.applyLastDate || "-"}
-              color="bg-red-700"
-              icon={<FileText size={15} />}
-            />
-
-            {links.downloadAdmit && (
-              <Row
-                title="Download Admit Card"
-                url={links.downloadAdmit}
-                lastDate={links.admitDate}
-                color="bg-purple-700"
-                icon={<Download size={15} />}
-              />
-            )}
-
-            {links.downloadResult && (
-              <Row
-                title="Download Result"
-                url={links.downloadResult}
-                lastDate={links.resultDate}
-                color="bg-green-700"
-                icon={<Download size={15} />}
-              />
-            )}
-
-            {links.downloadAdmit && (
-              <Row
-                title="Download Admit Card"
-                url={links.downloadAdmit}
-                lastDate={links.admitDate}
-                color="bg-purple-700"
-                icon={<Download size={15} />}
-              />
-            )}
-
-            {links.downloadAnswerKey && (
-              <Row
-                title="Download Answer Key"
-                url={links.downloadAnswerKey}
-                lastDate={links.answerKeyDate}
-                color="bg-orange-600"
-                icon={<Download size={15} />}
-              />
-            )}
-
-            {links.downloadSyllabus && (
-              <Row
-                title="Download Syllabus"
-                url={links.downloadSyllabus}
-                lastDate={links.syllabusDate}
-                color="bg-teal-700"
-                icon={<Download size={15} />}
-              />
-            )}
-
-            {links.downloadAdmission && (
-              <Row
-                title="Download Admission"
-                url={links.downloadAdmission}
-                lastDate={links.admissionDate}
-                color="bg-violet-700"
-                icon={<Download size={15} />}
-              />
-            )}
-
-            {links.downloadNotification && (
-              <Row
-                title="Download Notification"
-                url={links.downloadNotification}
-                lastDate="-"
-                color="bg-blue-700"
-                icon={<Download size={15} />}
-              />
-            )}
-
-            {links.officialWebsite && (
-              <Row
-                title="Official Website"
-                url={links.officialWebsite}
-                lastDate="-"
-                color="bg-cyan-700"
-                icon={<ExternalLink size={15} />}
-              />
-            )}
-
+            {actions.map((action) => (
+              <Row key={action.id} title={action.title} url={action.url} lastDate={action.lastDate || "-"} color={action.color} icon={action.icon} />
+            ))}
           </tbody>
-
         </table>
       </div>
     </div>
   );
-}
+};
+
+export default ActionLinks;

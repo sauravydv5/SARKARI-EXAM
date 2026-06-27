@@ -11,7 +11,7 @@ const COLORS = {
   maroon: { header: "bg-[#8b1538]", border: "border-[#8b1538]" },
 };
 
-const NewBadge = () => (
+  const NewBadge = () => (
   <span
     className="inline-block ml-1 px-1 text-[9px] font-extrabold leading-[14px] text-white bg-[#cc0000] rounded-sm align-middle animate-pulse"
     style={{ letterSpacing: "0.5px" }}
@@ -25,18 +25,18 @@ const JobItem = ({ item }) => {
   return (
     <li className="py-1.5">
       <Link
-        to={`/job/${item.id}`}
+        to={`/job/${item.slug || item.id}`}
         state={navState}
         className="text-[13.5px] text-[#0033cc] hover:text-[#cc0000] hover:underline leading-snug"
       >
         {item.title}
-        {item.isNew && <NewBadge />}
+        {item.isLatest && <NewBadge />}
       </Link>
     </li>
   );
 };
 
-const JobSection = ({ title, items, accent = "red", category = "latest-job" }) => {
+const JobSection = ({ title, items, accent = "red", category = "latest-job", loading = false, error = null }) => {
   const c = COLORS[accent] || COLORS.red;
   return (
     <section className={`border ${c.border} bg-white shadow-sm dark:bg-slate-900`}>
@@ -44,9 +44,15 @@ const JobSection = ({ title, items, accent = "red", category = "latest-job" }) =
         {title}
       </div>
       <ul className="divide-y divide-dashed divide-gray-200 px-3 py-2 dark:divide-slate-700">
-        {items.map((item) => (
-          <JobItem key={item.id} item={item} />
-        ))}
+        {loading ? (
+          <li className="py-3 text-center text-sm text-slate-600">Loading...</li>
+        ) : error ? (
+          <li className="py-3 text-center text-sm text-red-600">Failed to load data</li>
+        ) : items.length === 0 ? (
+          <li className="py-3 text-center text-sm text-slate-600">No items available</li>
+          ) : (
+          items.map((item) => <JobItem key={item.slug || item.id} item={item} />)
+        )}
       </ul>
       <div className="text-right px-3 py-1.5 border-t border-gray-200 bg-[#fafafa]">
         <Link to={`/category/${category}`} className="text-[12px] text-[#cc0000] font-semibold hover:underline">

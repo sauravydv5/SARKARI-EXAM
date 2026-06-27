@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import CategoryPage from "./pages/CategoryPage";
 import JobDetail from "./pages/JobDetail";
+import DataManager from "./pages/DataManager";
 import "./App.css";
 
 function App() {
@@ -15,8 +16,10 @@ function App() {
           {/* Category Pages */}
           <Route path="category/:category" element={<CategoryPage />} />
 
+          <Route path="data-manager" element={<DataManager />} />
+
           {/* Job Details */}
-          <Route path="job/:id" element={<JobDetail />} />
+          <Route path="job/:slug" element={<JobDetail />} />
 
           {/* 404 */}
           <Route

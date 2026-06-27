@@ -1,26 +1,24 @@
-﻿import React, { useMemo } from "react";
+﻿import React, { useEffect, useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import {
-  latestJobs,
-  results,
-  admitCards,
-  answerKeys,
-  syllabus,
-  admission,
-  important,
-  certificateVerification,
-} from "../data";
 import { ChevronRight } from "lucide-react";
+import latestJobService from "../services/latestJobService";
+import resultService from "../services/resultService";
+import admitCardService from "../services/admitCardService";
+import answerKeyService from "../services/answerKeyService";
+import syllabusService from "../services/syllabusService";
+import admissionService from "../services/admissionService";
+import importantService from "../services/importantService";
+import certificateService from "../services/certificateService";
 
 const categoryMap = {
-  "latest-job": { title: "Latest Jobs", data: latestJobs, color: "#cc0000" },
-  result: { title: "Result", data: results, color: "#1a3a8a" },
-  "admit-card": { title: "Admit Card", data: admitCards, color: "#0f7a3a" },
-  "answer-key": { title: "Answer Key", data: answerKeys, color: "#d97706" },
-  syllabus: { title: "Syllabus", data: syllabus, color: "#0e7490" },
-  admission: { title: "Admission", data: admission, color: "#6d28d9" },
-  important: { title: "Important", data: important, color: "#8b1538" },
-  certificate: { title: "Certificate Verification", data: certificateVerification, color: "#1a3a8a" },
+  "latest-job": { title: "Latest Jobs", color: "#cc0000", fetcher: latestJobService.getAll },
+  result: { title: "Result", color: "#1a3a8a", fetcher: resultService.getAll },
+  "admit-card": { title: "Admit Card", color: "#0f7a3a", fetcher: admitCardService.getAll },
+  "answer-key": { title: "Answer Key", color: "#d97706", fetcher: answerKeyService.getAll },
+  syllabus: { title: "Syllabus", color: "#0e7490", fetcher: syllabusService.getAll },
+  admission: { title: "Admission", color: "#6d28d9", fetcher: admissionService.getAll },
+  important: { title: "Important", color: "#8b1538", fetcher: importantService.getAll },
+  certificate: { title: "Certificate Verification", color: "#1a3a8a", fetcher: certificateService.getAll },
 };
 
 const helpfulLinks = {
@@ -43,13 +41,13 @@ const CategoryRow = ({ item, index, category }) => {
     <li className="py-2 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
       <div className="flex flex-col sm:flex-row sm:items-center gap-2">
         <Link
-          to={`/job/${item.id}`}
+          to={`/job/${item.slug || item.id}`}
           state={navState}
           className="text-[14px] text-[#0033cc] hover:text-[#cc0000] hover:underline"
         >
           <span className="text-gray-600 mr-2">{index + 1}.</span>
           {item.title}
-          {item.isNew && (
+          {item.isLatest && (
             <span className="ml-2 inline-block px-1 text-[9px] font-extrabold text-white bg-[#cc0000] rounded-sm align-middle animate-pulse">NEW</span>
           )}
         </Link>
@@ -64,7 +62,6 @@ const CategoryRow = ({ item, index, category }) => {
           </a>
         )}
       </div>
-      <span className="text-[12px] text-gray-500">Updated: {item.date}</span>
     </li>
   );
 };
@@ -72,6 +69,16 @@ const CategoryRow = ({ item, index, category }) => {
 const CategoryPage = () => {
   const { category } = useParams();
   const info = useMemo(() => categoryMap[category] || categoryMap["latest-job"], [category]);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const loadItems = async () => {
+      const data = await info.fetcher();
+      setItems(Array.isArray(data) ? data : []);
+    };
+
+    loadItems();
+  }, [info]);
 
   return (
     <div className="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
@@ -107,7 +114,7 @@ const CategoryPage = () => {
           )}
 
           <ul className="divide-y divide-dashed divide-gray-200 px-4 py-2 dark:divide-slate-700">
-            {info.data.map((item, i) => (
+            {items.map((item, i) => (
               <CategoryRow key={item.id} item={item} index={i} category={category} />
             ))}
           </ul>

@@ -33,7 +33,8 @@ export default function Layout() {
     });
   });
 
-  const navigate = useNavigate();
+  const ADMIN_SECRET = import.meta.env.VITE_ADMIN_SECRET || "1111";
+const navigate = useNavigate();
 
   useEffect(() => {
     const root = document.documentElement;
@@ -67,7 +68,17 @@ export default function Layout() {
 
   const handleSearch = (event) => {
     event.preventDefault();
+
     const trimmed = query.trim();
+
+    // Secret Code
+    if (trimmed === ADMIN_SECRET) {
+      sessionStorage.setItem("admin_access", "true");
+      navigate("/data-manager");
+      return;
+    }
+
+    // Normal Search
     navigate(trimmed ? `/?q=${encodeURIComponent(trimmed)}` : "/");
   };
 
@@ -101,14 +112,6 @@ export default function Layout() {
         </div>
       </div>
 
-      <div className="bg-yellow-50 border-b-2 border-yellow-400 py-2 px-4">
-        <div className="mx-auto max-w-[1100px] text-center">
-          <p className="text-sm font-semibold text-yellow-800">
-            ⚠️ This website is under development. Please wait for updates!
-          </p>
-        </div>
-      </div>
-
       <div className="mx-auto w-full px-2 sm:px-4 py-1">
         <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-5 px-3 sm:px-4 py-2 sm:py-3">
@@ -121,20 +124,26 @@ export default function Layout() {
                 <span className="text-red-600">Jobs</span>
                 <span className="text-[#0F172A]">Hub</span>
                 <p className="mt-1 text-sm sm:text-base md:text-base font-semibold text-slate-600">
-                India&apos;s No.1 Government Jobs Website. Find latest Government Jobs, Online Forms, Results, Admit Cards, Answer Keys, Syllabus & more — all in one place.
-              </p>
+                  India&apos;s No.1 Government Jobs Website. Find latest Government Jobs, Online Forms, Results, Admit Cards, Answer Keys, Syllabus & more — all in one place.
+                </p>
               </h1>
             </Link>
-            <div className="w-full sm:w-auto sm:flex-shrink-0 md:w-[300px] lg:w-[340px]">
-              <form onSubmit={handleSearch} className="relative">
+            <div className="w-full sm:w-auto sm:flex-shrink-0 md:w-[320px] lg:w-[360px]">
+              <form onSubmit={handleSearch} className="flex w-full overflow-hidden rounded-full border border-gray-300 bg-white shadow-sm transition focus-within:border-red-500 focus-within:ring-2 focus-within:ring-red-100">
                 <input
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search Job..."
-                  className="w-full rounded-full border border-gray-300 bg-white py-2 pl-3 pr-11 text-sm outline-none shadow-sm focus:border-red-500 focus:ring-2 focus:ring-red-100 transition"
+                  className="flex-1 border-none bg-transparent px-4 py-2.5 text-sm text-slate-700 outline-none"
                 />
-                <button className="absolute right-1 top-1 h-9 w-9 rounded-full bg-red-600 text-white hover:bg-red-700 transition flex items-center justify-center" type="submit" aria-label="Search">
+
+                <button
+                  className="flex items-center gap-2 bg-red-600 px-4 text-sm font-semibold text-white transition hover:bg-red-700"
+                  type="submit"
+                  aria-label="Search"
+                >
                   <Search className="h-4 w-4" />
+                  Search
                 </button>
               </form>
             </div>
