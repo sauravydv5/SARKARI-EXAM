@@ -1,4 +1,16 @@
-const API_BASE = import.meta.env.VITE_API_URL || '/api';
+function normalizeApiBase() {
+  const configured = import.meta.env.VITE_API_URL || '/api';
+  if (!configured) return '/api';
+
+  const trimmed = configured.trim().replace(/\/$/, '');
+  if (/^https?:\/\//i.test(trimmed) && !trimmed.endsWith('/api')) {
+    return `${trimmed}/api`;
+  }
+
+  return trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`;
+}
+
+const API_BASE = normalizeApiBase();
 
 function getToken() {
   return localStorage.getItem('sr_token');

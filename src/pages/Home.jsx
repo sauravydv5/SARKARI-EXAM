@@ -60,7 +60,7 @@ export default function Home() {
       <div className="error-box">
         Could not load data: {error}
         <br />
-        <small>Make sure the backend is running on port 5000.</small>
+        <small>Make sure the backend is running on port 5001.</small>
       </div>
     );
   }
