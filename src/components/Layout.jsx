@@ -1,270 +1,177 @@
-import { useEffect, useMemo, useState } from "react";
-import { Link, Outlet, useNavigate, useSearchParams } from "react-router-dom";
-import { Facebook, Moon, Search, Sun, Twitter, Youtube } from "lucide-react";
-import HeroLogo from "../assets/hero.png";
-import Marquee from "./Marquee";
+import { useState } from 'react';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { CATEGORIES } from '../api';
+import ThemeToggle from './ThemeToggle';
 
-const categories = [
-  { slug: "latest-job", label: "LATEST JOB" },
-  { slug: "result", label: "RESULT" },
-  { slug: "admit-card", label: "ADMIT CARD" },
-  { slug: "answer-key", label: "ANSWER KEY" },
-  { slug: "syllabus", label: "SYLLABUS" },
-  { slug: "admission", label: "ADMISSION" },
-  { slug: "certificate", label: "CERTIFICATE VERIFICATION" },
-  { slug: "important", label: "IMPORTANT" },
+const navItems = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/latest-jobs', label: 'Latest Jobs' },
+  { to: '/results', label: 'Results' },
+  { to: '/admit-cards', label: 'Admit Card' },
+  { to: '/answer-keys', label: 'Answer Key' },
+  { to: '/syllabus', label: 'Syllabus' },
+  { to: '/admission', label: 'Admission' },
+  { to: '/important', label: 'Important' },
+  { to: '/search', label: 'Search' },
 ];
 
 export default function Layout() {
-  const [searchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("q") || "");
-  const [theme, setTheme] = useState(() => window.localStorage.getItem("theme") || "light");
-  const [currentDateTime, setCurrentDateTime] = useState(() => {
-    const now = new Date();
-    return now.toLocaleString("en-IN", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: true,
-    });
+  const [q, setQ] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const today = new Date().toLocaleDateString('en-IN', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
   });
 
-  const ADMIN_SECRET = import.meta.env.VITE_ADMIN_SECRET || "1111";
-const navigate = useNavigate();
-
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle("dark", theme === "dark");
-    window.localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date();
-      setCurrentDateTime(
-        now.toLocaleString("en-IN", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: true,
-        })
-      );
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    setQuery(searchParams.get("q") || "");
-  }, [searchParams]);
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-
-    const trimmed = query.trim();
-
-    // Secret Code
-    if (trimmed === ADMIN_SECRET) {
-      sessionStorage.setItem("admin_access", "true");
-      navigate("/data-manager");
-      return;
+  function onSearch(e) {
+    e.preventDefault();
+    const term = q.trim();
+    if (term === '803202') {
+      navigate('/admin');
+    } else {
+      navigate(term ? `/search?q=${encodeURIComponent(term)}` : '/search');
     }
-
-    // Normal Search
-    navigate(trimmed ? `/?q=${encodeURIComponent(trimmed)}` : "/");
-  };
-
-  const toggleTheme = () => setTheme((current) => (current === "dark" ? "light" : "dark"));
+    setMenuOpen(false);
+  }
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-      <div className="bg-[#fef3c7] text-[#713f12] dark:bg-[#4b341e] dark:text-[#fef3c7] border-b border-[#fde68a] px-4 py-3 text-center text-sm font-semibold">
-        This website is currently under development. The information shown here is provisional and should be verified with official sources. Please be patient — it will start working properly in a few days.
-      </div>
-      <div className="border-b border-slate-200 bg-white py-0.5 text-[10px] text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
-        <div className="mx-auto flex max-w-[1100px] flex-wrap items-center justify-between gap-1 px-3">
-          <span className="font-medium">{currentDateTime}</span>
-          <div className="flex flex-wrap items-center gap-1">
-            <span className="hidden sm:inline">Follow us:</span>
-            <a href="#" aria-label="Facebook" className="rounded-full border border-slate-300 bg-[#f8fafc] p-1.5 text-slate-800 transition hover:bg-slate-100">
-              <Facebook className="h-4 w-4" />
-            </a>
-            <a href="#" aria-label="Twitter" className="rounded-full border border-slate-300 bg-[#f8fafc] p-1.5 text-slate-800 transition hover:bg-slate-100">
-              <Twitter className="h-4 w-4" />
-            </a>
-            <a href="#" aria-label="YouTube" className="rounded-full border border-slate-300 bg-[#f8fafc] p-1.5 text-slate-800 transition hover:bg-slate-100">
-              <Youtube className="h-4 w-4" />
-            </a>
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="ml-2 inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-2 py-1 text-[10px] font-semibold text-slate-900 shadow-sm transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
-            >
-              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              {theme === "dark" ? "Light" : "Dark"}
-            </button>
+    <div className="app-shell">
+      <div className="top-bar">
+        <div className="container top-bar-inner">
+          <span className="top-bar-date">📅 {today}</span>
+          <div className="top-bar-right">
+            <span className="top-bar-tagline">
+              Free Job Alert — <Link to="/latest-jobs">Latest Jobs →</Link>
+            </span>
+            <ThemeToggle />
           </div>
         </div>
       </div>
 
-      <div className="mx-auto w-full px-2 sm:px-4 py-1">
-        <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-5 px-3 sm:px-4 py-2 sm:py-3">
-            <Link to="/" className="shrink-0 hover:opacity-90 transition">
-              <img src={HeroLogo} alt="SarkariJobsHub" className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain" />
-            </Link>
-            <Link to="/" className="flex-1 text-center sm:text-left min-w-0 no-underline cursor-pointer hover:opacity-90 transition">
-              <h1 className="text-lg sm:text-2xl md:text-3xl font-extrabold leading-tight break-words">
-                <span className="text-[#0F172A]">Sarkari</span>
-                <span className="text-red-600">Jobs</span>
-                <span className="text-[#0F172A]">Hub</span>
-                <p className="mt-1 text-sm sm:text-base md:text-base font-semibold text-slate-600">
-                  India&apos;s No.1 Government Jobs Website. Find latest Government Jobs, Online Forms, Results, Admit Cards, Answer Keys, Syllabus & more — all in one place.
-                </p>
-              </h1>
-            </Link>
-            <div className="w-full sm:w-auto sm:flex-shrink-0 md:w-[320px] lg:w-[360px]">
-              <form onSubmit={handleSearch} className="flex w-full overflow-hidden rounded-full border border-gray-300 bg-white shadow-sm transition focus-within:border-red-500 focus-within:ring-2 focus-within:ring-red-100">
-                <input
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search Job..."
-                  className="flex-1 border-none bg-transparent px-4 py-2.5 text-sm text-slate-700 outline-none"
-                />
+      <header className="site-header">
+        <div className="container brand-row">
+          <Link to="/" className="brand">
+            <img
+              src="/logo.png"
+              alt="Sarkari Jobs Hub logo"
+              className="brand-logo-img"
+              width={72}
+              height={72}
+              decoding="async"
+            />
+            <div className="brand-text">
+              <h1>Sarkari Job Hub</h1>
+              <p>Jobs · Results · Admit Cards · Answer Keys · 2026</p>
+            </div>
+          </Link>
+          <form className="header-search" onSubmit={onSearch}>
+            <input
+              type="search"
+              placeholder="Search SSC, Railway, NEET, Bank jobs..."
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              aria-label="Search"
+            />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+      </header>
 
-                <button
-                  className="flex items-center gap-2 bg-red-600 px-4 text-sm font-semibold text-white transition hover:bg-red-700"
-                  type="submit"
-                  aria-label="Search"
+      <nav className="main-nav" aria-label="Main">
+        <div className="container nav-inner">
+          <button
+            type="button"
+            className="nav-toggle"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-expanded={menuOpen}
+            aria-controls="main-nav-list"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? '✕ Close' : '☰ Menu'}
+          </button>
+          <div className="nav-actions-mobile">
+            <ThemeToggle />
+          </div>
+          <ul id="main-nav-list" className={menuOpen ? 'open' : ''}>
+            {navItems.map((item) => (
+              <li key={item.to}>
+                <NavLink
+                  to={item.to}
+                  end={item.end}
+                  className={({ isActive }) => (isActive ? 'active' : '')}
+                  onClick={() => setMenuOpen(false)}
                 >
-                  <Search className="h-4 w-4" />
-                  Search
-                </button>
-              </form>
-            </div>
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+
+      <div className="marquee-bar">
+        <div className="container">
+          <span className="marquee-label">LIVE</span>
+          <div className="marquee-track">
+            <span>
+              Welcome to Sarkari Job Hub — Latest Government Jobs, Results, Admit Cards, Answer
+              Keys, Syllabus &amp; Admission · SSC · UPSC · Railway · Banking · Police · State Jobs
+              · Board Results · Free Job Alert Portal for India
+            </span>
           </div>
-          <div className="h-0.5 bg-gradient-to-r from-red-600 via-red-500 to-red-600"></div>
         </div>
       </div>
 
-      <div className="bg-[#cc0000] text-white">
-        <div className="mx-auto flex max-w-[1100px] flex-wrap items-center justify-center gap-1 px-4 py-1 text-[10px] font-semibold uppercase tracking-[0.12em]">
-          <Link to="/" className="rounded px-2 py-1 transition hover:bg-white/10">HOME</Link>
-          {categories.map((item) => (
-            <Link key={item.slug} to={`/category/${item.slug}`} className="rounded px-2 py-1 transition hover:bg-white/10">
-              {item.label}
-            </Link>
-          ))}
+      <main className="main-content">
+        <div className="container">
+          <Outlet />
         </div>
-      </div>
+      </main>
 
-      <div className="bg-white text-[#922626] dark:text-slate-100">
-        <div className="mx-auto max-w-[1100px] px-4 py-1">
-          <Marquee />
+      <footer className="site-footer">
+        <div className="footer-top">
+          <div className="container">
+            Free Job Alert &nbsp;|&nbsp; Sarkari Job Hub &nbsp;|&nbsp; Result &nbsp;|&nbsp; Admit
+            Card &nbsp;|&nbsp; Answer Key &nbsp;|&nbsp; Syllabus
+          </div>
         </div>
-      </div>
-
-      <Outlet />
-
-      <footer className="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100">
-        <div className="mx-auto max-w-[1100px] px-4 py-10">
-          <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/30 dark:border-slate-800 dark:bg-slate-900 dark:shadow-slate-950/40">
-            <div className="text-center">
-              <p className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">SarkariJobsHub – Smart Government Job Alerts</p>
-              <p className="mx-auto mt-4 max-w-3xl text-sm sm:text-base leading-7 text-slate-600 dark:text-slate-300">
-                SarkariJobsHub brings the latest Government Jobs, Admit Cards, Results, Answer Keys, Admissions, and Exam alerts together in one clean, easy-to-use portal.
+        <div className="footer-main">
+          <div className="container footer-grid">
+            <div>
+              <h4>Quick Links</h4>
+              {CATEGORIES.slice(0, 4).map((c) => (
+                <Link key={c.key} to={c.path}>
+                  {c.label}
+                </Link>
+              ))}
+            </div>
+            <div>
+              <h4>More Categories</h4>
+              {CATEGORIES.slice(4).map((c) => (
+                <Link key={c.key} to={c.path}>
+                  {c.label}
+                </Link>
+              ))}
+            </div>
+            <div>
+              <h4>About Portal</h4>
+              <p className="footer-about">
+                Sarkari Job Hub — free government job alerts portal. Not affiliated with any
+                government body. Always verify details on official websites before applying.
               </p>
-            </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                <p className="text-sm font-semibold text-slate-900 dark:text-white">✅ Latest Government Job Notifications</p>
+              <div className="footer-theme-row">
+                <span>Theme</span>
+                <ThemeToggle />
               </div>
-              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                <p className="text-sm font-semibold text-slate-900 dark:text-white">✅ Admit Card and Result Updates</p>
-              </div>
-              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                <p className="text-sm font-semibold text-slate-900 dark:text-white">✅ Official Form Links & Exam Alerts</p>
-              </div>
-              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                <p className="text-sm font-semibold text-slate-900 dark:text-white">✅ Syllabus, Answer Keys & Cutoffs</p>
-              </div>
-              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                <p className="text-sm font-semibold text-slate-900 dark:text-white">✅ Mobile-friendly access for aspirants</p>
-              </div>
-              <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 text-center shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                <p className="text-sm font-semibold text-slate-900 dark:text-white">✅ Free verified updates every day</p>
-              </div>
-            </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[1.5rem] bg-slate-50 p-6 shadow-sm dark:bg-slate-950">
-                <p className="text-xl font-semibold text-slate-900 dark:text-white">Why SarkariJobsHub?</p>
-                <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                  Verified government notifications, fast search, clean navigation, and simple access to all major job categories.
-                </p>
-              </div>
-              <div className="rounded-[1.5rem] bg-slate-50 p-6 shadow-sm dark:bg-slate-950">
-                <p className="text-xl font-semibold text-slate-900 dark:text-white">How it helps you</p>
-                <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                  Use the search bar or category menu to find the latest alerts, admit cards, results, answer keys and syllabus updates fast.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-10 rounded-[2rem] bg-gradient-to-r from-red-600 to-red-700 p-8 text-center text-white shadow-2xl shadow-red-700/20">
-              <p className="text-2xl font-bold">Stay Updated with SarkariJobsHub</p>
-              <p className="mx-auto mt-3 max-w-2xl text-sm leading-6">
-                Your trusted destination for Government Jobs, Results, Admit Cards, Admissions, Scholarships, and Competitive Exam notifications.
-              </p>
             </div>
           </div>
         </div>
-
-        <div className="border-t border-slate-200 dark:border-white/10">
-          <div className="mx-auto max-w-[1100px] px-4 py-8 lg:grid lg:grid-cols-3 lg:gap-8">
-            <div className="space-y-3">
-              <p className="text-xl font-bold text-slate-900 dark:text-white">SarkariJobsHub</p>
-              <p className="text-sm leading-6 text-slate-600 dark:text-slate-400">
-                Your one-stop destination for the latest Government Jobs, Online Forms, Results, Admit Cards, Answer Keys, Syllabus and Government Exam Updates in India.
-              </p>
-            </div>
-            <div className="space-y-3">
-              <p className="text-sm uppercase tracking-[0.24em] text-slate-900 dark:text-white">Quick Links</p>
-              <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                <li><a href="https://sarkarijobhub.website/category/latest-job" className="hover:text-red-600">Latest Jobs</a></li>
-                <li><a href="https://sarkarijobhub.website/category/result" className="hover:text-red-600">Results</a></li>
-                <li><a href="https://sarkarijobhub.website/category/admit-card" className="hover:text-red-600">Admit Card</a></li>
-                <li><a href="https://sarkarijobhub.website/category/answer-key" className="hover:text-red-600">Answer Key</a></li>
-              </ul>
-            </div>
-            <div className="space-y-3">
-              <p className="text-sm uppercase tracking-[0.24em] text-slate-900 dark:text-white">Other</p>
-              <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                <li><a href="https://sarkarijobhub.website/category/syllabus" className="hover:text-red-600">Syllabus</a></li>
-                <li><a href="https://sarkarijobhub.website/category/admission" className="hover:text-red-600">Admission</a></li>
-                <li><a href="https://sarkarijobhub.website/category/certificate" className="hover:text-red-600">Certificate Verification</a></li>
-                <li><a href="https://sarkarijobhub.website/category/important" className="hover:text-red-600">Important</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mx-auto max-w-[1100px] px-4 pb-8 text-center text-sm text-white bg-slate-950 rounded-t-3xl">
-            <p className="font-semibold text-lg text-white">SarkariJobsHub</p>
-            <p className="mt-2 max-w-2xl mx-auto leading-6 text-slate-300">
-              Your one-stop destination for the latest Government Jobs, Online Forms, Results, Admit Cards, Answer Keys, Syllabus and Government Exam Updates in India.
-            </p>
-            <p className="mt-4 text-xs text-slate-400">
-              © 2026 SarkariJobsHub • Original content. All trademarks belong to their respective owners.
-            </p>
+        <div className="footer-bottom">
+          <div className="container">
+            © {new Date().getFullYear()} Sarkari Job Hub · Built with MERN Stack
           </div>
         </div>
       </footer>

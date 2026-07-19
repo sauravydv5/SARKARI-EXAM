@@ -161,19 +161,6 @@
   }
 }
 
-.animate-marquee {
-  animation: marquee-left 22s linear infinite;
-}
-
-@keyframes marquee-left {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
 .ticks {
   position: relative;
   width: 100%;

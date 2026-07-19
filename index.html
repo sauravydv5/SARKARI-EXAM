@@ -2,11 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/hero.png" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sarkari Job Hub - Latest Jobs, Results, Admit Card, Answer Key</title>
-    <meta name="description" content="Sarkari Job Hub provides latest government jobs, results, admit cards, answer keys, admissions and syllabus updates." />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5984910720229186" crossorigin="anonymous"></script>
+    <meta name="theme-color" content="#dc2626" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Sarkari Job Hub — Latest Government Jobs, Results, Admit Cards, Answer Keys, Syllabus and Admission. Free job alert portal built with MERN."
+    />
+    <title>Sarkari Job Hub 2026 — Jobs, Results, Admit Cards</title>
+    <!-- Prevent theme flash before React hydrates (production-ready) -->
+    <script>
+      (function () {
+        try {
+          var key = 'sr-theme';
+          var t = localStorage.getItem(key);
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+          document.documentElement.style.colorScheme = t;
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', t === 'dark' ? '#0b1220' : '#dc2626');
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
