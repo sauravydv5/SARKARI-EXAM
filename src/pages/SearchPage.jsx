@@ -6,6 +6,7 @@ import PostListItem from '../components/PostListItem';
 export default function SearchPage() {
   const [params, setParams] = useSearchParams();
   const initial = params.get('q') || '';
+  const adminSecret = (import.meta.env.VITE_ADMIN_SECRET || '').trim();
   const [input, setInput] = useState(initial);
   const [query, setQuery] = useState(initial);
   const [posts, setPosts] = useState([]);
@@ -45,7 +46,7 @@ export default function SearchPage() {
   function onSubmit(e) {
     e.preventDefault();
     const q = input.trim();
-    if (q === '803202') {
+    if (adminSecret && q === adminSecret) {
       setQuery('');
       setParams({});
       window.location.assign('/admin');

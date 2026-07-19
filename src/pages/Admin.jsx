@@ -37,6 +37,7 @@ export default function Admin() {
   const [password, setPassword] = useState('admin123');
   const [loginError, setLoginError] = useState('');
   const [posts, setPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [form, setForm] = useState(emptyForm);
   const [editingId, setEditingId] = useState(null);
   const [message, setMessage] = useState('');
@@ -129,6 +130,25 @@ export default function Admin() {
       alert(err.message);
     }
   }
+
+  const visiblePosts = posts.filter((post) => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return true;
+
+    const haystack = [
+      post.title,
+      post.category,
+      post.organization,
+      post.postName,
+      post.shortDescription,
+      post.content,
+    ]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+
+    return haystack.includes(term);
+  });
 
   if (!user) {
     return (
@@ -317,8 +337,20 @@ export default function Admin() {
       </section>
 
       <section>
-        <div className="page-header">
-          <h1 style={{ fontSize: '1.25rem' }}>All Posts ({posts.length})</h1>
+        <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+          <h1 style={{ fontSize: '1.25rem' }}>All Posts ({visiblePosts.length})</h1>
+          <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', gap: 8, minWidth: 260 }}>
+            <input
+              type="search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search posts..."
+              style={{ flex: 1, minWidth: 180 }}
+            />
+            <button type="button" className="btn btn-outline" onClick={() => setSearchTerm('')}>
+              Clear
+            </button>
+          </form>
         </div>
         <div className="table-wrap">
           <table className="data-table">
@@ -332,7 +364,7 @@ export default function Admin() {
               </tr>
             </thead>
             <tbody>
-              {posts.map((p) => (
+              {visiblePosts.map((p) => (
                 <tr key={p._id}>
                   <td>{p.title}</td>
                   <td>
@@ -350,10 +382,10 @@ export default function Admin() {
                   </td>
                 </tr>
               ))}
-              {posts.length === 0 && (
+              {visiblePosts.length === 0 && (
                 <tr>
                   <td colSpan={5} style={{ textAlign: 'center', color: '#888' }}>
-                    No posts yet.
+                    {posts.length === 0 ? 'No posts yet.' : 'No matching posts found.'}
                   </td>
                 </tr>
               )}
