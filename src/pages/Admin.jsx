@@ -131,6 +131,17 @@ export default function Admin() {
     }
   }
 
+  async function handleToggleStatus(id, isActive) {
+    const action = isActive ? 'Deactivate' : 'Activate';
+    if (!window.confirm(`${action} this post?`)) return;
+    try {
+      await api.updatePost(id, { isActive: !isActive });
+      await loadPosts();
+    } catch (err) {
+      alert(err.message);
+    }
+  }
+
   const visiblePosts = posts.filter((post) => {
     const term = searchTerm.trim().toLowerCase();
     if (!term) return true;
@@ -370,7 +381,15 @@ export default function Admin() {
                   <td>
                     <span className="tag">{p.category}</span>
                   </td>
-                  <td>{p.isActive ? 'Active' : 'Inactive'}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className={`btn btn-sm ${p.isActive ? 'btn-success' : 'btn-outline'}`}
+                      onClick={() => handleToggleStatus(p._id, p.isActive)}
+                    >
+                      {p.isActive ? 'Active' : 'Inactive'}
+                    </button>
+                  </td>
                   <td>{formatDate(p.updatedAt)}</td>
                   <td style={{ whiteSpace: 'nowrap' }}>
                     <button type="button" className="btn btn-sm btn-outline" onClick={() => startEdit(p)}>
