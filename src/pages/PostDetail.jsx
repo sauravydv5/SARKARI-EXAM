@@ -116,16 +116,18 @@ export default function PostDetail() {
         : SOON;
 
   const primaryHref =
-    links.applyOnline || links.checkResult || links.downloadAdmitCard || links.answerKey;
-  const primaryLabel = links.applyOnline
-    ? 'Apply Online'
-    : links.checkResult
-      ? 'Check Result'
-      : links.downloadAdmitCard
-        ? 'Download Admit Card'
-        : links.answerKey
-          ? 'Answer Key'
-          : 'Official Link';
+    links.importantLink || links.applyOnline || links.checkResult || links.downloadAdmitCard || links.answerKey;
+  const primaryLabel = links.importantLink
+    ? 'Important Link'
+    : links.applyOnline
+      ? 'Apply Online'
+      : links.checkResult
+        ? 'Check Result'
+        : links.downloadAdmitCard
+          ? 'Download Admit Card'
+          : links.answerKey
+            ? 'Answer Key'
+            : 'Official Link';
 
   const howSteps = (post.howToApply || '')
     .split('\n')
@@ -156,6 +158,7 @@ export default function PostDetail() {
                 {icon} {cat.label}
               </span>
               {post.isFeatured && <span className="pd-featured-badge">★ Featured</span>}
+              {post.isNew && <span className="pd-featured-badge">🆕 New</span>}
               <span className="pd-views-badge">👁 {post.views || 0} views</span>
             </div>
             <h1 className="pd-title">{post.title}</h1>
@@ -442,6 +445,7 @@ export default function PostDetail() {
             <div className="pd-table-wrap">
               <table className="pd-full-table pd-links-table">
                 <tbody>
+                  <LinkRow label="Important Link" href={links.importantLink} text="Click Here" />
                   <LinkRow label="Apply Online" href={links.applyOnline} text="Click Here" />
                   <LinkRow label="Check Result" href={links.checkResult} text="Click Here" />
                   <LinkRow
@@ -494,6 +498,11 @@ export default function PostDetail() {
               </a>
             )}
             <div className="pd-side-links">
+              {links.importantLink && (
+                <a href={links.importantLink} target="_blank" rel="noopener noreferrer">
+                  🔗 Important Link
+                </a>
+              )}
               {links.applyOnline && (
                 <a href={links.applyOnline} target="_blank" rel="noopener noreferrer">
                   🚀 Apply Online

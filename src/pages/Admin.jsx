@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { api, CATEGORIES, formatDate, getStoredUser, setAuth } from '../api';
+import { useNavigate } from 'react-router-dom';
+import { api, CATEGORIES, categoryMeta, formatDate, getStoredUser, setAuth } from '../api';
 
 const emptyForm = {
   title: '',
@@ -14,6 +15,7 @@ const emptyForm = {
   shortDescription: '',
   content: '',
   isFeatured: false,
+  isNew: false,
   importantDates: {
     notificationDate: '',
     startDate: '',
@@ -23,6 +25,7 @@ const emptyForm = {
   },
   links: {
     applyOnline: '',
+    importantLink: '',
     officialNotification: '',
     officialWebsite: '',
     downloadAdmitCard: '',
@@ -42,6 +45,7 @@ export default function Admin() {
   const [editingId, setEditingId] = useState(null);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function loadPosts() {
     try {
@@ -100,9 +104,10 @@ export default function Admin() {
         await api.createPost(payload);
         setMessage('Post created successfully.');
       }
-      setForm(emptyForm);
+      setForm({ ...emptyForm, importantDates: { ...emptyForm.importantDates }, links: { ...emptyForm.links } });
       setEditingId(null);
       await loadPosts();
+      navigate(categoryMeta(payload.category).path);
     } catch (err) {
       setMessage(err.message);
     } finally {
@@ -115,6 +120,7 @@ export default function Admin() {
     setForm({
       ...emptyForm,
       ...post,
+      isNew: Boolean(post.isNew),
       importantDates: { ...emptyForm.importantDates, ...(post.importantDates || {}) },
       links: { ...emptyForm.links, ...(post.links || {}) },
     });
@@ -122,9 +128,11 @@ export default function Admin() {
   }
 
   async function handleDelete(id) {
-    if (!window.confirm('Deactivate this post?')) return;
+    if (!window.confirm('Delete this post permanently?')) return;
     try {
       await api.deletePost(id);
+      setPosts((prev) => prev.filter((post) => post._id !== id));
+      setMessage('Post deleted successfully.');
       await loadPosts();
     } catch (err) {
       alert(err.message);
@@ -305,14 +313,48 @@ export default function Admin() {
 
             <div className="form-row">
               <div className="form-group">
-                <label>Apply / Result / Admit Link</label>
+                <label>Apply Online</label>
                 <input
-                  value={form.links.applyOnline || form.links.checkResult || form.links.downloadAdmitCard}
-                  onChange={(e) => {
-                    updateField('links.applyOnline', e.target.value);
-                    updateField('links.checkResult', e.target.value);
-                    updateField('links.downloadAdmitCard', e.target.value);
-                  }}
+                  value={form.links.applyOnline}
+                  onChange={(e) => updateField('links.applyOnline', e.target.value)}
+                  placeholder="https://..."
+                />
+              </div>
+              <div className="form-group">
+                <label>Check Result</label>
+                <input
+                  value={form.links.checkResult}
+                  onChange={(e) => updateField('links.checkResult', e.target.value)}
+                  placeholder="https://..."
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label>Download Admit Card</label>
+                <input
+                  value={form.links.downloadAdmitCard}
+                  onChange={(e) => updateField('links.downloadAdmitCard', e.target.value)}
+                  placeholder="https://..."
+                />
+              </div>
+              <div className="form-group">
+                <label>Download Answer Key</label>
+                <input
+                  value={form.links.answerKey}
+                  onChange={(e) => updateField('links.answerKey', e.target.value)}
+                  placeholder="https://..."
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label>Download Notification</label>
+                <input
+                  value={form.links.officialNotification}
+                  onChange={(e) => updateField('links.officialNotification', e.target.value)}
                   placeholder="https://..."
                 />
               </div>
@@ -321,6 +363,18 @@ export default function Admin() {
                 <input
                   value={form.links.officialWebsite}
                   onChange={(e) => updateField('links.officialWebsite', e.target.value)}
+                  placeholder="https://..."
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label>Important Link</label>
+                <input
+                  value={form.links.importantLink}
+                  onChange={(e) => updateField('links.importantLink', e.target.value)}
+                  placeholder="https://..."
                 />
               </div>
             </div>
@@ -332,6 +386,15 @@ export default function Admin() {
                 onChange={(e) => updateField('isFeatured', e.target.checked)}
               />
               Featured post
+            </label>
+
+            <label style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+              <input
+                type="checkbox"
+                checked={!!form.isNew}
+                onChange={(e) => updateField('isNew', e.target.checked)}
+              />
+              Mark as New
             </label>
 
             {message && (
