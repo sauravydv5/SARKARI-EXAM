@@ -2040,7 +2040,7 @@ table.data-table tr:last-child td {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 28px;
 }
 
@@ -2064,12 +2064,42 @@ table.data-table tr:last-child td {
   color: #fcd34d;
 }
 
+.footer-extra {
+  padding: 24px 0 16px;
+  border-top: 1px solid #1e293b;
+}
+
+.footer-extra-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.footer-extra h4 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+.footer-extra p {
+  margin: 0 0 8px;
+  color: #cbd5e1;
+  line-height: 1.75;
+  font-size: 0.9rem;
+}
+
 .footer-bottom {
   border-top: 1px solid #1e293b;
-  padding: 14px 0;
+  padding: 18px 0;
   text-align: center;
   font-size: 0.78rem;
   color: #64748b;
+}
+
+.footer-bottom p {
+  margin: 4px 0;
 }
 
 .disclaimer {

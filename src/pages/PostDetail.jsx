@@ -476,12 +476,6 @@ export default function PostDetail() {
               </div>
             )}
           </section>
-
-          <div className="pd-disclaimer">
-            <strong>⚠️ Disclaimer:</strong> Some information is for demo / educational purposes.
-            Please verify every detail (dates, fee, vacancy, eligibility) on the official government
-            website before applying.
-          </div>
         </div>
 
         {/* Sidebar */}

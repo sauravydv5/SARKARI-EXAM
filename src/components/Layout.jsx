@@ -157,10 +157,27 @@ export default function Layout() {
               ))}
             </div>
             <div>
+              <h4>Get Started</h4>
+              <Link to="/search">Search for jobs</Link>
+              <Link to="/latest-jobs">Latest government notifications</Link>
+              <Link to="/important">Important notices</Link>
+              <Link to="/admit-cards">Admit card alerts</Link>
+            </div>
+            <div>
+              <h4>Support</h4>
+              <p className="footer-about">
+                Need help with the app? Use the search box or browse categories. Questions? Email
+                us at <strong>support@sarkarijobhud.website</strong>.
+              </p>
+              <p className="footer-about">
+                Open hours: Mon–Fri, 9am–6pm IST.
+              </p>
+            </div>
+            <div>
               <h4>About Portal</h4>
               <p className="footer-about">
-                Sarkari Job Hub — free government job alerts portal. Not affiliated with any
-                government body. Always verify details on official websites before applying.
+                Sarkari Job Hub is a free portal for government job alerts, exam results, admit
+                cards, answer keys and syllabus updates. Verify details on official websites.
               </p>
               <div className="footer-theme-row">
                 <span>Theme</span>
@@ -169,9 +186,32 @@ export default function Layout() {
             </div>
           </div>
         </div>
+        <div className="footer-extra">
+          <div className="container footer-extra-grid">
+            <div>
+              <h4>Why use this portal?</h4>
+              <p>
+                Quick access to government job alerts and exam updates across central and state
+                notifications. We keep the layout simple so you can find what matters fast.
+              </p>
+            </div>
+            <div>
+              <h4>Contact &amp; Trust</h4>
+              <p>
+                Email: <strong>support@sarkarijobhud.website</strong>
+              </p>
+              <p>Based in India · Updated daily with new posts</p>
+              <p>
+                Note: This site is not an official government service. Always verify on official
+                notice pages.
+              </p>
+            </div>
+          </div>
+        </div>
         <div className="footer-bottom">
           <div className="container">
-            © {new Date().getFullYear()} Sarkari Job Hub · Built with MERN Stack
+            <p>© {new Date().getFullYear()} Sarkari Job Hub ·</p>
+            <p>Privacy · Terms · Support</p>
           </div>
         </div>
       </footer>

@@ -68,11 +68,11 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <div className="hero-badge">🇮🇳 Sarkari Job Hub · Free Job Alert · 2026</div>
-        <h2>Find Sarkari Naukri, Results &amp; Admit Cards</h2>
+        <div className="hero-badge">👋 Welcome to Sarkari Job Hub</div>
+        <h2>Quickly find Sarkari Naukri, Results &amp; Admit Cards</h2>
         <p>
-          Sarkari Job Hub — one place for government jobs, exam results, admit cards, answer keys
-          and admissions. Clean, fast, and easy to browse.
+          Your friendly guide to government job alerts, exam updates, admit cards, and official
+          notices. Browse easily and stay on top of the latest information.
         </p>
         <div className="hero-actions">
           <Link to="/latest-jobs" className="btn btn-primary">
@@ -88,12 +88,10 @@ export default function Home() {
             Search
           </Link>
         </div>
+        <div className="hero-subtext">
+          Need a quick start? Pick a category and get instant updates.
+        </div>
       </section>
-
-      <div className="disclaimer">
-        <strong>Disclaimer:</strong> Demo MERN clone for learning. Always confirm dates, fees and
-        eligibility on the official government websites before applying.
-      </div>
 
       <div className="cat-grid">
         {CATEGORIES.map((c) => (
