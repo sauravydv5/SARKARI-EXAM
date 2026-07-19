@@ -33,8 +33,8 @@ const emptyForm = {
 
 export default function Admin() {
   const [user, setUser] = useState(getStoredUser());
-  const [email, setEmail] = useState('sauravkumar91937@gmail.com');
-  const [password, setPassword] = useState('Saurav@123');
+  const [email, setEmail] = useState('admin@sarkariresult.local');
+  const [password, setPassword] = useState('admin123');
   const [loginError, setLoginError] = useState('');
   const [posts, setPosts] = useState([]);
   const [form, setForm] = useState(emptyForm);
