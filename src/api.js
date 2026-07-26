@@ -111,8 +111,12 @@ function isInactivePost(post) {
   return getStatusLists().inactive.includes(slug);
 }
 
+function sortPosts(posts) {
+  return [...posts].sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
+}
+
 function getAllPosts() {
-  return POSTS.slice();
+  return sortPosts(POSTS);
 }
 
 function getVisiblePosts() {
@@ -222,7 +226,7 @@ export const api = {
     const page = params.page || 1;
     const limit = params.limit || 20;
     const search = params.search || '';
-    const items = getPostsWithSearch(category ? getPostsByCategory(category) : getVisiblePosts(), search);
+    const items = sortPosts(getPostsWithSearch(category ? getPostsByCategory(category) : getVisiblePosts(), search));
     const paged = buildPagination(items, page, limit);
     return { data: paged.items, pagination: { page: paged.page, pages: paged.pages, total: paged.total } };
   },
@@ -231,7 +235,7 @@ export const api = {
     if (!post) {
       return { data: null, related: [] };
     }
-    const related = getPostsByCategory(post.category)
+    const related = sortPosts(getPostsByCategory(post.category))
       .filter((item) => item.slug !== post.slug)
       .slice(0, 4);
     return { data: post, related };
@@ -240,7 +244,7 @@ export const api = {
   me: () => Promise.resolve({ user: { email: 'admin@sarkariresult.local' } }),
   adminList: () => {
     const status = getStatusLists();
-    const posts = getAllPosts().map((post) => ({
+    const posts = sortPosts(getAllPosts()).map((post) => ({
       ...post,
       isDeleted: status.deleted.includes(post.slug || post.id),
       isInactive: status.inactive.includes(post.slug || post.id),

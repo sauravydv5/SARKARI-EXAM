@@ -1,0 +1,46 @@
+{
+  "category": "admission",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "iim-cat-2026-online-form",
+  "slug": "iim-cat-2026-online-form",
+  "title": "IIM CAT 2026 Online Form",
+  "organization": "Indian Institutes of Management (IIM) – CAT 2026",
+  "postName": "Common Admission Test (CAT) 2026 – MBA / PGDM Online Registration",
+  "totalVacancies": 0,
+  "vacancyDetails": "National-level entrance for MBA/PGP and other management programmes at IIMs and participating B-schools across India",
+  "qualification": "Bachelor’s degree with at least 50% marks or equivalent CGPA (45% for SC/ST/PwD) from a recognised university; final-year students may also apply as per CAT rules",
+  "ageLimit": "No upper age limit for CAT",
+  "applicationFee": "₹2,700 (General/EWS/NC-OBC); ₹1,350 (SC/ST/PwD) – non-refundable; confirm on iimcat.ac.in",
+  "selectionProcess": "CAT Computer Based Test → IIM shortlisting (WAT/PI/GD as per institute) → Final admission offers by participating institutes",
+  "documentsRequired": "Valid email & mobile, photo, signature, category certificate (if applicable), PwD certificate (if applicable), academic details, photo ID for exam day",
+  "howToApply": "1. Visit https://iimcat.ac.in\n2. Click Register for CAT 2026\n3. Create profile with name, DOB, email and mobile\n4. Fill personal, academic and work details; choose up to 5 test cities\n5. Upload photo and signature as per specifications\n6. Pay fee online and submit; download confirmation",
+  "shortDescription": "IIM CAT 2026 Online Form – registration from 3 Aug to 15 Sep 2026 at iimcat.ac.in. Exam on 29 Nov 2026. Apply for MBA/PGP at IIMs and other B-schools.",
+  "content": "<p><strong>IIM CAT 2026</strong> (Common Admission Test) online registration will open on the official website <strong>iimcat.ac.in</strong>. CAT is the national-level entrance exam for admission to MBA/PGP and other management programmes at the Indian Institutes of Management and many other participating business schools.</p><h3>Important Dates (CAT 2026)</h3><ul><li><strong>Notification:</strong> July 2026</li><li><strong>Registration starts:</strong> 03 August 2026, 10:00 AM (IST)</li><li><strong>Registration ends:</strong> 15 September 2026, 5:00 PM (IST)</li><li><strong>Admit card download:</strong> From 04 November 2026</li><li><strong>Test day:</strong> 29 November 2026 (Sunday)</li></ul><h3>Eligibility</h3><p>Bachelor’s degree with minimum <strong>50%</strong> marks (or equivalent CGPA); <strong>45%</strong> for SC/ST/PwD. Final-year graduation candidates can apply as per the official information bulletin.</p><h3>Application Fee (as notified)</h3><ul><li>General / EWS / NC-OBC: <strong>₹2,700</strong></li><li>SC / ST / PwD: <strong>₹1,350</strong></li></ul><p>Fee is payable online only and is generally non-refundable. Always verify fee and eligibility on <strong>iimcat.ac.in</strong> before applying.</p><h3>How to Apply</h3><ol><li>Open <strong>https://iimcat.ac.in</strong></li><li>Register with basic details and complete the CAT 2026 application form</li><li>Select preferred test cities, upload documents, pay fee and submit</li><li>Save the confirmation page / application number for future login</li></ol><p><em>There is no other official website for CAT registration other than iimcat.ac.in.</em></p>",
+  "publishedAt": "2026-07-26T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "25 Jul 2026",
+    "startDate": "03 Aug 2026",
+    "lastDate": "15 Sep 2026",
+    "examDate": "29 Nov 2026",
+    "resultDate": "Dec 2026 (tentative)",
+    "admitCardDate": "04 Nov 2026"
+  },
+  "links": {
+    "applyOnline": "https://iimcat.ac.in/",
+    "officialWebsite": "https://iimcat.ac.in/",
+    "importantLink": "https://iimcat.ac.in/",
+    "officialNotification": "https://iimcat.ac.in/"
+  },
+  "tags": [
+    "IIM",
+    "CAT",
+    "CAT 2026",
+    "MBA",
+    "Admission",
+    "Online Form"
+  ],
+  "views": 6100
+}

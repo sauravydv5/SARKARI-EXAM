@@ -1,0 +1,46 @@
+{
+  "category": "result",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "upsc-engineering-services-mains-result-2026",
+  "slug": "upsc-engineering-services-mains-result-2026",
+  "title": "UPSC Engineering Services Mains Result 2026",
+  "organization": "Union Public Service Commission",
+  "postName": "Engineering Services (Main) Examination, 2026 – Written Result",
+  "totalVacancies": 0,
+  "vacancyDetails": "Written result of ESE/IES Main 2026; qualified candidates shortlisted for Interview / Personality Test (approx. 1,341 candidates as per reports)",
+  "qualification": "Engineering degree as per UPSC ESE rules for Civil / Mechanical / Electrical / Electronics & Telecommunication streams",
+  "ageLimit": "21 to 30 years (as on crucial date; relaxations as per UPSC ESE rules)",
+  "applicationFee": "As per ESE 2026 notification (exemptions for Female/SC/ST/PwBD as applicable)",
+  "selectionProcess": "Preliminary Examination → Main (Written) Examination → Personality Test / Interview → Final merit",
+  "documentsRequired": "Roll number, DOB, e-Summon letter (for interview), original certificates for age, qualification, category, PwBD (if any)",
+  "howToApply": "1. Visit https://www.upsc.gov.in\n2. Open Written Result: Engineering Services (Main) Examination, 2026\n3. Download roll-wise / name-wise PDF\n4. Search your roll number (Ctrl+F)\n5. If qualified, update DAF / documents in the 15-day window and watch for e-Summon for Personality Test",
+  "shortDescription": "UPSC ESE/IES Mains Result 2026 declared on 24 July 2026. Written result PDF for Engineering Services Main (21 June 2026) at upsc.gov.in; next stage Interview.",
+  "content": "<p><strong>Union Public Service Commission (UPSC)</strong> has declared the <strong>Engineering Services (Main) Examination, 2026 Written Result</strong> on <strong>24 July 2026</strong>.</p><p>The Main written examination was held on <strong>21 June 2026</strong>. Candidates whose roll numbers appear in the result PDF have been provisionally shortlisted for the <strong>Interview / Personality Test</strong>.</p><h3>Key Points</h3><ul><li>Result available as PDF (roll-wise and name-wise) on <strong>upsc.gov.in</strong></li><li>Candidature is <strong>provisional</strong> pending document verification</li><li>Qualified candidates get a window (about <strong>15 days</strong>) to update details and upload proof of qualifying examination on the UPSC portal</li><li>Interview dates will be intimated via <strong>e-Summon</strong> from upsc.gov.in / upsconline.nic.in</li><li>Marksheets for all candidates are usually uploaded after the <strong>final result</strong></li></ul><h3>How to Check</h3><ol><li>Visit <strong>https://www.upsc.gov.in</strong></li><li>Click <strong>Written Result: Engineering Services (Main) Examination, 2026</strong></li><li>Download PDF and search your roll number / name</li></ol><p>Official PDF (name list example path): <code>upsc.gov.in/sites/default/files/NameList-WR-ESEM-26-Engl-240726.pdf</code></p>",
+  "publishedAt": "2026-07-24T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2025",
+    "startDate": "26 Sep 2025",
+    "lastDate": "16 Oct 2025",
+    "examDate": "21 Jun 2026 (Mains)",
+    "resultDate": "24 Jul 2026 (Mains Written)",
+    "admitCardDate": "Before Mains"
+  },
+  "links": {
+    "checkResult": "https://www.upsc.gov.in/",
+    "officialNotification": "https://www.upsc.gov.in/sites/default/files/NameList-WR-ESEM-26-Engl-240726.pdf",
+    "importantLink": "https://upsconline.nic.in/",
+    "officialWebsite": "https://www.upsc.gov.in/"
+  },
+  "tags": [
+    "UPSC",
+    "ESE",
+    "IES",
+    "Engineering Services",
+    "Mains Result",
+    "2026"
+  ],
+  "views": 5800
+}
