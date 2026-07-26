@@ -26,6 +26,69 @@ const ICON_BG = {
   certificate: '#f8fafc',
 };
 
+function CountUp({ value = 0, duration = 800 }) {
+  const [display, setDisplay] = useState(0);
+  useEffect(() => {
+    let start = 0;
+    const end = Number(value) || 0;
+    if (end === 0) {
+      setDisplay(0);
+      return;
+    }
+    const stepTime = Math.max(Math.floor(duration / end), 8);
+    const timer = setInterval(() => {
+      start += Math.ceil(end / (duration / stepTime));
+      if (start >= end) {
+        setDisplay(end);
+        clearInterval(timer);
+      } else {
+        setDisplay(start);
+      }
+    }, stepTime);
+    return () => clearInterval(timer);
+  }, [value, duration]);
+  return <span className="countup">{display}</span>;
+}
+
+function StatsPanel({ stats = {} }) {
+  const latest = stats['latest-job'] || 0;
+  const results = stats['result'] || 0;
+  const admit = stats['admit-card'] || 0;
+  const notifications = Object.values(stats).reduce((s, v) => s + (v || 0), 0);
+  return (
+    <div className="stats-grid">
+      <div className="stat-card">
+        <div className="stat-icon">💼</div>
+        <div className="stat-body">
+          <div className="stat-num"><CountUp value={latest} /></div>
+          <div className="stat-label">Latest Jobs</div>
+        </div>
+      </div>
+      <div className="stat-card">
+        <div className="stat-icon">📊</div>
+        <div className="stat-body">
+          <div className="stat-num"><CountUp value={results} /></div>
+          <div className="stat-label">Latest Results</div>
+        </div>
+      </div>
+      <div className="stat-card">
+        <div className="stat-icon">🎫</div>
+        <div className="stat-body">
+          <div className="stat-num"><CountUp value={admit} /></div>
+          <div className="stat-label">Admit Cards</div>
+        </div>
+      </div>
+      <div className="stat-card">
+        <div className="stat-icon">🔔</div>
+        <div className="stat-body">
+          <div className="stat-num"><CountUp value={notifications} /></div>
+          <div className="stat-label">Active Notifications</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [sections, setSections] = useState(null);
   const [stats, setStats] = useState({});
@@ -78,28 +141,35 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <div className="hero-badge">👋 Welcome to Sarkari Job Hub</div>
-        <h2>Latest Sarkari Jobs, Results &amp; Admit Cards 2026</h2>
-        <p>
-          Your friendly guide to government job alerts, sarkari result updates, admit cards, answer
-          keys, and official notices. Browse easily and stay on top of the latest information.
-        </p>
-        <div className="hero-actions">
-          <Link to="/latest-jobs" className="btn btn-primary">
-            Browse Latest Jobs
-          </Link>
-          <Link to="/results" className="btn btn-outline">
-            Check Results
-          </Link>
-          <Link to="/admit-cards" className="btn btn-gold">
-            Admit Cards
-          </Link>
-          <Link to="/search" className="btn btn-outline">
-            Search
-          </Link>
-        </div>
-        <div className="hero-subtext">
-          Need a quick start? Pick a category and get instant updates.
+        <div className="hero-grid">
+          <div className="hero-main">
+            <div className="hero-badge">👋 Welcome to Sarkari Job Hub</div>
+            <h2>Latest Sarkari Jobs, Results &amp; Admit Cards 2026</h2>
+            <p>
+              Your friendly guide to government job alerts, sarkari result updates, admit cards,
+              answer keys, and official notices. Browse easily and stay on top of the latest
+              information.
+            </p>
+            <div className="hero-actions">
+              <Link to="/latest-jobs" className="btn btn-primary">
+                💼 Browse Latest Jobs
+              </Link>
+              <Link to="/results" className="btn btn-outline">
+                📊 Check Results
+              </Link>
+              <Link to="/admit-cards" className="btn btn-gold">
+                🎫 Admit Cards
+              </Link>
+              <Link to="/search" className="btn btn-outline">
+                🔎 Search
+              </Link>
+            </div>
+            <div className="hero-subtext">Need a quick start? Pick a category and get instant updates.</div>
+          </div>
+
+          <aside className="hero-stats" aria-hidden>
+            <StatsPanel stats={stats} />
+          </aside>
         </div>
       </section>
 
