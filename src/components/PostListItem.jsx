@@ -4,7 +4,7 @@ import { formatDate } from '../api';
 export default function PostListItem({ post, showMeta = true }) {
   const isRecent =
     post.publishedAt && Date.now() - new Date(post.publishedAt).getTime() < 1000 * 60 * 60 * 24 * 14;
-  const showNewBadge = Boolean(post.isNew || isRecent);
+  const showNewBadge = Boolean(post.showNewBadge ?? (post.isNew || (!post.hasExplicitNewOverride && isRecent)));
 
   return (
     <li>
@@ -13,6 +13,11 @@ export default function PostListItem({ post, showMeta = true }) {
         <span>
           {post.title}
           {showNewBadge && <span className="badge-new">NEW</span>}
+          {post.statusNote && (
+            <span className="status-note" style={{ display: 'block', color: '#2e7d32', fontSize: '0.85em', fontWeight: 600 }}>
+              ✅ {post.statusNote}
+            </span>
+          )}
           {showMeta && (
             <span className="meta">
               {post.organization ? `${post.organization} · ` : ''}

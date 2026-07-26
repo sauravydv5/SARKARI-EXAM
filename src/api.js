@@ -51,6 +51,7 @@ function normalizePost(raw, sourcePath) {
     tags: raw.tags || [],
     isFeatured: Boolean(raw.isFeatured),
     isNew: Boolean(raw.isNew),
+    statusNote: raw.statusNote || raw.status || '',
     totalVacancies: Number(raw.totalVacancies || raw.vacancy || 0) || 0,
     vacancyDetails: raw.vacancyDetails || raw.vacancy || '',
     qualification: raw.qualification || '',
@@ -74,6 +75,7 @@ const POSTS = Object.entries(contentModules)
 
 const STORAGE_DELETED_POSTS = 'sr_deleted_posts';
 const STORAGE_INACTIVE_POSTS = 'sr_inactive_posts';
+const STORAGE_NEW_POSTS = 'sr_new_posts';
 
 function readStorageList(key) {
   if (typeof window === 'undefined') return [];
@@ -94,10 +96,48 @@ function writeStorageList(key, list) {
   }
 }
 
+function readStorageMap(key) {
+  if (typeof window === 'undefined') return {};
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function writeStorageMap(key, map) {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(key, JSON.stringify(map));
+  } catch {
+    // ignore storage errors
+  }
+}
+
 function getStatusLists() {
   return {
     deleted: readStorageList(STORAGE_DELETED_POSTS),
     inactive: readStorageList(STORAGE_INACTIVE_POSTS),
+  };
+}
+
+function getNewFlag(post) {
+  const slug = post.slug || post.id;
+  const map = readStorageMap(STORAGE_NEW_POSTS);
+  if (Object.prototype.hasOwnProperty.call(map, slug)) return Boolean(map[slug]);
+  return Boolean(post.isNew);
+}
+
+function withResolvedFlags(post) {
+  const slug = post.slug || post.id;
+  const map = readStorageMap(STORAGE_NEW_POSTS);
+  const hasExplicitNewOverride = Object.prototype.hasOwnProperty.call(map, slug);
+
+  return {
+    ...post,
+    isNew: hasExplicitNewOverride ? Boolean(map[slug]) : Boolean(post.isNew),
+    hasExplicitNewOverride,
   };
 }
 
@@ -116,16 +156,34 @@ function sortPosts(posts) {
 }
 
 function getAllPosts() {
-  return sortPosts(POSTS);
+  return sortPosts(POSTS.map(withResolvedFlags));
 }
 
 function getVisiblePosts() {
   return getAllPosts().filter((post) => !isDeletedPost(post) && !isInactivePost(post));
 }
 
+function applySectionNewBadgeLimit(items) {
+  const sorted = sortPosts([...items]);
+  let visibleCount = 0;
+
+  return sorted.map((post) => {
+    const isRecent =
+      post.publishedAt && Date.now() - new Date(post.publishedAt).getTime() < 1000 * 60 * 60 * 24 * 14;
+    const shouldShowBadge = visibleCount < 5 && (Boolean(post.isNew) || (!post.hasExplicitNewOverride && isRecent));
+
+    if (shouldShowBadge) visibleCount += 1;
+
+    return {
+      ...post,
+      showNewBadge: shouldShowBadge,
+    };
+  });
+}
+
 function getPostsByCategory(category) {
   const key = category || 'latest-job';
-  return getVisiblePosts().filter((post) => post.category === key);
+  return applySectionNewBadgeLimit(getVisiblePosts().filter((post) => post.category === key));
 }
 
 function getPostsWithSearch(items, search) {
@@ -265,5 +323,11 @@ export const api = {
       : inactiveList.filter((item) => item !== slug);
     writeStorageList(STORAGE_INACTIVE_POSTS, updated);
     return Promise.resolve({ data: { slug, inactive } });
+  },
+  setNew: (slug, value = true) => {
+    const map = readStorageMap(STORAGE_NEW_POSTS);
+    map[slug] = Boolean(value);
+    writeStorageMap(STORAGE_NEW_POSTS, map);
+    return Promise.resolve({ data: { slug, value: Boolean(value) } });
   },
 };

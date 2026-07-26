@@ -115,6 +115,14 @@ export default function Admin() {
     await loadPosts();
   }
 
+  async function handleToggleNew(post) {
+    const slug = post.slug || post.id;
+    const nextState = !post.isNew;
+    await api.setNew(slug, nextState);
+    setMessage(`${post.title} is now ${nextState ? 'marked as new' : 'no longer marked as new'}.`);
+    await loadPosts();
+  }
+
   const payload = useMemo(() => ({
     id: makeSlug(form.title || 'sample-post'),
     slug: makeSlug(form.title || 'sample-post'),
@@ -496,6 +504,14 @@ export default function Admin() {
                       disabled={p.isDeleted}
                     >
                       {p.isInactive ? 'Activate' : 'Inactive'}
+                    </button>
+                    <button
+                      type="button"
+                      className={`btn btn-sm ${p.isNew ? 'btn-warning' : 'btn-secondary'}`}
+                      onClick={() => handleToggleNew(p)}
+                      disabled={p.isDeleted}
+                    >
+                      {p.isNew ? 'New On' : 'New Off'}
                     </button>
                     <button
                       type="button"
