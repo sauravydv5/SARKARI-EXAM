@@ -1,0 +1,45 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": true,
+  "isNew": true,
+  "id": "ccc-result-admit-card-certificate-form",
+  "slug": "ccc-result-admit-card-certificate-form",
+  "title": "CCC Result, Admit Card, Certificate, Online Form",
+  "organization": "National Institute of Electronics & Information Technology",
+  "postName": "CCC Examination Complete Services",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://student.nielit.gov.in\n2. Apply for CCC exam when cycle is open\n3. Download admit card before exam\n4. Check result after declaration\n5. Download digital certificate / verification",
+  "shortDescription": "CCC Online Form, Admit Card, Result and Certificate – all services on NIELIT student portal.",
+  "content": "<p>Complete <strong>CCC (Course on Computer Concepts)</strong> services under NIELIT:</p><ul><li>Online examination form</li><li>Admit card download</li><li>Result checking</li><li>Digital certificate download and verification</li></ul><p>Portal: <strong>student.nielit.gov.in</strong> / <strong>nielit.gov.in</strong>.</p>",
+  "publishedAt": "2026-07-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026-07-01",
+    "startDate": "As per portal",
+    "lastDate": "NA",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://student.nielit.gov.in",
+    "officialWebsite": "https://www.nielit.gov.in",
+    "checkResult": "https://student.nielit.gov.in",
+    "downloadAdmitCard": "https://student.nielit.gov.in"
+  },
+  "tags": [
+    "CCC",
+    "NIELIT",
+    "Result",
+    "Admit Card",
+    "Certificate"
+  ],
+  "views": 3600
+}

@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "up-bar-declaration-online-form",
+  "slug": "up-bar-declaration-online-form",
+  "title": "UP Bar Declaration Online Form",
+  "organization": "Bar Council of Uttar Pradesh / Concerned Authority",
+  "postName": "UP Advocate Bar Declaration / Enrolment related Online Form",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit official UP Bar Council / declaration portal as notified\n2. Login with enrolment / advocate credentials\n3. Fill declaration form for the year\n4. Upload required documents\n5. Submit and download acknowledgement",
+  "shortDescription": "UP Bar Declaration Online Form – advocates submit annual/required declarations on official Bar Council portal.",
+  "content": "<p><strong>UP Bar Declaration</strong> online forms are used by enrolled advocates for statutory declarations, renewals or compliance as directed by the Bar Council of Uttar Pradesh / BCI.</p><p>Advocates should use only official notices and portals, keep enrolment number ready, and complete submission before the notified last date of each cycle.</p>",
+  "publishedAt": "2021-01-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2021-01-01",
+    "startDate": "As per portal",
+    "lastDate": "As per Bar Council notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://upbarcouncil.com",
+    "officialWebsite": "https://upbarcouncil.com",
+    "importantLink": "https://www.barcouncilofindia.org"
+  },
+  "tags": [
+    "UP Bar",
+    "Advocate",
+    "Declaration",
+    "Bar Council"
+  ],
+  "views": 900
+}

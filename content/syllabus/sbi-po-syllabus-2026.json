@@ -1,0 +1,42 @@
+{
+  "category": "syllabus",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "id": "sbi-po-syllabus-2026",
+  "slug": "sbi-po-syllabus-2026",
+  "title": "SBI PO Syllabus 2026 – Prelims & Mains",
+  "organization": "State Bank of India",
+  "postName": "Probationary Officers",
+  "vacancyDetails": "Prelims + Mains (Objective & Descriptive) + Psychometric / GE & Interview",
+  "qualification": "Graduation in any discipline",
+  "ageLimit": "21 to 30 years (as per PO notification; relaxations apply)",
+  "applicationFee": "As per SBI PO advertisement",
+  "selectionProcess": "Prelims → Mains → Psychometric Test + Group Exercise & Interview → Final Merit",
+  "documentsRequired": "Download official syllabus PDF; keep notification for pattern updates",
+  "howToApply": "1. Visit https://sbi.bank.in Careers\n2. Open PO notification PDF\n3. Note Prelims/Mains structure and topics\n4. Prepare banking awareness for Mains\n5. Practice descriptive English on computer",
+  "shortDescription": "SBI PO Syllabus 2026 – Prelims English, Quant, Reasoning; Mains with GA, DI, Reasoning-Computer and Descriptive.",
+  "content": "<p><strong>SBI PO</strong> exam pattern is similar to other bank PO exams with bank-specific weightages.</p><h3>Prelims (100 marks, sectional timing)</h3><ul><li>English Language</li><li>Quantitative Aptitude</li><li>Reasoning Ability</li></ul><h3>Mains – Objective</h3><ul><li>Reasoning &amp; Computer Aptitude</li><li>Data Analysis &amp; Interpretation</li><li>General / Economy / Banking Awareness</li><li>English Language</li></ul><h3>Mains – Descriptive</h3><p>English (Letter / Essay) typed on computer.</p><p>Phase-III includes psychometric test (qualifying) and Group Exercise &amp; Interview. Official structure: SBI Careers advertisement PDF.</p>",
+  "publishedAt": "2026-07-15T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per latest notification",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "officialWebsite": "https://sbi.bank.in",
+    "applyOnline": "https://sbi.bank.in/web/careers"
+  },
+  "tags": [
+    "SBI",
+    "PO",
+    "Banking",
+    "Syllabus"
+  ],
+  "views": 4800
+}

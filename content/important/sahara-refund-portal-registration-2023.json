@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "sahara-refund-portal-registration-2023",
+  "slug": "sahara-refund-portal-registration-2023",
+  "title": "Sahara Refund Portal Online Registration 2023",
+  "organization": "Ministry of Cooperation / Concerned Authority",
+  "postName": "Sahara Depositors Refund Online Registration",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit the official Sahara Refund portal (as notified by Ministry of Cooperation / CRCS)\n2. Register with Aadhaar and mobile\n3. Enter deposit / certificate details carefully\n4. Upload identity and deposit proofs\n5. Submit and track refund status online",
+  "shortDescription": "Sahara Refund Portal Online Registration 2023 – depositors register for refund claims on the official government portal.",
+  "content": "<p>The <strong>Sahara Refund Portal</strong> was launched for genuine depositors of Sahara group cooperative societies to register claims for refund as per Supreme Court / government directions.</p><p>Applicants must use only official portals, enter correct deposit certificate numbers, and keep Aadhaar-linked bank details ready. Beware of fake refund websites and agents.</p>",
+  "publishedAt": "2023-04-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2023-04-01",
+    "startDate": "As per portal",
+    "lastDate": "As per portal notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://www.cooperation.gov.in",
+    "officialWebsite": "https://www.cooperation.gov.in",
+    "importantLink": "https://www.india.gov.in"
+  },
+  "tags": [
+    "Sahara",
+    "Refund",
+    "Cooperative",
+    "Registration"
+  ],
+  "views": 3900
+}

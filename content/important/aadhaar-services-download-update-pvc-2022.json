@@ -1,0 +1,44 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "aadhaar-services-download-update-pvc-2022",
+  "slug": "aadhaar-services-download-update-pvc-2022",
+  "title": "Aadhar Card Download | Appointment Book | Update | PVC Order | Etc 2022",
+  "organization": "Unique Identification Authority of India (UIDAI)",
+  "postName": "Aadhaar e-Services Suite",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://myaadhaar.uidai.gov.in\n2. Login with Aadhaar/VID + OTP\n3. Download e-Aadhaar / Order PVC\n4. Book appointment or update demographics online\n5. Track update status with URN",
+  "shortDescription": "Aadhaar Card download, update, appointment booking, PVC order – all services on myaadhaar.uidai.gov.in.",
+  "content": "<p><strong>UIDAI MyAadhaar</strong> portal provides complete Aadhaar lifecycle services:</p><ul><li>Download e-Aadhaar (PDF)</li><li>Order PVC Aadhaar card</li><li>Update name, address, DOB, mobile, email</li><li>Book Aadhaar Seva Kendra appointment</li><li>Check enrolment / update status</li><li>Lock/unlock biometrics</li></ul><p>Never share OTP. Official: <strong>uidai.gov.in</strong> / <strong>myaadhaar.uidai.gov.in</strong>.</p>",
+  "publishedAt": "2022-01-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2022-01-01",
+    "startDate": "As per portal",
+    "lastDate": "Ongoing",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://myaadhaar.uidai.gov.in",
+    "officialWebsite": "https://uidai.gov.in",
+    "importantLink": "https://appointments.uidai.gov.in"
+  },
+  "tags": [
+    "Aadhaar",
+    "UIDAI",
+    "PVC",
+    "e-Aadhaar",
+    "Update"
+  ],
+  "views": 6500
+}

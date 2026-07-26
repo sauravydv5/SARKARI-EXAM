@@ -1,0 +1,41 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "upsssc-otr-registration-2021",
+  "slug": "upsssc-otr-registration-2021",
+  "title": "UPSSSC OTR Registration Online Form 2021",
+  "organization": "Uttar Pradesh Subordinate Services Selection Commission",
+  "postName": "UPSSSC One Time Registration (OTR)",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://upsssc.gov.in\n2. Open One Time Registration\n3. Fill personal and educational details\n4. Upload photo and signature\n5. Generate OTR number for all UPSSSC exams",
+  "shortDescription": "UPSSSC OTR Registration – mandatory One Time Registration on upsssc.gov.in before applying to PET-based exams.",
+  "content": "<p><strong>UPSSSC One Time Registration (OTR)</strong> is required for candidates appearing in UPSSSC examinations linked with Preliminary Eligibility Test (PET) and subsequent recruitments.</p><p>Create OTR once, keep the number safe, and use it for all future applications. Portal: <strong>upsssc.gov.in</strong>.</p>",
+  "publishedAt": "2021-05-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2021-05-01",
+    "startDate": "As per portal",
+    "lastDate": "Ongoing",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://upsssc.gov.in",
+    "officialWebsite": "https://upsssc.gov.in"
+  },
+  "tags": [
+    "UPSSSC",
+    "OTR",
+    "Registration"
+  ],
+  "views": 3800
+}

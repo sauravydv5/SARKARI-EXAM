@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "allahabad-university-pgat-counselling-2026",
+  "slug": "allahabad-university-pgat-counselling-2026",
+  "title": "Allahabad University PGAT 2026 Online Counselling",
+  "organization": "University of Allahabad",
+  "category": "admission",
+  "postName": "PGAT 2026 – Postgraduate Online Counselling / Admission",
+  "totalVacancies": 0,
+  "vacancyDetails": "Online counselling for MA, M.Sc, M.Com, MBA, MCA, LLB/LLM, M.Ed and other PG programmes",
+  "qualification": "Graduation with subject eligibility + PGAT 2026 qualification as applicable",
+  "ageLimit": "As per AU PG admission rules",
+  "applicationFee": "Counselling / admission fee as per university notice",
+  "selectionProcess": "PGAT Exam → Result → Online Counselling Registration → Document Upload → Seat Allotment → Fee Payment",
+  "documentsRequired": "Photo, signature, educational certificates, photo ID, category certificate if applicable",
+  "howToApply": "1. Visit https://allduniv.ac.in PG Admission 2026-27 page\n2. Open PG Online Counselling at https://ecounselling.in/\n3. Register, upload documents, pay fee\n4. Check merit/cutoff and complete admission\n5. Contact helpline if needed",
+  "shortDescription": "Allahabad University PGAT 2026 Online Counselling started – register at ecounselling.in / allduniv.ac.in for PG courses.",
+  "content": "<p><strong>University of Allahabad</strong> has activated <strong>PGAT 2026 online counselling</strong> for postgraduate admissions (session 2026–27).</p><p>PGAT results were declared earlier; counselling registration, document upload and fee payment are online via <strong>ecounselling.in</strong> linked from <strong>allduniv.ac.in</strong>.</p>",
+  "publishedAt": "2026-07-10T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "10 Jul 2026 (counselling as reported)",
+    "lastDate": "As per counselling rounds",
+    "examDate": "PGAT already held",
+    "resultDate": "Jun/Jul 2026",
+    "admitCardDate": "Before PGAT"
+  },
+  "links": {
+    "applyOnline": "https://ecounselling.in/",
+    "officialWebsite": "https://allduniv.ac.in",
+    "importantLink": "https://allduniv.ac.in/p/714/pg-admission-2026-2027"
+  },
+  "tags": [
+    "Allahabad University",
+    "PGAT",
+    "Counselling",
+    "PG Admission"
+  ],
+  "views": 1980
+}

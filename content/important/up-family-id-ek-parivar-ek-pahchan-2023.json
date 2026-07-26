@@ -1,0 +1,42 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "up-family-id-ek-parivar-ek-pahchan-2023",
+  "slug": "up-family-id-ek-parivar-ek-pahchan-2023",
+  "title": "UP Family ID Ek Parivar Ek Pahchan Scheme Online Registration 2023",
+  "organization": "Government of Uttar Pradesh",
+  "postName": "Ek Parivar Ek Pahchan – Family ID Registration",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit official UP Family ID / Ek Parivar Ek Pahchan portal\n2. Register head of family with Aadhaar and mobile\n3. Add family members details\n4. Verify OTP and submit\n5. Download Family ID card / number for welfare schemes",
+  "shortDescription": "UP Family ID (Ek Parivar Ek Pahchan) Online Registration – one unique family ID for government schemes in Uttar Pradesh.",
+  "content": "<p><strong>Ek Parivar Ek Pahchan</strong> is Uttar Pradesh’s initiative to create a unique <strong>Family ID</strong> for each household to deliver welfare schemes transparently.</p><p>Families register online with Aadhaar-linked details of members. Family ID helps in ration, scholarships and other state benefits.</p>",
+  "publishedAt": "2023-02-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2023-02-01",
+    "startDate": "As per portal",
+    "lastDate": "As per scheme notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://up.gov.in",
+    "officialWebsite": "https://up.gov.in"
+  },
+  "tags": [
+    "UP",
+    "Family ID",
+    "Ek Parivar Ek Pahchan",
+    "Scheme"
+  ],
+  "views": 2800
+}

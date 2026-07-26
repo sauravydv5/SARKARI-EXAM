@@ -19,6 +19,7 @@ const CATEGORY_FOLDERS = {
   syllabus: 'syllabus',
   admission: 'admission',
   important: 'important',
+  certificate: 'certificate',
 };
 
 function toSlug(value) {

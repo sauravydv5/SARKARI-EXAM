@@ -1,0 +1,41 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "up-scholarship-class-9-12-online-form-2020",
+  "slug": "up-scholarship-class-9-12-online-form-2020",
+  "title": "UP Scholarship Class 9 to 12 Online Form 2020",
+  "organization": "Social Welfare Department, Uttar Pradesh",
+  "postName": "Pre-Matric Scholarship Class 9–12",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://scholarship.up.gov.in\n2. Select Pre-Matric (Class 9–12)\n3. Fresh / Renewal application\n4. Fill school and bank details\n5. Submit for school verification",
+  "shortDescription": "UP Scholarship Class 9 to 12 Online Form – Pre-Matric applications on scholarship.up.gov.in.",
+  "content": "<p><strong>Pre-Matric Scholarship</strong> for Class 9 to 12 students in Uttar Pradesh is applied online through the state scholarship portal.</p><p>For current academic year last dates, check <strong>scholarship.up.gov.in</strong>.</p>",
+  "publishedAt": "2020-09-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2020-09-01",
+    "startDate": "As per portal",
+    "lastDate": "As per 2020 notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://scholarship.up.gov.in",
+    "officialWebsite": "https://scholarship.up.gov.in"
+  },
+  "tags": [
+    "UP Scholarship",
+    "Class 9-12",
+    "Pre Matric"
+  ],
+  "views": 2300
+}

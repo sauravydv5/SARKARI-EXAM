@@ -1,0 +1,40 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "up-scholarship-online-form-2022",
+  "slug": "up-scholarship-online-form-2022",
+  "title": "UP Scholarship Online Form 2022",
+  "organization": "Social Welfare Department, Uttar Pradesh",
+  "postName": "UP Scholarship Fresh / Renewal 2022",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://scholarship.up.gov.in\n2. Fresh registration or Renewal login\n3. Fill academic year 2022 details\n4. Upload certificates and submit for institute verification\n5. Track status on student dashboard",
+  "shortDescription": "UP Scholarship Online Form 2022 – Pre/Post Matric applications on scholarship.up.gov.in for that academic cycle.",
+  "content": "<p><strong>UP Scholarship 2022</strong> cycle allowed eligible students to apply for Pre-Matric and Post-Matric scholarships online.</p><p>For the latest scholarship year, always check dates on <strong>scholarship.up.gov.in</strong>.</p>",
+  "publishedAt": "2022-09-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2022-09-01",
+    "startDate": "As per portal",
+    "lastDate": "As per 2022 notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://scholarship.up.gov.in",
+    "officialWebsite": "https://scholarship.up.gov.in"
+  },
+  "tags": [
+    "UP Scholarship",
+    "2022"
+  ],
+  "views": 3000
+}

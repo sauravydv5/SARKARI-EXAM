@@ -1,0 +1,42 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "applicationFee": "N/A",
+  "documentsRequired": "As required on the official portal",
+  "id": "uppsc-exam-calendar-2026",
+  "slug": "uppsc-exam-calendar-2026",
+  "title": "UPPSC Exam Calendar 2026",
+  "organization": "Uttar Pradesh Public Service Commission",
+  "category": "important",
+  "postName": "UPPSC Annual Examination Calendar 2026",
+  "vacancyDetails": "Schedule of 80+ UPPSC examinations planned through 2026 including PCS and departmental exams",
+  "qualification": "N/A",
+  "ageLimit": "N/A",
+  "selectionProcess": "N/A",
+  "howToApply": "1. Visit https://uppsc.up.nic.in\n2. Open Examination Calendar under Examinations\n3. Download UPPSC Exam Calendar 2026 PDF\n4. Plan preparation as per tentative exam months\n5. Watch for live advertisements for exact dates",
+  "shortDescription": "UPPSC Exam Calendar 2026 out with full-year schedule (Feb–Dec 2026). Download from uppsc.up.nic.in.",
+  "content": "<p><strong>Uttar Pradesh Public Service Commission (UPPSC)</strong> has released the <strong>Exam Calendar 2026</strong>.</p><p>The annual calendar lists tentative timelines for Combined State / Upper Subordinate Services (PCS) and numerous departmental examinations across the year (roughly February to December 2026).</p><p>Download the PDF from <strong>uppsc.up.nic.in</strong> (Examination Calendar). Exact application windows appear in individual advertisements such as Advt. A-1/E-1/2026 for PCS.</p>",
+  "publishedAt": "2026-01-30T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "Ongoing / as per portal",
+    "lastDate": "As per official notice",
+    "examDate": "Feb–Dec 2026 (tentative)",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "importantLink": "https://uppsc.up.nic.in/PublicPages/Examinations_Details.aspx?ID=EC",
+    "officialWebsite": "https://uppsc.up.nic.in"
+  },
+  "tags": [
+    "UPPSC",
+    "Exam Calendar",
+    "PCS",
+    "Uttar Pradesh"
+  ],
+  "views": 3120
+}

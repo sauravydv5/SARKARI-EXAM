@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "applicationFee": "N/A",
+  "documentsRequired": "As required on the official portal",
+  "id": "up-police-otr-registration-2025",
+  "slug": "up-police-otr-registration-2025",
+  "title": "UP Police OTR Registration 2025",
+  "organization": "Uttar Pradesh Police Recruitment and Promotion Board",
+  "category": "important",
+  "postName": "One Time Registration (OTR) for UP Police Recruitments",
+  "vacancyDetails": "Mandatory OTR profile for applying to UP Police SI, Constable and other UPPRPB recruitments",
+  "qualification": "As per future UP Police post notifications; OTR is registration only",
+  "ageLimit": "As applicable when applying to specific posts",
+  "selectionProcess": "N/A",
+  "howToApply": "1. Visit https://uppbpb.gov.in\n2. Open One Time Registration / Candidate Registration\n3. Create account with mobile and email\n4. Fill personal, educational and photo details\n5. Save OTR ID for all future UP Police applications",
+  "shortDescription": "UP Police OTR Registration 2025 – complete One Time Registration on uppbpb.gov.in before applying to SI/Constable exams.",
+  "content": "<p><strong>UPPRPB</strong> requires candidates to complete <strong>One Time Registration (OTR)</strong> on the official portal before applying for most Uttar Pradesh Police recruitments.</p><p>OTR stores basic profile, photo and educational data. Use the same credentials for SI, Constable, ASI and other notifications.</p><p>Portal: <strong>uppbpb.gov.in</strong>. Keep Aadhaar, photo and educational certificates ready while registering.</p>",
+  "publishedAt": "2026-07-10T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "Ongoing / as per portal",
+    "lastDate": "As per official notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://uppbpb.gov.in",
+    "importantLink": "https://uppbpb.gov.in",
+    "officialWebsite": "https://uppbpb.gov.in"
+  },
+  "tags": [
+    "UP Police",
+    "OTR",
+    "UPPRPB",
+    "Registration"
+  ],
+  "views": 4210
+}

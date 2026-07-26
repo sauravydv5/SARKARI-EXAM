@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "iit-gate-2027-online-form",
+  "slug": "iit-gate-2027-online-form",
+  "title": "IIT GATE 2027 Online Form",
+  "organization": "IIT Madras (Organising Institute) / GATE 2027",
+  "category": "admission",
+  "postName": "Graduate Aptitude Test in Engineering – GATE 2027",
+  "totalVacancies": 0,
+  "vacancyDetails": "National level exam for M.Tech/Ph.D admissions and PSU recruitment; new paper Robotics & Automation (RA) introduced",
+  "qualification": "Bachelor’s degree in Engineering/Technology/Architecture/Science or final year as per GATE eligibility",
+  "ageLimit": "No upper age limit",
+  "applicationFee": "As per GATE 2027 brochure (category-wise regular / late fee)",
+  "selectionProcess": "Computer Based Test → Scorecard valid for admissions & PSUs",
+  "documentsRequired": "Photo, signature, educational certificates, photo ID, category certificate if applicable",
+  "howToApply": "1. Visit https://gate2027.iitm.ac.in\n2. Open GOAPS registration from 14 August 2026\n3. Register, fill form, upload photo/sign/documents\n4. Pay fee (regular till 21 Sep 2026; with late fee till 30 Sep 2026)\n5. Download confirmation page",
+  "shortDescription": "IIT GATE 2027 Online Form – registration from 14 Aug 2026 at gate2027.iitm.ac.in. Exam in Feb 2027 (IIT Madras).",
+  "content": "<p><strong>GATE 2027</strong> is organised by <strong>IIT Madras</strong>. Online registration opens on <strong>14 August 2026</strong> via GOAPS.</p><h3>Key dates</h3><ul><li>Regular registration closes: <strong>21 September 2026</strong></li><li>With late fee: till <strong>30 September 2026</strong></li><li>Exam: <strong>6, 7, 13, 14, 20 &amp; 21 February 2027</strong></li></ul><p>Official site: <strong>gate2027.iitm.ac.in</strong>.</p>",
+  "publishedAt": "2026-07-20T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "Jul 2026",
+    "startDate": "14 Aug 2026",
+    "lastDate": "21 Sep 2026 (30 Sep with late fee)",
+    "examDate": "06-07, 13-14, 20-21 Feb 2027",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "applyOnline": "https://gate2027.iitm.ac.in",
+    "officialWebsite": "https://gate2027.iitm.ac.in",
+    "officialNotification": "https://gate.iitm.ac.in"
+  },
+  "tags": [
+    "GATE",
+    "IIT Madras",
+    "GATE 2027",
+    "M.Tech"
+  ],
+  "views": 5120
+}

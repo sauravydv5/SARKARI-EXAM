@@ -1,0 +1,44 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "nta-aiapget-2026-online-form",
+  "slug": "nta-aiapget-2026-online-form",
+  "title": "NTA AIAPGET 2026 Online Form",
+  "organization": "National Testing Agency / Ministry of AYUSH",
+  "category": "admission",
+  "postName": "All India AYUSH Post Graduate Entrance Test (AIAPGET) 2026",
+  "totalVacancies": 0,
+  "vacancyDetails": "Entrance for MD/MS/PG courses in Ayurveda, Unani, Siddha and Homoeopathy (AIQ & State Quota)",
+  "qualification": "BAMS / BUMS / BSMS / BHMS or equivalent degree with internship as per NCISM/NCH rules",
+  "ageLimit": "As per AIAPGET information bulletin",
+  "applicationFee": "As per NTA AIAPGET fee structure (category-wise)",
+  "selectionProcess": "CBT (120 MCQs, 480 marks, 120 minutes) → Counselling by AYUSH / state authorities",
+  "documentsRequired": "Photo, signature, educational certificates, photo ID, category certificate if applicable",
+  "howToApply": "1. Visit https://exams.nta.nic.in/aiapget/\n2. New Registration → fill application\n3. Upload photo, signature (live photo as required)\n4. Pay fee by 30 July 2026 11:59 PM\n5. Correction window 1–2 August 2026",
+  "shortDescription": "NTA AIAPGET 2026 Online Form open 10–30 July 2026. Exam 22 August 2026 for AYUSH PG courses.",
+  "content": "<p><strong>NTA</strong> has started online registration for <strong>AIAPGET 2026</strong> for postgraduate AYUSH programmes.</p><h3>Dates</h3><ul><li>Apply: <strong>10–30 July 2026</strong></li><li>Correction: <strong>1–2 August 2026</strong></li><li>Exam: <strong>22 August 2026</strong> (CBT)</li></ul><p>Portal: <strong>exams.nta.nic.in/aiapget</strong>.</p>",
+  "publishedAt": "2026-07-10T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "10 Jul 2026",
+    "startDate": "10 Jul 2026",
+    "lastDate": "30 Jul 2026",
+    "examDate": "22 Aug 2026",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "applyOnline": "https://exams.nta.nic.in/aiapget/",
+    "officialWebsite": "https://exams.nta.nic.in/aiapget/",
+    "officialNotification": "https://exams.nta.nic.in/aiapget/"
+  },
+  "tags": [
+    "NTA",
+    "AIAPGET",
+    "AYUSH",
+    "PG Medical",
+    "Admission"
+  ],
+  "views": 2450
+}

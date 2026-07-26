@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "corona-vaccine-online-registration-2021",
+  "slug": "corona-vaccine-online-registration-2021",
+  "title": "Corona Vaccine Online Registration 2021",
+  "organization": "Ministry of Health & Family Welfare / CoWIN",
+  "postName": "COVID-19 Vaccination Registration on CoWIN",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://www.cowin.gov.in or Aarogya Setu / UMANG\n2. Register with mobile number\n3. Add beneficiaries with photo ID\n4. Book slot at nearby centre\n5. Download certificate after vaccination",
+  "shortDescription": "Corona Vaccine Online Registration 2021 – CoWIN portal for COVID-19 vaccination booking and certificates.",
+  "content": "<p><strong>CoWIN</strong> is the national platform for COVID-19 vaccination registration, slot booking and digital certificates.</p><p>Citizens registered with mobile OTP, booked vaccine slots, and downloaded certificates. Portal: <strong>cowin.gov.in</strong>.</p>",
+  "publishedAt": "2021-03-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2021-03-01",
+    "startDate": "As per portal",
+    "lastDate": "As per vaccination drive",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://www.cowin.gov.in",
+    "officialWebsite": "https://www.mohfw.gov.in",
+    "importantLink": "https://www.cowin.gov.in"
+  },
+  "tags": [
+    "CoWIN",
+    "COVID Vaccine",
+    "Corona",
+    "Health"
+  ],
+  "views": 4000
+}

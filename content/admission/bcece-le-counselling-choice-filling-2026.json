@@ -1,0 +1,44 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "bcece-le-counselling-choice-filling-2026",
+  "slug": "bcece-le-counselling-choice-filling-2026",
+  "title": "BCECE-LE Counselling/ Choice Filling 2026",
+  "organization": "Bihar Combined Entrance Competitive Examination Board",
+  "category": "admission",
+  "postName": "BCECE [LE] Engineering 2026 – Lateral Entry Counselling",
+  "totalVacancies": 0,
+  "vacancyDetails": "Online choice filling and seat allotment for Diploma holders seeking 2nd year Engineering admission",
+  "qualification": "Diploma in Engineering / eligible LE qualification + BCECE-LE rank",
+  "ageLimit": "As per BCECE-LE prospectus",
+  "applicationFee": "Counselling fee as per BCECEB notice",
+  "selectionProcess": "BCECE-LE Exam → Rank → Online Choice Filling → Seat Allotment → Document Verification",
+  "documentsRequired": "Photo, signature, educational certificates, photo ID, category certificate if applicable",
+  "howToApply": "1. Visit https://bceceboard.bihar.gov.in or bcece.admissions.nic.in\n2. Open BCECE[LE] Engineering counselling portal\n3. Login and complete choice filling\n4. Lock choices before deadline (extended as per board notices)\n5. Check allotment and report for DV",
+  "shortDescription": "BCECE-LE Counselling / Choice Filling 2026 for Engineering lateral entry – register and fill choices on bceceboard.bihar.gov.in.",
+  "content": "<p><strong>BCECEB</strong> has started <strong>BCECE [LE] Engineering 2026</strong> online counselling and choice filling for lateral entry admissions.</p><p>Choice filling window was open around mid-July 2026 (with extension notices). Candidates must lock preferences and complete document verification after allotment.</p><p>Official: <strong>bceceboard.bihar.gov.in</strong>.</p>",
+  "publishedAt": "2026-07-13T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "Jul 2026",
+    "startDate": "13 Jul 2026",
+    "lastDate": "Choice filling ~21-23 Jul 2026 (extended)",
+    "examDate": "Already conducted",
+    "resultDate": "Allotment rounds",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "applyOnline": "https://bceceboard.bihar.gov.in",
+    "officialWebsite": "https://bceceboard.bihar.gov.in",
+    "importantLink": "https://bcece.admissions.nic.in"
+  },
+  "tags": [
+    "BCECE",
+    "LE",
+    "Lateral Entry",
+    "Counselling",
+    "Bihar"
+  ],
+  "views": 2120
+}

@@ -1,0 +1,42 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "up-scholarship-online-form-2024",
+  "slug": "up-scholarship-online-form-2024",
+  "title": "UP Scholarship Online Form 2024 Last Date : 31/12/2024",
+  "organization": "Social Welfare Department, Uttar Pradesh",
+  "postName": "UP Pre-Matric / Post-Matric Scholarship 2024-25",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://scholarship.up.gov.in\n2. Select Fresh / Renewal application\n3. Login with registration details\n4. Fill form, upload income & caste certificates\n5. Submit before 31 December 2024 (as notified for that cycle)",
+  "shortDescription": "UP Scholarship Online Form 2024 – last date 31 Dec 2024 (cycle). Apply/renew on scholarship.up.gov.in.",
+  "content": "<p>The <strong>UP Scholarship</strong> portal accepts Pre-Matric and Post-Matric applications for eligible students.</p><p>For the 2024 cycle, last date was notified as <strong>31 December 2024</strong>. Students need Aadhaar-seeded bank account, income certificate, caste certificate (if applicable) and institution verification. For current year check the portal again.</p>",
+  "publishedAt": "2024-10-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2024-10-01",
+    "startDate": "As per portal",
+    "lastDate": "31/12/2024",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://scholarship.up.gov.in",
+    "officialWebsite": "https://scholarship.up.gov.in"
+  },
+  "tags": [
+    "UP Scholarship",
+    "2024",
+    "Pre Matric",
+    "Post Matric"
+  ],
+  "views": 4100
+}

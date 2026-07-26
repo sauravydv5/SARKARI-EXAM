@@ -460,9 +460,29 @@ export default function Admin() {
                     {p.isDeleted ? (
                       <span className="tag tag-red">Deleted</span>
                     ) : p.isInactive ? (
-                      <span className="tag tag-yellow">Inactive</span>
+                      <>
+                        <span className="tag tag-yellow">Inactive</span>
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-secondary"
+                          style={{ marginLeft: 8 }}
+                          onClick={() => handleToggleInactive(p)}
+                        >
+                          Activate
+                        </button>
+                      </>
                     ) : (
-                      <span className="tag tag-green">Active</span>
+                      <>
+                        <span className="tag tag-green">Active</span>
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-warning"
+                          style={{ marginLeft: 8 }}
+                          onClick={() => handleToggleInactive(p)}
+                        >
+                          Close
+                        </button>
+                      </>
                     )}
                   </td>
                   <td style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>

@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "applicationFee": "N/A",
+  "documentsRequired": "As required on the official portal",
+  "id": "up-scholarship-online-form-2025-26",
+  "slug": "up-scholarship-online-form-2025-26",
+  "title": "UP Scholarship Online Form 2025-26",
+  "organization": "Social Welfare Department / Government of Uttar Pradesh",
+  "category": "important",
+  "postName": "UP Pre-Matric / Post-Matric / Other Scholarship Schemes 2025-26",
+  "vacancyDetails": "Online scholarship application for SC/ST/OBC/General/Minority and other categories as per UP schemes",
+  "qualification": "Studying in recognized institutions in UP; category and income criteria as per scheme",
+  "ageLimit": "As per scholarship scheme guidelines",
+  "selectionProcess": "N/A",
+  "howToApply": "1. Visit https://scholarship.up.gov.in\n2. Select Pre-Matric or Post-Matric scholarship\n3. Register / login with Aadhaar-linked details\n4. Fill form, upload income & caste certificates, mark sheets\n5. Submit and track status online",
+  "shortDescription": "UP Scholarship Online Form 2025-26 – apply for Pre/Post Matric scholarships at scholarship.up.gov.in.",
+  "content": "<p>The <strong>Government of Uttar Pradesh</strong> runs online scholarship schemes for eligible students for the academic year <strong>2025–26</strong>.</p><p>Applications are submitted on the official portal <strong>scholarship.up.gov.in</strong>. Students need valid Aadhaar, bank account, income certificate, caste certificate (if applicable) and educational documents.</p><p>Check scheme-wise last dates and eligibility carefully before submitting.</p>",
+  "publishedAt": "2026-07-15T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "Ongoing / as per portal",
+    "lastDate": "As per official notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://scholarship.up.gov.in",
+    "importantLink": "https://scholarship.up.gov.in",
+    "officialWebsite": "https://scholarship.up.gov.in"
+  },
+  "tags": [
+    "UP Scholarship",
+    "Pre Matric",
+    "Post Matric",
+    "Uttar Pradesh"
+  ],
+  "views": 3890
+}

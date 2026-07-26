@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "applicationFee": "N/A",
+  "documentsRequired": "As required on the official portal",
+  "id": "aadhaar-card-download-correction-status-2026",
+  "slug": "aadhaar-card-download-correction-status-2026",
+  "title": "Aadhar Card Download, Correction, Status 2026",
+  "organization": "Unique Identification Authority of India (UIDAI)",
+  "category": "important",
+  "postName": "Aadhaar e-Services – Download, Update, Status",
+  "vacancyDetails": "Download e-Aadhaar, update demographics/biometrics, check enrolment/update status",
+  "qualification": "N/A",
+  "ageLimit": "N/A",
+  "selectionProcess": "N/A",
+  "howToApply": "1. Visit https://myaadhaar.uidai.gov.in or https://uidai.gov.in\n2. Login with Aadhaar/VID and OTP\n3. Download e-Aadhaar (masked/unmasked as needed)\n4. For correction: Online Update / Book appointment at Aadhaar centre\n5. Track status with EID / URN",
+  "shortDescription": "Aadhaar Card download, name/address correction and status check 2026 – official services on myaadhaar.uidai.gov.in.",
+  "content": "<p><strong>UIDAI</strong> provides online Aadhaar services including <strong>e-Aadhaar download</strong>, demographic update (name, address, DOB, mobile, email) and status tracking.</p><ul><li>Portal: <strong>myaadhaar.uidai.gov.in</strong></li><li>PVC Aadhaar order also available online</li><li>Some updates may require visit to Aadhaar Seva Kendra</li></ul><p>Never share OTP or biometrics on unofficial websites.</p>",
+  "publishedAt": "2026-07-18T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "Ongoing / as per portal",
+    "lastDate": "As per official notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://myaadhaar.uidai.gov.in",
+    "importantLink": "https://uidai.gov.in",
+    "officialWebsite": "https://uidai.gov.in"
+  },
+  "tags": [
+    "Aadhaar",
+    "UIDAI",
+    "e-Aadhaar",
+    "Correction"
+  ],
+  "views": 4780
+}

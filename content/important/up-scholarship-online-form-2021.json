@@ -1,0 +1,40 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "up-scholarship-online-form-2021",
+  "slug": "up-scholarship-online-form-2021",
+  "title": "UP Scholarship 2021 Online Form Last Date : 21/10/2021",
+  "organization": "Social Welfare Department, Uttar Pradesh",
+  "postName": "UP Scholarship Session 2021",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://scholarship.up.gov.in\n2. Register Fresh or login Renewal\n3. Fill 2021 academic details\n4. Upload documents and forward to institute\n5. Last date for that cycle was 21 October 2021",
+  "shortDescription": "UP Scholarship 2021 Online Form – last date was 21 Oct 2021. Historical cycle; use portal for current year.",
+  "content": "<p><strong>UP Scholarship 2021</strong> applications were accepted online with last date <strong>21 October 2021</strong> as per that year’s notice.</p><p>For the latest scholarship year, always check dates on <strong>scholarship.up.gov.in</strong>.</p>",
+  "publishedAt": "2021-09-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2021-09-01",
+    "startDate": "As per portal",
+    "lastDate": "21/10/2021",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://scholarship.up.gov.in",
+    "officialWebsite": "https://scholarship.up.gov.in"
+  },
+  "tags": [
+    "UP Scholarship",
+    "2021"
+  ],
+  "views": 2000
+}

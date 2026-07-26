@@ -1,0 +1,41 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "mp-rojgar-panjiyan-online-form",
+  "slug": "mp-rojgar-panjiyan-online-form",
+  "title": "MP Rojgar Panjiyan Online Form",
+  "organization": "Madhya Pradesh Employment Department / MP Online",
+  "postName": "Employment Exchange Registration – Madhya Pradesh",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://rojgar.mponline.gov.in\n2. Click new registration\n3. Enter Aadhaar and personal details\n4. Add qualifications and experience\n5. Submit and print Rojgar registration number",
+  "shortDescription": "MP Rojgar Panjiyan Online Form – register as job seeker on Madhya Pradesh employment portal (ongoing).",
+  "content": "<p><strong>MP Rojgar Panjiyan Online Form</strong> is the continuous employment registration service for residents of Madhya Pradesh.</p><p>After registration, candidates can update qualifications and apply for notified vacancies. Official portal: <strong>rojgar.mponline.gov.in</strong>.</p>",
+  "publishedAt": "2020-06-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2020-06-01",
+    "startDate": "As per portal",
+    "lastDate": "Ongoing",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://rojgar.mponline.gov.in",
+    "officialWebsite": "https://www.mponline.gov.in"
+  },
+  "tags": [
+    "MP",
+    "Rojgar",
+    "Employment Registration"
+  ],
+  "views": 2400
+}

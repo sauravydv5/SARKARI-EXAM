@@ -1,0 +1,43 @@
+{
+  "category": "syllabus",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "id": "ssc-cgl-syllabus-2026",
+  "slug": "ssc-cgl-syllabus-2026",
+  "title": "SSC CGL Syllabus 2026 – Tier 1 & Tier 2",
+  "organization": "Staff Selection Commission",
+  "postName": "Combined Graduate Level Examination",
+  "vacancyDetails": "Tier-I CBT + Tier-II CBT (Paper-I compulsory; Paper-II/III post-specific)",
+  "qualification": "Bachelor’s Degree from a recognized University",
+  "ageLimit": "18 to 32 years post-wise (as per CGL notification)",
+  "applicationFee": "₹100 (exemptions as per SSC rules)",
+  "selectionProcess": "Tier-I → Tier-II → Document Verification / Skill Test (post-wise) → Final Merit",
+  "documentsRequired": "Download official syllabus PDF; keep notification for pattern updates",
+  "howToApply": "1. Visit https://ssc.gov.in\n2. Open CGL notice and Scheme of Examination\n3. Download indicative syllabus for Tier-I and Tier-II\n4. Prepare Quant, Reasoning, English, GA and Computer module\n5. Follow negative marking rules carefully",
+  "shortDescription": "SSC CGL Syllabus 2026 – Tier 1 (100 Q, 200 marks) and Tier 2 Paper-I modules with detailed subjects.",
+  "content": "<p><strong>SSC CGL</strong> selection is based on Computer Based Examinations in two tiers.</p><h3>Tier-I Exam Pattern</h3><ul><li>General Intelligence &amp; Reasoning – 25 Q, 50 marks</li><li>General Awareness – 25 Q, 50 marks</li><li>Quantitative Aptitude – 25 Q, 50 marks</li><li>English Comprehension – 25 Q, 50 marks</li></ul><p><strong>Total:</strong> 100 Q · 200 marks · 60 minutes. Negative marking: <strong>0.50</strong> per wrong answer.</p><h3>Tier-I Syllabus (indicative)</h3><ul><li><strong>Reasoning:</strong> Analogies, Coding-Decoding, Series, Syllogism, Venn, Non-verbal, Spatial orientation</li><li><strong>GA:</strong> History, Culture, Geography, Economy, Polity, Science, Current Affairs, Static GK</li><li><strong>Quant:</strong> Number System, Percentage, Ratio, Algebra, Geometry, Mensuration, Trigonometry, DI</li><li><strong>English:</strong> Grammar, Vocabulary, Comprehension, Error spotting, Cloze, Synonyms-Antonyms</li></ul><h3>Tier-II (main)</h3><p><strong>Paper-I</strong> (compulsory for all): Mathematical Abilities, Reasoning, English Language &amp; Comprehension, General Awareness, Computer Knowledge Module + Data Entry Speed Test (qualifying as applicable).</p><p><strong>Paper-II</strong> (Statistics) and <strong>Paper-III</strong> (General Studies–Finance &amp; Economics) only for specific posts (JSO / AAO etc.).</p><p>Official indicative syllabus PDF: <strong>ssc.gov.in</strong>.</p>",
+  "publishedAt": "2026-07-18T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per latest notification",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "officialWebsite": "https://ssc.gov.in",
+    "officialNotification": "https://ssc.gov.in"
+  },
+  "tags": [
+    "SSC",
+    "CGL",
+    "Tier 1",
+    "Tier 2",
+    "Syllabus"
+  ],
+  "views": 7100
+}

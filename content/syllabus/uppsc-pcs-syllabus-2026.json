@@ -1,0 +1,43 @@
+{
+  "category": "syllabus",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "id": "uppsc-pcs-syllabus-2026",
+  "slug": "uppsc-pcs-syllabus-2026",
+  "title": "UPPSC PCS Syllabus 2026 – Prelims & Mains",
+  "organization": "Uttar Pradesh Public Service Commission",
+  "postName": "Combined State / Upper Subordinate Services (PCS) Examination",
+  "vacancyDetails": "Prelims GS + CSAT; Mains General Hindi, Essay, GS papers and Optional",
+  "qualification": "Bachelor’s Degree from a recognized University",
+  "ageLimit": "21 to 40 years (as on crucial date; relaxations as per UPPSC)",
+  "applicationFee": "Gen/OBC/EWS ₹125; SC/ST ₹65; PH ₹25 (as notified)",
+  "selectionProcess": "Prelims → Mains → Interview → Final Merit",
+  "documentsRequired": "Download official syllabus PDF; keep notification for pattern updates",
+  "howToApply": "1. Visit https://uppsc.up.nic.in\n2. Open PCS advertisement appendix for syllabus\n3. Download Prelims and Mains detailed syllabus\n4. Choose Optional subject from list\n5. Cover UP special GK thoroughly",
+  "shortDescription": "UPPSC PCS Syllabus 2026 – Prelims GS & CSAT; Mains Hindi, Essay, GS and Optional papers with UP-specific topics.",
+  "content": "<p><strong>UPPSC PCS</strong> has three stages. Syllabus is published with the Combined State / Upper Subordinate Services notification.</p><h3>Prelims</h3><ul><li><strong>Paper I – General Studies</strong> (200 marks): Current events, History of India &amp; National Movement, Indian &amp; World Geography, Indian Polity &amp; Governance, Economic &amp; Social Development, Environment, General Science, <strong>UP specific knowledge</strong>.</li><li><strong>Paper II – CSAT</strong> (200 marks, qualifying 33%): Comprehension, Interpersonal skills, Logical reasoning, Decision making, General mental ability, Elementary maths (Class X), Hindi language comprehension (Class X).</li></ul><h3>Mains (conventional / written)</h3><ul><li>General Hindi</li><li>Essay</li><li>General Studies papers (as per latest scheme – History, Polity, Economy, Science, Ethics, UP affairs etc.)</li><li>Optional subject – two papers</li></ul><p>Interview follows Mains. Always use the syllabus annexure of the current year advt (e.g. A-1/E-1/2026) on <strong>uppsc.up.nic.in</strong>.</p>",
+  "publishedAt": "2026-07-10T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per latest notification",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "officialWebsite": "https://uppsc.up.nic.in",
+    "officialNotification": "https://uppsc.up.nic.in"
+  },
+  "tags": [
+    "UPPSC",
+    "PCS",
+    "Prelims",
+    "Mains",
+    "Syllabus"
+  ],
+  "views": 4700
+}

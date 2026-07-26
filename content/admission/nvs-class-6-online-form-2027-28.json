@@ -1,0 +1,44 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "nvs-class-6-online-form-2027-28",
+  "slug": "nvs-class-6-online-form-2027-28",
+  "title": "NVS Class 6 Online Form 2027-28",
+  "organization": "Navodaya Vidyalaya Samiti",
+  "category": "admission",
+  "postName": "Jawahar Navodaya Vidyalaya Selection Test (JNVST) 2027 – Class VI",
+  "totalVacancies": 0,
+  "vacancyDetails": "Admission to Class 6 in JNVs for academic session 2027-28 (district-wise seats)",
+  "qualification": "Studying in Class 5 in 2026-27 in a recognized school in the same district; age as per JNVST prospectus",
+  "ageLimit": "As per JNVST 2027 age criteria (born within dates in notification)",
+  "applicationFee": "Nil (no application fee)",
+  "selectionProcess": "JNVST Entrance Test → Merit / District-wise selection",
+  "documentsRequired": "Photo, signature, educational certificates, photo ID, category certificate if applicable",
+  "howToApply": "1. Visit https://navodaya.gov.in or https://cbseitms.rcil.gov.in/nvs/\n2. Open Class VI JNVST 2027 registration\n3. Fill student and parent details\n4. Upload photo and documents\n5. Submit free form by 31 July 2026",
+  "shortDescription": "NVS Class 6 Online Form 2027-28 (JNVST 2027) – apply free 7–31 July 2026. Exam 28 Nov 2026 for summer-bound JNVs.",
+  "content": "<p><strong>Navodaya Vidyalaya Samiti</strong> has opened online applications for <strong>Class VI admission 2027–28</strong> through <strong>JNVST 2027</strong>.</p><p>Apply: <strong>7 July 2026 to 31 July 2026</strong> (no fee). Summer-bound exam date: <strong>28 November 2026</strong>.</p><p>Portals: <strong>navodaya.gov.in</strong> / <strong>cbseitms.rcil.gov.in/nvs</strong>.</p>",
+  "publishedAt": "2026-07-07T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "Jul 2026",
+    "startDate": "07 Jul 2026",
+    "lastDate": "31 Jul 2026",
+    "examDate": "28 Nov 2026 (Summer Bound)",
+    "resultDate": "To be announced",
+    "admitCardDate": "Nov 2026"
+  },
+  "links": {
+    "applyOnline": "https://cbseitms.rcil.gov.in/nvs/",
+    "officialWebsite": "https://navodaya.gov.in",
+    "officialNotification": "https://navodaya.gov.in/nvs/en/Admission-JNVST/Admission-Notifications/"
+  },
+  "tags": [
+    "NVS",
+    "JNVST",
+    "Class 6",
+    "Navodaya",
+    "2027-28"
+  ],
+  "views": 4230
+}

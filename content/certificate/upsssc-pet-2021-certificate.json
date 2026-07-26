@@ -1,0 +1,42 @@
+{
+  "id": "upsssc-pet-2021-certificate",
+  "slug": "upsssc-pet-2021-certificate",
+  "title": "UPSSSC PET 2021 Certificate",
+  "organization": "Uttar Pradesh Subordinate Services Selection Commission",
+  "category": "certificate",
+  "postName": "Preliminary Eligibility Test (PET) 2021 – Certificate / Score Card",
+  "totalVacancies": 0,
+  "vacancyDetails": "E-Certificate / online verification / download service",
+  "qualification": "As applicable to qualified candidates",
+  "ageLimit": "N/A",
+  "applicationFee": "Free / as per portal",
+  "selectionProcess": "Login → Download / Verify certificate online",
+  "documentsRequired": "Application number, roll number, DOB, registered email/mobile",
+  "howToApply": "1. Visit https://upsssc.gov.in\n2. Open PET 2021 score / certificate\n3. Enter registration number and DOB\n4. Download score card\n5. Use within validity for recruitments",
+  "shortDescription": "UPSSSC PET 2021 Certificate / score card download from upsssc.gov.in.",
+  "content": "<p><strong>UPSSSC PET 2021</strong> scores were issued for eligibility in subsequent commission exams.</p><p>Download the score card from <strong>upsssc.gov.in</strong> and check the validity mentioned in later advertisements before applying.</p>",
+  "publishedAt": "2021-11-01T00:00:00.000Z",
+  "isFeatured": false,
+  "isNew": false,
+  "importantDates": {
+    "notificationDate": "2021-11-01",
+    "startDate": "As per portal",
+    "lastDate": "Ongoing / as available",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://upsssc.gov.in",
+    "officialWebsite": "https://upsssc.gov.in"
+  },
+  "tags": [
+    "UPSSSC",
+    "PET",
+    "2021",
+    "Certificate"
+  ],
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "views": 2100
+}

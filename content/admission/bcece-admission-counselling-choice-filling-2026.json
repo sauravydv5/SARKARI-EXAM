@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "bcece-admission-counselling-choice-filling-2026",
+  "slug": "bcece-admission-counselling-choice-filling-2026",
+  "title": "BCECE Admission Counselling/ Choice Filling 2026",
+  "organization": "Bihar Combined Entrance Competitive Examination Board",
+  "category": "admission",
+  "postName": "BCECE Joint [PCM/PCB/PCMB] & Agriculture Groups 2026 Counselling",
+  "totalVacancies": 0,
+  "vacancyDetails": "Online counselling for UG Engineering, Medical group streams and Agriculture courses under BCECE 2026",
+  "qualification": "10+2 with PCM/PCB/PCMB/Agriculture stream + BCECE rank as applicable",
+  "ageLimit": "As per BCECE 2026 prospectus",
+  "applicationFee": "Counselling registration fee as per board",
+  "selectionProcess": "BCECE Exam → Merit → Online Registration & Choice Filling → Seat Allotment → DV",
+  "documentsRequired": "Photo, signature, educational certificates, photo ID, category certificate if applicable",
+  "howToApply": "1. Visit https://bceceboard.bihar.gov.in\n2. Open BCECE-JOINT counselling notice\n3. Register on online counselling portal\n4. Fill and lock college/course choices\n5. Download allotment letter and report",
+  "shortDescription": "BCECE Admission Counselling / Choice Filling 2026 for PCM/PCB/PCMB & Agriculture groups on bceceboard.bihar.gov.in.",
+  "content": "<p><strong>BCECEB</strong> has issued notices for online counselling of <strong>BCECE-JOINT [PCM/PCB/PCMB]</strong> and <strong>Agriculture groups 2026</strong>.</p><p>Qualified candidates must complete registration, choice filling and fee payment as per the published schedule on <strong>bceceboard.bihar.gov.in</strong>.</p>",
+  "publishedAt": "2026-07-12T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "12 Jul 2026",
+    "startDate": "As per counselling notice",
+    "lastDate": "As per round schedule",
+    "examDate": "Already conducted",
+    "resultDate": "Allotment rounds",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "applyOnline": "https://bceceboard.bihar.gov.in",
+    "officialWebsite": "https://bceceboard.bihar.gov.in"
+  },
+  "tags": [
+    "BCECE",
+    "Counselling",
+    "PCM",
+    "PCB",
+    "Bihar Admission"
+  ],
+  "views": 2340
+}

@@ -1,0 +1,42 @@
+{
+  "category": "answer-key",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "mpesb-addet-answer-key-2026",
+  "slug": "mpesb-addet-answer-key-2026",
+  "title": "MPESB ADDET Answer Key 2026",
+  "organization": "Madhya Pradesh Employees Selection Board",
+  "postName": "ADDET (related MPESB recruitment examination) Answer Key 2026",
+  "totalVacancies": 0,
+  "vacancyDetails": "Model / provisional answer key for MPESB ADDET examination as published on ESB portal",
+  "qualification": "As per MPESB ADDET official advertisement",
+  "ageLimit": "As per MPESB notification",
+  "applicationFee": "As per ESB fee structure",
+  "selectionProcess": "Written / CBT → Further stages as per board",
+  "documentsRequired": "Admit card, registration credentials, photo ID",
+  "howToApply": "1. Visit https://esb.mp.gov.in\n2. Open Model Answer / Question Objection section\n3. Select ADDET 2026 answer key link\n4. Login with application credentials if required\n5. Download key and raise objections within schedule",
+  "shortDescription": "MPESB ADDET Answer Key 2026 – download model answers and raise objections from esb.mp.gov.in when link is active.",
+  "content": "<p><strong>Madhya Pradesh Employees Selection Board (MPESB)</strong> publishes model answer keys for its recruitment exams including <strong>ADDET</strong> on the official portal.</p><p>Candidates should log in at <strong>esb.mp.gov.in</strong>, download the answer key / response sheet, and submit objections (if any) within the board’s prescribed window before the final key and result.</p>",
+  "publishedAt": "2026-07-12T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "As per advt",
+    "lastDate": "As per advt",
+    "examDate": "As scheduled",
+    "resultDate": "After final key",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "answerKey": "https://esb.mp.gov.in",
+    "officialWebsite": "https://esb.mp.gov.in"
+  },
+  "tags": [
+    "MPESB",
+    "ADDET",
+    "Answer Key",
+    "Madhya Pradesh"
+  ],
+  "views": 980
+}

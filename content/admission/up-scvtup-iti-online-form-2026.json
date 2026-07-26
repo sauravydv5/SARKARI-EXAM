@@ -1,0 +1,42 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "up-scvtup-iti-online-form-2026",
+  "slug": "up-scvtup-iti-online-form-2026",
+  "title": "UP SCVTUP ITI Online Form 2026",
+  "organization": "State Council for Vocational Training, Uttar Pradesh",
+  "category": "admission",
+  "postName": "UP ITI Admission Session 2026-27 – All Trades",
+  "totalVacancies": 0,
+  "vacancyDetails": "Admission to Government and Private ITIs in Uttar Pradesh for session 2026-27",
+  "qualification": "Class 8 / 10 pass as per trade eligibility in SCVTUP prospectus",
+  "ageLimit": "As per UP ITI admission rules for the session",
+  "applicationFee": "General/OBC ₹250; SC/ST ₹150 (as notified)",
+  "selectionProcess": "Online application → Merit list → Counselling / seat allotment rounds",
+  "documentsRequired": "Photo, signature, educational certificates, photo ID, category certificate if applicable",
+  "howToApply": "1. Visit https://www.scvtup.in or https://admissionscvtup.in\n2. Open Trainee Registration for ITI 2026\n3. Register with mobile OTP\n4. Fill form, pay fee, upload documents\n5. Print application; wait for merit/counselling",
+  "shortDescription": "UP SCVTUP ITI Online Form 2026 – registration from 11 July 2026 at scvtup.in / admissionscvtup.in (last date ~4 Aug).",
+  "content": "<p><strong>State Council for Vocational Training, UP (SCVTUP)</strong> has started online registration for <strong>ITI Admission 2026–27</strong>.</p><p>Apply from <strong>11 July 2026</strong> (last date reported around <strong>4 August 2026</strong>). Fee: Gen/OBC ₹250, SC/ST ₹150.</p><p>Portals: <strong>scvtup.in</strong> / <strong>admissionscvtup.in</strong>.</p>",
+  "publishedAt": "2026-07-11T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "Jul 2026",
+    "startDate": "11 Jul 2026",
+    "lastDate": "04 Aug 2026 (as reported)",
+    "examDate": "Merit based",
+    "resultDate": "Merit list as scheduled",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "applyOnline": "https://admissionscvtup.in/apps/frmTraineeRegistration.aspx",
+    "officialWebsite": "https://www.scvtup.in"
+  },
+  "tags": [
+    "UP ITI",
+    "SCVTUP",
+    "Admission",
+    "Vocational"
+  ],
+  "views": 3890
+}

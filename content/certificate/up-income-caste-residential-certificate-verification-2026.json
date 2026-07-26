@@ -1,0 +1,44 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "applicationFee": "N/A",
+  "documentsRequired": "As required on the official portal",
+  "id": "up-income-caste-residential-certificate-verification-2026",
+  "slug": "up-income-caste-residential-certificate-verification-2026",
+  "title": "UP Income, Cast, Residential Certificate Online Verification 2026",
+  "organization": "Government of Uttar Pradesh / e-District UP",
+  "category": "certificate",
+  "postName": "Income / Caste / Residence Certificate – Online Apply & Verification",
+  "vacancyDetails": "e-District services for Income, Caste and Domicile/Residential certificates in Uttar Pradesh",
+  "qualification": "N/A",
+  "ageLimit": "N/A",
+  "selectionProcess": "N/A",
+  "howToApply": "1. Visit https://edistrict.up.gov.in or https://jansunwai.up.gov.in related services\n2. Register / login with mobile\n3. Apply for Income / Caste / Residence certificate\n4. Upload required proofs and submit\n5. Verify issued certificate online with application/certificate number",
+  "shortDescription": "UP Income, Caste and Residential Certificate online apply & verification 2026 via e-District Uttar Pradesh portal.",
+  "content": "<p>Residents of <strong>Uttar Pradesh</strong> can apply for and verify <strong>Income, Caste and Residential (Domicile)</strong> certificates online through the state e-District / service portals.</p><h3>Common uses</h3><ul><li>Scholarships and fee concessions</li><li>Government job applications</li><li>Admissions and reservation benefits</li></ul><p>Use official portals only. Keep Aadhaar, photo and supporting affidavits/proofs ready. Verify certificates using the certificate number before submitting elsewhere.</p>",
+  "publishedAt": "2026-07-16T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "Ongoing / as per portal",
+    "lastDate": "As per official notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://edistrict.up.gov.in",
+    "importantLink": "https://edistrict.up.gov.in",
+    "officialWebsite": "https://up.gov.in"
+  },
+  "tags": [
+    "UP",
+    "Income Certificate",
+    "Caste Certificate",
+    "Residential",
+    "e-District"
+  ],
+  "views": 3560
+}

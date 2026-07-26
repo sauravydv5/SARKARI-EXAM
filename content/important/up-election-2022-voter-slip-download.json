@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "up-election-2022-voter-slip-download",
+  "slug": "up-election-2022-voter-slip-download",
+  "title": "UP Election 2022 Voter Slip Download",
+  "organization": "Election Commission / CEO Uttar Pradesh",
+  "postName": "Voter Information Slip / Polling Booth Details – UP Assembly Election 2022",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://voters.eci.gov.in or CEO UP portal\n2. Search name in electoral roll by EPIC / details\n3. Check polling station\n4. Download voter information / slip if available\n5. Carry original EPIC on polling day",
+  "shortDescription": "UP Election 2022 Voter Slip Download – find booth and download voter info from ECI / CEO UP portals.",
+  "content": "<p>During <strong>Uttar Pradesh Assembly Election 2022</strong>, voters could search their names and download voter information slips / know their polling booth online.</p><p>Services remain available on <strong>voters.eci.gov.in</strong> for electoral roll search and e-EPIC.</p>",
+  "publishedAt": "2022-02-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2022-02-01",
+    "startDate": "As per portal",
+    "lastDate": "Election period 2022",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://voters.eci.gov.in",
+    "officialWebsite": "https://ceouttarpradesh.nic.in",
+    "importantLink": "https://voters.eci.gov.in"
+  },
+  "tags": [
+    "UP Election",
+    "Voter Slip",
+    "2022",
+    "ECI"
+  ],
+  "views": 2600
+}

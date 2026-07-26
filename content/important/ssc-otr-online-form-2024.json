@@ -1,0 +1,41 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "ssc-otr-online-form-2024",
+  "slug": "ssc-otr-online-form-2024",
+  "title": "SSC One Time Registration OTR Online Form 2024 Last Date : NA",
+  "organization": "Staff Selection Commission",
+  "postName": "SSC One Time Registration (OTR)",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://ssc.gov.in\n2. Click Register Now (One Time Registration)\n3. Enter Aadhaar / identity details as guided\n4. Fill personal, contact and educational basic data\n5. Create password and save Registration Number for all future SSC exams",
+  "shortDescription": "SSC OTR Online Form – One Time Registration mandatory for CGL, CHSL, MTS, GD etc. Last date: NA (always open).",
+  "content": "<p><strong>Staff Selection Commission One Time Registration (OTR)</strong> is mandatory before applying to any SSC exam (CGL, CHSL, MTS, CPO, GD, Stenographer, Selection Post, etc.).</p><p>There is <strong>no last date</strong> – candidates can register anytime on <strong>ssc.gov.in</strong>. Use the same Registration Number and password for all future applications.</p>",
+  "publishedAt": "2024-01-15T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2024-01-15",
+    "startDate": "As per portal",
+    "lastDate": "NA",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://ssc.gov.in",
+    "officialWebsite": "https://ssc.gov.in"
+  },
+  "tags": [
+    "SSC",
+    "OTR",
+    "One Time Registration"
+  ],
+  "views": 5500
+}

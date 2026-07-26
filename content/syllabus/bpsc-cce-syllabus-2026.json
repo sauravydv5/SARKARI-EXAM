@@ -1,0 +1,44 @@
+{
+  "category": "syllabus",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "id": "bpsc-cce-syllabus-2026",
+  "slug": "bpsc-cce-syllabus-2026",
+  "title": "BPSC CCE Syllabus 2026 – Prelims & Mains",
+  "organization": "Bihar Public Service Commission",
+  "postName": "Combined Competitive Examination (CCE)",
+  "vacancyDetails": "Prelims GS; Mains GS, Hindi, Optional and Essay as per BPSC scheme",
+  "qualification": "Graduation from a recognized University",
+  "ageLimit": "Minimum 20/21/22 years post-wise; maximum as per BPSC rules",
+  "applicationFee": "As per BPSC online fee",
+  "selectionProcess": "Prelims → Mains → Interview → Final Merit",
+  "documentsRequired": "Download official syllabus PDF; keep notification for pattern updates",
+  "howToApply": "1. Visit https://www.bpsc.bih.nic.in\n2. Open CCE advertisement / syllabus\n3. Download Prelims and Mains syllabus PDFs\n4. Focus on Bihar special topics\n5. Prepare Optional thoroughly for Mains",
+  "shortDescription": "BPSC CCE Syllabus – Prelims General Studies; Mains General Hindi, General Studies, Essay and Optional papers.",
+  "content": "<p><strong>BPSC Combined Competitive Examination</strong> syllabus is notified with each CCE advertisement.</p><h3>Prelims (objective)</h3><p><strong>General Studies</strong> – single paper covering: General Science; Current events of national &amp; international importance; History of India and Bihar; Geography of India and Bihar; Indian Polity &amp; Economy; Indian National Movement and Bihar’s contribution; General Mental Ability.</p><h3>Mains (written)</h3><ul><li>General Hindi (qualifying as per rules)</li><li>General Studies Paper 1 &amp; 2</li><li>Essay</li><li>Optional subject papers</li></ul><p>GS Mains includes Modern History of India &amp; Indian culture, Current events, Statistical analysis, Indian Polity, Indian Economy, Geography of India with Bihar focus, Science &amp; Technology, etc. as detailed in the official syllabus.</p><p>Source: <strong>bpsc.bih.nic.in</strong> / bpsconline.bihar.gov.in.</p>",
+  "publishedAt": "2026-07-11T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per latest notification",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "officialWebsite": "https://www.bpsc.bih.nic.in",
+    "importantLink": "https://bpsconline.bihar.gov.in"
+  },
+  "tags": [
+    "BPSC",
+    "CCE",
+    "Prelims",
+    "Mains",
+    "Bihar",
+    "Syllabus"
+  ],
+  "views": 4300
+}

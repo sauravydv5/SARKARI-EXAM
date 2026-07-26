@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": true,
+  "isNew": true,
+  "id": "delhi-dsssb-e-dossiers-form-2026",
+  "slug": "delhi-dsssb-e-dossiers-form-2026",
+  "title": "Delhi DSSSB E Dossiers Form 2026",
+  "organization": "Delhi Subordinate Services Selection Board",
+  "postName": "e-Dossier submission for DSSSB selected / shortlisted candidates",
+  "vacancyDetails": "Online e-Dossier upload for document verification after result / shortlist",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://dsssb.delhi.gov.in\n2. Open e-Dossier / Candidate Login link\n3. Login with roll number / registration details\n4. Upload required documents in prescribed format\n5. Submit e-Dossier before the board deadline",
+  "shortDescription": "Delhi DSSSB e-Dossiers Form 2026 – upload documents online for verification after selection/shortlist on dsssb.delhi.gov.in.",
+  "content": "<p><strong>Delhi Subordinate Services Selection Board (DSSSB)</strong> requires shortlisted candidates to submit <strong>e-Dossiers</strong> online for document verification.</p><p>Candidates must login on the official DSSSB portal, upload educational, category, experience and identity documents as per the checklist, and submit within the notified dates. Incomplete dossiers can lead to cancellation of candidature.</p><p>Portal: <strong>dsssb.delhi.gov.in</strong>.</p>",
+  "publishedAt": "2026-07-20T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026-07-20",
+    "startDate": "As per portal",
+    "lastDate": "As per DSSSB notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://dsssb.delhi.gov.in",
+    "officialWebsite": "https://dsssb.delhi.gov.in",
+    "importantLink": "https://dsssb.delhi.gov.in"
+  },
+  "tags": [
+    "DSSSB",
+    "e-Dossier",
+    "Delhi",
+    "Document Verification"
+  ],
+  "views": 2100
+}

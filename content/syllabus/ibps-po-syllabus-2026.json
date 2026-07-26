@@ -1,0 +1,44 @@
+{
+  "category": "syllabus",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "id": "ibps-po-syllabus-2026",
+  "slug": "ibps-po-syllabus-2026",
+  "title": "IBPS PO Syllabus 2026 – Prelims & Mains",
+  "organization": "Institute of Banking Personnel Selection",
+  "postName": "CRP PO/MT – Probationary Officer / Management Trainee",
+  "vacancyDetails": "Prelims + Mains objective papers and Descriptive English; Interview stage",
+  "qualification": "Graduation in any discipline",
+  "ageLimit": "20 to 30 years (as on crucial date; relaxations apply)",
+  "applicationFee": "Gen/EWS/OBC ₹850; SC/ST/PwBD ₹175",
+  "selectionProcess": "Prelims → Mains (Objective + Descriptive) → Interview → Provisional Allotment",
+  "documentsRequired": "Download official syllabus PDF; keep notification for pattern updates",
+  "howToApply": "1. Visit https://www.ibps.in\n2. Open CRP PO/MT notification\n3. Read structure of examination and topics\n4. Prepare Prelims speed + Mains depth including GA & Computer\n5. Practice descriptive letter/essay",
+  "shortDescription": "IBPS PO Syllabus 2026 – Prelims (English, Quant, Reasoning) and Mains with GA, Computer and Descriptive English.",
+  "content": "<p><strong>IBPS PO/MT</strong> exam has three stages. Syllabus is based on the official CRP notification.</p><h3>Prelims (100 marks, 60 minutes – sectional timing)</h3><ul><li>English Language – 30 Q / 30 marks</li><li>Quantitative Aptitude – 35 Q / 35 marks</li><li>Reasoning Ability – 35 Q / 35 marks</li></ul><p>Negative marking: 0.25 per wrong answer. Prelims is qualifying for Mains shortlist.</p><h3>Mains – Objective</h3><ul><li>Reasoning &amp; Computer Aptitude</li><li>General / Economy / Banking Awareness</li><li>English Language</li><li>Data Analysis &amp; Interpretation</li></ul><h3>Mains – Descriptive</h3><p>English Language (Letter Writing &amp; Essay) – 25 marks, 30 minutes (typed on computer).</p><h3>Interview</h3><p>Shortlisted candidates face interview (typically 100 marks). Final score combines Mains + Interview as per IBPS formula.</p><p>Official details: <strong>ibps.in</strong>.</p>",
+  "publishedAt": "2026-07-15T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per latest notification",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "officialWebsite": "https://www.ibps.in",
+    "applyOnline": "https://www.ibps.in"
+  },
+  "tags": [
+    "IBPS",
+    "PO",
+    "Banking",
+    "Prelims",
+    "Mains",
+    "Syllabus"
+  ],
+  "views": 5400
+}

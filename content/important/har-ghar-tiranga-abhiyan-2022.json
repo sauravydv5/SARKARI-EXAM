@@ -1,0 +1,42 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "har-ghar-tiranga-abhiyan-2022",
+  "slug": "har-ghar-tiranga-abhiyan-2022",
+  "title": "Har Ghar Tiranga Abhiyan Online Registration 2022",
+  "organization": "Ministry of Culture / Government of India",
+  "postName": "Har Ghar Tiranga Online Registration 2022",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit official Har Ghar Tiranga campaign website\n2. Register with mobile number\n3. Pledge to hoist the National Flag\n4. Upload selfie during campaign dates\n5. Download e-certificate if issued",
+  "shortDescription": "Har Ghar Tiranga Abhiyan Online Registration 2022 – join the Independence Day campaign on the official portal.",
+  "content": "<p><strong>Har Ghar Tiranga Abhiyan 2022</strong> was a flagship public participation campaign under Azadi Ka Amrit Mahotsav.</p><p>Citizens registered online, hoisted Tiranga at homes, and uploaded selfies for digital certificates. Follow Flag Code guidelines at all times.</p>",
+  "publishedAt": "2022-08-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2022-08-01",
+    "startDate": "As per portal",
+    "lastDate": "Campaign Aug 2022",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://harghartiranga.com",
+    "officialWebsite": "https://amritmahotsav.nic.in",
+    "importantLink": "https://harghartiranga.com"
+  },
+  "tags": [
+    "Har Ghar Tiranga",
+    "2022",
+    "Campaign"
+  ],
+  "views": 1400
+}

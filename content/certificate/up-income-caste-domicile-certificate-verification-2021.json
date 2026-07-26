@@ -1,0 +1,44 @@
+{
+  "id": "up-income-caste-domicile-certificate-verification-2021",
+  "slug": "up-income-caste-domicile-certificate-verification-2021",
+  "title": "UP Income / Cast / Domicile Certificate Online Verification 2021",
+  "organization": "Government of Uttar Pradesh / e-District",
+  "category": "certificate",
+  "postName": "Online Verification of Income, Caste & Domicile Certificates",
+  "totalVacancies": 0,
+  "vacancyDetails": "E-Certificate / online verification / download service",
+  "qualification": "As applicable to qualified candidates",
+  "ageLimit": "N/A",
+  "applicationFee": "Free / as per portal",
+  "selectionProcess": "Login → Download / Verify certificate online",
+  "documentsRequired": "Application number, roll number, DOB, registered email/mobile",
+  "howToApply": "1. Visit https://edistrict.up.gov.in\n2. Open Certificate Verification / Status\n3. Enter certificate / application number\n4. View verification result\n5. Download digitally signed certificate if available",
+  "shortDescription": "UP Income, Caste, Domicile Certificate Online Verification – verify e-District certificates on edistrict.up.gov.in.",
+  "content": "<p>Uttar Pradesh <strong>Income, Caste and Domicile (Residential)</strong> certificates issued via e-District can be verified online.</p><p>Employers and institutions should use the official verification page with certificate number. Citizens can also re-download certificates from their e-District login.</p>",
+  "publishedAt": "2021-03-01T00:00:00.000Z",
+  "isFeatured": false,
+  "isNew": false,
+  "importantDates": {
+    "notificationDate": "2021-03-01",
+    "startDate": "As per portal",
+    "lastDate": "Ongoing / as available",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://edistrict.up.gov.in",
+    "officialWebsite": "https://edistrict.up.gov.in",
+    "importantLink": "https://up.gov.in"
+  },
+  "tags": [
+    "UP",
+    "Income Certificate",
+    "Caste",
+    "Domicile",
+    "Verification"
+  ],
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "views": 2900
+}

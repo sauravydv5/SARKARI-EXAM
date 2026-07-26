@@ -1,0 +1,44 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "up-ntse-online-form-2020",
+  "slug": "up-ntse-online-form-2020",
+  "title": "UP NTSE Online Form 2020 Last Date : 10/11/2020",
+  "organization": "SCERT / Exam Regulatory Authority Uttar Pradesh",
+  "postName": "National Talent Search Examination (NTSE) State Level – UP",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit SCERT UP / NTSE application portal (as notified in 2020)\n2. Register Class 10 student details\n3. Get school verification\n4. Pay fee if applicable\n5. Last date was 10 November 2020 for that cycle",
+  "shortDescription": "UP NTSE Online Form 2020 – last date 10 Nov 2020. State-level National Talent Search Exam for Class 10.",
+  "content": "<p><strong>NTSE</strong> is a national scholarship exam for Class 10 students. State-level Stage-I is conducted by SCERT/education boards.</p><p>UP NTSE 2020 online applications closed on <strong>10 November 2020</strong>. For current year schedules, check SCERT UP / NCERT notifications.</p>",
+  "publishedAt": "2020-10-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2020-10-01",
+    "startDate": "As per portal",
+    "lastDate": "10/11/2020",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://scert.up.gov.in",
+    "officialWebsite": "https://ncert.nic.in",
+    "importantLink": "https://scert.up.gov.in"
+  },
+  "tags": [
+    "NTSE",
+    "UP",
+    "Scholarship",
+    "Class 10",
+    "2020"
+  ],
+  "views": 1100
+}

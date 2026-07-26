@@ -1,0 +1,42 @@
+{
+  "category": "syllabus",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "id": "upsc-capf-ac-syllabus-2026",
+  "slug": "upsc-capf-ac-syllabus-2026",
+  "title": "UPSC CAPF AC Syllabus 2026 – Paper 1 & Paper 2",
+  "organization": "Union Public Service Commission",
+  "postName": "Central Armed Police Forces (Assistant Commandants) Examination",
+  "vacancyDetails": "Written Paper-I (objective) + Paper-II (descriptive) → Physical → Interview",
+  "qualification": "Bachelor’s Degree from a recognized University",
+  "ageLimit": "20 to 25 years (as on 01 Aug; relaxations apply)",
+  "applicationFee": "₹200 (exemptions for Female/SC/ST/PwBD)",
+  "selectionProcess": "Written Exam → Physical Standards/Efficiency Tests → Interview/Personality Test → Medical",
+  "documentsRequired": "Download official syllabus PDF; keep notification for pattern updates",
+  "howToApply": "1. Visit https://www.upsc.gov.in\n2. Open CAPF (AC) notification\n3. Download scheme and syllabus for Paper I & II\n4. Prepare GA, aptitude, essay and precis writing\n5. Maintain physical fitness standards",
+  "shortDescription": "UPSC CAPF AC Syllabus – Paper I General Ability & Intelligence; Paper II General Studies, Essay & Comprehension.",
+  "content": "<p><strong>UPSC CAPF (Assistant Commandants)</strong> written exam has two papers.</p><h3>Paper I – General Ability and Intelligence (250 marks, 2 hrs, Objective)</h3><ul><li>General Mental Ability</li><li>General Science</li><li>Current Events of National &amp; International Importance</li><li>Indian Polity &amp; Economy</li><li>History of India</li><li>Indian &amp; World Geography</li></ul><p>Negative marking as per UPSC (usually 1/3rd).</p><h3>Paper II – General Studies, Essay and Comprehension (200 marks, 3 hrs, Descriptive)</h3><ul><li>Part A: Essay (English or Hindi) – modern Indian history, geography, polity, economy, security, human rights</li><li>Part B: Comprehension, précis writing, communication skills, counter-argument, simple grammar</li></ul><p>Physical and Interview stages follow. Official syllabus: <strong>upsc.gov.in</strong>.</p>",
+  "publishedAt": "2026-07-17T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per latest notification",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "officialWebsite": "https://www.upsc.gov.in",
+    "officialNotification": "https://www.upsc.gov.in"
+  },
+  "tags": [
+    "UPSC",
+    "CAPF",
+    "Assistant Commandant",
+    "Syllabus"
+  ],
+  "views": 3200
+}

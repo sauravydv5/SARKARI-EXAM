@@ -1,0 +1,43 @@
+{
+  "category": "syllabus",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "id": "rrb-je-syllabus-2026",
+  "slug": "rrb-je-syllabus-2026",
+  "title": "RRB JE Syllabus 2026 – CBT 1 & CBT 2",
+  "organization": "Railway Recruitment Board",
+  "postName": "Junior Engineer (various technical departments)",
+  "vacancyDetails": "CBT-1 common; CBT-2 technical + non-technical as per branch",
+  "qualification": "Diploma / Degree in Engineering in relevant discipline",
+  "ageLimit": "18 to 33 years (as per JE CEN; relaxations apply)",
+  "applicationFee": "As per RRB fee",
+  "selectionProcess": "CBT-1 → CBT-2 → Document Verification → Medical",
+  "documentsRequired": "Download official syllabus PDF; keep notification for pattern updates",
+  "howToApply": "1. Open JE CEN on rrbapply.gov.in\n2. Download syllabus for CBT-1 and CBT-2 (technical departments)\n3. Revise basic science, maths, reasoning, GA\n4. Deep-dive branch technical syllabus for CBT-2\n5. Practice technical numericals",
+  "shortDescription": "RRB JE Syllabus – CBT-1 (Maths, Reasoning, GA, General Science) and CBT-2 Technical Ability + Basics of Computers etc.",
+  "content": "<p><strong>RRB Junior Engineer</strong> exam has two CBT stages.</p><h3>CBT-1 (screening)</h3><ul><li>Mathematics</li><li>General Intelligence &amp; Reasoning</li><li>General Awareness</li><li>General Science</li></ul><p>Objective paper with negative marking; shortlisting for CBT-2.</p><h3>CBT-2</h3><ul><li><strong>General Awareness</strong></li><li><strong>Physics &amp; Chemistry</strong></li><li><strong>Basics of Computers and Applications</strong></li><li><strong>Basics of Environment and Pollution Control</strong></li><li><strong>Technical Abilities</strong> – branch specific (Civil / Electrical / Mechanical / Electronics / Printing / CMA etc.)</li></ul><p>Technical syllabus differs by post code – follow the annexure of the official JE CEN on RRB websites.</p>",
+  "publishedAt": "2026-07-13T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per latest notification",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "officialWebsite": "https://www.rrbcdg.gov.in",
+    "applyOnline": "https://www.rrbapply.gov.in"
+  },
+  "tags": [
+    "RRB",
+    "JE",
+    "Junior Engineer",
+    "CBT",
+    "Syllabus"
+  ],
+  "views": 4100
+}

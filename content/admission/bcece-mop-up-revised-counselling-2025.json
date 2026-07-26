@@ -1,0 +1,42 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "bcece-mop-up-revised-counselling-2025",
+  "slug": "bcece-mop-up-revised-counselling-2025",
+  "title": "BCECE Mop-Up Revised Counselling Schedule 2025",
+  "organization": "Bihar Combined Entrance Competitive Examination Board",
+  "category": "admission",
+  "postName": "BCECE Mop-Up Round – Revised Counselling Schedule",
+  "totalVacancies": 0,
+  "vacancyDetails": "Revised schedule for mop-up counselling against vacant seats after main rounds",
+  "qualification": "BCECE qualified candidates eligible for remaining seats as per mop-up rules",
+  "ageLimit": "As per BCECE prospectus",
+  "applicationFee": "As per mop-up counselling notice",
+  "selectionProcess": "Willingness / registration → Mop-up allotment → Document verification → Admission",
+  "documentsRequired": "Photo, signature, educational certificates, photo ID, category certificate if applicable",
+  "howToApply": "1. Visit https://bceceboard.bihar.gov.in\n2. Open Mop-Up revised counselling schedule PDF\n3. Submit willingness if required\n4. Check allotment on counselling portal\n5. Report to college with documents within dates",
+  "shortDescription": "BCECE Mop-Up Revised Counselling Schedule – check vacant seat allotment dates on bceceboard.bihar.gov.in.",
+  "content": "<p><strong>BCECEB</strong> publishes <strong>mop-up counselling</strong> schedules for leftover seats after regular allotment rounds of BCECE / related courses.</p><p>Candidates must follow the <strong>revised schedule</strong> only from the official board website, complete willingness/registration if asked, and report for document verification on time or risk seat cancellation.</p>",
+  "publishedAt": "2026-07-08T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per mop-up notice",
+    "startDate": "As per revised schedule",
+    "lastDate": "As per revised schedule",
+    "examDate": "Already conducted",
+    "resultDate": "Mop-up allotment",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "importantLink": "https://bceceboard.bihar.gov.in",
+    "officialWebsite": "https://bceceboard.bihar.gov.in"
+  },
+  "tags": [
+    "BCECE",
+    "Mop-Up",
+    "Counselling",
+    "Bihar"
+  ],
+  "views": 1560
+}

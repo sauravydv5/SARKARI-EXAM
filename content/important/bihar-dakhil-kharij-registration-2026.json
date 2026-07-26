@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "applicationFee": "N/A",
+  "documentsRequired": "As required on the official portal",
+  "id": "bihar-dakhil-kharij-registration-2026",
+  "slug": "bihar-dakhil-kharij-registration-2026",
+  "title": "Bihar Dakhil Kharij, Registration Online 2026",
+  "organization": "Department of Revenue & Land Reforms, Government of Bihar",
+  "category": "important",
+  "postName": "Land Mutation (Dakhil Kharij) Online Application – Bihar",
+  "vacancyDetails": "Online mutation / dakhil-kharij and related land registration services in Bihar",
+  "qualification": "N/A",
+  "ageLimit": "N/A",
+  "selectionProcess": "N/A",
+  "howToApply": "1. Visit Bihar land records / Bhumi / Registration related official portal (e.g. biharbhumi.bihar.gov.in / serviceonline)\n2. Select Dakhil-Kharij / Mutation service\n3. Fill land details, seller-buyer information\n4. Upload sale deed and ID proofs\n5. Pay fee and track application status",
+  "shortDescription": "Bihar Dakhil Kharij (land mutation) and registration online 2026 – apply via official Bihar land/revenue portals.",
+  "content": "<p><strong>Dakhil Kharij</strong> is the process of mutating land records after sale, inheritance or gift in <strong>Bihar</strong>.</p><p>Citizens can apply online through state land records / ServicePlus portals, upload registered deed documents and track mutation status. Always use government websites and verify khata/khesra details carefully before submission.</p>",
+  "publishedAt": "2026-07-14T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "Ongoing / as per portal",
+    "lastDate": "As per official notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://biharbhumi.bihar.gov.in",
+    "importantLink": "https://serviceonline.bihar.gov.in",
+    "officialWebsite": "https://state.bihar.gov.in"
+  },
+  "tags": [
+    "Bihar",
+    "Dakhil Kharij",
+    "Mutation",
+    "Land Records"
+  ],
+  "views": 2340
+}

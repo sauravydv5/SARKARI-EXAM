@@ -1,0 +1,43 @@
+{
+  "category": "syllabus",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "id": "rrb-ntpc-syllabus-2026",
+  "slug": "rrb-ntpc-syllabus-2026",
+  "title": "RRB NTPC Syllabus 2026 – CBT 1 & CBT 2",
+  "organization": "Railway Recruitment Board",
+  "postName": "Non-Technical Popular Categories (Graduate & Undergraduate levels)",
+  "vacancyDetails": "CBT-1 common; CBT-2 level-wise; Typing/CBAT for specific posts",
+  "qualification": "12th / Graduation as per post level in CEN",
+  "ageLimit": "As per RRB NTPC CEN (relaxations apply)",
+  "applicationFee": "As per RRB fee rules",
+  "selectionProcess": "CBT-1 → CBT-2 → Typing Skill Test / CBAT (post-wise) → DV → Medical",
+  "documentsRequired": "Download official syllabus PDF; keep notification for pattern updates",
+  "howToApply": "1. Visit https://www.rrbcdg.gov.in or rrbapply.gov.in\n2. Open relevant NTPC CEN\n3. Download syllabus annexure for CBT-1/CBT-2\n4. Prepare Maths, Reasoning, General Awareness\n5. Practice speed for CBT and typing if required",
+  "shortDescription": "RRB NTPC Syllabus – CBT-1 & CBT-2 subjects: Mathematics, General Intelligence & Reasoning, General Awareness.",
+  "content": "<p><strong>RRB NTPC</strong> Computer Based Tests cover three core areas at different difficulty for CBT-1 and CBT-2.</p><h3>CBT-1 (common pattern – indicative)</h3><ul><li>General Awareness</li><li>Mathematics</li><li>General Intelligence and Reasoning</li></ul><p>Objective MCQs with negative marking (typically 1/3rd). Duration and number of questions as per CEN.</p><h3>CBT-2</h3><p>Same three subjects with higher difficulty and more questions for Graduate / Under-Graduate pay levels. Separate CBTs may run for different pay levels.</p><h3>Topic highlights</h3><ul><li><strong>Maths:</strong> Number System, BODMAS, Decimals, LCM-HCF, Ratio, Percentage, Mensuration, Time-Work, SI-CI, Algebra, Geometry, Trigonometry, DI</li><li><strong>Reasoning:</strong> Analogies, Coding, Series, Mathematical operations, Relationships, Syllogism, Jumbling, Venn, Data sufficiency, Maps, Graphs</li><li><strong>GA:</strong> Current affairs, Science &amp; Tech, Sports, Culture, History, Geography, Polity, Economy, Railways, Awards</li></ul><p>Post-specific: Typing Skill Test / Computer Based Aptitude Test (for Station Master etc.). Official CEN PDF on RRB sites.</p>",
+  "publishedAt": "2026-07-14T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per latest notification",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "officialWebsite": "https://www.rrbcdg.gov.in",
+    "applyOnline": "https://www.rrbapply.gov.in"
+  },
+  "tags": [
+    "RRB",
+    "NTPC",
+    "CBT",
+    "Railway",
+    "Syllabus"
+  ],
+  "views": 4900
+}

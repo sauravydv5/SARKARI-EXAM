@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "hsrp-high-security-number-plate-2021",
+  "slug": "hsrp-high-security-number-plate-2021",
+  "title": "High Security Number Plate HSRP Online Registration 2021",
+  "organization": "Ministry of Road Transport / State Transport / Authorised Vendors",
+  "postName": "High Security Registration Plate (HSRP) Booking",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit state transport / authorised HSRP booking portal or Vahan-related link\n2. Enter vehicle registration number\n3. Select fitment centre\n4. Pay fee online\n5. Visit centre with RC for fitment",
+  "shortDescription": "HSRP High Security Number Plate Online Registration – book fitment for vehicles via authorised state portals.",
+  "content": "<p><strong>High Security Registration Plates (HSRP)</strong> are mandatory for vehicles as per MoRTH directions.</p><p>Vehicle owners book online through state-authorised portals, pay fees, and get laser-branded plates fitted at approved centres along with colour-coded stickers. Keep Registration Certificate (RC) ready.</p>",
+  "publishedAt": "2021-08-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2021-08-01",
+    "startDate": "As per portal",
+    "lastDate": "As per state mandate",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://vahan.parivahan.gov.in",
+    "officialWebsite": "https://morth.nic.in",
+    "importantLink": "https://vahan.parivahan.gov.in"
+  },
+  "tags": [
+    "HSRP",
+    "Number Plate",
+    "RTO",
+    "Vehicle"
+  ],
+  "views": 4500
+}

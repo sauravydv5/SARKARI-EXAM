@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "mpesb-profile-online-registration-2023",
+  "slug": "mpesb-profile-online-registration-2023",
+  "title": "MPESB Profile Online Registration 2023 Last Date : NA",
+  "organization": "Madhya Pradesh Employees Selection Board",
+  "postName": "MPESB Candidate Profile / One Time Registration",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://esb.mp.gov.in\n2. Open Candidate Registration / Profile\n3. Create account with mobile and email\n4. Fill personal, educational and photo details\n5. Save profile for all future MPESB exams (last date: NA)",
+  "shortDescription": "MPESB Profile Online Registration – create candidate profile on esb.mp.gov.in for all MP board exams. Last date: NA.",
+  "content": "<p><strong>MPESB (ESB Madhya Pradesh)</strong> requires candidates to maintain an online profile for applying to various recruitment and entrance tests.</p><p>Registration is ongoing (<strong>no fixed last date</strong>). Complete profile with correct name, DOB, photo and education.</p>",
+  "publishedAt": "2023-01-15T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2023-01-15",
+    "startDate": "As per portal",
+    "lastDate": "NA",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://esb.mp.gov.in",
+    "officialWebsite": "https://esb.mp.gov.in"
+  },
+  "tags": [
+    "MPESB",
+    "ESB",
+    "Profile",
+    "Registration",
+    "MP"
+  ],
+  "views": 2200
+}

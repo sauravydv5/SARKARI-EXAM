@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "bihar-iti-cat-offline-mop-up-counselling-2025",
+  "slug": "bihar-iti-cat-offline-mop-up-counselling-2025",
+  "title": "Bihar ITI CAT Offline Mop-Up Counselling 2025",
+  "organization": "Bihar Combined Entrance Competitive Examination Board",
+  "category": "admission",
+  "postName": "ITICAT Offline Mop-Up Counselling for vacant ITI seats",
+  "totalVacancies": 0,
+  "vacancyDetails": "Offline mop-up round for leftover ITI seats after online allotment rounds",
+  "qualification": "Matric / ITICAT eligibility + rank; willingness for mop-up as per notice",
+  "ageLimit": "As per ITICAT prospectus",
+  "applicationFee": "As per mop-up notice",
+  "selectionProcess": "Online rounds → Willingness for mop-up → Offline counselling → Admission",
+  "documentsRequired": "Photo, signature, educational certificates, photo ID, category certificate if applicable",
+  "howToApply": "1. Visit https://bceceboard.bihar.gov.in ITICAT section\n2. Read offline mop-up counselling notice and seat matrix\n3. Submit willingness if required online\n4. Appear at counselling venue with originals\n5. Complete admission at allotted ITI",
+  "shortDescription": "Bihar ITI CAT Offline Mop-Up Counselling – final chance for vacant ITI seats. Check schedule on bceceboard.bihar.gov.in.",
+  "content": "<p><strong>BCECEB</strong> conducts <strong>offline mop-up counselling</strong> for <strong>ITICAT</strong> after online seat allotment rounds to fill remaining ITI seats.</p><p>Eligible candidates should download the mop-up seat matrix and schedule from <strong>bceceboard.bihar.gov.in</strong>, submit willingness if notified, and attend offline counselling with original documents.</p>",
+  "publishedAt": "2026-07-08T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per ITICAT mop-up notice",
+    "startDate": "As per schedule",
+    "lastDate": "As per mop-up last date",
+    "examDate": "Already conducted",
+    "resultDate": "Mop-up allotment",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "importantLink": "https://bceceboard.bihar.gov.in/ITICATIndex.php",
+    "officialWebsite": "https://bceceboard.bihar.gov.in"
+  },
+  "tags": [
+    "ITICAT",
+    "ITI",
+    "Mop-Up",
+    "Bihar",
+    "Counselling"
+  ],
+  "views": 1780
+}

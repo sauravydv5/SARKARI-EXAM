@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "voter-id-online-form-e-epic-2024",
+  "slug": "voter-id-online-form-e-epic-2024",
+  "title": "Voter ID Online Form 2024, E EPIC Download",
+  "organization": "Election Commission of India",
+  "postName": "New Voter Registration, Correction & e-EPIC Download",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://voters.eci.gov.in\n2. Login / create account with mobile\n3. Form 6 for new voter or Form 8 for correction\n4. Upload photo and documents\n5. Download e-EPIC after approval; search name in roll",
+  "shortDescription": "Voter ID Online Form & e-EPIC Download – register, correct details and download digital Voter ID on voters.eci.gov.in.",
+  "content": "<p>The <strong>Election Commission of India</strong> Voter Portal allows online voter registration, correction, deletion/shifting requests and <strong>e-EPIC download</strong>.</p><ul><li>Form 6 – New registration (18+ years)</li><li>Form 8 – Correction / migration</li><li>Download digital EPIC PDF</li></ul><p>Portal: <strong>voters.eci.gov.in</strong>.</p>",
+  "publishedAt": "2024-03-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2024-03-01",
+    "startDate": "As per portal",
+    "lastDate": "Ongoing",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://voters.eci.gov.in",
+    "officialWebsite": "https://www.eci.gov.in",
+    "importantLink": "https://voters.eci.gov.in"
+  },
+  "tags": [
+    "Voter ID",
+    "e-EPIC",
+    "ECI",
+    "Form 6"
+  ],
+  "views": 4800
+}

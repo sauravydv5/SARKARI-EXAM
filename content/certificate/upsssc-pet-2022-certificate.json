@@ -1,0 +1,43 @@
+{
+  "id": "upsssc-pet-2022-certificate",
+  "slug": "upsssc-pet-2022-certificate",
+  "title": "UPSSSC PET 2022 Certificate",
+  "organization": "Uttar Pradesh Subordinate Services Selection Commission",
+  "category": "certificate",
+  "postName": "Preliminary Eligibility Test (PET) 2022 – Score Card / Certificate",
+  "totalVacancies": 0,
+  "vacancyDetails": "E-Certificate / online verification / download service",
+  "qualification": "As applicable to qualified candidates",
+  "ageLimit": "N/A",
+  "applicationFee": "Free / as per portal",
+  "selectionProcess": "Login → Download / Verify certificate online",
+  "documentsRequired": "Application number, roll number, DOB, registered email/mobile",
+  "howToApply": "1. Visit https://upsssc.gov.in\n2. Open PET 2022 score card / certificate link\n3. Login with registration number and DOB\n4. Download PET score certificate\n5. Use score for eligible UPSSSC recruitments within validity",
+  "shortDescription": "UPSSSC PET 2022 Certificate / score card download from upsssc.gov.in for eligibility in commission exams.",
+  "content": "<p><strong>UPSSSC PET 2022</strong> score is used as eligibility for various subordinate service recruitments.</p><p>Candidates can download the PET score card / certificate from <strong>upsssc.gov.in</strong>. Check validity period mentioned in recruitment advertisements before applying.</p>",
+  "publishedAt": "2022-12-01T00:00:00.000Z",
+  "isFeatured": false,
+  "isNew": false,
+  "importantDates": {
+    "notificationDate": "2022-12-01",
+    "startDate": "As per portal",
+    "lastDate": "Ongoing / as available",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://upsssc.gov.in",
+    "officialWebsite": "https://upsssc.gov.in"
+  },
+  "tags": [
+    "UPSSSC",
+    "PET",
+    "2022",
+    "Certificate",
+    "Score Card"
+  ],
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "views": 2700
+}

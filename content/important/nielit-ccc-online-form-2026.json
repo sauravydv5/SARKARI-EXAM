@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": true,
+  "isNew": true,
+  "id": "nielit-ccc-online-form-2026",
+  "slug": "nielit-ccc-online-form-2026",
+  "title": "NIELIT CCC Online Form 2026 Last Date : NA",
+  "organization": "National Institute of Electronics & Information Technology",
+  "postName": "Course on Computer Concepts (CCC) – Online Examination Form",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://student.nielit.gov.in or https://www.nielit.gov.in\n2. Register / login for CCC examination\n3. Fill application, select exam centre/mode\n4. Pay fee online\n5. Download admit card when available; check result & certificate later",
+  "shortDescription": "NIELIT CCC Online Form 2026 – apply as per exam cycle on student.nielit.gov.in. Last date: NA (ongoing cycles).",
+  "content": "<p><strong>NIELIT CCC (Course on Computer Concepts)</strong> is a basic digital literacy certification exam.</p><p>Candidates can apply online through the NIELIT student portal for scheduled exam cycles. There is no single annual last date – forms open as per NIELIT calendar. After the exam, result and digital certificate are available on the same portal.</p>",
+  "publishedAt": "2026-07-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026-07-01",
+    "startDate": "As per portal",
+    "lastDate": "NA (as per exam cycle)",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://student.nielit.gov.in",
+    "officialWebsite": "https://www.nielit.gov.in",
+    "importantLink": "https://www.nielit.gov.in"
+  },
+  "tags": [
+    "NIELIT",
+    "CCC",
+    "Computer Course",
+    "Certificate"
+  ],
+  "views": 3200
+}

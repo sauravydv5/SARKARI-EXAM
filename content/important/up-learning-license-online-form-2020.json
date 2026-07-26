@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "up-learning-license-online-form-2020",
+  "slug": "up-learning-license-online-form-2020",
+  "title": "UP Learning License Online Form 2020",
+  "organization": "Transport Department, Uttar Pradesh / Parivahan Sewa",
+  "postName": "Learner’s Licence (LL) Online Application",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://sarathi.parivahan.gov.in\n2. Select Uttar Pradesh\n3. Apply for Learner Licence\n4. Fill form, upload photo/docs, book slot\n5. Appear for online LL test if required",
+  "shortDescription": "UP Learning License Online Form – apply for Learner’s Licence on sarathi.parivahan.gov.in (Uttar Pradesh).",
+  "content": "<p><strong>Learner’s Licence</strong> in Uttar Pradesh is applied online through <strong>Parivahan Sarathi</strong>.</p><p>Applicants select UP RTO, fill Form details, pay fee, and complete the learner test. After LL, permanent driving licence can be applied after the waiting period as per MV Act rules.</p>",
+  "publishedAt": "2020-05-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2020-05-01",
+    "startDate": "As per portal",
+    "lastDate": "Ongoing",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://sarathi.parivahan.gov.in",
+    "officialWebsite": "https://uptransport.upsdc.gov.in",
+    "importantLink": "https://parivahan.gov.in"
+  },
+  "tags": [
+    "Learning License",
+    "UP",
+    "Parivahan",
+    "RTO"
+  ],
+  "views": 3100
+}

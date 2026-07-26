@@ -1,0 +1,43 @@
+{
+  "category": "syllabus",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "id": "rrb-group-d-syllabus-2026",
+  "slug": "rrb-group-d-syllabus-2026",
+  "title": "RRB Group D Syllabus 2026 – CBT Level-1",
+  "organization": "Railway Recruitment Board",
+  "postName": "RRC Level-1 / Group D Posts (CEN Level-1)",
+  "vacancyDetails": "Single CBT followed by PET, DV and Medical",
+  "qualification": "10th pass / ITI / NAC as per CEN",
+  "ageLimit": "18 to 36 years (as per CEN; relaxations apply)",
+  "applicationFee": "As per RRB Level-1 fee",
+  "selectionProcess": "CBT → Physical Efficiency Test → Document Verification → Medical",
+  "documentsRequired": "Download official syllabus PDF; keep notification for pattern updates",
+  "howToApply": "1. Open Level-1 / Group D CEN on rrbapply.gov.in\n2. Read exam scheme and syllabus\n3. Prepare Maths, Reasoning, GA, General Science\n4. Practice previous RRC papers\n5. Maintain fitness for PET",
+  "shortDescription": "RRB Group D / Level-1 Syllabus – Mathematics, Reasoning, General Science and General Awareness for CBT.",
+  "content": "<p><strong>RRB/RRC Level-1 (Group D)</strong> selection starts with a Computer Based Test.</p><h3>CBT subjects (indicative)</h3><ul><li>Mathematics</li><li>General Intelligence and Reasoning</li><li>General Science</li><li>General Awareness / Current Affairs</li></ul><p>Usually 100 questions, 90 minutes, negative marking as per CEN. Questions are generally of Class 10 standard for Maths/Science.</p><h3>Topic outline</h3><ul><li><strong>Maths:</strong> Number system, BODMAS, Decimals, Fractions, LCM-HCF, Ratio, Percentage, Mensuration, Time &amp; Work, Time &amp; Distance, SI-CI, Profit-Loss, Algebra, Geometry, Trigonometry, Elementary Statistics</li><li><strong>Reasoning:</strong> Analogies, Alphabetical/Number Series, Coding-Decoding, Mathematical operations, Relationships, Syllogism, Jumbling, Venn, Data Interpretation, Conclusions, Decision making, Classification</li><li><strong>General Science:</strong> Physics, Chemistry, Life Sciences of Class 10 level</li><li><strong>GA:</strong> Current affairs, Science &amp; Tech, Culture, Sports, History, Geography, Economic scene, General Polity, Indian Constitution</li></ul><p>PET standards (male/female) are in the official CEN. Source: RRB regional / rrbapply.gov.in.</p>",
+  "publishedAt": "2026-07-16T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per latest notification",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "officialWebsite": "https://www.rrbcdg.gov.in",
+    "applyOnline": "https://www.rrbapply.gov.in"
+  },
+  "tags": [
+    "RRB",
+    "Group D",
+    "Level-1",
+    "Railway",
+    "Syllabus"
+  ],
+  "views": 5600
+}

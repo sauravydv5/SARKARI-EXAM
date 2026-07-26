@@ -1,0 +1,45 @@
+{
+  "category": "syllabus",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "id": "upsc-cse-syllabus-2026",
+  "slug": "upsc-cse-syllabus-2026",
+  "title": "UPSC CSE Syllabus 2026 – Prelims & Mains Complete",
+  "organization": "Union Public Service Commission",
+  "postName": "Civil Services Examination (IAS/IPS/IFS etc.)",
+  "vacancyDetails": "Complete Prelims GS + CSAT and Mains 9-paper scheme with GS papers and Optional",
+  "qualification": "Graduation from a recognized University",
+  "ageLimit": "21 to 32 years (as on 01 Aug of exam year; relaxations apply)",
+  "applicationFee": "₹100 (Female/SC/ST/PwBD exempt as per rules)",
+  "selectionProcess": "Prelims (GS + CSAT) → Mains (9 papers) → Personality Test / Interview",
+  "documentsRequired": "Download official syllabus PDF; keep notification for pattern updates",
+  "howToApply": "1. Visit https://www.upsc.gov.in\n2. Open Civil Services Examination notification / syllabus appendix\n3. Download Prelims and Mains syllabus PDF\n4. Map Optional subject syllabus from list of optionals\n5. Prepare as per latest scheme of examination",
+  "shortDescription": "UPSC CSE Syllabus 2026 – full Prelims (GS+CSAT) and Mains pattern with GS Paper I–IV, Essay, Optional and language papers.",
+  "content": "<p><strong>UPSC Civil Services Examination 2026</strong> syllabus is defined in the official CSE notification (Appendix).</p><h3>Stage 1 – Preliminary Examination</h3><ul><li><strong>GS Paper I (200 marks, 2 hrs):</strong> Current events; History of India &amp; Indian National Movement; Indian &amp; World Geography; Indian Polity &amp; Governance; Economic &amp; Social Development; Environment, Ecology, Biodiversity &amp; Climate Change; General Science.</li><li><strong>CSAT / GS Paper II (200 marks, 2 hrs):</strong> Comprehension; Interpersonal skills; Logical reasoning &amp; analytical ability; Decision making; General mental ability; Basic numeracy (Class X); Data interpretation. <em>Qualifying – 33% minimum.</em></li></ul><p>Both papers are objective (MCQ). Negative marking applies as per UPSC rules.</p><h3>Stage 2 – Main Examination (Written)</h3><ul><li>Paper A – Indian Language (Qualifying, 300 marks)</li><li>Paper B – English (Qualifying, 300 marks)</li><li>Paper I – Essay (250)</li><li>Paper II – GS I: Indian Heritage, History, Geography, Society (250)</li><li>Paper III – GS II: Governance, Constitution, Polity, Social Justice, IR (250)</li><li>Paper IV – GS III: Technology, Economic Development, Biodiversity, Environment, Security, Disaster Management (250)</li><li>Paper V – GS IV: Ethics, Integrity, Aptitude (250)</li><li>Paper VI &amp; VII – Optional Subject Paper 1 &amp; 2 (250 each)</li></ul><h3>Stage 3 – Personality Test</h3><p>Interview / Personality Test: <strong>275 marks</strong>. Final merit = Mains (written) + Interview.</p><p>Download the official syllabus only from <strong>upsc.gov.in</strong>.</p>",
+  "publishedAt": "2026-07-20T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per UPSC CSE calendar",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "Prelims & Mains as scheduled",
+    "resultDate": "After each stage",
+    "admitCardDate": "Before each stage"
+  },
+  "links": {
+    "officialWebsite": "https://www.upsc.gov.in",
+    "officialNotification": "https://www.upsc.gov.in",
+    "importantLink": "https://upsconline.nic.in"
+  },
+  "tags": [
+    "UPSC",
+    "CSE",
+    "IAS",
+    "Prelims",
+    "Mains",
+    "Syllabus"
+  ],
+  "views": 6200
+}

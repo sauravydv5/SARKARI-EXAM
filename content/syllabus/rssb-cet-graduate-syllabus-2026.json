@@ -1,0 +1,43 @@
+{
+  "category": "syllabus",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "id": "rssb-cet-graduate-syllabus-2026",
+  "slug": "rssb-cet-graduate-syllabus-2026",
+  "title": "RSSB CET Graduate Level Syllabus 2026",
+  "organization": "Rajasthan Staff Selection Board",
+  "postName": "Common Eligibility Test (Graduate Level)",
+  "vacancyDetails": "Single OMR/CET paper syllabus used for shortlisting graduate-level RSSB posts",
+  "qualification": "Graduation from a recognized University",
+  "ageLimit": "As per RSSB CET Graduate Level advertisement",
+  "applicationFee": "As per RSSB OTR / application fee",
+  "selectionProcess": "CET (Graduate Level) → Score used in post-wise recruitments → further stages as per post",
+  "documentsRequired": "Download official syllabus PDF; keep notification for pattern updates",
+  "howToApply": "1. Visit https://rssb.rajasthan.gov.in\n2. Open CET Graduate Level notification\n3. Download syllabus and exam scheme\n4. Prepare Rajasthan GK heavily\n5. Practice previous CET papers",
+  "shortDescription": "RSSB CET Graduate Syllabus – History, Geography, Polity, Economy, Science, Maths, Reasoning, Hindi, English and Rajasthan GK.",
+  "content": "<p><strong>RSSB Common Eligibility Test (Graduate Level)</strong> is usually a single objective paper (often 150 questions / 300 marks as per advt).</p><h3>Broad syllabus areas</h3><ul><li>History of India &amp; Rajasthan with special emphasis on Rajasthan</li><li>Geography of India &amp; Rajasthan</li><li>Indian Polity, Economy &amp; Rajasthan economy / schemes</li><li>General Science</li><li>Current Affairs (India, Rajasthan, World)</li><li>Logical Reasoning &amp; Mental Ability</li><li>Basic Numeracy / Mathematics (Class 10–12 level as notified)</li><li>General Hindi &amp; General English</li><li>Computer knowledge (basics) if included in notice</li></ul><p>Exact unit-wise topics and marking scheme are in Advt. (e.g. 09/2026) PDF on <strong>rssb.rajasthan.gov.in</strong>.</p>",
+  "publishedAt": "2026-07-05T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per latest notification",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "officialWebsite": "https://rssb.rajasthan.gov.in",
+    "applyOnline": "https://sso.rajasthan.gov.in"
+  },
+  "tags": [
+    "RSSB",
+    "CET",
+    "Graduate",
+    "Rajasthan",
+    "Syllabus"
+  ],
+  "views": 3600
+}

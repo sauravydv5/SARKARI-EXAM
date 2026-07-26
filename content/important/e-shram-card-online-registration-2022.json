@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "e-shram-card-online-registration-2022",
+  "slug": "e-shram-card-online-registration-2022",
+  "title": "E Sharam Card Online Registration 2022",
+  "organization": "Ministry of Labour & Employment",
+  "postName": "e-Shram Card / Universal Account Number for unorganised workers",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit https://eshram.gov.in\n2. Self registration with Aadhaar and mobile\n3. Fill occupation and personal details\n4. Complete e-KYC\n5. Download e-Shram card / UAN",
+  "shortDescription": "e-Shram Card Online Registration – free national database card for unorganised workers on eshram.gov.in.",
+  "content": "<p><strong>e-Shram</strong> is the national database of unorganised workers. Registration is free and provides a Universal Account Number (UAN) card.</p><p>Workers aged 16–59 in unorganised sector can register with Aadhaar. Portal: <strong>eshram.gov.in</strong>.</p>",
+  "publishedAt": "2022-01-10T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2022-01-10",
+    "startDate": "As per portal",
+    "lastDate": "Ongoing",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://eshram.gov.in",
+    "officialWebsite": "https://eshram.gov.in",
+    "importantLink": "https://labour.gov.in"
+  },
+  "tags": [
+    "e-Shram",
+    "Labour",
+    "UAN",
+    "Unorganised Worker"
+  ],
+  "views": 5200
+}

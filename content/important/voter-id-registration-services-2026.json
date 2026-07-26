@@ -1,0 +1,44 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "totalVacancies": 0,
+  "applicationFee": "N/A",
+  "documentsRequired": "As required on the official portal",
+  "id": "voter-id-registration-services-2026",
+  "slug": "voter-id-registration-services-2026",
+  "title": "Voter ID Registration & Other Voter Service 2026",
+  "organization": "Election Commission of India / NVSP / Voter Portal",
+  "category": "important",
+  "postName": "New Voter Registration, Correction, EPIC Download, Search Name",
+  "vacancyDetails": "Form 6 (new voter), Form 8 (correction/migration), EPIC download and electoral roll search",
+  "qualification": "N/A",
+  "ageLimit": "N/A",
+  "selectionProcess": "N/A",
+  "howToApply": "1. Visit https://voters.eci.gov.in\n2. Create account / login with mobile\n3. Apply Form 6 for new registration or Form 8 for correction\n4. Upload photo and documents\n5. Download e-EPIC and search name in electoral roll",
+  "shortDescription": "Voter ID registration, correction, EPIC download and roll search 2026 on voters.eci.gov.in (ECI NVSP).",
+  "content": "<p>The <strong>Election Commission of India</strong> provides online voter services through the <strong>Voter Portal / NVSP</strong>.</p><h3>Services</h3><ul><li>New voter registration (Form 6)</li><li>Correction / shifting of address (Form 8)</li><li>Download e-EPIC (Voter ID card)</li><li>Search name in electoral roll</li></ul><p>Official portal: <strong>voters.eci.gov.in</strong>. Minimum age for enrolment is 18 years.</p>",
+  "publishedAt": "2026-07-18T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "Ongoing / as per portal",
+    "lastDate": "As per official notice",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://voters.eci.gov.in",
+    "importantLink": "https://voters.eci.gov.in",
+    "officialWebsite": "https://www.eci.gov.in"
+  },
+  "tags": [
+    "Voter ID",
+    "EPIC",
+    "ECI",
+    "NVSP",
+    "Form 6"
+  ],
+  "views": 3980
+}

@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "category": "important",
+  "totalVacancies": 0,
+  "isFeatured": false,
+  "isNew": false,
+  "id": "har-ghar-tiranga-abhiyan-2023",
+  "slug": "har-ghar-tiranga-abhiyan-2023",
+  "title": "Har Ghar Tiranga Abhiyan 2023",
+  "organization": "Ministry of Culture / Government of India",
+  "postName": "Har Ghar Tiranga Campaign – Selfie Upload / Participation",
+  "vacancyDetails": "Government online service / registration portal",
+  "qualification": "As per scheme eligibility",
+  "ageLimit": "As applicable",
+  "applicationFee": "As per portal / free",
+  "selectionProcess": "Online registration / application as per portal process",
+  "documentsRequired": "Aadhaar, photo ID, mobile number, email, supporting certificates as required",
+  "howToApply": "1. Visit the official Har Ghar Tiranga portal (harghartiranga.com)\n2. Register with mobile\n3. Hoist the National Flag as per Flag Code\n4. Upload selfie with Tiranga if campaign form is open\n5. Download certificate if available",
+  "shortDescription": "Har Ghar Tiranga Abhiyan 2023 – participate in the national campaign, hoist the flag and register on the official portal.",
+  "content": "<p><strong>Har Ghar Tiranga</strong> is a national campaign under Azadi Ka Amrit Mahotsav encouraging citizens to hoist the National Flag at homes.</p><p>Citizens were invited to participate online, upload selfies and download digital certificates during the campaign window around Independence Day 2023. Always follow the <strong>Flag Code of India</strong>.</p>",
+  "publishedAt": "2023-08-01T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2023-08-01",
+    "startDate": "As per portal",
+    "lastDate": "Campaign period 2023",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "applyOnline": "https://harghartiranga.com",
+    "officialWebsite": "https://www.india.gov.in",
+    "importantLink": "https://harghartiranga.com"
+  },
+  "tags": [
+    "Har Ghar Tiranga",
+    "Independence Day",
+    "Campaign",
+    "2023"
+  ],
+  "views": 1500
+}

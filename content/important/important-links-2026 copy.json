@@ -1,0 +1,37 @@
+{
+  "id": "important-links-2026",
+  "slug": "important-links-2026",
+  "title": "Important Government Links 2026",
+  "organization": "Government of India",
+  "category": "important",
+  "postName": "Useful Portal Links",
+  "totalVacancies": 0,
+  "vacancyDetails": "Useful links for government services and notices",
+  "qualification": "N/A",
+  "ageLimit": "N/A",
+  "applicationFee": "N/A",
+  "selectionProcess": "N/A",
+  "documentsRequired": "N/A",
+  "howToApply": "1. Open the official link\n2. Follow the instructions on the portal",
+  "shortDescription": "A collection of important government links and notices for quick access.",
+  "content": "<p>Use these important links to reach official portals and keep track of public notices.</p>",
+  "publishedAt": "2026-07-18T00:00:00.000Z",
+  "isFeatured": false,
+  "isNew": false,
+  "importantDates": {
+    "notificationDate": "18 Jul 2026",
+    "startDate": "18 Jul 2026",
+    "lastDate": "18 Jul 2026",
+    "examDate": "",
+    "resultDate": "",
+    "admitCardDate": ""
+  },
+  "links": {
+    "importantLink": "https://www.india.gov.in",
+    "officialWebsite": "https://www.india.gov.in"
+  },
+  "tags": ["Important", "Links"],
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "views": 99
+}
