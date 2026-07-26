@@ -3,12 +3,10 @@ import useSeo from '../hooks/useSeo';
 
 export default function AboutPage() {
   useSeo({
-    title: 'About Sarkari Job Hub - India\\'s Leading Government Job Portal',
-    description:
-      'Learn about Sarkari Job Hub - the most trusted source for latest government jobs, exam updates, admit cards and results. Join lakhs of job seekers in India.',
+    title: 'About Sarkari Job Hub - India\'s Leading Government Job Portal',
+    description: 'Learn about Sarkari Job Hub - the most trusted source for latest government jobs, exam updates, admit cards and results. Join lakhs of job seekers in India.',
     url: 'https://sarkarijobhud.website/about',
-    keywords:
-      'about sarkari job hub, government job portal, job notification, sarkari jobs, government exam, job alerts',
+    keywords: 'about sarkari job hub, government job portal, job notification, sarkari jobs, government exam, job alerts',
   });
 
   return (

@@ -55,31 +55,35 @@ export default function Layout() {
         </div>
       </div>
 
-      <header className="site-header">
-        <div className="container brand-row">
-          <Link to="/" className="brand">
+      <header className="site-header sticky top-0 z-40">
+        <div className="container brand-row flex items-center justify-between gap-6">
+          <Link to="/" className="brand flex items-center gap-4 no-underline">
             <img
               src="/logo.png"
               alt="Sarkari Jobs Hub logo"
-              className="brand-logo-img"
+              className="brand-logo-img rounded-md shadow-sm"
               width={72}
               height={72}
               decoding="async"
             />
-            <div className="brand-text">
-              <h1>Sarkari Job Hub</h1>
-              <p>Sarkari Jobs | Government Exam Results | Admit Cards | Answer Keys | Notifications | 2026</p>
+            <div className="brand-text leading-tight">
+              <h1 className="m-0 font-poppins text-[1.05rem] md:text-[1.2rem] font-extrabold">Sarkari Job Hub</h1>
+              <p className="m-0 text-xs md:text-sm text-[--muted]">Sarkari Jobs | Government Exam Results | Admit Cards | Answer Keys | Notifications | 2026</p>
             </div>
           </Link>
-          <form className="header-search" onSubmit={onSearch}>
+
+          <form className="header-search flex items-center w-full max-w-xl md:max-w-2xl" onSubmit={onSearch}>
+            <label htmlFor="site-search" className="sr-only">Search</label>
             <input
+              id="site-search"
               type="search"
               placeholder="Search SSC, Railway, NEET, Bank jobs..."
               value={q}
               onChange={(e) => setQ(e.target.value)}
               aria-label="Search"
+              className="flex-1 px-4 py-2 rounded-full bg-white/95 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-300"
             />
-            <button type="submit">Search</button>
+            <button type="submit" className="ml-3 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-300 text-black font-semibold shadow-md hover:scale-[1.02] transition">Search</button>
           </form>
         </div>
       </header>
@@ -99,13 +103,15 @@ export default function Layout() {
           <div className="nav-actions-mobile">
             <ThemeToggle />
           </div>
-          <ul id="main-nav-list" className={menuOpen ? 'open' : ''}>
+          <ul id="main-nav-list" className={`flex flex-wrap items-center gap-2 ${menuOpen ? 'open' : ''}`}>
             {navItems.map((item) => (
               <li key={item.to}>
                 <NavLink
                   to={item.to}
                   end={item.end}
-                  className={({ isActive }) => (isActive ? 'active' : '')}
+                  className={({ isActive }) =>
+                    `inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-semibold transition ${isActive ? 'bg-gradient-to-r from-red-600 to-red-500 text-white shadow-md' : 'text-white/90 hover:bg-white/6'}`
+                  }
                   onClick={() => setMenuOpen(false)}
                 >
                   <span className="nav-icon" aria-hidden>
