@@ -1,0 +1,37 @@
+{
+  "id": "neet-ug-answer-key-2026",
+  "slug": "neet-ug-answer-key-2026",
+  "title": "NEET UG Answer Key 2026",
+  "organization": "National Testing Agency",
+  "category": "answer-key",
+  "postName": "National Eligibility cum Entrance Test",
+  "totalVacancies": 0,
+  "vacancyDetails": "Provisional answer key released",
+  "qualification": "12th Pass",
+  "ageLimit": "No age limit",
+  "applicationFee": "₹1000",
+  "selectionProcess": "Entrance Examination",
+  "documentsRequired": "Admit Card, Photo ID",
+  "howToApply": "1. Download the answer key\n2. Compare your marks\n3. Raise objections if required",
+  "shortDescription": "Download the provisional answer key for NEET UG 2026.",
+  "content": "<p>The provisional answer key for NEET UG has been released by NTA. Candidates can compare their responses and challenge discrepancies within the specified window.</p>",
+  "publishedAt": "2026-07-14T00:00:00.000Z",
+  "isFeatured": false,
+  "isNew": true,
+  "importantDates": {
+    "notificationDate": "14 Jul 2026",
+    "startDate": "14 Jul 2026",
+    "lastDate": "20 Jul 2026",
+    "examDate": "04 May 2026",
+    "resultDate": "14 Jun 2026",
+    "admitCardDate": "01 May 2026"
+  },
+  "links": {
+    "answerKey": "https://neet.nta.nic.in",
+    "officialWebsite": "https://neet.nta.nic.in"
+  },
+  "tags": ["NEET", "Answer Key"],
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "views": 268
+}

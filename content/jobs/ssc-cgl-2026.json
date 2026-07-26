@@ -1,0 +1,42 @@
+{
+  "id": "ssc-cgl-2026",
+  "slug": "ssc-cgl-2026",
+  "title": "SSC CGL 2026 Notification",
+  "organization": "Staff Selection Commission",
+  "category": "latest-job",
+  "postName": "Combined Graduate Level Examination",
+  "totalVacancies": 10000,
+  "vacancyDetails": "10,000 vacancies across ministries and departments",
+  "qualification": "Graduation",
+  "ageLimit": "18 to 30 years",
+  "applicationFee": "₹100",
+  "selectionProcess": "Tier-I, Tier-II, Skill Test",
+  "documentsRequired": "Aadhaar Card, Educational Certificates, Passport Size Photo",
+  "howToApply": "1. Register on the official portal\n2. Fill the application form\n3. Upload documents\n4. Pay the fee and submit",
+  "shortDescription": "Apply online for the SSC CGL 2026 recruitment notification and stay updated with the latest exam schedules.",
+  "content": "<p>SSC CGL 2026 recruitment is expected to begin soon. Candidates should keep ready their documents and monitor the official portal for updates.</p>",
+  "publishedAt": "2026-07-20T00:00:00.000Z",
+  "isFeatured": true,
+  "isNew": true,
+  "importantDates": {
+    "notificationDate": "19 Jul 2026",
+    "startDate": "20 Jul 2026",
+    "lastDate": "25 Aug 2026",
+    "examDate": "12 Dec 2026",
+    "resultDate": "30 Jan 2027",
+    "admitCardDate": "05 Dec 2026"
+  },
+  "links": {
+    "applyOnline": "https://ssc.nic.in",
+    "importantLink": "https://ssc.nic.in",
+    "officialNotification": "https://ssc.nic.in",
+    "officialWebsite": "https://ssc.nic.in",
+    "downloadAdmitCard": "https://ssc.nic.in",
+    "checkResult": "https://ssc.nic.in",
+    "answerKey": "https://ssc.nic.in"
+  },
+  "tags": ["SSC", "CGL", "Government Job"],
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "views": 512
+}

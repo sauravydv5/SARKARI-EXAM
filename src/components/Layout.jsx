@@ -3,6 +3,8 @@ import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { CATEGORIES } from '../api';
 import ThemeToggle from './ThemeToggle';
 
+const ADMIN_SECRET = import.meta.env.VITE_ADMIN_SECRET || '1111';
+
 const navItems = [
   { to: '/', label: 'Home', end: true },
   { to: '/latest-jobs', label: 'Latest Jobs' },
@@ -19,7 +21,6 @@ export default function Layout() {
   const [q, setQ] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const adminSecret = (import.meta.env.VITE_ADMIN_SECRET || '').trim();
   const today = new Date().toLocaleDateString('en-IN', {
     weekday: 'long',
     day: 'numeric',
@@ -30,11 +31,12 @@ export default function Layout() {
   function onSearch(e) {
     e.preventDefault();
     const term = q.trim();
-    if (adminSecret && term === adminSecret) {
+    if (term === ADMIN_SECRET) {
       navigate('/admin');
-    } else {
-      navigate(term ? `/search?q=${encodeURIComponent(term)}` : '/search');
+      setMenuOpen(false);
+      return;
     }
+    navigate(term ? `/search?q=${encodeURIComponent(term)}` : '/search');
     setMenuOpen(false);
   }
 

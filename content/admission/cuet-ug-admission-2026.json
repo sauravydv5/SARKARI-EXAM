@@ -1,0 +1,37 @@
+{
+  "id": "cuet-ug-admission-2026",
+  "slug": "cuet-ug-admission-2026",
+  "title": "CUET UG Admission 2026",
+  "organization": "National Testing Agency",
+  "category": "admission",
+  "postName": "Common University Entrance Test",
+  "totalVacancies": 0,
+  "vacancyDetails": "Admission process initiated for participating universities",
+  "qualification": "12th Pass",
+  "ageLimit": "No age limit",
+  "applicationFee": "₹1000",
+  "selectionProcess": "Entrance Test and Merit List",
+  "documentsRequired": "Class 12 Marksheet, Photo ID",
+  "howToApply": "1. Register on the admission portal\n2. Fill in academic details\n3. Submit the application and pay fee",
+  "shortDescription": "Check the latest CUET UG admission schedule and application process for 2026.",
+  "content": "<p>Colleges and universities participating in CUET UG 2026 have started releasing their admission guidelines.</p>",
+  "publishedAt": "2026-07-16T00:00:00.000Z",
+  "isFeatured": true,
+  "isNew": false,
+  "importantDates": {
+    "notificationDate": "16 Jul 2026",
+    "startDate": "16 Jul 2026",
+    "lastDate": "30 Aug 2026",
+    "examDate": "15 May 2026",
+    "resultDate": "15 Jun 2026",
+    "admitCardDate": "01 May 2026"
+  },
+  "links": {
+    "officialNotification": "https://cuet.nta.nic.in",
+    "officialWebsite": "https://cuet.nta.nic.in"
+  },
+  "tags": ["CUET", "Admission"],
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "views": 241
+}

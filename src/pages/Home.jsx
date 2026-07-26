@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api, CATEGORIES } from '../api';
 import CategoryPanel from '../components/CategoryPanel';
+import useSeo from '../hooks/useSeo';
 
 const ICONS = {
   'latest-job': '💼',
@@ -53,6 +54,12 @@ export default function Home() {
       cancelled = true;
     };
   }, []);
+
+  useSeo({
+    title: 'Home',
+    description: 'Sarkari Job Hub home page for latest government jobs, results, admit cards, answer keys, syllabus, and admission alerts.',
+    url: 'https://sarkarijobhud.website/',
+  });
 
   if (loading) return <div className="loading">Loading latest updates…</div>;
   if (error) {

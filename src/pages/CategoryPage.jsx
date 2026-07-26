@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api, categoryMeta } from '../api';
 import PostListItem from '../components/PostListItem';
+import useSeo from '../hooks/useSeo';
 
 export default function CategoryPage({ category, title, description }) {
   const meta = categoryMeta(category);
@@ -38,6 +39,12 @@ export default function CategoryPage({ category, title, description }) {
       cancelled = true;
     };
   }, [category, page, query]);
+
+  useSeo({
+    title: pageTitle,
+    description: `Browse ${pageTitle} updates and notices for government jobs, results, admit cards, answer keys, syllabus and admissions.`,
+    url: `https://sarkarijobhud.website${meta.path}`,
+  });
 
   function onSearch(e) {
     e.preventDefault();

@@ -1,17 +1,26 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { api } from '../api';
 import PostListItem from '../components/PostListItem';
+import useSeo from '../hooks/useSeo';
+
+const ADMIN_SECRET = import.meta.env.VITE_ADMIN_SECRET || '1111';
 
 export default function SearchPage() {
   const [params, setParams] = useSearchParams();
+  const navigate = useNavigate();
   const initial = params.get('q') || '';
-  const adminSecret = (import.meta.env.VITE_ADMIN_SECRET || '').trim();
   const [input, setInput] = useState(initial);
   const [query, setQuery] = useState(initial);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  useSeo({
+    title: query ? `Search results for ${query}` : 'Search',
+    description: 'Search government jobs, results, admit cards, answer keys, syllabus, and admission notices.',
+    url: `https://sarkarijobhud.website/search${query ? `?q=${encodeURIComponent(query)}` : ''}`,
+  });
 
   useEffect(() => {
     setInput(initial);
@@ -46,10 +55,8 @@ export default function SearchPage() {
   function onSubmit(e) {
     e.preventDefault();
     const q = input.trim();
-    if (adminSecret && q === adminSecret) {
-      setQuery('');
-      setParams({});
-      window.location.assign('/admin');
+    if (q === ADMIN_SECRET) {
+      navigate('/admin');
       return;
     }
     setQuery(q);

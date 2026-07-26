@@ -1,0 +1,37 @@
+{
+  "id": "upsc-cds-result-2026",
+  "slug": "upsc-cds-result-2026",
+  "title": "UPSC CDS Result 2026",
+  "organization": "Union Public Service Commission",
+  "category": "result",
+  "postName": "Combined Defence Services",
+  "totalVacancies": 0,
+  "vacancyDetails": "Result released for selected candidates",
+  "qualification": "Graduation",
+  "ageLimit": "19 to 25 years",
+  "applicationFee": "₹200",
+  "selectionProcess": "Written Exam and Interview",
+  "documentsRequired": "Educational Certificates, Identity Proof",
+  "howToApply": "1. Check the result on the UPSC portal\n2. Download the PDF\n3. Follow the next stage instructions",
+  "shortDescription": "UPSC CDS 2026 result has been published for the written exam stage.",
+  "content": "<p>The final result is available on the official UPSC portal for candidates who appeared in the examination.</p>",
+  "publishedAt": "2026-06-25T00:00:00.000Z",
+  "isFeatured": false,
+  "isNew": false,
+  "importantDates": {
+    "notificationDate": "10 May 2026",
+    "startDate": "12 May 2026",
+    "lastDate": "20 Jun 2026",
+    "examDate": "15 Aug 2026",
+    "resultDate": "25 Jun 2026",
+    "admitCardDate": "01 Aug 2026"
+  },
+  "links": {
+    "checkResult": "https://upsc.gov.in",
+    "officialWebsite": "https://upsc.gov.in"
+  },
+  "tags": ["UPSC", "Result"],
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "views": 323
+}

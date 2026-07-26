@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { api, categoryMeta, formatDate } from '../api';
 import { sanitizeHtml } from '../utils/sanitize';
+import useSeo from '../hooks/useSeo';
 
 const CATEGORY_ICONS = {
   'latest-job': '💼',
@@ -102,6 +103,13 @@ export default function PostDetail() {
       </div>
     );
   }
+
+  useSeo({
+    title: post.title,
+    description: post.shortDescription || `${post.title} update for ${cat.label}.`,
+    url: `https://sarkarijobhud.website/post/${post.slug}`,
+    image: post.image || '/logo.png',
+  });
 
   const cat = categoryMeta(post.category);
   const dates = post.importantDates || {};
