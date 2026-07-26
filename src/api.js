@@ -71,13 +71,56 @@ const POSTS = Object.entries(contentModules)
   .filter(Boolean)
   .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
 
+const STORAGE_DELETED_POSTS = 'sr_deleted_posts';
+const STORAGE_INACTIVE_POSTS = 'sr_inactive_posts';
+
+function readStorageList(key) {
+  if (typeof window === 'undefined') return [];
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeStorageList(key, list) {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(key, JSON.stringify(Array.from(new Set(list.filter(Boolean)))));
+  } catch {
+    // ignore storage errors
+  }
+}
+
+function getStatusLists() {
+  return {
+    deleted: readStorageList(STORAGE_DELETED_POSTS),
+    inactive: readStorageList(STORAGE_INACTIVE_POSTS),
+  };
+}
+
+function isDeletedPost(post) {
+  const slug = post.slug || post.id;
+  return getStatusLists().deleted.includes(slug);
+}
+
+function isInactivePost(post) {
+  const slug = post.slug || post.id;
+  return getStatusLists().inactive.includes(slug);
+}
+
 function getAllPosts() {
   return POSTS.slice();
 }
 
+function getVisiblePosts() {
+  return getAllPosts().filter((post) => !isDeletedPost(post) && !isInactivePost(post));
+}
+
 function getPostsByCategory(category) {
   const key = category || 'latest-job';
-  return getAllPosts().filter((post) => post.category === key);
+  return getVisiblePosts().filter((post) => post.category === key);
 }
 
 function getPostsWithSearch(items, search) {
@@ -179,12 +222,12 @@ export const api = {
     const page = params.page || 1;
     const limit = params.limit || 20;
     const search = params.search || '';
-    const items = getPostsWithSearch(category ? getPostsByCategory(category) : getAllPosts(), search);
+    const items = getPostsWithSearch(category ? getPostsByCategory(category) : getVisiblePosts(), search);
     const paged = buildPagination(items, page, limit);
     return { data: paged.items, pagination: { page: paged.page, pages: paged.pages, total: paged.total } };
   },
   getPost: (slug) => {
-    const post = getAllPosts().find((item) => item.slug === slug || item.id === slug);
+    const post = getVisiblePosts().find((item) => item.slug === slug || item.id === slug);
     if (!post) {
       return { data: null, related: [] };
     }
@@ -195,8 +238,28 @@ export const api = {
   },
   login: () => Promise.resolve({ token: 'static-token', user: { email: 'admin@sarkariresult.local' } }),
   me: () => Promise.resolve({ user: { email: 'admin@sarkariresult.local' } }),
-  adminList: () => ({ data: getAllPosts() }),
+  adminList: () => {
+    const status = getStatusLists();
+    const posts = getAllPosts().map((post) => ({
+      ...post,
+      isDeleted: status.deleted.includes(post.slug || post.id),
+      isInactive: status.inactive.includes(post.slug || post.id),
+    }));
+    return { data: posts };
+  },
   createPost: (body) => Promise.resolve({ data: { ...body, _id: String(Date.now()) } }),
   updatePost: (id, body) => Promise.resolve({ data: { _id: id, ...body } }),
-  deletePost: (id) => Promise.resolve({ data: { _id: id } }),
+  deletePost: (slug) => {
+    const deleted = readStorageList(STORAGE_DELETED_POSTS);
+    writeStorageList(STORAGE_DELETED_POSTS, [...deleted, slug]);
+    return Promise.resolve({ data: { slug } });
+  },
+  setInactive: (slug, inactive = true) => {
+    const inactiveList = readStorageList(STORAGE_INACTIVE_POSTS);
+    const updated = inactive
+      ? [...inactiveList, slug]
+      : inactiveList.filter((item) => item !== slug);
+    writeStorageList(STORAGE_INACTIVE_POSTS, updated);
+    return Promise.resolve({ data: { slug, inactive } });
+  },
 };

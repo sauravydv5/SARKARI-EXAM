@@ -1,0 +1,40 @@
+{
+  "id": "railway-ntpc-admit-card-2026",
+  "slug": "railway-ntpc-admit-card-2026",
+  "title": "Railway NTPC Admit Card 2026",
+  "organization": "Railway Recruitment Board",
+  "category": "admit-card",
+  "postName": "Non-Technical Popular Categories",
+  "totalVacancies": 0,
+  "vacancyDetails": "Admit card issued for CBT exam",
+  "qualification": "12th Pass / Graduation",
+  "ageLimit": "18 to 33 years",
+  "applicationFee": "₹0 / ₹250",
+  "selectionProcess": "CBT, Skill Test, Document Verification",
+  "documentsRequired": "Admit Card, Photo ID, Passport Photos",
+  "howToApply": "1. Download the admit card from the RRB portal\n2. Verify details\n3. Carry valid ID on exam day",
+  "shortDescription": "Download the admit card for the Railway NTPC recruitment examination.",
+  "content": "<p>RRB has released the admit card for the NTPC examination. Candidates should download it and verify the exam center details carefully.</p>",
+  "publishedAt": "2026-07-10T00:00:00.000Z",
+  "isFeatured": false,
+  "isNew": true,
+  "importantDates": {
+    "notificationDate": "01 Jul 2026",
+    "startDate": "02 Jul 2026",
+    "lastDate": "31 Jul 2026",
+    "examDate": "20 Aug 2026",
+    "resultDate": "15 Sep 2026",
+    "admitCardDate": "10 Jul 2026"
+  },
+  "links": {
+    "downloadAdmitCard": "https://www.rrbcdg.gov.in/",
+    "officialWebsite": "https://www.rrbcdg.gov.in/"
+  },
+  "tags": [
+    "Railway",
+    "Admit Card"
+  ],
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "views": 410
+}

@@ -1,0 +1,44 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "ibps-so-xvi-2026",
+  "slug": "ibps-so-xvi-2026",
+  "title": "IBPS SO XVI Online Form 2026 (1035 Posts) – Last Date Today",
+  "organization": "Institute of Banking Personnel Selection",
+  "postName": "Specialist Officers – CRP SPL-XVI",
+  "totalVacancies": 1035,
+  "vacancyDetails": "Revised 1035 Specialist Officer posts (IT, AFO, Law, Rajbhasha, HR, Marketing) – updated 20 July 2026",
+  "qualification": "Post-wise professional degree – IT/Agri/Law/HR/Marketing/Rajbhasha as per IBPS SO notification",
+  "ageLimit": "20 to 30 years generally (post-wise as per SPL-XVI rules; relaxations apply)",
+  "applicationFee": "General/EWS/OBC ₹850; SC/ST/PwBD ₹175",
+  "selectionProcess": "Prelims → Mains → Interview → Provisional Allotment",
+  "documentsRequired": "Educational certificates, photo ID (Aadhaar), passport photos, signature, category certificate if applicable",
+  "howToApply": "1. Visit https://www.ibps.in\n2. Open CRP SPL-XVI Specialist Officers Apply Online\n3. Register and fill post preference\n4. Upload documents and pay fee\n5. Submit before 26 July 2026",
+  "shortDescription": "IBPS SO XVI Online Form 2026 for revised 1035 Specialist Officer posts. Last date 26 July 2026 (extended).",
+  "content": "<p><strong>IBPS CRP SPL-XVI</strong> Specialist Officer recruitment is open for <strong>1,035 posts</strong> (revised from 745 on 20 July 2026).</p><p>Approx. stream mix: IT Officer, Agricultural Field Officer, Law Officer, Rajbhasha Adhikari, HR/Personnel, Marketing Officer.</p><p>Apply online: <strong>1–26 July 2026</strong> at ibps.in.</p>",
+  "publishedAt": "2026-07-26T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "30 Jun 2026",
+    "startDate": "01 Jul 2026",
+    "lastDate": "26 Jul 2026",
+    "examDate": "Prelims: Aug 2026 | Mains: Nov 2026",
+    "resultDate": "As per IBPS",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "applyOnline": "https://ibpsreg.ibps.in/crpspxvimy26/",
+    "officialWebsite": "https://www.ibps.in",
+    "officialNotification": "https://www.ibps.in/index.php/specialist-officers-xvi/"
+  },
+  "tags": [
+    "IBPS",
+    "SO",
+    "Specialist Officer",
+    "Banking",
+    "1035 Posts"
+  ],
+  "views": 3210
+}

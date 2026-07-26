@@ -1,0 +1,41 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "rrb-section-controller-2026",
+  "slug": "rrb-section-controller-2026",
+  "title": "Railway RRB Section Controller Online Form 2026",
+  "organization": "Railway Recruitment Board",
+  "postName": "Section Controller",
+  "totalVacancies": 0,
+  "vacancyDetails": "Section Controller posts in Indian Railways as per latest RRB CEN for traffic / control cadre",
+  "qualification": "Graduation / as specified in RRB Section Controller notification",
+  "ageLimit": "As per RRB CEN for Section Controller",
+  "applicationFee": "As per RRB application fee rules",
+  "selectionProcess": "CBT → Psycho / further stages if any → Document Verification → Medical",
+  "documentsRequired": "Educational certificates, photo ID, passport photos, signature, category certificate if applicable",
+  "howToApply": "1. Visit https://www.rrbapply.gov.in\n2. Open Section Controller CEN apply online\n3. Register and fill preferences for RRBs\n4. Upload documents and pay fee\n5. Submit before last date",
+  "shortDescription": "Railway RRB Section Controller Online Form 2026 – apply on rrbapply.gov.in for control cadre posts.",
+  "content": "<p><strong>Railway Recruitment Boards</strong> recruit <strong>Section Controllers</strong> for train control operations on Indian Railways.</p><p>Eligible graduates should apply through <strong>rrbapply.gov.in</strong> when the CEN is active, complete CBT and medical standards as notified.</p>",
+  "publishedAt": "2026-07-20T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "As per CEN",
+    "lastDate": "As per CEN",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before CBT"
+  },
+  "links": {
+    "applyOnline": "https://www.rrbapply.gov.in",
+    "officialWebsite": "https://www.rrbcdg.gov.in"
+  },
+  "tags": [
+    "RRB",
+    "Section Controller",
+    "Railway"
+  ],
+  "views": 2230
+}

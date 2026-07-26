@@ -1,0 +1,43 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "up-anganwadi-bharti-2026",
+  "slug": "up-anganwadi-bharti-2026",
+  "title": "UP Anganwadi Bharti Online Form 2026 (Updated)",
+  "organization": "Women and Child Development Department, Uttar Pradesh",
+  "postName": "Anganwadi Worker / Helper / Mini Anganwadi posts (district-wise)",
+  "totalVacancies": 0,
+  "vacancyDetails": "District-wise Anganwadi Worker, Sahayika/Helper and related posts under UP ICDS / WCD (updated notifications)",
+  "qualification": "As per post – generally Intermediate / High School with local residence criteria as per district notification",
+  "ageLimit": "As per UP Anganwadi / WCD district recruitment rules",
+  "applicationFee": "As per district online portal (often nil or nominal)",
+  "selectionProcess": "Merit based on educational marks / local criteria → Document Verification → Appointment",
+  "documentsRequired": "Educational certificates, photo ID, passport photos, signature, category certificate if applicable",
+  "howToApply": "1. Visit official UP WCD / district Anganwadi recruitment portal or UP Online related link\n2. Select district and post (Worker/Helper)\n3. Register and fill form with local documents\n4. Upload certificates and submit\n5. Track merit list on district portal",
+  "shortDescription": "UP Anganwadi Bharti Online Form 2026 updated – district-wise Worker/Helper vacancies. Apply on official WCD/district portals.",
+  "content": "<p><strong>Uttar Pradesh Women &amp; Child Development</strong> / district authorities release updated <strong>Anganwadi Bharti</strong> notifications for Workers and Helpers.</p><p>Applications are typically district-wise on official portals. Candidates must meet residence and educational criteria of the concerned Anganwadi centre area.</p><p>Keep checking district WCD notices for latest start/last dates and merit lists.</p>",
+  "publishedAt": "2026-07-25T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026 (district-wise)",
+    "startDate": "As per district notice",
+    "lastDate": "As per district notice",
+    "examDate": "Merit based",
+    "resultDate": "Merit list on portal",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "applyOnline": "https://upanganwadibharti.in",
+    "officialWebsite": "https://mahilakalyan.up.gov.in"
+  },
+  "tags": [
+    "UP",
+    "Anganwadi",
+    "WCD",
+    "Worker",
+    "Helper"
+  ],
+  "views": 4120
+}

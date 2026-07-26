@@ -1,0 +1,42 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "rrb-junior-engineer-je-2026",
+  "slug": "rrb-junior-engineer-je-2026",
+  "title": "RRB Junior Engineer JE Online Form 2026",
+  "organization": "Railway Recruitment Board",
+  "postName": "Junior Engineer (JE) – various technical departments",
+  "totalVacancies": 0,
+  "vacancyDetails": "Junior Engineer posts in Civil, Electrical, Mechanical, S&T and other departments as per RRB JE CEN",
+  "qualification": "Diploma / Degree in Engineering in relevant branch as per post",
+  "ageLimit": "18 to 33 years typically (as per JE CEN; relaxations apply)",
+  "applicationFee": "As per RRB fee structure",
+  "selectionProcess": "CBT-1 → CBT-2 → Document Verification → Medical Examination",
+  "documentsRequired": "Educational certificates, photo ID, passport photos, signature, category certificate if applicable",
+  "howToApply": "1. Visit https://www.rrbapply.gov.in\n2. Open RRB JE CEN Apply Online\n3. Create account and select posts/zones\n4. Upload photo, sign, certificates and pay fee\n5. Submit application before last date",
+  "shortDescription": "RRB Junior Engineer JE Online Form 2026 – apply for technical JE posts across Railway zones at rrbapply.gov.in.",
+  "content": "<p><strong>Railway Recruitment Boards</strong> conduct the <strong>Junior Engineer (JE)</strong> examination for various technical departments of Indian Railways.</p><p>Diploma/Degree holders in relevant engineering branches can apply online at <strong>rrbapply.gov.in</strong>. Selection includes multi-stage CBT, document verification and medical exam.</p>",
+  "publishedAt": "2026-07-20T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "As per JE CEN",
+    "lastDate": "As per JE CEN",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before CBT"
+  },
+  "links": {
+    "applyOnline": "https://www.rrbapply.gov.in",
+    "officialWebsite": "https://www.rrbcdg.gov.in"
+  },
+  "tags": [
+    "RRB",
+    "JE",
+    "Junior Engineer",
+    "Railway"
+  ],
+  "views": 4120
+}

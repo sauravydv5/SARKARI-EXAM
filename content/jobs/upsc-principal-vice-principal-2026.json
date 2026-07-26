@@ -1,0 +1,42 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "upsc-principal-vice-principal-2026",
+  "slug": "upsc-principal-vice-principal-2026",
+  "title": "UPSC Principal, Vice Principal Online Form 2026",
+  "organization": "Union Public Service Commission",
+  "postName": "Principal / Vice Principal (various institutions under UPSC advt)",
+  "totalVacancies": 0,
+  "vacancyDetails": "Principal and Vice Principal posts as advertised by UPSC for central institutions / NVS / related cadres",
+  "qualification": "Post Graduate degree with B.Ed. and teaching/administrative experience as per UPSC post rules",
+  "ageLimit": "As per UPSC advertisement for Principal/Vice Principal posts",
+  "applicationFee": "₹25 for most candidates (exemptions for Female/SC/ST/PwBD as per UPSC)",
+  "selectionProcess": "Recruitment Test / Shortlisting → Interview → Final Selection",
+  "documentsRequired": "Educational certificates, photo ID, passport photos, signature, category certificate if applicable",
+  "howToApply": "1. Visit https://www.upsconline.nic.in\n2. Complete One Time Registration\n3. Open Principal / Vice Principal advertisement apply link\n4. Fill ORA form and pay fee\n5. Submit before closing date",
+  "shortDescription": "UPSC Principal, Vice Principal Online Form 2026 – apply through upsconline.nic.in for advertised posts.",
+  "content": "<p><strong>Union Public Service Commission</strong> has invited online applications for <strong>Principal / Vice Principal</strong> posts as per the latest ORA advertisement.</p><p>Candidates must meet educational and experience criteria strictly. Apply only via <strong>upsconline.nic.in</strong> and keep experience certificates ready for interview stage.</p>",
+  "publishedAt": "2026-07-22T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "As per UPSC ORA",
+    "lastDate": "As per UPSC ORA",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam/interview"
+  },
+  "links": {
+    "applyOnline": "https://upsconline.nic.in",
+    "officialWebsite": "https://www.upsc.gov.in"
+  },
+  "tags": [
+    "UPSC",
+    "Principal",
+    "Vice Principal",
+    "Teaching"
+  ],
+  "views": 1450
+}

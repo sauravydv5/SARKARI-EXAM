@@ -1,0 +1,42 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "upessc-principal-2026",
+  "slug": "upessc-principal-2026",
+  "title": "UPESSC Principal Online Form 2026",
+  "organization": "Uttar Pradesh Education Service Selection Commission",
+  "postName": "Principal (Secondary / Higher Secondary institutions as notified)",
+  "totalVacancies": 0,
+  "vacancyDetails": "Principal posts in UP government aided / secondary education institutions under UPESSC",
+  "qualification": "Post Graduate + B.Ed. with prescribed teaching and administrative experience as per UPESSC Principal rules",
+  "ageLimit": "As per UPESSC Principal advertisement",
+  "applicationFee": "As per UPESSC online fee",
+  "selectionProcess": "Written Exam / Interview as per commission scheme → Document Verification",
+  "documentsRequired": "Educational certificates, photo ID, passport photos, signature, category certificate if applicable",
+  "howToApply": "1. Visit official UPESSC website\n2. Open Principal recruitment apply online\n3. Register and fill educational & experience details\n4. Upload documents and pay fee\n5. Submit application printout",
+  "shortDescription": "UPESSC Principal Online Form 2026 – apply for Principal posts in Uttar Pradesh education institutions.",
+  "content": "<p><strong>Uttar Pradesh Education Service Selection Commission (UPESSC)</strong> conducts recruitment for <strong>Principal</strong> posts in the state education system.</p><p>Eligible candidates with PG, B.Ed. and required experience should apply on the official UPESSC portal and follow the selection schedule published in the advertisement.</p>",
+  "publishedAt": "2026-07-22T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "As per UPESSC advt",
+    "lastDate": "As per UPESSC advt",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "applyOnline": "https://upessc.up.gov.in",
+    "officialWebsite": "https://upessc.up.gov.in"
+  },
+  "tags": [
+    "UPESSC",
+    "Principal",
+    "Uttar Pradesh",
+    "Education"
+  ],
+  "views": 1670
+}

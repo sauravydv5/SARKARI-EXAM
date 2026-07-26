@@ -1,0 +1,41 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "upsrtc-bus-conductor-2026",
+  "slug": "upsrtc-bus-conductor-2026",
+  "title": "UPSRTC Bus Conductor Online Form 2026",
+  "organization": "Uttar Pradesh State Road Transport Corporation",
+  "postName": "Bus Conductor",
+  "totalVacancies": 0,
+  "vacancyDetails": "Bus Conductor posts in UPSRTC as per latest recruitment notification",
+  "qualification": "Intermediate / High School with conductor licence / related eligibility as per UPSRTC notice",
+  "ageLimit": "As per UPSRTC Bus Conductor advertisement",
+  "applicationFee": "As per UPSRTC online fee",
+  "selectionProcess": "Written Exam / Merit → Document Verification → Medical",
+  "documentsRequired": "Educational certificates, photo ID, passport photos, signature, category certificate if applicable",
+  "howToApply": "1. Visit official UPSRTC recruitment portal\n2. Open Bus Conductor online application\n3. Register and fill form\n4. Upload photo, sign and documents\n5. Pay fee and submit",
+  "shortDescription": "UPSRTC Bus Conductor Online Form 2026 – apply for conductor posts on official UPSRTC recruitment website.",
+  "content": "<p><strong>Uttar Pradesh State Road Transport Corporation (UPSRTC)</strong> has invited online applications for <strong>Bus Conductor</strong> recruitment.</p><p>Eligible candidates should apply through the official UPSRTC portal, keep educational and licence documents ready, and track exam/admit card updates on the same website.</p>",
+  "publishedAt": "2026-07-24T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "applyOnline": "https://upsrtc.up.gov.in",
+    "officialWebsite": "https://upsrtc.up.gov.in"
+  },
+  "tags": [
+    "UPSRTC",
+    "Bus Conductor",
+    "Uttar Pradesh"
+  ],
+  "views": 1980
+}

@@ -83,6 +83,21 @@ export default function PostDetail() {
     };
   }, [slug]);
 
+  const cat = categoryMeta(post?.category);
+  const dates = post?.importantDates || {};
+  const links = post?.links || {};
+  const icon = CATEGORY_ICONS[post?.category] || '📌';
+  const pageTitle = post?.title || 'Sarkari Job Hub';
+
+  useSeo({
+    title: pageTitle,
+    description:
+      post?.shortDescription ||
+      (post ? `${pageTitle} update for ${cat.label || 'Sarkari Job Hub'}.` : 'Latest government job updates, results, admit cards and answer keys.'),
+    url: `https://sarkarijobhud.website/post/${post?.slug || ''}`,
+    image: post?.image || '/logo.png',
+  });
+
   if (loading) {
     return (
       <div className="pd-loading-card">
@@ -103,18 +118,6 @@ export default function PostDetail() {
       </div>
     );
   }
-
-  useSeo({
-    title: post.title,
-    description: post.shortDescription || `${post.title} update for ${cat.label}.`,
-    url: `https://sarkarijobhud.website/post/${post.slug}`,
-    image: post.image || '/logo.png',
-  });
-
-  const cat = categoryMeta(post.category);
-  const dates = post.importantDates || {};
-  const links = post.links || {};
-  const icon = CATEGORY_ICONS[post.category] || '📌';
 
   const vacanciesText =
     post.totalVacancies > 0

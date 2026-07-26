@@ -1,0 +1,44 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "rrb-technician-cen-02-2026",
+  "slug": "rrb-technician-cen-02-2026",
+  "title": "Railway RRB Technician Online Form 2026 (6557 Posts)",
+  "organization": "Railway Recruitment Board",
+  "postName": "Technician Grade-I (Signal) & Technician Grade-III – CEN 02/2026",
+  "totalVacancies": 6557,
+  "vacancyDetails": "Technician Grade-I Signal ~323 + Technician Grade-III ~6234 = 6557 posts across zones",
+  "qualification": "Matriculation / ITI / Diploma / Degree as per trade and Grade (Signal vs Grade-III categories in CEN)",
+  "ageLimit": "18 to 33/36 years as per CEN 02/2026 (relaxations applicable)",
+  "applicationFee": "As per RRB fee (₹500/₹250 with refund rules for eligible categories)",
+  "selectionProcess": "Computer Based Test (CBT) → Document Verification → Medical Examination",
+  "documentsRequired": "Educational certificates, photo ID, passport photos, signature, category certificate if applicable",
+  "howToApply": "1. Visit https://www.rrbapply.gov.in\n2. Open CEN 02/2026 Technician Apply Online\n3. Create account and fill preferences\n4. Upload photo/sign/documents and pay fee\n5. Submit by 29 July 2026 (11:59 PM)",
+  "shortDescription": "RRB Technician CEN 02/2026 Online Form for 6557 posts. Apply 30 June – 29 July 2026 at rrbapply.gov.in.",
+  "content": "<p><strong>Railway Recruitment Boards</strong> have released <strong>CEN 02/2026</strong> for <strong>6,557 Technician</strong> posts (Grade-I Signal and Grade-III).</p><p>Online applications: <strong>30 June 2026 to 29 July 2026</strong>. Selection mainly through single-stage CBT followed by DV and medical.</p><p>Official apply portal: <strong>rrbapply.gov.in</strong>.</p>",
+  "publishedAt": "2026-07-24T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "29-30 Jun 2026",
+    "startDate": "30 Jun 2026",
+    "lastDate": "29 Jul 2026",
+    "examDate": "As per RRB schedule",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before CBT"
+  },
+  "links": {
+    "applyOnline": "https://www.rrbapply.gov.in",
+    "officialWebsite": "https://www.rrbcdg.gov.in",
+    "officialNotification": "https://www.rrbapply.gov.in"
+  },
+  "tags": [
+    "RRB",
+    "Technician",
+    "CEN 02/2026",
+    "Railway",
+    "6557 Posts"
+  ],
+  "views": 4870
+}

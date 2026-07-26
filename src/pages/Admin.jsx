@@ -100,6 +100,21 @@ export default function Admin() {
     });
   }
 
+  async function handleDelete(post) {
+    const slug = post.slug || post.id;
+    await api.deletePost(slug);
+    setMessage(`Deleted content: ${post.title}`);
+    await loadPosts();
+  }
+
+  async function handleToggleInactive(post) {
+    const slug = post.slug || post.id;
+    const nextState = !post.isInactive;
+    await api.setInactive(slug, nextState);
+    setMessage(`${post.title} is now ${nextState ? 'inactive' : 'active'}.`);
+    await loadPosts();
+  }
+
   const payload = useMemo(() => ({
     id: makeSlug(form.title || 'sample-post'),
     slug: makeSlug(form.title || 'sample-post'),
@@ -432,6 +447,7 @@ export default function Admin() {
               <tr>
                 <th>Title</th>
                 <th>Category</th>
+                <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -441,13 +457,40 @@ export default function Admin() {
                   <td>{p.title}</td>
                   <td><span className="tag">{p.category}</span></td>
                   <td>
-                    <button type="button" className="btn btn-sm btn-outline" onClick={() => startEdit(p)}>Edit</button>
+                    {p.isDeleted ? (
+                      <span className="tag tag-red">Deleted</span>
+                    ) : p.isInactive ? (
+                      <span className="tag tag-yellow">Inactive</span>
+                    ) : (
+                      <span className="tag tag-green">Active</span>
+                    )}
+                  </td>
+                  <td style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                    <button type="button" className="btn btn-sm btn-outline" onClick={() => startEdit(p)}>
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      className={`btn btn-sm ${p.isInactive ? 'btn-secondary' : 'btn-warning'}`}
+                      onClick={() => handleToggleInactive(p)}
+                      disabled={p.isDeleted}
+                    >
+                      {p.isInactive ? 'Activate' : 'Inactive'}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-danger"
+                      onClick={() => handleDelete(p)}
+                      disabled={p.isDeleted}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
               {visiblePosts.length === 0 && (
                 <tr>
-                  <td colSpan={3} style={{ textAlign: 'center', color: '#888' }}>No content files yet.</td>
+                  <td colSpan={4} style={{ textAlign: 'center', color: '#888' }}>No content files yet.</td>
                 </tr>
               )}
             </tbody>

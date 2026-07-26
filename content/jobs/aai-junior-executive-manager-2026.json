@@ -1,0 +1,42 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "aai-junior-executive-manager-2026",
+  "slug": "aai-junior-executive-manager-2026",
+  "title": "AAI Junior Executive & Manager Online Form 2026",
+  "organization": "Airports Authority of India",
+  "postName": "Junior Executive and Manager (various disciplines)",
+  "totalVacancies": 0,
+  "vacancyDetails": "Junior Executive and Manager posts in ATC, Electronics, Engineering, Airport Operations and other streams as per AAI advt",
+  "qualification": "Engineering degree / other professional qualifications post-wise as per AAI notification",
+  "ageLimit": "Post-wise upper age as per AAI JE/Manager advertisement",
+  "applicationFee": "As per AAI online application fee",
+  "selectionProcess": "Online Exam / Interview (post-wise) → Document Verification → Medical",
+  "documentsRequired": "Educational certificates, photo ID, passport photos, signature, category certificate if applicable",
+  "howToApply": "1. Visit https://www.aai.aero Careers\n2. Open Junior Executive / Manager recruitment\n3. Register and apply online\n4. Pay fee and upload documents\n5. Submit before last date",
+  "shortDescription": "AAI Junior Executive & Manager Online Form 2026 – apply for airport sector posts on aai.aero careers portal.",
+  "content": "<p><strong>Airports Authority of India (AAI)</strong> recruits <strong>Junior Executives and Managers</strong> in technical and non-technical disciplines.</p><p>Candidates should check the latest AAI advertisement for vacancy numbers, discipline-wise eligibility and exam pattern. Apply only through <strong>aai.aero</strong> careers section.</p>",
+  "publishedAt": "2026-07-24T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "As per AAI advt",
+    "lastDate": "As per AAI advt",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "applyOnline": "https://www.aai.aero",
+    "officialWebsite": "https://www.aai.aero"
+  },
+  "tags": [
+    "AAI",
+    "Junior Executive",
+    "Manager",
+    "Airport"
+  ],
+  "views": 2120
+}
