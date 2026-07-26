@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /latest-jobs
+Allow: /results
+Allow: /admit-cards
+Allow: /answer-keys
+Allow: /syllabus
+Allow: /admission
+Allow: /important
+Allow: /certificates
+Allow: /search
+Allow: /post/
+Disallow: /admin
+Disallow: /*.json$
+Disallow: /*?*sort=
+Crawl-delay: 2
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: bingbot
+Allow: /
+Crawl-delay: 1
+
+Sitemap: https://sarkarijobhud.website/sitemap.xml
+Sitemap: https://sarkarijobhud.website/sitemap-posts.xml

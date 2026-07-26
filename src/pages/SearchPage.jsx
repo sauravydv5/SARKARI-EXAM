@@ -17,9 +17,14 @@ export default function SearchPage() {
   const [error, setError] = useState('');
 
   useSeo({
-    title: query ? `Search results for ${query}` : 'Search',
-    description: 'Search government jobs, results, admit cards, answer keys, syllabus, and admission notices.',
+    title: query
+      ? `Search Results for "${query}" - Sarkari Jobs, Results, Admit Cards`
+      : 'Search Sarkari Jobs, Government Results & Exam Updates',
+    description: query
+      ? `Search results for "${query}" - Find latest government jobs, exam results, admit cards, answer keys and notifications on Sarkari Job Hub.`
+      : 'Search across all Sarkari government jobs, exam results, admit cards, answer keys, syllabus and admission notices. Find your job in seconds.',
     url: `https://sarkarijobhud.website/search${query ? `?q=${encodeURIComponent(query)}` : ''}`,
+    keywords: `search, ${query || 'sarkari jobs'}, govt jobs, government exam, sarkari result, admit card, answer key, syllabus, 2026, India`,
   });
 
   useEffect(() => {
@@ -66,8 +71,8 @@ export default function SearchPage() {
   return (
     <>
       <div className="page-header">
-        <h1>Search</h1>
-        <p>Find jobs, results, admit cards and more.</p>
+        <h1>Search Sarkari Jobs &amp; Results</h1>
+        <p>Find latest government jobs, sarkari results, admit cards and more in one place.</p>
       </div>
 
       <form className="toolbar" onSubmit={onSubmit}>

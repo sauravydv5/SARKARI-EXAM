@@ -47,7 +47,7 @@ export default function Layout() {
           <span className="top-bar-date">📅 {today}</span>
           <div className="top-bar-right">
             <span className="top-bar-tagline">
-              Free Job Alert — <Link to="/latest-jobs">Latest Jobs →</Link>
+              🔔 Free Govt Job Alerts — <Link to="/latest-jobs">SSC | Railway | Bank | UPSC →</Link>
             </span>
             <ThemeToggle />
           </div>
@@ -67,7 +67,7 @@ export default function Layout() {
             />
             <div className="brand-text">
               <h1>Sarkari Job Hub</h1>
-              <p>Jobs · Results · Admit Cards · Answer Keys · 2026</p>
+              <p>Sarkari Jobs | Government Exam Results | Admit Cards | Answer Keys | Notifications | 2026</p>
             </div>
           </Link>
           <form className="header-search" onSubmit={onSearch}>
@@ -120,9 +120,9 @@ export default function Layout() {
           <span className="marquee-label">LIVE</span>
           <div className="marquee-track">
             <span>
-              Welcome to Sarkari Job Hub — Latest Government Jobs, Results, Admit Cards, Answer
+              Welcome to Sarkari Job Hub — Latest Government Jobs, Sarkari Result, Admit Cards, Answer
               Keys, Syllabus &amp; Admission · SSC · UPSC · Railway · Banking · Police · State Jobs
-              · Board Results · Free Job Alert Portal for India
+              · Board Results · Free Sarkari Job Alert Portal for India
             </span>
           </div>
         </div>

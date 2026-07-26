@@ -56,9 +56,12 @@ export default function Home() {
   }, []);
 
   useSeo({
-    title: 'Home',
-    description: 'Sarkari Job Hub home page for latest government jobs, results, admit cards, answer keys, syllabus, and admission alerts.',
+    title: 'Latest Sarkari Jobs 2026 - Government Exam Results, Admit Cards & Notifications',
+    description:
+      'Sarkari Job Hub - India\'s #1 government job portal. Get latest SSC, Railway, Bank, UPSC, Police jobs, exam results, admit cards, answer keys, syllabus and free job alerts. Updated daily.',
     url: 'https://sarkarijobhud.website/',
+    keywords:
+      'sarkari job, sarkari naukri, govt jobs, government jobs, SSC jobs, Railway jobs, Bank jobs, UPSC jobs, admit card, answer key, syllabus, exam notification, job alert, 2026, India',
   });
 
   if (loading) return <div className="loading">Loading latest updates…</div>;
@@ -76,10 +79,10 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="hero-badge">👋 Welcome to Sarkari Job Hub</div>
-        <h2>Quickly find Sarkari Naukri, Results &amp; Admit Cards</h2>
+        <h2>Latest Sarkari Jobs, Results &amp; Admit Cards 2026</h2>
         <p>
-          Your friendly guide to government job alerts, exam updates, admit cards, and official
-          notices. Browse easily and stay on top of the latest information.
+          Your friendly guide to government job alerts, sarkari result updates, admit cards, answer
+          keys, and official notices. Browse easily and stay on top of the latest information.
         </p>
         <div className="hero-actions">
           <Link to="/latest-jobs" className="btn btn-primary">

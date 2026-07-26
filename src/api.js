@@ -211,7 +211,6 @@ export const api = {
       const posts = getPostsByCategory(c.key).slice(0, 6);
       sections[c.key] = posts;
     });
-    sections.certificate = getPostsByCategory('important').slice(0, 6);
     return { data: sections };
   },
   categoryStats: () => {

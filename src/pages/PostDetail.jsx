@@ -88,14 +88,52 @@ export default function PostDetail() {
   const links = post?.links || {};
   const icon = CATEGORY_ICONS[post?.category] || '📌';
   const pageTitle = post?.title || 'Sarkari Job Hub';
+  const keywordList = [
+    cat.label,
+    post?.organization,
+    post?.postName,
+    post?.department,
+    ...(post?.tags || []),
+  ].filter(Boolean);
+
+  const postKeywords = [
+    'sarkari job',
+    'government job',
+    'job alert',
+    cat.label?.toLowerCase(),
+    post?.postName?.toLowerCase(),
+    ...keywordList,
+  ]
+    .filter(Boolean)
+    .slice(0, 15)
+    .join(', ');
 
   useSeo({
     title: pageTitle,
     description:
       post?.shortDescription ||
-      (post ? `${pageTitle} update for ${cat.label || 'Sarkari Job Hub'}.` : 'Latest government job updates, results, admit cards and answer keys.'),
+      (post
+        ? `${pageTitle} - Apply Now. Full details on eligibility, fees, exam dates, result dates and official links. ${cat.label} notification.`
+        : 'Latest government job updates, results, admit cards and answer keys.'),
     url: `https://sarkarijobhud.website/post/${post?.slug || ''}`,
     image: post?.image || '/logo.png',
+    keywords: postKeywords,
+    schemaType: 'Article',
+    schemaData: {
+      headline: pageTitle,
+      image: post?.image || '/logo.png',
+      articleSection: cat.label || 'Government Jobs',
+      datePublished: post?.publishedAt || new Date().toISOString(),
+      dateModified: post?.updatedAt || post?.publishedAt || new Date().toISOString(),
+      author: {
+        '@type': 'Organization',
+        name: post?.organization || 'Government Organization',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Sarkari Job Hub',
+      },
+    },
   });
 
   if (loading) {

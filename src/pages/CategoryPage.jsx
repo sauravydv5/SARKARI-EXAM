@@ -40,10 +40,27 @@ export default function CategoryPage({ category, title, description }) {
     };
   }, [category, page, query]);
 
+  const categoryKeywords = [
+    pageTitle,
+    meta.label,
+    'sarkari job',
+    'government job',
+    'job notification',
+    'job alert',
+    'India',
+    ...(category === 'admit-card' ? ['admit card download', 'exam admit card', 'hall ticket'] : []),
+    ...(category === 'result' ? ['exam result', 'sarkari result', 'test result'] : []),
+    ...(category === 'latest-job' ? ['latest jobs', 'new jobs', 'job opening'] : []),
+  ]
+    .filter(Boolean)
+    .slice(0, 15)
+    .join(', ');
+
   useSeo({
-    title: pageTitle,
-    description: `Browse ${pageTitle} updates and notices for government jobs, results, admit cards, answer keys, syllabus and admissions.`,
+    title: `${pageTitle} - Latest Sarkari Job Notifications & Updates 2026`,
+    description: `Browse all latest ${pageTitle} updates, government exam notifications and sarkari job alerts for India. Daily updated notifications with eligibility, dates and official links.`,
     url: `https://sarkarijobhud.website${meta.path}`,
+    keywords: categoryKeywords,
   });
 
   function onSearch(e) {
@@ -56,7 +73,9 @@ export default function CategoryPage({ category, title, description }) {
     <>
       <div className="page-header">
         <h1>{pageTitle}</h1>
-        <p>{description || `Browse all ${pageTitle.toLowerCase()} updates.`}</p>
+        <p>
+          {description || `Browse all ${pageTitle.toLowerCase()} updates for latest Sarkari jobs, results and government notices.`}
+        </p>
       </div>
 
       <form className="toolbar" onSubmit={onSearch}>
