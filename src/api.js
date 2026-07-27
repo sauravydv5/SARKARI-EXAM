@@ -39,6 +39,7 @@ function normalizePost(raw, sourcePath) {
 
   return {
     ...raw,
+    sourcePath,
     _id: raw._id || raw.id || toSlug(raw.slug || raw.title || sourceName),
     id: raw.id || raw._id || toSlug(raw.slug || raw.title || sourceName),
     slug: raw.slug || raw.id || toSlug(raw.title || sourceName),
@@ -71,6 +72,29 @@ function normalizePost(raw, sourcePath) {
 const POSTS = Object.entries(contentModules)
   .map(([path, module]) => normalizePost(module, path))
   .filter(Boolean)
+  .reduce((acc, post) => {
+    const key = String(post.slug || post.id || '').trim().toLowerCase();
+    if (!key) {
+      acc.push(post);
+      return acc;
+    }
+
+    const existingIndex = acc.findIndex((item) => String(item.slug || item.id || '').trim().toLowerCase() === key);
+    if (existingIndex === -1) {
+      acc.push(post);
+      return acc;
+    }
+
+    const existing = acc[existingIndex];
+    const shouldReplace =
+      !existing.sourcePath?.includes(' copy') && post.sourcePath?.includes(' copy');
+
+    if (shouldReplace) {
+      acc[existingIndex] = post;
+    }
+
+    return acc;
+  }, [])
   .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
 
 const STORAGE_DELETED_POSTS = 'sr_deleted_posts';

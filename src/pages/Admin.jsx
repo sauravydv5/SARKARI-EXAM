@@ -1,5 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  CheckCircle2,
+  ChevronDown,
+  FilterX,
+  MoreHorizontal,
+  PencilLine,
+  PlusCircle,
+  Search,
+  Trash2,
+  X,
+} from 'lucide-react';
 import { api, CATEGORIES } from '../api';
 
 const emptyForm = {
@@ -72,7 +83,12 @@ async function copyToClipboard(value) {
 
 export default function Admin() {
   const [posts, setPosts] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('all');
+  const [statusFilter, setStatusFilter] = useState('all');
+  const [sortOrder, setSortOrder] = useState('newest');
+  const [loading, setLoading] = useState(true);
   const [form, setForm] = useState(emptyForm);
   const [editingId, setEditingId] = useState(null);
   const [message, setMessage] = useState('');
@@ -83,12 +99,23 @@ export default function Admin() {
     loadPosts();
   }, []);
 
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setSearchTerm(searchInput.trim().toLowerCase());
+    }, 180);
+
+    return () => window.clearTimeout(timer);
+  }, [searchInput]);
+
   async function loadPosts() {
     try {
+      setLoading(true);
       const res = await api.adminList({ limit: 100 });
       setPosts(res.data || []);
     } catch (err) {
       setMessage(err.message || 'Unable to load posts.');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -103,24 +130,24 @@ export default function Admin() {
   async function handleDelete(post) {
     const slug = post.slug || post.id;
     await api.deletePost(slug);
+    setPosts((prev) => prev.filter((item) => (item.slug || item.id) !== slug));
     setMessage(`Deleted content: ${post.title}`);
-    await loadPosts();
   }
 
   async function handleToggleInactive(post) {
     const slug = post.slug || post.id;
     const nextState = !post.isInactive;
     await api.setInactive(slug, nextState);
+    setPosts((prev) => prev.map((item) => ((item.slug || item.id) === slug ? { ...item, isInactive: nextState } : item)));
     setMessage(`${post.title} is now ${nextState ? 'inactive' : 'active'}.`);
-    await loadPosts();
   }
 
   async function handleToggleNew(post) {
     const slug = post.slug || post.id;
     const nextState = !post.isNew;
     await api.setNew(slug, nextState);
+    setPosts((prev) => prev.map((item) => ((item.slug || item.id) === slug ? { ...item, isNew: nextState } : item)));
     setMessage(`${post.title} is now ${nextState ? 'marked as new' : 'no longer marked as new'}.`);
-    await loadPosts();
   }
 
   const payload = useMemo(() => ({
@@ -205,40 +232,124 @@ export default function Admin() {
     setMessage('');
   }
 
-  const visiblePosts = posts.filter((post) => {
+  function normalizeCategory(value) {
+    const raw = String(value || '').toLowerCase().trim();
+    const aliases = {
+      'latest jobs': 'latest-job',
+      latestjob: 'latest-job',
+      latest: 'latest-job',
+      jobs: 'latest-job',
+      'admit card': 'admit-card',
+      admitcard: 'admit-card',
+      admitcards: 'admit-card',
+      'answer key': 'answer-key',
+      answerkey: 'answer-key',
+      scholarship: 'certificate',
+      certificates: 'certificate',
+      certificate: 'certificate',
+      news: 'important',
+    };
+    return aliases[raw] || raw.replace(/\s+/g, '-');
+  }
+
+  function getCategoryLabel(category) {
+    return CATEGORIES.find((item) => normalizeCategory(item.key) === normalizeCategory(category))?.label || category || 'Unknown';
+  }
+
+  const visiblePosts = useMemo(() => {
     const term = searchTerm.trim().toLowerCase();
-    if (!term) return true;
 
-    const haystack = [post.title, post.category, post.organization, post.postName, post.shortDescription, post.content]
-      .filter(Boolean)
-      .join(' ')
-      .toLowerCase();
+    const filtered = posts.filter((post) => {
+      const searchable = [post.title, post.category, post.organization, post.postName, post.shortDescription, post.content, getCategoryLabel(post.category)]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase();
 
-    return haystack.includes(term);
-  });
+      const matchesSearch = !term || searchable.includes(term);
+      const matchesCategory = categoryFilter === 'all' || normalizeCategory(post.category) === normalizeCategory(categoryFilter);
+      const effectiveInactive = Boolean(post.isDeleted || post.isInactive);
+      const matchesStatus = statusFilter === 'all' || (statusFilter === 'active' ? !effectiveInactive : effectiveInactive);
+
+      return matchesSearch && matchesCategory && matchesStatus;
+    });
+
+    const sorted = [...filtered].sort((a, b) => {
+      switch (sortOrder) {
+        case 'oldest':
+          return new Date(a.publishedAt || 0) - new Date(b.publishedAt || 0);
+        case 'az':
+          return String(a.title || '').localeCompare(String(b.title || ''));
+        case 'za':
+          return String(b.title || '').localeCompare(String(a.title || ''));
+        case 'newest':
+        default:
+          return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+      }
+    });
+
+    return sorted;
+  }, [posts, searchTerm, categoryFilter, statusFilter, sortOrder]);
+
+  function resetFilters() {
+    setSearchInput('');
+    setSearchTerm('');
+    setCategoryFilter('all');
+    setStatusFilter('all');
+    setSortOrder('newest');
+  }
+
+  function statusBadge(post) {
+    if (post.isDeleted) {
+      return <span className="admin-badge admin-badge-red">Deleted</span>;
+    }
+    if (post.isInactive) {
+      return <span className="admin-badge admin-badge-red">Inactive</span>;
+    }
+    return <span className="admin-badge admin-badge-green">Active</span>;
+  }
+
+  function categoryBadge(category) {
+    const palette = {
+      'latest-job': 'admin-badge-blue',
+      admission: 'admin-badge-purple',
+      result: 'admin-badge-green',
+      'admit-card': 'admin-badge-orange',
+      'answer-key': 'admin-badge-cyan',
+      important: 'admin-badge-red',
+      certificate: 'admin-badge-pink',
+      syllabus: 'admin-badge-amber',
+    };
+
+    return <span className={`admin-badge ${palette[category] || 'admin-badge-slate'}`}>{CATEGORIES.find((item) => item.key === category)?.label || category}</span>;
+  }
 
   return (
     <div className="admin-layout">
-      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+      <div className="page-header admin-hero">
         <div>
-          <h1>Admin JSON Generator</h1>
-          <p>Fill the form, generate JSON, preview it, and download the file for your content folder.</p>
+          <div className="admin-eyebrow">Content Management</div>
+          <h1>Admin Dashboard</h1>
+          <p>Create, review, and manage content entries with a cleaner workspace for publishing updates.</p>
         </div>
-        <button type="button" className="btn btn-outline" onClick={() => navigate('/')}>
+        <button type="button" className="admin-action-btn admin-action-btn-secondary" onClick={() => navigate('/')}>
+          <PlusCircle size={16} />
           Back Home
         </button>
       </div>
 
-      <section className="panel" style={{ marginBottom: 20 }}>
-        <div className="panel-head">
-          <h2>{editingId ? 'Edit Existing JSON' : 'Create New JSON'}</h2>
+      <section className="admin-card" style={{ marginBottom: 20 }}>
+        <div className="admin-card-head">
+          <div>
+            <h2>{editingId ? 'Edit Existing JSON' : 'Create New JSON'}</h2>
+            <p>Generate and preview JSON without changing any backend logic.</p>
+          </div>
           {editingId && (
-            <button type="button" className="btn btn-sm btn-gold" onClick={resetForm}>
+            <button type="button" className="admin-action-btn admin-action-btn-muted" onClick={resetForm}>
               Cancel edit
             </button>
           )}
         </div>
-        <div className="panel-body" style={{ padding: 16 }}>
+        <div className="admin-card-body">
           <form onSubmit={(e) => { e.preventDefault(); handleGenerate(); }}>
             <div className="form-row">
               <div className="form-group">
@@ -419,12 +530,12 @@ export default function Admin() {
               Mark as New
             </label>
 
-            {message && <div className={message.includes('download') || message.includes('copied') ? 'disclaimer' : 'error-box'} style={{ marginBottom: 12 }}>{message}</div>}
+            {message && <div className={message.includes('download') || message.includes('copied') ? 'admin-toast admin-toast-info' : 'admin-toast admin-toast-success'}>{message}</div>}
 
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              <button type="submit" className="btn btn-primary">Generate JSON</button>
-              <button type="button" className="btn btn-outline" onClick={handleDownload}>Download JSON</button>
-              <button type="button" className="btn btn-outline" onClick={handleCopy}>Copy JSON</button>
+            <div className="admin-inline-actions">
+              <button type="submit" className="admin-action-btn admin-action-btn-primary">Generate JSON</button>
+              <button type="button" className="admin-action-btn admin-action-btn-secondary" onClick={handleDownload}>Download JSON</button>
+              <button type="button" className="admin-action-btn admin-action-btn-muted" onClick={handleCopy}>Copy JSON</button>
             </div>
           </form>
         </div>
@@ -441,97 +552,206 @@ export default function Admin() {
         </section>
       )}
 
-      <section>
-        <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-          <h1 style={{ fontSize: '1.25rem' }}>Existing Content Files ({visiblePosts.length})</h1>
-          <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', gap: 8, minWidth: 260 }}>
-            <input type="search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search content..." style={{ flex: 1, minWidth: 180 }} />
-            <button type="button" className="btn btn-outline" onClick={() => setSearchTerm('')}>Clear</button>
-          </form>
+      <section className="admin-card">
+        <div className="admin-card-head admin-card-head-stack">
+          <div>
+            <h2>Content Library</h2>
+            <p>Showing {visiblePosts.length} of {posts.length} records</p>
+          </div>
+          <button type="button" className="admin-action-btn admin-action-btn-muted" onClick={resetFilters}>
+            <FilterX size={16} />
+            Reset filters
+          </button>
         </div>
-        <div className="table-wrap">
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
+
+        <div className="admin-toolbar">
+          <div className="admin-toolbar-group">
+            <label className="admin-field-label">Category</label>
+            <div className="admin-select-wrap">
+              <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)}>
+                <option value="all">All</option>
+                {CATEGORIES.map((c) => (
+                  <option key={c.key} value={c.key}>{c.label}</option>
+                ))}
+              </select>
+              <ChevronDown size={16} />
+            </div>
+          </div>
+
+          <div className="admin-toolbar-group">
+            <label className="admin-field-label">Status</label>
+            <div className="admin-select-wrap">
+              <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+                <option value="all">All</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+              <ChevronDown size={16} />
+            </div>
+          </div>
+
+          <div className="admin-toolbar-group admin-toolbar-search">
+            <label className="admin-field-label">Search</label>
+            <div className="admin-search-wrap">
+              <Search size={16} />
+              <input type="search" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder="Search by title" />
+              {searchInput ? (
+                <button type="button" className="admin-icon-button" onClick={() => setSearchInput('')} aria-label="Clear search">
+                  <X size={14} />
+                </button>
+              ) : null}
+            </div>
+          </div>
+
+          <div className="admin-toolbar-group">
+            <label className="admin-field-label">Sort</label>
+            <div className="admin-select-wrap">
+              <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+                <option value="az">A-Z</option>
+                <option value="za">Z-A</option>
+              </select>
+              <ChevronDown size={16} />
+            </div>
+          </div>
+        </div>
+
+        <div className="admin-summary-row">
+          <div className="admin-summary-pill">
+            <span>Total</span>
+            <strong>{posts.length}</strong>
+          </div>
+          <div className="admin-summary-pill">
+            <span>Active</span>
+            <strong>{posts.filter((post) => !Boolean(post.isDeleted || post.isInactive)).length}</strong>
+          </div>
+          <div className="admin-summary-pill">
+            <span>Inactive</span>
+            <strong>{posts.filter((post) => Boolean(post.isDeleted || post.isInactive)).length}</strong>
+          </div>
+          <div className="admin-summary-pill">
+            <span>Visible</span>
+            <strong>{visiblePosts.length}</strong>
+          </div>
+        </div>
+
+        {loading ? (
+          <div className="admin-skeleton-wrap" aria-hidden="true">
+            <div className="admin-skeleton-row" />
+            <div className="admin-skeleton-row" />
+            <div className="admin-skeleton-row" />
+          </div>
+        ) : (
+          <>
+            <div className="table-wrap admin-table-wrap">
+              <table className="data-table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Published On</th>
+                    <th>Last Updated</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visiblePosts.map((p) => (
+                    <tr key={p._id || p.id}>
+                      <td>
+                        <div className="admin-title-cell">
+                          <strong>{p.title}</strong>
+                          <span>{p.organization || 'Government Organization'}</span>
+                        </div>
+                      </td>
+                      <td>{categoryBadge(p.category)}</td>
+                      <td>
+                        <div className="admin-status-cell">
+                          {statusBadge(p)}
+                          <select
+                            className="admin-status-select"
+                            value={p.isInactive ? 'inactive' : 'active'}
+                            onChange={() => handleToggleInactive(p)}
+                            disabled={p.isDeleted}
+                            aria-label={`Change status for ${p.title}`}
+                          >
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                          </select>
+                        </div>
+                      </td>
+                      <td>{p.publishedAt ? new Date(p.publishedAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</td>
+                      <td>{p.updatedAt ? new Date(p.updatedAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</td>
+                      <td>
+                        <div className="admin-actions">
+                          <button type="button" className="admin-icon-button" onClick={() => startEdit(p)} aria-label={`Edit ${p.title}`}>
+                            <PencilLine size={15} />
+                          </button>
+                          <button type="button" className="admin-icon-button" onClick={() => handleToggleNew(p)} aria-label={`Toggle new for ${p.title}`}>
+                            <CheckCircle2 size={15} />
+                          </button>
+                          <button type="button" className="admin-icon-button" onClick={() => handleDelete(p)} aria-label={`Delete ${p.title}`}>
+                            <Trash2 size={15} />
+                          </button>
+                          <button type="button" className="admin-icon-button" aria-label={`More actions for ${p.title}`}>
+                            <MoreHorizontal size={15} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                  {visiblePosts.length === 0 && (
+                    <tr>
+                      <td colSpan={6} className="admin-empty-state">
+                        <div>
+                          <h3>No content found</h3>
+                          <p>Try adjusting your filters or add a new entry.</p>
+                          <button type="button" className="admin-action-btn admin-action-btn-primary" onClick={resetFilters}>Reset filters</button>
+                        </div>
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+            <div className="admin-mobile-list">
               {visiblePosts.map((p) => (
-                <tr key={p._id || p.id}>
-                  <td>{p.title}</td>
-                  <td><span className="tag">{p.category}</span></td>
-                  <td>
-                    {p.isDeleted ? (
-                      <span className="tag tag-red">Deleted</span>
-                    ) : p.isInactive ? (
-                      <>
-                        <span className="tag tag-yellow">Inactive</span>
-                        <button
-                          type="button"
-                          className="btn btn-sm btn-secondary"
-                          style={{ marginLeft: 8 }}
-                          onClick={() => handleToggleInactive(p)}
-                        >
-                          Activate
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <span className="tag tag-green">Active</span>
-                        <button
-                          type="button"
-                          className="btn btn-sm btn-warning"
-                          style={{ marginLeft: 8 }}
-                          onClick={() => handleToggleInactive(p)}
-                        >
-                          Close
-                        </button>
-                      </>
-                    )}
-                  </td>
-                  <td style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                    <button type="button" className="btn btn-sm btn-outline" onClick={() => startEdit(p)}>
-                      Edit
+                <article key={`mobile-${p._id || p.id}`} className="admin-mobile-card">
+                  <div className="admin-mobile-card-head">
+                    <div>
+                      <strong>{p.title}</strong>
+                      <span>{p.organization || 'Government Organization'}</span>
+                    </div>
+                    {statusBadge(p)}
+                  </div>
+                  <div className="admin-mobile-card-meta">
+                    {categoryBadge(p.category)}
+                    <span>{p.publishedAt ? new Date(p.publishedAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</span>
+                  </div>
+                  <div className="admin-actions">
+                    <button type="button" className="admin-icon-button" onClick={() => startEdit(p)} aria-label={`Edit ${p.title}`}>
+                      <PencilLine size={15} />
                     </button>
-                    <button
-                      type="button"
-                      className={`btn btn-sm ${p.isInactive ? 'btn-secondary' : 'btn-warning'}`}
-                      onClick={() => handleToggleInactive(p)}
-                      disabled={p.isDeleted}
-                    >
-                      {p.isInactive ? 'Activate' : 'Inactive'}
+                    <button type="button" className="admin-icon-button" onClick={() => handleToggleInactive(p)} aria-label={`Toggle status for ${p.title}`}>
+                      <CheckCircle2 size={15} />
                     </button>
-                    <button
-                      type="button"
-                      className={`btn btn-sm ${p.isNew ? 'btn-warning' : 'btn-secondary'}`}
-                      onClick={() => handleToggleNew(p)}
-                      disabled={p.isDeleted}
-                    >
-                      {p.isNew ? 'New On' : 'New Off'}
+                    <button type="button" className="admin-icon-button" onClick={() => handleDelete(p)} aria-label={`Delete ${p.title}`}>
+                      <Trash2 size={15} />
                     </button>
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-danger"
-                      onClick={() => handleDelete(p)}
-                      disabled={p.isDeleted}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+                  </div>
+                </article>
               ))}
               {visiblePosts.length === 0 && (
-                <tr>
-                  <td colSpan={4} style={{ textAlign: 'center', color: '#888' }}>No content files yet.</td>
-                </tr>
+                <div className="admin-empty-state admin-empty-state-mobile">
+                  <h3>No content found</h3>
+                  <p>Try adjusting your filters or add a new entry.</p>
+                  <button type="button" className="admin-action-btn admin-action-btn-primary" onClick={resetFilters}>Reset filters</button>
+                </div>
               )}
-            </tbody>
-          </table>
-        </div>
+            </div>
+          </>
+        )}
       </section>
     </div>
   );
