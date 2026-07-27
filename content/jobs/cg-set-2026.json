@@ -1,0 +1,44 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "cg-set-2026",
+  "slug": "cg-set-2026",
+  "title": "Chhattisgarh State Eligibility Test SET Online Form 2026",
+  "organization": "Chhattisgarh Professional Examination Board / CGSSB",
+  "postName": "Chhattisgarh State Eligibility Test (CG SET) – Assistant Professor Eligibility",
+  "totalVacancies": 0,
+  "vacancyDetails": "State Eligibility Test for Assistant Professor eligibility in Chhattisgarh colleges and universities (not a vacancy recruitment)",
+  "qualification": "Master’s degree in concerned subject with minimum marks as per UGC / CG SET rules (Ph.D. / NET exemptions as applicable in notification)",
+  "ageLimit": "No upper age limit for SET eligibility (as per official rules)",
+  "applicationFee": "As per CG SET 2026 fee structure (category-wise)",
+  "selectionProcess": "Paper-I (General) + Paper-II (Subject) → Merit / Qualifying as per CG SET rules",
+  "documentsRequired": "Educational certificates, photo ID, passport photos, signature, category certificate if applicable",
+  "howToApply": "1. Visit https://vyapamcg.cgstate.gov.in or https://cgssb.cgstate.gov.in\n2. Complete profile registration on vyapamprofile.cgstate.gov.in\n3. Open CG SET 2026 online application\n4. Fill form, upload photo/signature, pay fee\n5. Submit and print confirmation",
+  "shortDescription": "Chhattisgarh SET Online Form 2026 – apply for CG SET Assistant Professor eligibility. Last date 17 August 2026. Exam on 4 October 2026.",
+  "content": "<p><strong>Chhattisgarh Professional Examination Board / CGSSB</strong> has released the <strong>CG SET 2026</strong> notification for the Chhattisgarh State Eligibility Test.</p><p>CG SET determines eligibility for the post of <strong>Assistant Professor</strong> in colleges and universities of Chhattisgarh. Online applications are open from <strong>23 July 2026</strong> to <strong>17 August 2026</strong>.</p><p>The exam is scheduled on <strong>4 October 2026</strong>. Apply only through the official Vyapam / CGSSB portals after completing profile registration.</p>",
+  "publishedAt": "2026-07-23T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "23 Jul 2026",
+    "lastDate": "17 Aug 2026 (5:00 PM)",
+    "examDate": "04 Oct 2026",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "applyOnline": "https://vyapamprofile.cgstate.gov.in/online/",
+    "officialWebsite": "https://vyapamcg.cgstate.gov.in/",
+    "importantLink": "https://cgssb.cgstate.gov.in/"
+  },
+  "tags": [
+    "CG SET",
+    "Chhattisgarh",
+    "Assistant Professor",
+    "SET",
+    "Teaching"
+  ],
+  "views": 2100
+}

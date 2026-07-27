@@ -152,7 +152,12 @@ function isInactivePost(post) {
 }
 
 function sortPosts(posts) {
-  return [...posts].sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
+  return [...posts].sort((a, b) => {
+    const aNew = Boolean(a.isNew);
+    const bNew = Boolean(b.isNew);
+    if (aNew !== bNew) return bNew ? 1 : -1;
+    return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+  });
 }
 
 function getAllPosts() {
@@ -170,7 +175,7 @@ function applySectionNewBadgeLimit(items) {
   return sorted.map((post) => {
     const isRecent =
       post.publishedAt && Date.now() - new Date(post.publishedAt).getTime() < 1000 * 60 * 60 * 24 * 14;
-    const shouldShowBadge = visibleCount < 5 && (Boolean(post.isNew) || (!post.hasExplicitNewOverride && isRecent));
+    const shouldShowBadge = visibleCount < 4 && (Boolean(post.isNew) || (!post.hasExplicitNewOverride && isRecent));
 
     if (shouldShowBadge) visibleCount += 1;
 

@@ -6,37 +6,39 @@
   "isNew": true,
   "id": "indian-navy-ssc-officer-june-2027",
   "slug": "indian-navy-ssc-officer-june-2027",
-  "title": "Indian Navy SSC Officer June 2027 Online Form – Date Extend",
+  "title": "Indian Navy SSC Officers Various Post June 2027 Batch Online Form 2026 Date Extended",
   "organization": "Indian Navy",
-  "postName": "Short Service Commission Officers – June 2027 Course",
-  "totalVacancies": 0,
-  "vacancyDetails": "SSC Officer entries for various branches for June 2027 course (Executive/Technical/Education etc. as notified)",
-  "qualification": "Branch-wise Engineering / Science / other degrees as per Indian Navy SSC June 2027 notification",
-  "ageLimit": "Branch-wise age limits as on 01 July 2027 (typical 19.5–25 years band with variations)",
+  "postName": "Short Service Commission Officers – June 2027 Course (Various Entries)",
+  "totalVacancies": 275,
+  "vacancyDetails": "SSC Officer entries for various branches for June 2027 (AT 27) course – Executive / Technical / Education and other notified entries (~257–275 as per notification)",
+  "qualification": "Branch-wise BE/B.Tech / MBA / M.Sc. / other degrees as per Indian Navy SSC June 2027 notification",
+  "ageLimit": "Branch-wise age limits as on 01 July 2027 (typical band ~19.5–25 years with variations)",
   "applicationFee": "As per joinindiannavy.gov.in (often nil for officer entries)",
-  "selectionProcess": "Shortlisting → SSB Interview → Medical → Merit",
+  "selectionProcess": "Shortlisting → SSB Interview → Medical Examination → Merit",
   "documentsRequired": "Educational certificates, photo ID, passport photos, signature, category certificate if applicable",
-  "howToApply": "1. Visit https://www.joinindiannavy.gov.in\n2. Open SSC Officer June 2027 apply link\n3. Register and fill branch preferences\n4. Upload documents and submit\n5. Note extended last date on official portal",
-  "shortDescription": "Indian Navy SSC Officer June 2027 Online Form – application last date extended. Apply at joinindiannavy.gov.in.",
-  "content": "<p><strong>Indian Navy</strong> has invited online applications for <strong>Short Service Commission Officers – June 2027</strong> course.</p><p>The application last date has been <strong>extended</strong> as per official notice. Selection is through shortlisting and SSB interviews followed by medical examination.</p><p>Apply only on <strong>joinindiannavy.gov.in</strong> and read branch-wise eligibility carefully.</p>",
+  "howToApply": "1. Visit https://www.joinindiannavy.gov.in\n2. Open SSC (various entries) June 2027 apply link\n3. Register and fill branch preferences\n4. Upload documents and submit\n5. Note extended last date on official portal before final submit",
+  "shortDescription": "Indian Navy SSC Officers June 2027 Batch Online Form – last date extended to 03 August 2026. Apply at joinindiannavy.gov.in.",
+  "content": "<p><strong>Indian Navy</strong> has invited online applications for <strong>Short Service Commission Officers – June 2027</strong> course (various entries).</p><p>Online applications opened from <strong>25 June 2026</strong>. The last date has been <strong>extended up to 03 August 2026</strong> as per official notice. Training will commence at the Indian Naval Academy (INA), Ezhimala, Kerala.</p><p>Selection is through shortlisting, SSB interview and medical examination. Apply only on <strong>joinindiannavy.gov.in</strong> and read branch-wise eligibility carefully.</p>",
   "publishedAt": "2026-07-25T00:00:00.000Z",
   "importantDates": {
-    "notificationDate": "2026",
-    "startDate": "As per notification",
-    "lastDate": "Extended – check portal",
+    "notificationDate": "Jun 2026",
+    "startDate": "25 Jun 2026",
+    "lastDate": "03 Aug 2026 (Extended)",
     "examDate": "SSB as scheduled",
     "resultDate": "To be announced",
     "admitCardDate": "SSB call letter"
   },
   "links": {
     "applyOnline": "https://www.joinindiannavy.gov.in",
-    "officialWebsite": "https://www.joinindiannavy.gov.in"
+    "officialWebsite": "https://www.joinindiannavy.gov.in",
+    "importantLink": "https://www.joinindiannavy.gov.in/en/page/notifications.html"
   },
   "tags": [
     "Indian Navy",
     "SSC Officer",
     "June 2027",
-    "Defence"
+    "Defence",
+    "Date Extended"
   ],
   "views": 2670
 }
