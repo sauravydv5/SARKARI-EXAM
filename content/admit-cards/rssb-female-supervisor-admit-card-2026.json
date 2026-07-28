@@ -13,8 +13,8 @@
   "selectionProcess": "Written Examination → Document Verification",
   "documentsRequired": "Application number, DOB, security PIN; printed admit card; photo ID",
   "howToApply": "1. Visit https://rssb.rajasthan.gov.in\n2. Open Admit Card section → Supervisor (Woman) 2026\n3. Login via SSO / application credentials\n4. Download hall ticket for 24 July exam\n5. Carry printout and original ID",
-  "shortDescription": "RSSB Female Supervisor (Mahila Supervisor) Admit Card 2026 released around 20 July for exam on 24 July 2026 (72 posts).",
-  "content": "<p><strong>Rajasthan Staff Selection Board (RSSB)</strong> has released the <strong>Female Supervisor / Mahila Supervisor Admit Card 2026</strong> for the written exam on <strong>24 July 2026</strong>.</p><p>Total vacancies: <strong>72</strong> under Women &amp; Child Development. Admit card issue notice was published mid-July; download from <strong>rssb.rajasthan.gov.in</strong>.</p>",
+  "shortDescription": "RSSB Female Supervisor Admit Card 2026 (exam 24 July). Form Correction window: 31 July – 06 August 2026 (72 posts).",
+  "content": "<p><strong>Rajasthan Staff Selection Board (RSSB)</strong> has released the <strong>Female Supervisor / Mahila Supervisor Admit Card 2026</strong> for the written exam on <strong>24 July 2026</strong>.</p><p>Total vacancies: <strong>72</strong> under Women &amp; Child Development. Admit card download from <strong>rssb.rajasthan.gov.in</strong> / SSO.</p><p><strong>Update:</strong> Application <strong>Correction Form</strong> window is from <strong>31 July 2026 to 06 August 2026</strong> (Correction charge ₹300). Full details: RSSB Female Supervisor 2026 post.</p>",
   "publishedAt": "2026-07-20T00:00:00.000Z",
   "isFeatured": false,
   "isNew": true,
@@ -24,11 +24,14 @@
     "lastDate": "11 Feb 2026",
     "examDate": "24 Jul 2026",
     "resultDate": "To be announced",
-    "admitCardDate": "20 Jul 2026"
+    "admitCardDate": "20 Jul 2026",
+    "correctionStartDate": "31 Jul 2026",
+    "correctionLastDate": "06 Aug 2026"
   },
   "links": {
-    "downloadAdmitCard": "https://rssb.rajasthan.gov.in/admitcards",
-    "officialWebsite": "https://rssb.rajasthan.gov.in"
+    "downloadAdmitCard": "https://sso.rajasthan.gov.in/",
+    "officialWebsite": "https://rssb.rajasthan.gov.in",
+    "importantLink": "https://rssb.rajasthan.gov.in/storage/news_item/1785222566.pdf"
   },
   "tags": [
     "RSSB",
