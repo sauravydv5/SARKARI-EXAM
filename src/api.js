@@ -299,7 +299,7 @@ export const api = {
   homeSections: () => {
     const sections = {};
     CATEGORIES.forEach((c) => {
-      const posts = getPostsByCategory(c.key).slice(0, 6);
+      const posts = getPostsByCategory(c.key).slice(0, 10);
       sections[c.key] = posts;
     });
     return { data: sections };

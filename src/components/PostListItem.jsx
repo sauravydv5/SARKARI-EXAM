@@ -7,16 +7,16 @@ export default function PostListItem({ post, showMeta = true }) {
   const showNewBadge = Boolean(post.showNewBadge ?? (post.isNew || (!post.hasExplicitNewOverride && isRecent)));
 
   return (
-    <li>
+    <li className="compact-list-item">
       <Link to={`/post/${post.slug}`}>
         <span className="bullet" aria-hidden="true" />
-        <span>
-          {post.title}
-          {showNewBadge && <span className="badge-new">NEW</span>}
+        <span className="compact-list-body">
+          <span className="compact-list-title-row">
+            <span className="compact-list-title">{post.title}</span>
+            {showNewBadge && <span className="badge-new">NEW</span>}
+          </span>
           {post.statusNote && (
-            <span className="status-note" style={{ display: 'block', color: '#2e7d32', fontSize: '0.85em', fontWeight: 600 }}>
-              ✅ {post.statusNote}
-            </span>
+            <span className="status-note">✅ {post.statusNote}</span>
           )}
           {showMeta && (
             <span className="meta">

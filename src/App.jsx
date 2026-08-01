@@ -6,6 +6,11 @@ const Home = lazy(() => import('./pages/Home'));
 const CategoryPage = lazy(() => import('./pages/CategoryPage'));
 const PostDetail = lazy(() => import('./pages/PostDetail'));
 const SearchPage = lazy(() => import('./pages/SearchPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const FAQPage = lazy(() => import('./pages/FAQPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogDetailPage = lazy(() => import('./pages/BlogDetailPage'));
+const PolicyPage = lazy(() => import('./pages/PolicyPage'));
 const Admin = lazy(() => import('./pages/Admin'));
 
 export default function App() {
@@ -96,6 +101,11 @@ export default function App() {
               }
             />
             <Route path="search" element={<SearchPage />} />
+            <Route path="faq" element={<FAQPage />} />
+            <Route path="about-us" element={<AboutPage />} />
+            <Route path="blog" element={<BlogPage />} />
+            <Route path="blog/:slug" element={<BlogDetailPage />} />
+            <Route path=":slug" element={<PolicyPage />} />
             <Route path="post/:slug" element={<PostDetail />} />
             <Route path="admin" element={<Admin />} />
             <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { api, categoryMeta } from '../api';
 import PostListItem from '../components/PostListItem';
 import useSeo from '../hooks/useSeo';
@@ -102,6 +103,17 @@ export default function CategoryPage({ category, title, description }) {
           </button>
         )}
       </form>
+
+      <section className="panel" style={{ marginBottom: 12 }}>
+        <div className="panel-body" style={{ padding: '10px 16px' }}>
+          <div className="compact-resource-strip" style={{ margin: 0 }}>
+            <Link to="/latest-jobs" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>Latest Jobs</Link>
+            <Link to="/results" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>Results</Link>
+            <Link to="/admit-cards" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>Admit Cards</Link>
+            <Link to="/blog" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>Blogs</Link>
+          </div>
+        </div>
+      </section>
 
       <section className="panel">
         <div className="panel-head">

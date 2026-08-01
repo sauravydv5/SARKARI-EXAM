@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { CATEGORIES } from '../api';
 import ThemeToggle from './ThemeToggle';
 
@@ -22,6 +22,7 @@ export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
   const today = new Date().toLocaleDateString('en-IN', {
     weekday: 'long',
     day: 'numeric',
@@ -41,6 +42,27 @@ export default function Layout() {
     setMenuOpen(false);
   }
 
+  useEffect(() => {
+    // Inject AdSense script only on non-admin pages to avoid loading ads in admin
+    try {
+      if (typeof window === 'undefined') return;
+      const path = location?.pathname || window.location.pathname || '/';
+      if (path.startsWith('/admin')) return; // do not inject on admin
+
+      const existing = document.querySelector('script[data-adsbygoogle-injected="1"]');
+      if (existing) return;
+
+      const s = document.createElement('script');
+      s.async = true;
+      s.setAttribute('data-adsbygoogle-injected', '1');
+      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5984910720229186';
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+    } catch (e) {
+      // ignore injection errors in dev
+    }
+  }, [location]);
+
   return (
     <div className="app-shell">
       <div className="top-bar">
@@ -48,7 +70,7 @@ export default function Layout() {
           <span className="top-bar-date">📅 {today}</span>
           <div className="top-bar-right">
             <span className="top-bar-tagline">
-              🔔 Free Govt Job Alerts — <Link to="/latest-jobs">SSC | Railway | Bank | UPSC →</Link>
+              🔔 Daily exam updates — <Link to="/latest-jobs">SSC | Railway | Bank | UPSC →</Link>
             </span>
             <ThemeToggle />
           </div>
@@ -130,9 +152,7 @@ export default function Layout() {
           <span className="marquee-label">LIVE</span>
           <div className="marquee-track">
             <span>
-              Welcome to Sarkari Job Hub — Latest Government Jobs, Sarkari Result, Admit Cards, Answer
-              Keys, Syllabus &amp; Admission · SSC · UPSC · Railway · Banking · Police · State Jobs
-              · Board Results · Free Sarkari Job Alert Portal for India
+              Welcome to Sarkari Job Hub — latest government jobs, exam guidance, admit cards, answer keys, syllabus and admissions for India · SSC · UPSC · Railway · Banking · Police · Teaching
             </span>
           </div>
         </div>
@@ -146,7 +166,7 @@ export default function Layout() {
 
       <footer className="site-footer" aria-label="Site Footer">
         <div className="footer-top">
-          <div className="container">Free Job Alert · Sarkari Job Hub · Result · Admit Card · Answer Key · Syllabus</div>
+          <div className="container">Sarkari Job Hub · Government Jobs · Results · Admit Cards · Answer Keys · Syllabus</div>
         </div>
 
         <div className="footer-main footer-seo">
@@ -199,8 +219,19 @@ export default function Layout() {
             <section className="col important-pages" aria-label="Important Pages">
               <h3>Important Pages</h3>
               <ul>
-                {['About Us','Contact Us','Privacy Policy','Disclaimer','Terms & Conditions','Editorial Policy','Fact Check Policy','DMCA','Sitemap','RSS Feed'].map((t)=> (
-                  <li key={t}><Link to="/">{t}</Link></li>
+                {[
+                  ['About Us', '/about-us'],
+                  ['Contact Us', '/contact'],
+                  ['Privacy Policy', '/privacy-policy'],
+                  ['Disclaimer', '/disclaimer'],
+                  ['Terms & Conditions', '/terms'],
+                  ['Editorial Policy', '/editorial-policy'],
+                  ['Fact Check Policy', '/fact-checking-policy'],
+                  ['DMCA', '/dmca'],
+                  ['Sitemap', '/sitemap'],
+                  ['RSS Feed', '/rss'],
+                ].map(([t, to]) => (
+                  <li key={t}><Link to={to}>{t}</Link></li>
                 ))}
               </ul>
             </section>
@@ -234,7 +265,7 @@ export default function Layout() {
 
             <section className="col newsletter" aria-label="Newsletter">
               <h3>Get Daily Government Job Alerts</h3>
-              <form onSubmit={(e)=>{e.preventDefault(); /* placeholder - no backend change */ setNewsletterEmail(''); alert('Subscribed: ' + (newsletterEmail||' (no email)')); }}>
+              <form onSubmit={(e)=>{e.preventDefault(); setNewsletterEmail(''); }}>
                 <input aria-label="Email" placeholder="Enter your email" value={newsletterEmail} onChange={(e)=>setNewsletterEmail(e.target.value)} />
                 <button type="submit" className="btn btn-primary">Subscribe</button>
                 <small className="privacy-text">We respect your privacy. No spam. Unsubscribe anytime.</small>
@@ -243,7 +274,7 @@ export default function Layout() {
 
             <section className="col download-app" aria-label="Download App">
               <h3>Download App</h3>
-              <p>Coming Soon</p>
+              <p>Mobile-friendly study tools are being expanded.</p>
               <div className="app-links">
                 <button className="btn btn-outline">Android</button>
                 <button className="btn btn-outline">iOS</button>
@@ -305,10 +336,11 @@ export default function Layout() {
           <div className="footer-bottom-row">
             <div>© {new Date().getFullYear()} Sarkari Job Hub · Made with ❤️ in India</div>
             <div className="bottom-links">
-              <Link to="/privacy">Privacy</Link>
+              <Link to="/privacy-policy">Privacy</Link>
               <Link to="/terms">Terms</Link>
               <Link to="/contact">Contact</Link>
               <Link to="/sitemap">Sitemap</Link>
+              <Link to="/rss">RSS</Link>
               <button className="btn btn-sm" onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}>Back To Top</button>
             </div>
           </div>

@@ -6,7 +6,7 @@ import { generateFAQSchema } from '../utils/schemaGenerator';
 const FAQS = [
   {
     question: 'What is Sarkari Job Hub?',
-    answer: 'Sarkari Job Hub is India\\'s leading government job portal providing latest job notifications, exam results, admit cards, answer keys and syllabus updates for government jobs across SSC, Railway, Banking, UPSC and other recruitment boards.',
+    answer: 'Sarkari Job Hub is India\'s leading government job portal providing latest job notifications, exam results, admit cards, answer keys and syllabus updates for government jobs across SSC, Railway, Banking, UPSC and other recruitment boards.',
   },
   {
     question: 'How do I get latest job alerts?',
@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     question: 'Can I download admit cards from this portal?',
-    answer: 'We provide download links to official admit cards from the respective recruitment boards. Click on the Admit Card section to find your exam\\'s admit card download link.',
+    answer: 'We provide download links to official admit cards from the respective recruitment boards. Click on the Admit Card section to find your exam\'s admit card download link.',
   },
   {
     question: 'Which government exams does Sarkari Job Hub cover?',

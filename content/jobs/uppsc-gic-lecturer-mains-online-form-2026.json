@@ -1,0 +1,38 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "uppsc-gic-lecturer-mains-online-form-2026",
+  "slug": "uppsc-gic-lecturer-mains-online-form-2026",
+  "title": "UPPSC GIC Lecturer Mains Online Form 2026",
+  "organization": "Uttar Pradesh Public Service Commission",
+  "postName": "Lecturer (Male/Female) Government Inter College – Mains Exam 2025 (Advt. A-6/E-1/2025)",
+  "totalVacancies": 1516,
+  "vacancyDetails": "About 1,516–1,518 GIC Lecturer posts; only prelims-qualified candidates can fill Mains online form",
+  "qualification": "Post Graduate in relevant subject with B.Ed. / as per UPPSC GIC Lecturer rules; must have qualified Prelims 2026",
+  "ageLimit": "21 to 40 years as on notification cut-off (relaxations as per UP Govt rules)",
+  "applicationFee": "As per UPPSC Mains application fee rules for the advertisement",
+  "selectionProcess": "Prelims (qualified) → Mains Online Form → Mains Written Exam → Interview / DV as applicable",
+  "documentsRequired": "OTR credentials, prelims details, educational certificates, B.Ed., category certificate, photo ID",
+  "howToApply": "1. Visit https://uppsc.up.nic.in\n2. Complete / login with OTR\n3. Open FILL ONLINE DETAILS for Advt A-6/E-1 Lecturer GIC (Mains)\n4. Fill conventional / mains form for qualified subject\n5. Submit within 29 July–12 August 2026 window and keep printout",
+  "shortDescription": "UPPSC GIC Lecturer Mains Online Form 2026 open 29 July–12 August 2026 for prelims-qualified candidates (~1516 posts). Mains exam 30 August 2026.",
+  "content": "<p><strong>Uttar Pradesh Public Service Commission (UPPSC)</strong> has started the <strong>GIC Lecturer Mains Online Form 2026</strong> for candidates who qualified the Prelims under Advt. <strong>A-6/E-1/2025</strong>.</p><p>Mains form window: <strong>29 July 2026 to 12 August 2026</strong> (approx.). Mains examination is scheduled around <strong>30 August 2026</strong>.</p><h3>Who can apply</h3><ul><li>Only candidates shortlisted in subject-wise Prelims results</li><li>Must use UPPSC OTR for authentication</li><li>Fill Lecturer (Male/Female) Government Inter College (Mains) form</li></ul><p>Total posts are about <strong>1,516</strong>. Always cross-check remaining subject schedules and fee on <strong>uppsc.up.nic.in</strong>.</p>",
+  "publishedAt": "2026-07-29T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "2025 (Advt A-6/E-1)",
+    "startDate": "29 Jul 2026",
+    "lastDate": "12 Aug 2026",
+    "examDate": "30 Aug 2026 (Mains)",
+    "resultDate": "Prelims Jul 2026",
+    "admitCardDate": "Before Mains"
+  },
+  "links": {
+    "applyOnline": "https://uppsc.up.nic.in",
+    "officialWebsite": "https://uppsc.up.nic.in",
+    "officialNotification": "https://uppsc.up.nic.in"
+  },
+  "tags": ["UPPSC", "GIC Lecturer", "Mains Form", "Lecturer", "Uttar Pradesh"],
+  "views": 3180
+}

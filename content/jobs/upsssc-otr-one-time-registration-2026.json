@@ -1,0 +1,38 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "upsssc-otr-one-time-registration-2026",
+  "slug": "upsssc-otr-one-time-registration-2026",
+  "title": "UPSSSC OTR One Time Registration, Edit Modify Form 2026",
+  "organization": "Uttar Pradesh Subordinate Services Selection Commission",
+  "postName": "One Time Registration (OTR) for UPSSSC Examinations",
+  "totalVacancies": 0,
+  "vacancyDetails": "Mandatory One Time Registration (OTR) for candidates applying to UPSSSC recruitments; edit/modify facility as per commission notice",
+  "qualification": "Any candidate intending to apply for UPSSSC examinations must complete OTR with correct personal, educational and contact details",
+  "ageLimit": "N/A (OTR registration; age applies per individual recruitment)",
+  "applicationFee": "No fee for OTR registration / modification",
+  "selectionProcess": "OTR → Apply to individual Advt using OTR credentials → Exam as per post",
+  "documentsRequired": "Valid mobile & email, photo, signature, educational details, Aadhaar / ID details as required on portal",
+  "howToApply": "1. Visit https://upsssc.gov.in\n2. Open OTR section: https://upsssc.gov.in/otr/\n3. Complete new One Time Registration or login to modify\n4. For correction use OTR Modify Login link when window is open\n5. Keep OTR number safe for all future UPSSSC applications",
+  "shortDescription": "UPSSSC OTR One Time Registration 2026 open. New registration from 14 July 2026; edit/modify window as per notice (e.g. till 31 July 2026). Free at upsssc.gov.in/otr.",
+  "content": "<p><strong>Uttar Pradesh Subordinate Services Selection Commission (UPSSSC)</strong> has activated the <strong>One Time Registration (OTR)</strong> facility for candidates.</p><p>OTR is mandatory before applying to most UPSSSC recruitments. New registration began around <strong>14 July 2026</strong>. The commission also provides an <strong>edit / modify</strong> window for already registered candidates (as per latest notice, e.g. correction till <strong>31 July 2026</strong>).</p><h3>Key points</h3><ul><li><strong>Fee:</strong> Nil for OTR</li><li><strong>Portal:</strong> upsssc.gov.in/otr/</li><li>Modify only through official OTR Modify Login when the window is open</li><li>Fill photo, signature and personal details carefully</li></ul><p>After OTR, use the same credentials to apply for individual advertisements (Excise Constable, Pharmacist, Auditor, etc.). Always verify modify dates from official notices.</p>",
+  "publishedAt": "2026-07-31T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "Jul 2026",
+    "startDate": "14 Jul 2026",
+    "lastDate": "Ongoing / as per modify notice",
+    "examDate": "N/A",
+    "resultDate": "N/A",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "applyOnline": "https://upsssc.gov.in/otr/",
+    "officialWebsite": "https://upsssc.gov.in",
+    "importantLink": "https://upsssc.gov.in/OTR/otr/OTRModifyLogin.aspx"
+  },
+  "tags": ["UPSSSC", "OTR", "One Time Registration", "Modify Form", "Uttar Pradesh"],
+  "views": 4120
+}

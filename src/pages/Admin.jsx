@@ -12,6 +12,7 @@ import {
   X,
 } from 'lucide-react';
 import { api, CATEGORIES } from '../api';
+import useSeo from '../hooks/useSeo';
 
 const emptyForm = {
   title: '',
@@ -94,6 +95,8 @@ export default function Admin() {
   const [message, setMessage] = useState('');
   const [preview, setPreview] = useState(null);
   const navigate = useNavigate();
+
+  useSeo({ title: 'Admin - Dashboard', description: 'Admin dashboard (noindex)', noIndex: true });
 
   useEffect(() => {
     loadPosts();

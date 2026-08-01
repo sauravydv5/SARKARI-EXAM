@@ -1,0 +1,38 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "jssc-jilcce-inter-level-online-form-2026",
+  "slug": "jssc-jilcce-inter-level-online-form-2026",
+  "title": "JSSC JILCCE Inter Level Online Form 2026",
+  "organization": "Jharkhand Staff Selection Commission",
+  "postName": "Jharkhand Inter Level Combined Competitive Examination (JILCCE-2026)",
+  "totalVacancies": 326,
+  "vacancyDetails": "326 Inter Level (10+2) posts under JILCCE-2026 across Jharkhand departments as per notification",
+  "qualification": "Intermediate (10+2) from a recognized board; post-wise additional conditions as per JSSC notice",
+  "ageLimit": "18 to 40 years (relaxations as per Jharkhand Govt / JSSC rules)",
+  "applicationFee": "General / OBC / Other State ₹100 | SC / ST ₹50",
+  "selectionProcess": "Online Application → Written Examination → Document Verification → Final Merit",
+  "documentsRequired": "Photo, signature, 10+2 marksheet, category certificate, domicile, ID proof",
+  "howToApply": "1. Visit https://jssc.jharkhand.gov.in\n2. Open Application Forms → JILCCE-2026\n3. Register and fill Inter Level form\n4. Pay fee and upload documents\n5. Submit within extended dates (apply till 04 Sep 2026 as per extension notice)",
+  "shortDescription": "JSSC JILCCE Inter Level Online Form 2026 for 326 posts (10+2 level). Application dates extended – apply till 04 September 2026 at jssc.jharkhand.gov.in.",
+  "content": "<p><strong>Jharkhand Staff Selection Commission (JSSC)</strong> has invited applications for the <strong>Jharkhand Inter Level Combined Competitive Examination (JILCCE-2026)</strong> for <strong>326 posts</strong>.</p><p>Originally applications were scheduled from mid/late July 2026; the commission has issued a <strong>date extension</strong>. As per latest reports, candidates can apply from around <strong>05 August 2026 to 04 September 2026</strong> (confirm exact window on official site).</p><h3>Eligibility</h3><ul><li>Qualification: <strong>10+2 (Intermediate)</strong></li><li>Age: generally 18–40 years with category relaxations</li><li>Fee: ₹100 (Gen/OBC) | ₹50 (SC/ST)</li></ul><p>Download extension notice and apply only via <strong>jssc.jharkhand.gov.in</strong>.</p>",
+  "publishedAt": "2026-07-31T00:00:00.000Z",
+  "importantDates": {
+    "notificationDate": "Jul 2026",
+    "startDate": "05 Aug 2026 (as extended)",
+    "lastDate": "04 Sep 2026 (extended)",
+    "examDate": "As per schedule",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "applyOnline": "https://jssc.jharkhand.gov.in/application-forms-apply",
+    "officialWebsite": "https://jssc.jharkhand.gov.in",
+    "officialNotification": "https://jssc.jharkhand.gov.in"
+  },
+  "tags": ["JSSC", "JILCCE", "Inter Level", "Jharkhand", "10+2", "326 Posts"],
+  "views": 2410
+}

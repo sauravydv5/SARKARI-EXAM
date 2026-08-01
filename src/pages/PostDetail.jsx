@@ -3,6 +3,12 @@ import { Link, useParams } from 'react-router-dom';
 import { api, categoryMeta, formatDate } from '../api';
 import { sanitizeHtml } from '../utils/sanitize';
 import useSeo from '../hooks/useSeo';
+import { buildPostGuide } from '../utils/contentUtils';
+import {
+  generateJobPostingSchema,
+  generateArticleSchema,
+  generateFAQSchema,
+} from '../utils/schemaGenerator';
 
 const CATEGORY_ICONS = {
   'latest-job': '💼',
@@ -15,7 +21,7 @@ const CATEGORY_ICONS = {
   certificate: '📜',
 };
 
-const SOON = 'Update Soon';
+const SOON = 'Check official notification';
 
 function val(v, fallback = SOON) {
   if (v === 0) return '0';
@@ -136,6 +142,42 @@ export default function PostDetail() {
     },
   });
 
+  // Inject detailed JSON-LD for JobPosting / Article and FAQ to strengthen trust signals
+  function setJsonLd(data, id = 'seo-jsonld') {
+    const existing = document.getElementById(id);
+    if (existing) existing.remove();
+    const script = document.createElement('script');
+    script.id = id;
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(data);
+    document.head.appendChild(script);
+  }
+
+  useEffect(() => {
+    if (!post) return;
+    // JobPosting schema for vacancy-style notifications
+    const jobSchema = generateJobPostingSchema(post);
+    if (jobSchema) setJsonLd(jobSchema, 'jobposting-jsonld');
+
+    // Article schema with publisher logo and author details
+    const articleSchema = generateArticleSchema({
+      headline: pageTitle,
+      description: post?.shortDescription || post?.title,
+      image: post?.image || '/logo.png',
+      datePublished: post?.publishedAt,
+      dateModified: post?.updatedAt || post?.publishedAt,
+      url: `https://sarkarijobhud.website/post/${post?.slug}`,
+      author: { name: post?.organization || 'Sarkari Job Hub Editorial Team' },
+    });
+    if (articleSchema) setJsonLd(articleSchema, 'article-jsonld');
+
+    // FAQ schema for generated FAQ items
+    if (faqItems && faqItems.length > 0) {
+      const faqSchema = generateFAQSchema(faqItems);
+      if (faqSchema) setJsonLd(faqSchema, 'faq-jsonld');
+    }
+  }, [post]);
+
   if (loading) {
     return (
       <div className="pd-loading-card">
@@ -188,6 +230,18 @@ export default function PostDetail() {
     .map((s) => s.trim())
     .filter(Boolean);
 
+  const guide = buildPostGuide(post, cat.label);
+  const guideIntro = guide.overview;
+
+  const preparationTips = [
+    'Start with the official notification and compare the eligibility criteria carefully.',
+    'Build a weekly study schedule that covers current affairs, revision, and mock tests.',
+    'Keep your documents ready in advance to avoid last-minute application issues.',
+    'Track the official website for any changes in dates, fees, or instructions.',
+  ];
+
+  const faqItems = guide.faqItems;
+
   return (
     <div className="pd-page">
       <nav className="pd-breadcrumb" aria-label="Breadcrumb">
@@ -223,14 +277,10 @@ export default function PostDetail() {
               )}
             </p>
             <div className="pd-meta-chips">
-              <span className="pd-chip">📅 {formatDate(post.publishedAt)}</span>
-              <span className="pd-chip">📋 {val(post.postName, cat.label)}</span>
-              {post.tags?.length > 0 &&
-                post.tags.slice(0, 3).map((t) => (
-                  <span key={t} className="pd-chip">
-                    #{t}
-                  </span>
-                ))}
+              <span className="pd-chip">📅 Published {formatDate(post.publishedAt)}</span>
+              <span className="pd-chip">🕒 Updated {formatDate(post.updatedAt || post.publishedAt)}</span>
+              <span className="pd-chip">✍️ Author: Sarkari Job Hub Editorial Team</span>
+              <span className="pd-chip">📖 Read time: {Math.max(3, Math.ceil((post.content?.split(/\s+/).length || 600) / 180))} min</span>
             </div>
           </header>
 
@@ -278,6 +328,44 @@ export default function PostDetail() {
               </div>
             </div>
           </div>
+
+          <section className="pd-section">
+            <div className="pd-section-head">
+              <h2>🧭 Introduction</h2>
+            </div>
+            <div className="pd-content">
+              <p>{guideIntro}</p>
+              <ul className="guide-list">
+                <li>Vacancy summary and eligibility details are explained in simple language.</li>
+                <li>Important dates, fee, exam pattern, and selection process are listed for quick reference.</li>
+                <li>Official links and editorial notes help you verify each step without jumping between several portals.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="pd-section">
+            <div className="pd-section-head">
+              <h2>🧠 Key Takeaways</h2>
+            </div>
+            <div className="pd-content">
+              <ul className="guide-list">
+                {guide.keyPoints.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          {guide.sections.map((section) => (
+            <section className="pd-section" key={section.id}>
+              <div className="pd-section-head">
+                <h2>{section.title}</h2>
+              </div>
+              <div className="pd-content">
+                <p>{section.body}</p>
+              </div>
+            </section>
+          ))}
 
           {/* ===== FULL INFO TABLE ===== */}
           <section className="pd-section">
@@ -468,7 +556,18 @@ export default function PostDetail() {
               </ol>
             )}
           </section>
-
+          <section className="pd-section">
+            <div className="pd-section-head">
+              <h2>🧠 Preparation Tips</h2>
+            </div>
+            <div className="pd-content">
+              <ul className="guide-list">
+                {preparationTips.map((tip) => (
+                  <li key={tip}>{tip}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
           {/* About / description */}
           <section className="pd-section">
             <div className="pd-section-head">
@@ -483,6 +582,33 @@ export default function PostDetail() {
                   confirm on the official website before applying.
                 </p>
               )}
+            </div>
+          </section>
+
+          <section className="pd-section">
+            <div className="pd-section-head">
+              <h2>🔗 Related Guidance</h2>
+            </div>
+            <div className="pd-content">
+              <ul className="guide-list">
+                <li>Compare this notice with related exam updates to understand whether it fits your current preparation plan.</li>
+                <li>Review our blogs for preparation strategy, previous-year papers, and interview advice before you submit your application.</li>
+                <li>Use the internal links in this page to move from vacancies to results, admit cards, and syllabus updates quickly.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section className="pd-section">
+            <div className="pd-section-head">
+              <h2>❓ Frequently Asked Questions</h2>
+            </div>
+            <div className="pd-content">
+              {faqItems.map((item) => (
+                <div key={item.question} className="faq-block">
+                  <h3>{item.question}</h3>
+                  <p>{item.answer}</p>
+                </div>
+              ))}
             </div>
           </section>
 
@@ -639,6 +765,16 @@ export default function PostDetail() {
                 <strong>{val(post.applicationFee)}</strong>
               </li>
             </ul>
+          </div>
+
+          <div className="pd-side-card">
+            <div className="pd-side-title">Related Reading</div>
+            <div className="pd-side-links">
+              <Link to="/blog">📘 Exam preparation blogs</Link>
+              <Link to="/syllabus">📚 Syllabus and pattern guides</Link>
+              <Link to="/faq">❓ Frequently asked questions</Link>
+              <Link to="/about-us">🏛 About our editorial standards</Link>
+            </div>
           </div>
 
           <div className="pd-side-card">

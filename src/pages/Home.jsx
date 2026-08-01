@@ -1,30 +1,37 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { api, CATEGORIES } from '../api';
+import { api, CATEGORIES, formatDate } from '../api';
 import CategoryPanel from '../components/CategoryPanel';
 import useSeo from '../hooks/useSeo';
+import { blogArticles } from '../data/blogArticles';
 
-const ICONS = {
-  'latest-job': '💼',
-  result: '📊',
-  'admit-card': '🎫',
-  'answer-key': '🔑',
-  syllabus: '📘',
-  admission: '🎓',
-  important: '⭐',
-  certificate: '📜',
-};
+const QUICK_LINKS = [
+  { key: 'latest-job', title: 'Latest Jobs', description: 'Latest government job notifications.', path: '/latest-jobs', icon: '💼' },
+  { key: 'result', title: 'Latest Results', description: 'Latest exam and result posts.', path: '/results', icon: '📊' },
+  { key: 'admit-card', title: 'Admit Cards', description: 'Latest admit card notices.', path: '/admit-cards', icon: '🎫' },
+  { key: 'answer-key', title: 'Answer Keys', description: 'Latest answer key updates.', path: '/answer-keys', icon: '🔑' },
+  { key: 'admission', title: 'Admissions', description: 'Latest admission notices.', path: '/admission', icon: '🎓' },
+  { key: 'syllabus', title: 'Syllabus', description: 'Latest syllabus updates.', path: '/syllabus', icon: '📘' },
+  { key: 'certificate', title: 'Certificates', description: 'Latest certificate notices.', path: '/certificates', icon: '📜' },
+  { key: 'important', title: 'Important Updates', description: 'Latest important government notices.', path: '/important', icon: '⭐' },
+];
 
-const ICON_BG = {
-  'latest-job': '#fef2f2',
-  result: '#eff6ff',
-  'admit-card': '#ecfdf5',
-  'answer-key': '#faf5ff',
-  syllabus: '#fff7ed',
-  admission: '#ecfeff',
-  important: '#fdf2f8',
-  certificate: '#f8fafc',
-};
+const HOME_ROWS = [
+  [
+    { title: 'Latest Jobs', key: 'latest-job', path: '/latest-jobs' },
+    { title: 'Latest Results', key: 'result', path: '/results' },
+    { title: 'Admit Cards', key: 'admit-card', path: '/admit-cards' },
+  ],
+  [
+    { title: 'Answer Keys', key: 'answer-key', path: '/answer-keys' },
+    { title: 'Admissions', key: 'admission', path: '/admission' },
+    { title: 'Syllabus', key: 'syllabus', path: '/syllabus' },
+  ],
+  [
+    { title: 'Certificates', key: 'certificate', path: '/certificates' },
+    { title: 'Important Updates', key: 'important', path: '/important' },
+  ],
+];
 
 function CountUp({ value = 0, duration = 800 }) {
   const [display, setDisplay] = useState(0);
@@ -82,7 +89,7 @@ function StatsPanel({ stats = {} }) {
         <div className="stat-icon">🔔</div>
         <div className="stat-body">
           <div className="stat-num"><CountUp value={notifications} /></div>
-          <div className="stat-label">Active Notifications</div>
+          <div className="stat-label">Active Alerts</div>
         </div>
       </div>
     </div>
@@ -121,7 +128,7 @@ export default function Home() {
   useSeo({
     title: 'Latest Sarkari Jobs 2026 - Government Exam Results, Admit Cards & Notifications',
     description:
-      'Sarkari Job Hub - India\'s #1 government job portal. Get latest SSC, Railway, Bank, UPSC, Police jobs, exam results, admit cards, answer keys, syllabus and free job alerts. Updated daily.',
+      'Sarkari Job Hub - India\'s trusted authority for latest SSC, Railway, Bank, UPSC, Police jobs, exam results, admit cards, answer keys, syllabus and practical exam-guidance content.',
     url: 'https://sarkarijobhud.website/',
     keywords:
       'sarkari job, sarkari naukri, govt jobs, government jobs, SSC jobs, Railway jobs, Bank jobs, UPSC jobs, admit card, answer key, syllabus, exam notification, job alert, 2026, India',
@@ -140,83 +147,76 @@ export default function Home() {
 
   return (
     <>
-      <section className="hero">
-        <div className="hero-grid">
-          <div className="hero-main">
-            <div className="hero-badge">👋 Welcome to Sarkari Job Hub</div>
-            <h2>Latest Sarkari Jobs, Results &amp; Admit Cards 2026</h2>
-            <p>
-              Your friendly guide to government job alerts, sarkari result updates, admit cards,
-              answer keys, and official notices. Browse easily and stay on top of the latest
-              information.
-            </p>
-            <div className="hero-actions">
-              <Link to="/latest-jobs" className="btn btn-primary">
-                💼 Browse Latest Jobs
-              </Link>
-              <Link to="/results" className="btn btn-outline">
-                📊 Check Results
-              </Link>
-              <Link to="/admit-cards" className="btn btn-gold">
-                🎫 Admit Cards
-              </Link>
-              <Link to="/search" className="btn btn-outline">
-                🔎 Search
-              </Link>
-            </div>
-            <div className="hero-subtext">Need a quick start? Pick a category and get instant updates.</div>
+      <section className="home-compact-shell">
+        <div className="home-search-card">
+          <div className="home-search-heading">
+            <p className="eyebrow">Government jobs, exam updates and preparation guides</p>
+            <h2>Find the right opportunity faster.</h2>
           </div>
-
-          <aside className="hero-stats" aria-hidden>
-            <StatsPanel stats={stats} />
-          </aside>
+          <Link to="/search" className="btn btn-primary home-search-cta">Search jobs and updates</Link>
         </div>
       </section>
 
-      <div className="cat-grid">
-        {CATEGORIES.map((c) => (
-          <Link
-            key={c.key}
-            to={c.path}
-            className="cat-card"
-            style={{
-              '--accent': c.color,
-              '--icon-bg': ICON_BG[c.key] || '#fef2f2',
-            }}
-          >
-            <div className="icon-wrap">{ICONS[c.key] || '📌'}</div>
-            <div className="label">{c.label}</div>
-            <div className="count">{stats[c.key] ?? 0} updates</div>
-          </Link>
-        ))}
+      <section className="quick-links-grid" aria-label="Quick link grid">
+        {QUICK_LINKS.map((item) => {
+          const count = sections?.[item.key]?.length || 0;
+          return (
+            <Link key={item.key} to={item.path} className="quick-link-card">
+              <div>
+                <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+                  <div style={{ width: 44, height: 44, display: 'grid', placeItems: 'center', borderRadius: 10, background: 'var(--surface-2)' }}>{item.icon}</div>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+                <div style={{ marginTop: 12, fontSize: '0.82rem', color: 'var(--muted)' }}>
+                  {count > 0 ? `${count} updates` : 'No updates available'}
+                </div>
+              </div>
+            </Link>
+          );
+        })}
+      </section>
+
+      <div className="home-grid home-grid-3col">
+        <CategoryPanel title="Latest Jobs" viewAllTo="/latest-jobs" posts={sections?.['latest-job'] || []} />
+        <CategoryPanel title="Latest Results" viewAllTo="/results" posts={sections?.result || []} />
+        <CategoryPanel title="Admit Cards" viewAllTo="/admit-cards" posts={sections?.['admit-card'] || []} />
       </div>
 
-      <div className="home-grid">
-        <CategoryPanel
-          title="Latest Jobs"
-          viewAllTo="/latest-jobs"
-          posts={sections?.['latest-job'] || []}
-        />
-        <CategoryPanel title="Result" viewAllTo="/results" posts={sections?.result || []} />
-        <CategoryPanel
-          title="Admit Card"
-          viewAllTo="/admit-cards"
-          posts={sections?.['admit-card'] || []}
-        />
-        <CategoryPanel
-          title="Answer Key"
-          viewAllTo="/answer-keys"
-          posts={sections?.['answer-key'] || []}
-        />
+      <div className="home-grid home-grid-3col">
+        <CategoryPanel title="Answer Keys" viewAllTo="/answer-keys" posts={sections?.['answer-key'] || []} />
+        <CategoryPanel title="Admissions" viewAllTo="/admission" posts={sections?.admission || []} />
         <CategoryPanel title="Syllabus" viewAllTo="/syllabus" posts={sections?.syllabus || []} />
-        <CategoryPanel title="Admission" viewAllTo="/admission" posts={sections?.admission || []} />
-        <CategoryPanel title="Important" viewAllTo="/important" posts={sections?.important || []} />
-        <CategoryPanel
-          title="Certificate"
-          viewAllTo="/certificates"
-          posts={sections?.certificate || []}
-        />
       </div>
+
+      <div className="home-grid home-grid-2col">
+        <CategoryPanel title="Certificates" viewAllTo="/certificates" posts={sections?.certificate || []} />
+        <CategoryPanel title="Important Updates" viewAllTo="/important" posts={sections?.important || []} />
+      </div>
+
+      <section className="panel">
+        <div className="panel-head">
+          <h2>FAQ</h2>
+        </div>
+        <div className="panel-body">
+          <div className="faq-container">
+            <details>
+              <summary>What is Sarkari Job Hub?</summary>
+              <p>Sarkari Job Hub aggregates government job notifications, results, admit cards, answer keys, syllabus and admission updates in one place.</p>
+            </details>
+            <details>
+              <summary>How often does the homepage update?</summary>
+              <p>The homepage refreshes automatically with the latest content from all categories, including jobs, results, admit cards, answer keys, admissions, syllabus, certificates, and important updates.</p>
+            </details>
+            <details>
+              <summary>Can I see empty categories?</summary>
+              <p>Yes. Every category section is rendered even when there are no updates. Empty categories display “No updates available”.</p>
+            </details>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

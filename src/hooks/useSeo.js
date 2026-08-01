@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 
-const DEFAULT_TITLE = 'Sarkari Job Hub 2026 — Latest Sarkari Jobs, Results & Admit Cards';
+const DEFAULT_TITLE = 'Sarkari Job Hub 2026 — Government Jobs, Results, Admit Cards & Exam Guidance';
 const DEFAULT_DESCRIPTION =
-  'Find the latest Sarkari job alerts, government exam results, admit cards, answer keys, syllabus and admission updates for India.';
+  'Explore practical government job updates, exam guidance, eligibility explainers, admit-card notices, results, and preparation resources for Indian aspirants.';
 const DEFAULT_KEYWORDS =
-  'sarkari job, sarkari result, govt jobs, latest jobs, admit card, answer key, syllabus, admission, government job alert, job notification';
+  'sarkari job, government jobs, exam guidance, admit card, answer key, syllabus, admission, job notification, preparation strategy';
 const DEFAULT_URL = 'https://sarkarijobhud.website/';
 const DEFAULT_IMAGE = '/logo.png';
 
