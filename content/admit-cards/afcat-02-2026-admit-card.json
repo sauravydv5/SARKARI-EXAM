@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 3778,
+  "id": "afcat-02-2026-admit-card",
+  "slug": "afcat-02-2026-admit-card",
+  "category": "admit-card",
+  "title": "AFCAT 02/2026 Admit Card",
+  "organization": "Indian Air Force",
+  "postName": "Air Force Common Admission Test (AFCAT) 02/2026",
+  "totalVacancies": 0,
+  "vacancyDetails": "AFCAT 02/2026 for Flying Branch and Ground Duty (Technical/Non-Technical) courses",
+  "qualification": "Graduation / as per AFCAT 02/2026 notification for applied branch",
+  "ageLimit": "As per AFCAT branch-wise age criteria",
+  "applicationFee": "As per AFCAT online fee",
+  "selectionProcess": "AFCAT Online Exam → AFSB Interview → Medical",
+  "documentsRequired": "Email ID / password for AFCAT login; printed admit card and photo ID for exam",
+  "howToApply": "1. Visit https://afcat.cdac.in\n2. Login with registered email and password\n3. Download AFCAT 02/2026 admit card\n4. Print and verify centre, date and photo\n5. Carry admit card + photo ID to exam",
+  "shortDescription": "AFCAT 02/2026 Admit Card available. Download hall ticket from afcat.cdac.in.",
+  "content": "<p>The <strong>Indian Air Force</strong> has released the <strong>AFCAT 02/2026 Admit Card</strong> for candidates who registered for the Air Force Common Admission Test.</p><p>Download the e-admit card only from the official AFCAT portal and check exam city, date, shift and reporting time carefully.</p>",
+  "publishedAt": "2026-08-05T11:55:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per AFCAT 02/2026",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As per AFCAT schedule",
+    "resultDate": "To be announced",
+    "admitCardDate": "Out – 2026"
+  },
+  "links": {
+    "downloadAdmitCard": "https://afcat.cdac.in",
+    "officialWebsite": "https://afcat.cdac.in"
+  },
+  "tags": [
+    "AFCAT",
+    "IAF",
+    "Admit Card",
+    "02/2026",
+    "Air Force"
+  ]
+}

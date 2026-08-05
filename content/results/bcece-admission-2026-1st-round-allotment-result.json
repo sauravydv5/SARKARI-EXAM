@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 1922,
+  "id": "bcece-admission-2026-1st-round-allotment-result",
+  "slug": "bcece-admission-2026-1st-round-allotment-result",
+  "category": "result",
+  "title": "BCECE Admission 2026 1st Round Allotment Result",
+  "organization": "Bihar Combined Entrance Competitive Examination Board",
+  "postName": "BCECE Admission Counselling – 1st Round Allotment",
+  "totalVacancies": 0,
+  "vacancyDetails": "1st round seat allotment for BCECE admission 2026 courses",
+  "qualification": "As per BCECE eligibility for applied course",
+  "ageLimit": "As per BCECE brochure",
+  "applicationFee": "As per counselling fee",
+  "selectionProcess": "Rank → Choice Filling → Allotment → Reporting",
+  "documentsRequired": "Allotment letter, rank card, certificates, photo ID",
+  "howToApply": "1. Visit https://bceceboard.bihar.gov.in\n2. Login to counselling portal\n3. Download 1st round allotment result\n4. Report to allotted college as scheduled",
+  "shortDescription": "BCECE Admission 2026 1st Round Allotment Result out. Check seat at bceceboard.bihar.gov.in.",
+  "content": "<p><strong>BCECE Board</strong> has published the <strong>1st Round Allotment Result</strong> for BCECE Admission 2026.</p><p>Candidates must download the allotment letter and complete admission formalities at the allotted institute within the given timeline.</p>",
+  "publishedAt": "2026-08-05T10:50:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "Counselling as notified",
+    "lastDate": "As per 1st round",
+    "examDate": "As held",
+    "resultDate": "1st Round Allotment – Out",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "checkResult": "https://bceceboard.bihar.gov.in",
+    "officialWebsite": "https://bceceboard.bihar.gov.in"
+  },
+  "tags": [
+    "BCECE",
+    "Bihar",
+    "Allotment",
+    "Admission",
+    "1st Round"
+  ]
+}

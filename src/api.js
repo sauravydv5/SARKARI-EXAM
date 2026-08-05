@@ -304,6 +304,14 @@ export const api = {
     });
     return { data: sections };
   },
+  /** Latest featured posts for FeaturedCards (max `limit`, defaults to 8). */
+  getFeaturedPosts: (limit = 8) => {
+    const safeLimit = Math.max(0, Number(limit) || 8);
+    const visible = getVisiblePosts();
+    const featured = sortPosts(visible.filter((post) => post.isFeatured));
+    const source = featured.length > 0 ? featured : sortPosts(visible);
+    return { data: source.slice(0, safeLimit) };
+  },
   categoryStats: () => {
     const data = CATEGORIES.map((c) => ({ category: c.key, count: getPostsByCategory(c.key).length }));
     return { data };

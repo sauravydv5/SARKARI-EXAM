@@ -13,7 +13,7 @@ const navItems = [
   { to: '/answer-keys', label: 'Answer Key', icon: '🔑' },
   { to: '/syllabus', label: 'Syllabus', icon: '📘' },
   { to: '/admission', label: 'Admission', icon: '🎓' },
-  { to: '/important', label: 'Important', icon: '⭐' },
+  { to: '/important', label: 'Documents', icon: '📄' },
   { to: '/search', label: 'Search', icon: '🔎' },
 ];
 

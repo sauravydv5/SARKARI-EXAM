@@ -1,0 +1,44 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 2481,
+  "id": "ssb-si-asi-non-gd-pet-pst-exam-date-2026",
+  "slug": "ssb-si-asi-non-gd-pet-pst-exam-date-2026",
+  "category": "admit-card",
+  "title": "SSB SI / ASI Non-GD PET / PST Exam Date 2026",
+  "organization": "Sashastra Seema Bal",
+  "postName": "SI / ASI (Non-GD) – PET / PST",
+  "totalVacancies": 0,
+  "vacancyDetails": "PET/PST dates for SSB SI and ASI Non-GD cadres",
+  "qualification": "As per SSB SI/ASI Non-GD notification",
+  "ageLimit": "As per SSB",
+  "applicationFee": "As per SSB",
+  "selectionProcess": "PET / PST → further stages as per advertisement",
+  "documentsRequired": "Call letter and photo ID",
+  "howToApply": "1. Visit https://ssbrectt.gov.in\n2. Open SI/ASI Non-GD PET PST notice\n3. Check dates\n4. Download admit card when released",
+  "shortDescription": "SSB SI / ASI Non-GD PET/PST Exam Date 2026 out. Check ssbrectt.gov.in.",
+  "content": "<p><strong>SSB</strong> has released the <strong>PET / PST Exam Date 2026</strong> for <strong>SI / ASI (Non-GD)</strong> posts.</p>",
+  "publishedAt": "2026-08-05T10:20:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per SSB",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "PET/PST – Date Out",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before PET/PST"
+  },
+  "links": {
+    "downloadAdmitCard": "https://ssbrectt.gov.in",
+    "officialWebsite": "https://ssbrectt.gov.in"
+  },
+  "tags": [
+    "SSB",
+    "SI",
+    "ASI",
+    "Non-GD",
+    "PET",
+    "PST"
+  ]
+}

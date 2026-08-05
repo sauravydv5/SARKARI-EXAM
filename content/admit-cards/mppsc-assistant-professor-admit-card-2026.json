@@ -1,0 +1,41 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 3670,
+  "id": "mppsc-assistant-professor-admit-card-2026",
+  "slug": "mppsc-assistant-professor-admit-card-2026",
+  "category": "admit-card",
+  "title": "MPPSC Assistant Professor Admit Card 2026",
+  "organization": "Madhya Pradesh Public Service Commission",
+  "postName": "Assistant Professor – Admit Card",
+  "totalVacancies": 0,
+  "vacancyDetails": "Admit card for MPPSC Assistant Professor examination",
+  "qualification": "As per MPPSC Assistant Professor subject-wise eligibility",
+  "ageLimit": "As per MPPSC rules",
+  "applicationFee": "As per MPPSC",
+  "selectionProcess": "Written Exam / Interview as per notification",
+  "documentsRequired": "Application number; printed admit card and photo ID",
+  "howToApply": "1. Visit https://mppsc.mp.gov.in\n2. Open Admit Card link for Assistant Professor\n3. Login and download hall ticket\n4. Print for exam day",
+  "shortDescription": "MPPSC Assistant Professor Admit Card 2026 available at mppsc.mp.gov.in.",
+  "content": "<p><strong>MPPSC</strong> has released the <strong>Assistant Professor Admit Card 2026</strong>.</p><p>Download only from the official website and verify subject, centre and reporting time.</p>",
+  "publishedAt": "2026-08-05T10:40:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per MPPSC",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled",
+    "resultDate": "To be announced",
+    "admitCardDate": "Out – 2026"
+  },
+  "links": {
+    "downloadAdmitCard": "https://mppsc.mp.gov.in",
+    "officialWebsite": "https://mppsc.mp.gov.in"
+  },
+  "tags": [
+    "MPPSC",
+    "Assistant Professor",
+    "Admit Card"
+  ]
+}

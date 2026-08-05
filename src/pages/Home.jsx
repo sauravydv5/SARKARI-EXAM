@@ -1,37 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { api, CATEGORIES, formatDate } from '../api';
+import { api } from '../api';
 import CategoryPanel from '../components/CategoryPanel';
+import FeaturedCards from '../components/FeaturedCards';
 import useSeo from '../hooks/useSeo';
 import { blogArticles } from '../data/blogArticles';
 
-const QUICK_LINKS = [
-  { key: 'latest-job', title: 'Latest Jobs', description: 'Latest government job notifications.', path: '/latest-jobs', icon: '💼' },
-  { key: 'result', title: 'Latest Results', description: 'Latest exam and result posts.', path: '/results', icon: '📊' },
-  { key: 'admit-card', title: 'Admit Cards', description: 'Latest admit card notices.', path: '/admit-cards', icon: '🎫' },
-  { key: 'answer-key', title: 'Answer Keys', description: 'Latest answer key updates.', path: '/answer-keys', icon: '🔑' },
-  { key: 'admission', title: 'Admissions', description: 'Latest admission notices.', path: '/admission', icon: '🎓' },
-  { key: 'syllabus', title: 'Syllabus', description: 'Latest syllabus updates.', path: '/syllabus', icon: '📘' },
-  { key: 'certificate', title: 'Certificates', description: 'Latest certificate notices.', path: '/certificates', icon: '📜' },
-  { key: 'important', title: 'Important Updates', description: 'Latest important government notices.', path: '/important', icon: '⭐' },
-];
-
-const HOME_ROWS = [
-  [
-    { title: 'Latest Jobs', key: 'latest-job', path: '/latest-jobs' },
-    { title: 'Latest Results', key: 'result', path: '/results' },
-    { title: 'Admit Cards', key: 'admit-card', path: '/admit-cards' },
-  ],
-  [
-    { title: 'Answer Keys', key: 'answer-key', path: '/answer-keys' },
-    { title: 'Admissions', key: 'admission', path: '/admission' },
-    { title: 'Syllabus', key: 'syllabus', path: '/syllabus' },
-  ],
-  [
-    { title: 'Certificates', key: 'certificate', path: '/certificates' },
-    { title: 'Important Updates', key: 'important', path: '/important' },
-  ],
-];
+// Quick links and category-card data removed per request
 
 function CountUp({ value = 0, duration = 800 }) {
   const [display, setDisplay] = useState(0);
@@ -157,27 +132,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="quick-links-grid" aria-label="Quick link grid">
-        {QUICK_LINKS.map((item) => {
-          const count = sections?.[item.key]?.length || 0;
-          return (
-            <Link key={item.key} to={item.path} className="quick-link-card">
-              <div>
-                <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                  <div style={{ width: 44, height: 44, display: 'grid', placeItems: 'center', borderRadius: 10, background: 'var(--surface-2)' }}>{item.icon}</div>
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
-                </div>
-                <div style={{ marginTop: 12, fontSize: '0.82rem', color: 'var(--muted)' }}>
-                  {count > 0 ? `${count} updates` : 'No updates available'}
-                </div>
-              </div>
-            </Link>
-          );
-        })}
-      </section>
+      <div className="container my-6 md:my-8">
+        <FeaturedCards limit={8} title="" />
+      </div>
+
+      {/* Category cards removed — lists below move up immediately under Featured Cards */}
 
       <div className="home-grid home-grid-3col">
         <CategoryPanel title="Latest Jobs" viewAllTo="/latest-jobs" posts={sections?.['latest-job'] || []} />

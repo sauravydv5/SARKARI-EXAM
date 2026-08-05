@@ -1,0 +1,45 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 2100,
+  "id": "up-scholarship-online-form-2026-27-admission",
+  "slug": "up-scholarship-online-form-2026-27-admission",
+  "category": "admission",
+  "title": "UP Scholarship Online Form 2026-27",
+  "organization": "Social Welfare Department, Uttar Pradesh",
+  "postName": "Pre-Matric / Post-Matric / Other UP Scholarships 2026-27",
+  "totalVacancies": 0,
+  "vacancyDetails": "Online scholarship applications for eligible UP students for academic year 2026-27",
+  "qualification": "As per scheme (class / course and category criteria on scholarship portal)",
+  "ageLimit": "As per respective scholarship scheme",
+  "applicationFee": "No application fee for most schemes (verify on portal)",
+  "selectionProcess": "Online application → Institute / District verification → Scholarship disbursement",
+  "documentsRequired": "Aadhaar, income certificate, caste certificate if applicable, bank passbook, educational documents, domicile",
+  "howToApply": "1. Visit https://scholarship.up.gov.in\n2. Register / login as student\n3. Select scheme and fill form\n4. Upload documents and submit\n5. Track status after institute verification",
+  "shortDescription": "UP Scholarship Online Form 2026-27. Apply for Pre/Post Matric and other schemes at scholarship.up.gov.in.",
+  "content": "<p>The <strong>Uttar Pradesh Scholarship</strong> portal has opened / updated applications for <strong>session 2026-27</strong>.</p><p>Eligible students should apply online, complete e-KYC if required, and ensure school/college verification within the last date.</p>",
+  "publishedAt": "2026-08-05T11:25:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026-27 session",
+    "startDate": "As per portal",
+    "lastDate": "As per scheme schedule",
+    "examDate": "N/A",
+    "resultDate": "After verification",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "applyOnline": "https://scholarship.up.gov.in",
+    "officialWebsite": "https://scholarship.up.gov.in",
+    "officialNotification": "https://scholarship.up.gov.in"
+  },
+  "tags": [
+    "UP Scholarship",
+    "2026-27",
+    "Pre Matric",
+    "Post Matric",
+    "Uttar Pradesh",
+    "Admission"
+  ]
+}

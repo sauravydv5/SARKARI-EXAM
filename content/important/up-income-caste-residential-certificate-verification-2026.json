@@ -1,0 +1,44 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 3029,
+  "id": "up-income-caste-residential-certificate-verification-2026",
+  "slug": "up-income-caste-residential-certificate-verification-2026",
+  "category": "important",
+  "title": "UP Income, Cast, Residential Certificate Online Verification 2026",
+  "organization": "Government of Uttar Pradesh / e-District",
+  "postName": "Income, Caste & Residential Certificate Online Verification",
+  "totalVacancies": 0,
+  "vacancyDetails": "Online services to apply/verify UP income, caste and residential certificates",
+  "qualification": "N/A – citizen service",
+  "ageLimit": "N/A",
+  "applicationFee": "As per e-District service charges if any",
+  "selectionProcess": "Online application → Department verification → Certificate download",
+  "documentsRequired": "Aadhaar, photo, address proof, income proof, caste proof as applicable",
+  "howToApply": "1. Visit UP e-District / Jan Suvidha portal\\n2. Select Income / Caste / Residential Certificate\\n3. Fill form and upload documents\\n4. Track application and download certificate\\n5. Use verification link to verify issued certificates",
+  "shortDescription": "UP Income, Caste, Residential Certificate online apply and verification services for 2026.",
+  "content": "<p>Citizens of <strong>Uttar Pradesh</strong> can apply for and verify <strong>Income, Caste and Residential certificates</strong> online through official e-District / service portals.</p><p>Always use government websites only and keep application reference numbers safe.</p>",
+  "publishedAt": "2026-08-05T11:05:00.000Z",
+  "importantDates": {
+    "notificationDate": "Ongoing service",
+    "startDate": "Online – Available",
+    "lastDate": "Ongoing",
+    "examDate": "N/A",
+    "resultDate": "N/A",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "applyOnline": "https://edistrict.up.gov.in",
+    "officialWebsite": "https://edistrict.up.gov.in",
+    "officialNotification": "https://edistrict.up.gov.in"
+  },
+  "tags": [
+    "UP",
+    "Income Certificate",
+    "Caste Certificate",
+    "Residential Certificate",
+    "e-District"
+  ]
+}

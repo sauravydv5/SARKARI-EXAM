@@ -1,0 +1,42 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 2330,
+  "id": "delhi-dsssb-various-posts-result-2026",
+  "slug": "delhi-dsssb-various-posts-result-2026",
+  "category": "result",
+  "title": "Delhi DSSSB Various Posts Result 2026",
+  "organization": "Delhi Subordinate Services Selection Board",
+  "postName": "DSSSB Various Posts – Result",
+  "totalVacancies": 0,
+  "vacancyDetails": "Results for various DSSSB post codes released in 2026",
+  "qualification": "As per respective DSSSB post code notification",
+  "ageLimit": "As per DSSSB rules",
+  "applicationFee": "As per DSSSB",
+  "selectionProcess": "CBT / Tier exams → e-dossier → Final Result",
+  "documentsRequired": "Roll number, DOB; e-dossier documents as notified",
+  "howToApply": "1. Visit https://dsssb.delhi.gov.in\n2. Open Results\n3. Select post code and download result PDF\n4. Check roll number",
+  "shortDescription": "Delhi DSSSB Various Posts Result 2026 available. Check post-wise results at dsssb.delhi.gov.in.",
+  "content": "<p><strong>DSSSB</strong> has released results for <strong>various posts</strong> in 2026.</p><p>Candidates should check the official DSSSB website for their post code-wise result, cutoff and e-dossier schedule.</p>",
+  "publishedAt": "2026-08-05T11:05:00.000Z",
+  "importantDates": {
+    "notificationDate": "As per post code",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As held",
+    "resultDate": "Out – 2026",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "checkResult": "https://dsssb.delhi.gov.in",
+    "officialWebsite": "https://dsssb.delhi.gov.in"
+  },
+  "tags": [
+    "DSSSB",
+    "Delhi",
+    "Various Posts",
+    "Result"
+  ]
+}

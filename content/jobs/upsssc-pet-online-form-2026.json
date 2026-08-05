@@ -1,0 +1,43 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 1882,
+  "id": "upsssc-pet-online-form-2026",
+  "slug": "upsssc-pet-online-form-2026",
+  "category": "latest-job",
+  "title": "UPSSSC PET Online Form 2026",
+  "organization": "Uttar Pradesh Subordinate Services Selection Commission",
+  "postName": "Preliminary Eligibility Test (PET) 2026",
+  "totalVacancies": 0,
+  "vacancyDetails": "UPSSSC PET is a qualifying exam required for many Group C recruitments; not a post-specific vacancy",
+  "qualification": "As per UPSSSC PET notification (generally Intermediate / as specified)",
+  "ageLimit": "As per PET advertisement",
+  "applicationFee": "As per UPSSSC PET fee rules",
+  "selectionProcess": "Online Application → PET Written Exam → Scorecard for future recruitments",
+  "documentsRequired": "Photo, signature, educational details, category certificate if applicable",
+  "howToApply": "1. Complete UPSSSC OTR if required\n2. Visit https://upsssc.gov.in\n3. Open PET 2026 Apply Online\n4. Fill form, pay fee and submit\n5. Print application",
+  "shortDescription": "UPSSSC PET Online Form 2026 open. Apply for Preliminary Eligibility Test at upsssc.gov.in.",
+  "content": "<p><strong>UPSSSC</strong> has released the <strong>Preliminary Eligibility Test (PET) Online Form 2026</strong>.</p><p>PET score is used as a shortlisting criterion for various UPSSSC Group-C posts. Apply only through the official website within the notified dates.</p>",
+  "publishedAt": "2026-08-05T11:50:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "To be announced",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before PET"
+  },
+  "links": {
+    "applyOnline": "https://upsssc.gov.in",
+    "officialWebsite": "https://upsssc.gov.in",
+    "officialNotification": "https://upsssc.gov.in"
+  },
+  "tags": [
+    "UPSSSC",
+    "PET",
+    "Preliminary Eligibility Test",
+    "Uttar Pradesh"
+  ]
+}

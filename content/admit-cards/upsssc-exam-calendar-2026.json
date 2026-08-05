@@ -1,0 +1,42 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 4434,
+  "id": "upsssc-exam-calendar-2026",
+  "slug": "upsssc-exam-calendar-2026",
+  "category": "admit-card",
+  "title": "UPSSSC Exam Calendar 2026",
+  "organization": "Uttar Pradesh Subordinate Services Selection Commission",
+  "postName": "UPSSSC Tentative / Exam Calendar 2026",
+  "totalVacancies": 0,
+  "vacancyDetails": "Exam calendar listing tentative exam dates for UPSSSC recruitments in 2026",
+  "qualification": "As per individual post notifications",
+  "ageLimit": "As per respective advertisements",
+  "applicationFee": "As per UPSSSC",
+  "selectionProcess": "As per post-wise UPSSSC process",
+  "documentsRequired": "N/A for calendar; registration credentials when applying for exams",
+  "howToApply": "1. Visit https://upsssc.gov.in\n2. Open Notices / Exam Calendar\n3. Download Exam Calendar 2026 PDF\n4. Note tentative dates for your applied posts",
+  "shortDescription": "UPSSSC Exam Calendar 2026 released. Check tentative exam dates at upsssc.gov.in.",
+  "content": "<p><strong>UPSSSC</strong> has published the <strong>Exam Calendar 2026</strong> with tentative schedules for various group examinations.</p><p>Candidates should treat dates as tentative and follow individual advertisements for final exam city and admit card notices.</p>",
+  "publishedAt": "2026-08-05T11:45:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "Year 2026",
+    "lastDate": "As per post",
+    "examDate": "See Exam Calendar 2026",
+    "resultDate": "Post-wise",
+    "admitCardDate": "Before each exam"
+  },
+  "links": {
+    "downloadAdmitCard": "https://upsssc.gov.in",
+    "officialWebsite": "https://upsssc.gov.in"
+  },
+  "tags": [
+    "UPSSSC",
+    "Exam Calendar",
+    "2026",
+    "Uttar Pradesh"
+  ]
+}

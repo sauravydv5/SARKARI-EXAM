@@ -19,7 +19,7 @@
   "howToApply": "1. Register on NATS portal https://nats.education.gov.in\n2. Apply via UMANG portal – search URSC Apprenticeship\n3. Upload certificates within size limits\n4. Submit between 29 July 2026 and 28 August 2026\n5. Keep email ID unique – only one application per email",
   "shortDescription": "ISRO URSC Apprentice Online Form 2026 for 410 Graduate/Diploma trainee posts. Apply 29 July–28 August 2026 via NATS and UMANG. No fee.",
   "content": "<p><strong>U R Rao Satellite Centre (URSC), ISRO Bengaluru</strong> has released Advt. <strong>URSC:03:2026</strong> for engagement of <strong>Graduate and Diploma Apprentice Trainees</strong>.</p><p><strong>Total posts: 410</strong>. Online registration: <strong>29 July 2026 (12:00 hrs) to 28 August 2026 (23:59 hrs)</strong>.</p><h3>How to apply</h3><ul><li>First enroll on <strong>NATS</strong> (nats.education.gov.in)</li><li>Then apply through <strong>UMANG</strong> for URSC Apprenticeship</li><li>No application fee</li></ul><p>Notification PDF is available on <strong>isro.gov.in</strong>. This is apprenticeship training under the Apprentices Act—not a regular ISRO employment guarantee.</p>",
-  "publishedAt": "2026-07-29T00:00:00.000Z",
+  "publishedAt": "2026-08-05T10:25:00.000Z",
   "importantDates": {
     "notificationDate": "28–29 Jul 2026",
     "startDate": "29 Jul 2026",
@@ -33,6 +33,14 @@
     "officialWebsite": "https://www.isro.gov.in",
     "officialNotification": "https://www.isro.gov.in/URSCRecruitment12.html"
   },
-  "tags": ["ISRO", "URSC", "Apprentice", "Graduate", "Diploma", "410 Posts", "Bengaluru"],
+  "tags": [
+    "ISRO",
+    "URSC",
+    "Apprentice",
+    "Graduate",
+    "Diploma",
+    "410 Posts",
+    "Bengaluru"
+  ],
   "views": 2340
 }

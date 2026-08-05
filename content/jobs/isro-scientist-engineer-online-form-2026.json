@@ -1,0 +1,44 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 4180,
+  "id": "isro-scientist-engineer-online-form-2026",
+  "slug": "isro-scientist-engineer-online-form-2026",
+  "category": "latest-job",
+  "title": "ISRO Scientist / Engineer Online Form 2026",
+  "organization": "Indian Space Research Organisation",
+  "postName": "Scientist / Engineer SC and related posts",
+  "totalVacancies": 0,
+  "vacancyDetails": "Scientist/Engineer posts in various engineering disciplines under ISRO/ICRB",
+  "qualification": "BE/B.Tech or equivalent in relevant discipline with required percentage as per ISRO notification",
+  "ageLimit": "As per ISRO Scientist/Engineer age criteria",
+  "applicationFee": "As per ISRO/ICRB fee",
+  "selectionProcess": "Written Test → Interview → Medical / Document Verification",
+  "documentsRequired": "Photo, signature, degree certificates, category certificate if applicable",
+  "howToApply": "1. Visit https://www.isro.gov.in or ICRB application portal\n2. Open Scientist/Engineer Apply Online\n3. Register, fill form, upload documents\n4. Pay fee and submit before last date",
+  "shortDescription": "ISRO Scientist / Engineer Online Form 2026. Apply via official ISRO/ICRB portal.",
+  "content": "<p><strong>ISRO</strong> has invited applications for <strong>Scientist / Engineer</strong> posts for 2026.</p><p>Engineering graduates meeting the eligibility criteria should apply only through the official recruitment website.</p>",
+  "publishedAt": "2026-08-05T10:20:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "To be announced",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "applyOnline": "https://www.isro.gov.in",
+    "officialWebsite": "https://www.isro.gov.in",
+    "officialNotification": "https://www.isro.gov.in"
+  },
+  "tags": [
+    "ISRO",
+    "Scientist",
+    "Engineer",
+    "ICRB",
+    "Online Form"
+  ]
+}

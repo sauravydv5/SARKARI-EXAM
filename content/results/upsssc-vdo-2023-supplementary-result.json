@@ -1,0 +1,42 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 3409,
+  "id": "upsssc-vdo-2023-supplementary-result",
+  "slug": "upsssc-vdo-2023-supplementary-result",
+  "category": "result",
+  "title": "UPSSSC VDO 2023 Supplementary Result",
+  "organization": "Uttar Pradesh Subordinate Services Selection Commission",
+  "postName": "Village Development Officer (VDO) – Supplementary Result",
+  "totalVacancies": 0,
+  "vacancyDetails": "Supplementary result for UPSSSC VDO 2023 recruitment",
+  "qualification": "As per UPSSSC VDO 2023 notification",
+  "ageLimit": "As per original notification",
+  "applicationFee": "As per UPSSSC fee",
+  "selectionProcess": "Written Exam → Eligibility / DV → Supplementary Merit",
+  "documentsRequired": "Registration number, roll number; original documents for DV",
+  "howToApply": "1. Visit https://upsssc.gov.in\n2. Open Results\n3. Download VDO 2023 Supplementary Result\n4. Check roll number",
+  "shortDescription": "UPSSSC VDO 2023 Supplementary Result released. Download PDF from upsssc.gov.in.",
+  "content": "<p><strong>UPSSSC</strong> has published the <strong>Village Development Officer (VDO) 2023 Supplementary Result</strong>.</p><p>Candidates can check the supplementary merit list on the official UPSSSC website.</p>",
+  "publishedAt": "2026-08-05T11:30:00.000Z",
+  "importantDates": {
+    "notificationDate": "2023",
+    "startDate": "As per 2023 notification",
+    "lastDate": "Closed",
+    "examDate": "As held",
+    "resultDate": "Supplementary Result – Out",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "checkResult": "https://upsssc.gov.in",
+    "officialWebsite": "https://upsssc.gov.in"
+  },
+  "tags": [
+    "UPSSSC",
+    "VDO",
+    "Supplementary Result",
+    "Uttar Pradesh"
+  ]
+}

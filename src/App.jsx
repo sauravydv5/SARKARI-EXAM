@@ -85,8 +85,8 @@ export default function App() {
               element={
                 <CategoryPage
                   category="important"
-                  title="Important Links"
-                  description="Useful government services and documents."
+                  title="Documents"
+                  description="Scholarships, exam calendars, certificates and useful government services."
                 />
               }
             />
