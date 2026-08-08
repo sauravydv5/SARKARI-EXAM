@@ -1,7 +1,7 @@
 {
   "id": "neet-ug-answer-key-2026",
   "slug": "neet-ug-answer-key-2026",
-  "title": "NEET UG Answer Key 2026",
+  "title": "NTA NEET UG 2026 Final Answer Key",
   "organization": "National Testing Agency",
   "category": "answer-key",
   "postName": "National Eligibility cum Entrance Test",
@@ -30,7 +30,10 @@
     "answerKey": "https://neet.nta.nic.in",
     "officialWebsite": "https://neet.nta.nic.in"
   },
-  "tags": ["NEET", "Answer Key"],
+  "tags": [
+    "NEET",
+    "Answer Key"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 268

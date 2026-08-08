@@ -1,0 +1,37 @@
+{
+  "id": "upsssc-lower-pcs-mains-exam-fee-payment-2026",
+  "slug": "upsssc-lower-pcs-mains-exam-fee-payment-2026",
+  "title": "UPSSSC Lower PCS Mains Exam Fee Payment 2026",
+  "organization": "Uttar Pradesh Subordinate Services Selection Commission",
+  "category": "admit-card",
+  "postName": "Lower Subordinate Services (Lower PCS) – Mains Examination Fee Payment",
+  "totalVacancies": 0,
+  "vacancyDetails": "Online fee payment window for UPSSSC Lower PCS Mains examination 2026 for shortlisted candidates",
+  "qualification": "As per UPSSSC Lower PCS notification; only candidates shortlisted for Mains",
+  "ageLimit": "As per Lower PCS advertisement",
+  "applicationFee": "Mains exam fee as per UPSSSC notice (category-wise)",
+  "selectionProcess": "PET / Prelims stages (as applicable) → Mains Fee Payment → Mains Exam → Final Merit",
+  "documentsRequired": "Registration number, DOB / password; payment receipt after successful fee submission",
+  "howToApply": "1. Visit https://upsssc.gov.in\n2. Open Lower PCS Mains Exam Fee Payment 2026 link\n3. Login with registration credentials\n4. Pay Mains exam fee online within the last date\n5. Download fee receipt and wait for admit card",
+  "shortDescription": "UPSSSC Lower PCS Mains Exam Fee Payment 2026 open. Pay fee on upsssc.gov.in before last date.",
+  "content": "<p><strong>Uttar Pradesh Subordinate Services Selection Commission (UPSSSC)</strong> has activated the <strong>Lower PCS Mains Examination Fee Payment 2026</strong> facility for eligible candidates.</p><p>Candidates shortlisted for Mains must submit the prescribed fee online within the given window. Failure to pay may result in non-issuance of Mains admit card.</p><h3>Steps</h3><ol><li>Login on upsssc.gov.in</li><li>Open Mains fee payment link</li><li>Pay online and save receipt</li><li>Track admit card release after fee closing date</li></ol>",
+  "publishedAt": "2026-08-08T12:50:00.000Z",
+  "isFeatured": true,
+  "isNew": true,
+  "importantDates": {
+    "notificationDate": "As per Lower PCS Advt.",
+    "startDate": "Fee payment start – as notified",
+    "lastDate": "Fee payment last date – as notified",
+    "examDate": "Mains date after fee window",
+    "resultDate": "After Mains",
+    "admitCardDate": "After successful fee payment"
+  },
+  "links": {
+    "downloadAdmitCard": "https://upsssc.gov.in",
+    "officialWebsite": "https://upsssc.gov.in"
+  },
+  "tags": ["UPSSSC", "Lower PCS", "Mains", "Fee Payment", "Uttar Pradesh"],
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "views": 2340
+}
