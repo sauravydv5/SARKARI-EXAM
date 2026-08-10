@@ -1,7 +1,7 @@
 {
   "id": "upsc-cds-ii-2025-ota-final-result",
   "slug": "upsc-cds-ii-2025-ota-final-result",
-  "title": "UPSC CDS II 2025 OTA Final Result",
+  "title": "UPSC CDS-II OTA Final Result 2026",
   "organization": "Union Public Service Commission",
   "category": "result",
   "postName": "Combined Defence Services Examination (II), 2025 – Officers Training Academy (OTA)",
@@ -15,7 +15,7 @@
   "howToApply": "1. Visit https://upsc.gov.in\n2. Open Final Results section\n3. Download CDS (II) 2025 OTA Final Result PDF\n4. Search roll number in recommended list\n5. Follow joining instructions from UPSC / Army HQ",
   "shortDescription": "UPSC CDS II 2025 OTA Final Result declared. Check recommended candidates list at upsc.gov.in.",
   "content": "<p>The <strong>Union Public Service Commission (UPSC)</strong> has released the <strong>Final Result</strong> for the <strong>Officers Training Academy (OTA)</strong> course under the <strong>Combined Defence Services Examination (II), 2025</strong>.</p><p>Candidates who cleared written exam, SSB interview and medical standards are listed in the final recommended PDF for OTA (Men and Women courses as applicable).</p><h3>Important points</h3><ul><li>Result is course-wise (OTA)</li><li>Merit is based on written + SSB as per CDS rules</li><li>Download only from official UPSC website</li></ul><p>Selected candidates should regularly check email and official communications for academy joining formalities.</p>",
-  "publishedAt": "2026-08-08T11:30:00.000Z",
+  "publishedAt": "2026-08-10T11:30:00.000Z",
   "isFeatured": true,
   "isNew": true,
   "importantDates": {
@@ -30,7 +30,14 @@
     "checkResult": "https://upsc.gov.in",
     "officialWebsite": "https://upsc.gov.in"
   },
-  "tags": ["UPSC", "CDS", "CDS II", "OTA", "Defence", "Final Result"],
+  "tags": [
+    "UPSC",
+    "CDS",
+    "CDS II",
+    "OTA",
+    "Defence",
+    "Final Result"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 2890

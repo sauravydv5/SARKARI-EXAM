@@ -1,7 +1,7 @@
 {
   "id": "upsc-ies-iss-result-2026",
   "slug": "upsc-ies-iss-result-2026",
-  "title": "UPSC IES ISS Result 2026",
+  "title": "UPSC IES / ISS Result 2026",
   "organization": "Union Public Service Commission",
   "category": "result",
   "postName": "Indian Economic Service (IES) / Indian Statistical Service (ISS) Examination 2026",
@@ -15,7 +15,7 @@
   "howToApply": "1. Visit https://upsc.gov.in\n2. Open Written Results or Final Results\n3. Download IES / ISS Result 2026 PDF\n4. Search roll number in the list\n5. Follow interview / joining instructions if shortlisted",
   "shortDescription": "UPSC IES ISS Result 2026 released. Check recommended candidates list at upsc.gov.in.",
   "content": "<p>The <strong>Union Public Service Commission (UPSC)</strong> has published the <strong>Indian Economic Service (IES) / Indian Statistical Service (ISS) Result 2026</strong>.</p><p>Candidates who appeared in the examination can download the official PDF listing roll numbers qualified for interview or finally recommended, depending on the stage of result published.</p><h3>Services covered</h3><ul><li><strong>IES</strong> – Indian Economic Service</li><li><strong>ISS</strong> – Indian Statistical Service</li></ul><p>Always use <strong>upsc.gov.in</strong> for authentic result PDFs and next-stage notices.</p>",
-  "publishedAt": "2026-08-08T10:00:00.000Z",
+  "publishedAt": "2026-08-10T10:45:00.000Z",
   "isFeatured": true,
   "isNew": true,
   "importantDates": {
@@ -30,7 +30,14 @@
     "checkResult": "https://upsc.gov.in",
     "officialWebsite": "https://upsc.gov.in"
   },
-  "tags": ["UPSC", "IES", "ISS", "Economic Service", "Statistical Service", "Result"],
+  "tags": [
+    "UPSC",
+    "IES",
+    "ISS",
+    "Economic Service",
+    "Statistical Service",
+    "Result"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 1780

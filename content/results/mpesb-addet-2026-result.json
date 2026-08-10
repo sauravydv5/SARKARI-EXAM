@@ -1,7 +1,7 @@
 {
   "id": "mpesb-addet-2026-result",
   "slug": "mpesb-addet-2026-result",
-  "title": "MPESB ADDET 2026 Result",
+  "title": "MPESB ADDET Result 2026 – Out",
   "organization": "Madhya Pradesh Employees Selection Board",
   "category": "result",
   "postName": "MPESB ADDET 2026 – Combined / Departmental Examination Result",
@@ -15,7 +15,7 @@
   "howToApply": "1. Visit https://esb.mp.gov.in\n2. Open Result section\n3. Select ADDET 2026 Result link\n4. Login with application credentials or download score/merit PDF\n5. Print result and note further schedule",
   "shortDescription": "MPESB ADDET 2026 Result is out. Check scorecard and merit updates at esb.mp.gov.in.",
   "content": "<p><strong>Madhya Pradesh Employees Selection Board (MPESB)</strong> has declared the <strong>ADDET 2026 Result</strong>.</p><p>Candidates who appeared in the ADDET examination can check their result / scorecard on the official MPESB portal using application number and password, or by downloading the published merit list PDF.</p><h3>How to check</h3><ol><li>Open esb.mp.gov.in</li><li>Go to Results</li><li>Open ADDET 2026 result link</li><li>Enter login details or search roll number in PDF</li></ol><p>Keep a printout of the result for document verification if shortlisted.</p>",
-  "publishedAt": "2026-08-08T11:20:00.000Z",
+  "publishedAt": "2026-08-10T11:25:00.000Z",
   "isFeatured": true,
   "isNew": true,
   "importantDates": {
@@ -30,7 +30,12 @@
     "checkResult": "https://esb.mp.gov.in",
     "officialWebsite": "https://esb.mp.gov.in"
   },
-  "tags": ["MPESB", "ADDET", "Result", "Madhya Pradesh"],
+  "tags": [
+    "MPESB",
+    "ADDET",
+    "Result",
+    "Madhya Pradesh"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 2140

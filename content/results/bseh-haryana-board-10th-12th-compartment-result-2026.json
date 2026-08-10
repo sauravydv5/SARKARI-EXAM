@@ -30,7 +30,14 @@
     "checkResult": "https://bseh.org.in",
     "officialWebsite": "https://bseh.org.in"
   },
-  "tags": ["BSEH", "Haryana Board", "Class 10", "Class 12", "Compartment", "Result"],
+  "tags": [
+    "BSEH",
+    "Haryana Board",
+    "Class 10",
+    "Class 12",
+    "Compartment",
+    "Result"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 4520

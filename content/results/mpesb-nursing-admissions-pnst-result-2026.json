@@ -1,7 +1,7 @@
 {
   "id": "mpesb-nursing-admissions-pnst-result-2026",
   "slug": "mpesb-nursing-admissions-pnst-result-2026",
-  "title": "MPESB Nursing Admissions PNST Result 2026",
+  "title": "MPESB PNST Result 2026 – Out",
   "organization": "Madhya Pradesh Employees Selection Board",
   "category": "result",
   "postName": "Pre Nursing Selection Test (PNST) – Nursing Admissions 2026",
@@ -15,7 +15,7 @@
   "howToApply": "1. Visit https://esb.mp.gov.in\n2. Open PNST / Nursing Admissions Result 2026\n3. Login and download scorecard / rank\n4. Note counselling schedule\n5. Participate in allotment rounds as per merit",
   "shortDescription": "MPESB Nursing Admissions PNST Result 2026 out. Check rank and scorecard at esb.mp.gov.in.",
   "content": "<p><strong>Madhya Pradesh Employees Selection Board (MPESB)</strong> has declared the <strong>PNST (Pre Nursing Selection Test) Result 2026</strong> for nursing admissions.</p><p>Qualified candidates can download their scorecard / merit rank from the MPESB portal and take part in online counselling and seat allotment as per the official schedule.</p><h3>After result</h3><ul><li>Download scorecard and keep printouts</li><li>Register for counselling if required</li><li>Fill college choices carefully</li><li>Report to allotted institute with original documents</li></ul><p>Use only <strong>esb.mp.gov.in</strong> for result and counselling links.</p>",
-  "publishedAt": "2026-08-08T11:00:00.000Z",
+  "publishedAt": "2026-08-10T11:20:00.000Z",
   "isFeatured": true,
   "isNew": true,
   "importantDates": {
@@ -30,7 +30,14 @@
     "checkResult": "https://esb.mp.gov.in",
     "officialWebsite": "https://esb.mp.gov.in"
   },
-  "tags": ["MPESB", "PNST", "Nursing", "Admission", "Result", "Madhya Pradesh"],
+  "tags": [
+    "MPESB",
+    "PNST",
+    "Nursing",
+    "Admission",
+    "Result",
+    "Madhya Pradesh"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 1980

@@ -30,7 +30,14 @@
     "downloadAdmitCard": "https://rpsc.rajasthan.gov.in",
     "officialWebsite": "https://rpsc.rajasthan.gov.in"
   },
-  "tags": ["RPSC", "Sub Inspector", "SI", "PET", "Admit Card", "Rajasthan"],
+  "tags": [
+    "RPSC",
+    "Sub Inspector",
+    "SI",
+    "PET",
+    "Admit Card",
+    "Rajasthan"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 2780

@@ -1,7 +1,7 @@
 {
   "id": "rssb-conductor-2024-result-cutoff",
   "slug": "rssb-conductor-2024-result-cutoff",
-  "title": "RSSB Conductor 2024 Result with Cutoff",
+  "title": "RSSB Conductor Final Result 2026",
   "organization": "Rajasthan Staff Selection Board (RSSB / RSMSSB)",
   "category": "result",
   "postName": "Conductor – Rajasthan State Road Transport / related Conductor recruitment 2024",
@@ -15,7 +15,7 @@
   "howToApply": "1. Visit https://rsmssb.rajasthan.gov.in or RSSB official portal\n2. Open Results section\n3. Download Conductor 2024 Result / Cutoff PDF\n4. Search roll number and note cutoff category-wise\n5. Follow DV schedule if shortlisted",
   "shortDescription": "RSSB Conductor 2024 Result with cutoff marks released. Check PDF on rsmssb.rajasthan.gov.in.",
   "content": "<p><strong>Rajasthan Staff Selection Board (RSSB / RSMSSB)</strong> has released the <strong>Conductor 2024 Result along with cutoff marks</strong>.</p><p>The official PDF generally contains selected / shortlisted roll numbers and category-wise minimum cutoff for further process.</p><h3>What is included</h3><ul><li>Result list / shortlist</li><li>Category-wise cutoff (where published)</li><li>Instructions for document verification</li></ul><p>Download only from the official Rajasthan board website and prepare documents if your roll number appears in the list.</p>",
-  "publishedAt": "2026-08-08T10:10:00.000Z",
+  "publishedAt": "2026-08-10T10:52:00.000Z",
   "isFeatured": true,
   "isNew": true,
   "importantDates": {
@@ -30,7 +30,14 @@
     "checkResult": "https://rsmssb.rajasthan.gov.in",
     "officialWebsite": "https://rsmssb.rajasthan.gov.in"
   },
-  "tags": ["RSSB", "RSMSSB", "Conductor", "Cutoff", "Rajasthan", "Result"],
+  "tags": [
+    "RSSB",
+    "RSMSSB",
+    "Conductor",
+    "Cutoff",
+    "Rajasthan",
+    "Result"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 2210

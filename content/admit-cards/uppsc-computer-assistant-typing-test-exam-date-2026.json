@@ -30,7 +30,13 @@
     "downloadAdmitCard": "https://uppsc.up.nic.in",
     "officialWebsite": "https://uppsc.up.nic.in"
   },
-  "tags": ["UPPSC", "Computer Assistant", "Typing Test", "Exam Date", "Uttar Pradesh"],
+  "tags": [
+    "UPPSC",
+    "Computer Assistant",
+    "Typing Test",
+    "Exam Date",
+    "Uttar Pradesh"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 1720

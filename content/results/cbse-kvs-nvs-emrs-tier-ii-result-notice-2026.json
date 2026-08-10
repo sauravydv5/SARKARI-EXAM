@@ -30,7 +30,15 @@
     "checkResult": "https://www.cbse.gov.in",
     "officialWebsite": "https://www.cbse.gov.in"
   },
-  "tags": ["CBSE", "KVS", "NVS", "EMRS", "Tier II", "Result", "Teaching"],
+  "tags": [
+    "CBSE",
+    "KVS",
+    "NVS",
+    "EMRS",
+    "Tier II",
+    "Result",
+    "Teaching"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 4280

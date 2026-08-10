@@ -30,7 +30,13 @@
     "downloadAdmitCard": "https://upsssc.gov.in",
     "officialWebsite": "https://upsssc.gov.in"
   },
-  "tags": ["UPSSSC", "Lower PCS", "Mains", "Fee Payment", "Uttar Pradesh"],
+  "tags": [
+    "UPSSSC",
+    "Lower PCS",
+    "Mains",
+    "Fee Payment",
+    "Uttar Pradesh"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 2340

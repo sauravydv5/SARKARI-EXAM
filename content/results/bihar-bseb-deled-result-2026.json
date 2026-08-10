@@ -1,7 +1,7 @@
 {
   "id": "bihar-bseb-deled-result-2026",
   "slug": "bihar-bseb-deled-result-2026",
-  "title": "Bihar BSEB DELED Result 2026",
+  "title": "Bihar DELED Result 2026 – Out",
   "organization": "Bihar School Examination Board (BSEB)",
   "category": "result",
   "postName": "Diploma in Elementary Education (D.El.Ed.) Examination Result 2026",
@@ -15,7 +15,7 @@
   "howToApply": "1. Visit https://www.biharboardonline.bihar.gov.in or official BSEB result link\n2. Open D.El.Ed. Result 2026\n3. Enter roll number / registration details\n4. Download / print scorecard\n5. Collect marksheet as per BSEB / institute instructions",
   "shortDescription": "Bihar BSEB D.El.Ed. Result 2026 declared. Check roll-wise result on the official BSEB portal.",
   "content": "<p><strong>Bihar School Examination Board (BSEB)</strong> has declared the <strong>D.El.Ed. (Diploma in Elementary Education) Result 2026</strong>.</p><p>Candidates can check subject-wise marks using roll number / registration credentials on the official BSEB result website.</p><h3>After result</h3><ul><li>Download scorecard printout</li><li>Verify name, roll number and marks</li><li>Follow institute instructions for marksheet / certificate</li></ul><p>For any discrepancy, contact the board through official channels only.</p>",
-  "publishedAt": "2026-08-08T10:40:00.000Z",
+  "publishedAt": "2026-08-10T11:05:00.000Z",
   "isFeatured": true,
   "isNew": true,
   "importantDates": {
@@ -30,7 +30,14 @@
     "checkResult": "https://www.biharboardonline.bihar.gov.in",
     "officialWebsite": "https://www.biharboardonline.bihar.gov.in"
   },
-  "tags": ["BSEB", "Bihar", "DElEd", "DELED", "Result", "Teacher Training"],
+  "tags": [
+    "BSEB",
+    "Bihar",
+    "DElEd",
+    "DELED",
+    "Result",
+    "Teacher Training"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 2340

@@ -1,0 +1,45 @@
+{
+  "category": "answer-key",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "id": "haryana-htet-result-2026-answer-key-panel",
+  "slug": "haryana-htet-result-2026-answer-keys",
+  "title": "Haryana HTET Result 2026 – Out",
+  "organization": "Board of School Education Haryana (BSEH)",
+  "postName": "Haryana Teacher Eligibility Test (HTET) 2026 – Level 1, 2 & 3 Result",
+  "totalVacancies": 0,
+  "vacancyDetails": "HTET 2026 result for Primary Teacher (Level-1), TGT (Level-2) and PGT (Level-3) eligibility",
+  "qualification": "As per HTET level-wise eligibility (D.El.Ed. / B.Ed. / Post Graduation + B.Ed. etc.)",
+  "ageLimit": "N/A (eligibility test; age applies at recruitment stage)",
+  "applicationFee": "As per HTET application fee",
+  "selectionProcess": "HTET Written Examination → Answer Key → Result / Qualifying Status → e-Certificate",
+  "documentsRequired": "Roll number, application number; later used for e-certificate download",
+  "howToApply": "1. Visit https://bseh.org.in or HTET result portal\n2. Open HTET Result 2026\n3. Enter roll number / application details\n4. Check qualifying status and marks\n5. Download e-certificate when link is activated for qualified candidates",
+  "shortDescription": "Haryana HTET Result 2026 declared for Level 1, 2 and 3. Check marks at bseh.org.in.",
+  "content": "<p>The <strong>Board of School Education Haryana (BSEH)</strong> has declared the <strong>Haryana Teacher Eligibility Test (HTET) Result 2026</strong>.</p><p>Candidates who appeared for Level-1 (PRT), Level-2 (TGT) and Level-3 (PGT) can check their marks and qualifying status on the official portal.</p><h3>Levels</h3><ul><li><strong>Level-1:</strong> Primary Teacher (Class I–V)</li><li><strong>Level-2:</strong> TGT (Class VI–VIII)</li><li><strong>Level-3:</strong> PGT (Class IX–XII)</li></ul><p>Qualified candidates should download the HTET e-certificate when released. HTET qualifies candidates for teacher recruitment; it is not a job offer by itself.</p>",
+  "publishedAt": "2026-08-10T11:35:00.000Z",
+  "importantDates": {
+    "notificationDate": "2026",
+    "startDate": "As per HTET form",
+    "lastDate": "As per notification",
+    "examDate": "As scheduled 2026",
+    "resultDate": "2026 – Out",
+    "admitCardDate": "Before HTET exam"
+  },
+  "links": {
+    "answerKey": "https://bseh.org.in",
+    "checkResult": "https://bseh.org.in",
+    "officialWebsite": "https://bseh.org.in"
+  },
+  "tags": [
+    "HTET",
+    "Haryana",
+    "BSEH",
+    "Result",
+    "Teacher Eligibility",
+    "Answer Key Panel"
+  ],
+  "views": 4120
+}

@@ -30,7 +30,10 @@
     "downloadAdmitCard": "https://www.rrbcdg.gov.in/",
     "officialWebsite": "https://www.rrbcdg.gov.in/"
   },
-  "tags": ["Railway", "Admit Card"],
+  "tags": [
+    "Railway",
+    "Admit Card"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 410

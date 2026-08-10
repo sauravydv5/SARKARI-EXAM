@@ -30,7 +30,13 @@
     "downloadAdmitCard": "https://bsusc.bihar.gov.in",
     "officialWebsite": "https://bsusc.bihar.gov.in"
   },
-  "tags": ["BSUSC", "Bihar", "Assistant Professor", "Interview Letter", "Admit Card"],
+  "tags": [
+    "BSUSC",
+    "Bihar",
+    "Assistant Professor",
+    "Interview Letter",
+    "Admit Card"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 1980
