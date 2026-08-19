@@ -1,7 +1,7 @@
 {
   "id": "upsc-cpf-ac-2025-final-result",
   "slug": "upsc-cpf-ac-2025-final-result",
-  "title": "UPSC CAPF AC 2025 Final Result",
+  "title": "UPSC CAPF AC 2025 Final Marks",
   "organization": "Union Public Service Commission",
   "category": "result",
   "postName": "Central Armed Police Forces (Assistant Commandants) Examination 2025",
@@ -41,5 +41,6 @@
   ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
-  "views": 3560
+  "views": 3560,
+  "lastUpdated": "2026-08-19"
 }

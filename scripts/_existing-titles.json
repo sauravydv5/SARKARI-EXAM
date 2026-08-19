@@ -1,0 +1,1727 @@
+[
+  {
+    "title": "Allahabad University PGAT 2026 Online Counselling",
+    "category": "admission",
+    "file": "content\\admission\\allahabad-university-pgat-counselling-2026.json"
+  },
+  {
+    "title": "Indian Army AFMS B Sc. Nursing Course 2026 Online Form",
+    "category": "admission",
+    "file": "content\\admission\\army-afms-bsc-nursing-2026.json"
+  },
+  {
+    "title": "BCECE Admission Counselling/ Choice Filling 2026",
+    "category": "admission",
+    "file": "content\\admission\\bcece-admission-counselling-choice-filling-2026.json"
+  },
+  {
+    "title": "BCECE-LE Counselling/ Choice Filling 2026",
+    "category": "admission",
+    "file": "content\\admission\\bcece-le-counselling-choice-filling-2026.json"
+  },
+  {
+    "title": "BCECE Mop-Up Revised Counselling Schedule 2025",
+    "category": "admission",
+    "file": "content\\admission\\bcece-mop-up-revised-counselling-2025.json"
+  },
+  {
+    "title": "Bihar BSEB DELED Spot Admission 2025-27",
+    "category": "admission",
+    "file": "content\\admission\\bihar-bseb-deled-spot-admission-2025-27.json"
+  },
+  {
+    "title": "Bihar ITI CAT Offline Mop-Up Counselling 2025",
+    "category": "admission",
+    "file": "content\\admission\\bihar-iti-cat-offline-mop-up-counselling-2025.json"
+  },
+  {
+    "title": "CLAT Online Form 2026 – Start",
+    "category": "admission",
+    "file": "content\\admission\\clat-admission-online-form-2026.json"
+  },
+  {
+    "title": "CUET UG Admission 2026",
+    "category": "admission",
+    "file": "content\\admission\\cuet-ug-admission-2026 copy.json"
+  },
+  {
+    "title": "CUET UG Admission 2026",
+    "category": "admission",
+    "file": "content\\admission\\cuet-ug-admission-2026.json"
+  },
+  {
+    "title": "IIM CAT 2026 Online Form – Start",
+    "category": "admission",
+    "file": "content\\admission\\iim-cat-2026-online-form.json"
+  },
+  {
+    "title": "IIT GATE 2027 Online Form",
+    "category": "admission",
+    "file": "content\\admission\\iit-gate-2027-online-form.json"
+  },
+  {
+    "title": "MUIT Admissions Online Form 2026",
+    "category": "admission",
+    "file": "content\\admission\\muit-admissions-online-form-2026.json"
+  },
+  {
+    "title": "NTA AIAPGET 2026 Online Form",
+    "category": "admission",
+    "file": "content\\admission\\nta-aiapget-2026-online-form.json"
+  },
+  {
+    "title": "NVS Class 6 Online Form 2027-28 – Date Extend",
+    "category": "admission",
+    "file": "content\\admission\\nvs-class-6-online-form-2027-28.json"
+  },
+  {
+    "title": "SAV Bihar Class 6 Online Form 2027-28",
+    "category": "admission",
+    "file": "content\\admission\\sav-bihar-class-6-online-form-2027-28.json"
+  },
+  {
+    "title": "UP DELEd Online Form 2026 – Date Extend",
+    "category": "admission",
+    "file": "content\\admission\\up-deled-online-form-2026-date-extend.json"
+  },
+  {
+    "title": "UP DGMHUP ANM Training Online Registration 2026",
+    "category": "admission",
+    "file": "content\\admission\\up-dgmhup-anm-training-2026.json"
+  },
+  {
+    "title": "UP Scholarship Online Form 2026-27",
+    "category": "admission",
+    "file": "content\\admission\\up-scholarship-online-form-2026-27-admission.json"
+  },
+  {
+    "title": "UP SCVTUP ITI Online Form 2026 – Last Date Today",
+    "category": "admission",
+    "file": "content\\admission\\up-scvtup-iti-online-form-2026.json"
+  },
+  {
+    "title": "AFCAT 02/2026 Admit Card",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\afcat-02-2026-admit-card.json"
+  },
+  {
+    "title": "AIIMS CRE 5th Group B, C Re-Exam Date 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\aiims-cre-5-admit-card-2026.json"
+  },
+  {
+    "title": "Bank of India Credit Officers Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\bank-of-india-credit-officers-admit-card-2026.json"
+  },
+  {
+    "title": "Bihar Board Class 10th / 12th Dummy Registration Card 2027",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\bihar-board-class-10th-12th-dummy-registration-card-2027.json"
+  },
+  {
+    "title": "Bihar BPSC 72 Pre Exam Postponed 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\bpsc-72-pre-exam-postponed-2026.json"
+  },
+  {
+    "title": "Bihar Police BPSSC ASI (Technical) Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\bpssc-asi-technical-admit-card-2026.json"
+  },
+  {
+    "title": "Bihar Police BPSSC ASI (Technical) 2026 Exam Postponed",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\bpssc-asi-technical-exam-postponed-2026.json"
+  },
+  {
+    "title": "BPSSC Bihar Police Havildar Instructor Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\bpssc-havildar-instructor-admit-card-2026.json"
+  },
+  {
+    "title": "BPSSC Bihar Police Havildar Instructor Home Guard 2026 Exam Postponed",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\bpssc-havildar-instructor-exam-postponed-2026.json"
+  },
+  {
+    "title": "BPSSC Bihar Police Havildar Instructor Home Guard Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\bpssc-havildar-instructor-home-guard-admit-card-2026.json"
+  },
+  {
+    "title": "BSNL Junior Telecom Officer JTO Exam Date 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\bsnl-jto-exam-date-2026.json"
+  },
+  {
+    "title": "BSUSC Bihar Assistant Professor Interview Latter 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\bsusc-bihar-assistant-professor-interview-letter-2026.json"
+  },
+  {
+    "title": "CBSE Board Class 12th Supplementary Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\cbse-12th-supplementary-date-sheet-2026.json"
+  },
+  {
+    "title": "CGPSC Assistant District Prosecution Officer ADPO Exam Date 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\cgpsc-adppo-exam-city-schedule-2026.json"
+  },
+  {
+    "title": "CSBC Bihar Police Driver DET Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\csbc-bihar-police-driver-det-admit-card-2026.json"
+  },
+  {
+    "title": "Delhi High Court Higher Judicial Service HJS Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\delhi-hc-hjs-admit-card-2026.json"
+  },
+  {
+    "title": "IB MTS Tier-II Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\ib-mts-tier-ii-admit-card-2026.json"
+  },
+  {
+    "title": "LIC HFL Junior Assistant Interview Letter 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\lic-hfl-junior-assistant-interview-letter-2026.json"
+  },
+  {
+    "title": "MPESB Group 2 Sub Group 1 Krashi Vistar Adhikari Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\mpesb-group-2-sub-group-1-krashi-vistar-adhikari-admit-card-2026.json"
+  },
+  {
+    "title": "MPESB Krashi Vistar Adhikari Exam Date 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\mpesb-group-2-sub-group-1-krashi-vistar-adhikari-exam-date-revised-2026.json"
+  },
+  {
+    "title": "MPESB Revised Exam Calendar 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\mpesb-revised-exam-calendar-2026.json"
+  },
+  {
+    "title": "MPPSC Assistant Professor Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\mppsc-assistant-professor-admit-card-2026.json"
+  },
+  {
+    "title": "MPPSC State Service Exam SSE 2025 Mains Admit Card – Out",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\mppsc-sse-2025-mains-admit-card.json"
+  },
+  {
+    "title": "NALCO Non Executive Various Post Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\nalco-non-executive-admit-card-2026.json"
+  },
+  {
+    "title": "NTA CSIR UGC NET June Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\nta-csir-ugc-net-june-admit-card-2026.json"
+  },
+  {
+    "title": "Patna High Court Computer Operator-cum-Typist Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\patna-hc-computer-operator-typist-admit-card-2026.json"
+  },
+  {
+    "title": "Railway NTPC Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\railway-ntpc-admit-card-2026 copy.json"
+  },
+  {
+    "title": "Railway NTPC Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\railway-ntpc-admit-card-2026.json"
+  },
+  {
+    "title": "Railway RRB Group D Exam City / Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\railway-rrb-group-d-admit-card-2026.json"
+  },
+  {
+    "title": "RBI Officer Grade-B Phase-II Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\rbi-grade-b-phase-ii-admit-card-2026.json"
+  },
+  {
+    "title": "Rajasthan RPSC JLO 2025 Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\rpsc-jlo-admit-card-2026.json"
+  },
+  {
+    "title": "RPSC Sub Inspector SI PET Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\rpsc-si-pet-admit-card-2026.json"
+  },
+  {
+    "title": "Railway RRB ALP CEN 01/2025 CBT II Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\rrb-alp-cbt-ii-admit-card-2026.json"
+  },
+  {
+    "title": "Railway RRB Group D Exam City Details 2026 - Out",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\rrb-group-d-exam-city-details-2026.json"
+  },
+  {
+    "title": "RRB Ministerial & Isolated Category Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\rrb-ministerial-isolated-admit-card-2026.json"
+  },
+  {
+    "title": "RSSB Computer Instructor Exam Date 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\rssb-computer-instructor-exam-date-2026.json"
+  },
+  {
+    "title": "RSSB Women Supervisor Exam City / Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\rssb-female-supervisor-admit-card-2026.json"
+  },
+  {
+    "title": "SBI Probationary Officers PO Pre Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\sbi-po-pre-admit-card-2026.json"
+  },
+  {
+    "title": "Sashastra Seema Bal SSB Constable HC ASI SI PET PST Exam Date 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\ssb-constable-hc-asi-si-pet-pst-exam-date-2026.json"
+  },
+  {
+    "title": "SSB Constable Tradesman PET / PST Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\ssb-constable-tradesman-pet-pst-exam-date-2026.json"
+  },
+  {
+    "title": "SSB Head Constable (Medical Cader) PET / PST Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\ssb-head-constable-medical-cader-pet-pst-exam-date-2026.json"
+  },
+  {
+    "title": "SSB Head Constable Non-GD PET / PST Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\ssb-head-constable-non-gd-pet-pst-exam-date-2026.json"
+  },
+  {
+    "title": "SSB SI / ASI Non-GD PET / PST Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\ssb-si-asi-non-gd-pet-pst-exam-date-2026.json"
+  },
+  {
+    "title": "SSC CPO SI PET/PST Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\ssc-cpo-si-pet-pst-admit-card-2026.json"
+  },
+  {
+    "title": "SSC Delhi Police Constable (Executive) PE & MT Notice 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\ssc-delhi-police-constable-executive-pe-mt-notice-2026.json"
+  },
+  {
+    "title": "SSC Delhi Police Driver PE & MT Date 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\ssc-delhi-police-driver-pe-mt-date-2026.json"
+  },
+  {
+    "title": "SSC Delhi Police HC (AWO/TPO) PE & MT Date 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\ssc-delhi-police-hc-awo-tpo-pe-mt-date-2026.json"
+  },
+  {
+    "title": "SSC Delhi Police HC (Ministerial) PE & MT Date 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\ssc-delhi-police-hc-ministerial-pe-mt-admit-card-2026.json"
+  },
+  {
+    "title": "UPCISB UP Cooperative Bank Various Post Exam Postponed 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\upcisb-cooperative-bank-exam-postponed-2026.json"
+  },
+  {
+    "title": "UPESSC Assistant Professor B.Ed 2026 Exam Postponed",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\upessc-assistant-professor-bed-exam-postponed-2026.json"
+  },
+  {
+    "title": "UPPSC Computer Assistant Typing Test Exam Date 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\uppsc-computer-assistant-typing-test-exam-date-2026.json"
+  },
+  {
+    "title": "UPSC Combined Medical Services CMS Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\upsc-cms-admit-card-2026.json"
+  },
+  {
+    "title": "UPSSSC Assistant Statistical Officer ASO Admit Card 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\upsssc-aso-admit-card-2026.json"
+  },
+  {
+    "title": "UPSSSC Exam Calendar 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\upsssc-exam-calendar-2026.json"
+  },
+  {
+    "title": "UPSSSC Lower PCS Mains Exam Fee Payment 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\upsssc-lower-pcs-mains-exam-fee-payment-2026.json"
+  },
+  {
+    "title": "UPSSSC Stenographer 2023 Skill Test Exam Date",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\upsssc-stenographer-09-2023-skill-test-exam-date.json"
+  },
+  {
+    "title": "UPSSSC Stenographer Skill Test Exam Date 2026",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\upsssc-stenographer-skill-test-exam-date-2026.json"
+  },
+  {
+    "title": "UPSSSC Agriculture Technical Assistant Group-C Admit Card 2026 – Out",
+    "category": "admit-card",
+    "file": "content\\admit-cards\\upsssc-technical-assistant-group-c-agta-exam-city-details-2026.json"
+  },
+  {
+    "title": "AIBE 21 Final Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\aibe-21-final-answer-key-2026.json"
+  },
+  {
+    "title": "Bihar BTSC Staff Nurse DV Objection 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\bihar-btsc-staff-nurse-dv-objection-2026.json"
+  },
+  {
+    "title": "BPSC AES Final Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\bpsc-aes-final-answer-key-2026.json"
+  },
+  {
+    "title": "BPSC Auditor Pre Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\bpsc-auditor-pre-answer-key-2026.json"
+  },
+  {
+    "title": "Bihar BPSC Auditor Pre Exam OMR Sheet 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\bpsc-auditor-pre-omr-sheet-2026.json"
+  },
+  {
+    "title": "BPSC Stenographer Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\bpsc-stenographer-answer-key-2026.json"
+  },
+  {
+    "title": "Bihar BPSC Stenographer Final Answer Key 2026 – Out",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\bpsc-stenographer-final-answer-key-2026.json"
+  },
+  {
+    "title": "BSNL Senior Executive Trainee SET Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\bsnl-set-answer-key-2026.json"
+  },
+  {
+    "title": "Delhi High Court Higher Judicial Service HJS Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\delhi-high-court-hjs-answer-key-2026.json"
+  },
+  {
+    "title": "DSSSB Various Post Answer Key",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\dsssb-various-post-answer-key-2026.json"
+  },
+  {
+    "title": "Haryana Assistant District attorney Final Answer Key 2026 Advt. No. 18/2025",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\haryana-ada-final-answer-key-2026.json"
+  },
+  {
+    "title": "Haryana HTET 2025 Final Answer Key",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\haryana-htet-2025-final-answer-key.json"
+  },
+  {
+    "title": "Haryana HTET Result 2026 – Out",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\haryana-htet-result-2026-answer-key-panel.json"
+  },
+  {
+    "title": "JSSC Field Worker Answer Key 2026 – Out",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\jssc-field-worker-answer-key-2026.json"
+  },
+  {
+    "title": "MPESB ADDET 2026 Answer Key",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\mpesb-addet-answer-key-2026.json"
+  },
+  {
+    "title": "MPESB Hospital Assistant Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\mpesb-hospital-assistant-answer-key-2026.json"
+  },
+  {
+    "title": "MPESB PNST 2026 Answer Key",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\mpesb-pnst-answer-key-2026.json"
+  },
+  {
+    "title": "NCL HEMM Operator, Staff Nurse, Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\ncl-various-post-answer-key-2026.json"
+  },
+  {
+    "title": "NTA NEET UG 2026 Final Answer Key",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\neet-ug-answer-key-2026 copy.json"
+  },
+  {
+    "title": "NTA NEET UG 2026 Final Answer Key",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\neet-ug-answer-key-2026.json"
+  },
+  {
+    "title": "NTA NEET UG Entrance Exam OMR Answer Sheet 2026 | Re Exam",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\neet-ug-omr-answer-sheet-re-exam-2026.json"
+  },
+  {
+    "title": "Patna High Court Computer Operator-cum-Typist Answer Key 2026 – Out",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\patna-high-court-computer-operator-typist-answer-key-2026.json"
+  },
+  {
+    "title": "Punjab PSPCL JE Electrical Answer Key 2026 – Out",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\punjab-pspcl-je-electrical-answer-key-2026.json"
+  },
+  {
+    "title": "RPSC 2nd Grade Teacher Answer Key 2026 – Updated",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\rpsc-2nd-grade-teacher-answer-key-2026.json"
+  },
+  {
+    "title": "RRB ALP CBT-II Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\rrb-alp-cbt-ii-answer-key-2026.json"
+  },
+  {
+    "title": "RRB Junior Engineer JE CBT II Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\rrb-je-cbt2-answer-key-2026.json"
+  },
+  {
+    "title": "RRB Ministerial & Isolated Category Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\rrb-ministerial-isolated-category-answer-key-2026.json"
+  },
+  {
+    "title": "Railway RRB NTPC CEN 06/2025 CBT II Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\rrb-ntpc-graduate-cbt2-answer-key-2026.json"
+  },
+  {
+    "title": "RSSB Clerk Jr-II / Junior Assistant Answer Key 2026 – Out",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\rssb-clerk-junior-assistant-answer-key-2026.json"
+  },
+  {
+    "title": "Rajasthan RSSB Forester Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\rssb-forester-answer-key-2026.json"
+  },
+  {
+    "title": "SSB Head Constable Ministerial 2020 Answer Key Re Open",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\ssb-hc-ministerial-answer-key-2026.json"
+  },
+  {
+    "title": "UP Police Constable Final Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\up-police-constable-final-answer-key-2026.json"
+  },
+  {
+    "title": "UPESSC UPTET 2026 Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\upessc-uptet-answer-key-2026.json"
+  },
+  {
+    "title": "UPPSC Assistant Town Planner ATP Pre Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\uppsc-atp-pre-answer-key-2026.json"
+  },
+  {
+    "title": "UPSC CPF AC Assistant Commandant Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\upsc-capf-ac-answer-key-2026.json"
+  },
+  {
+    "title": "UPSC CMS Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\upsc-cms-answer-key-2026.json"
+  },
+  {
+    "title": "UPSSSC Assistant Boring Technician Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\upsssc-assistant-boring-technician-answer-key-2026.json"
+  },
+  {
+    "title": "UPSSSC Assistant Statistical Officer Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\upsssc-assistant-statistical-officer-answer-key-2026.json"
+  },
+  {
+    "title": "UPSSSC Junior Engineer JE Civil Final Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\upsssc-je-revised-answer-key-2026.json"
+  },
+  {
+    "title": "UPSSSC Teacher Cadre JTC Answer Key 2026",
+    "category": "answer-key",
+    "file": "content\\answer-keys\\upsssc-teacher-cadre-jtc-answer-key-2026.json"
+  },
+  {
+    "title": "DDU Gorakhpur 2015 to 2021 Result Verification",
+    "category": "certificate",
+    "file": "content\\certificate\\ddu-gorakhpur-result-verification-2015-2021.json"
+  },
+  {
+    "title": "Haryana TET HTET 2024 E Certificate 2026",
+    "category": "certificate",
+    "file": "content\\certificate\\haryana-htet-2024-e-certificate-2026.json"
+  },
+  {
+    "title": "MPPSC SET 2024 E Certificate",
+    "category": "certificate",
+    "file": "content\\certificate\\mppsc-set-2024-e-certificate.json"
+  },
+  {
+    "title": "NTA CSIR NET December 2025 E Certificate",
+    "category": "certificate",
+    "file": "content\\certificate\\nta-csir-net-december-2025-e-certificate.json"
+  },
+  {
+    "title": "NTA UGC NET December 2023 E Certificate",
+    "category": "certificate",
+    "file": "content\\certificate\\nta-ugc-net-december-2023-e-certificate.json"
+  },
+  {
+    "title": "NTA UGC NET December 2024 E Certificate Download",
+    "category": "certificate",
+    "file": "content\\certificate\\nta-ugc-net-december-2024-e-certificate.json"
+  },
+  {
+    "title": "NTA UGC NET December 2025 E Certificate Download",
+    "category": "certificate",
+    "file": "content\\certificate\\nta-ugc-net-december-2025-e-certificate.json"
+  },
+  {
+    "title": "NTA UGC NET June 2020 E Certificate",
+    "category": "certificate",
+    "file": "content\\certificate\\nta-ugc-net-june-2020-e-certificate.json"
+  },
+  {
+    "title": "UGC NET June 2024 Certificate",
+    "category": "certificate",
+    "file": "content\\certificate\\ugc-net-june-2024-certificate.json"
+  },
+  {
+    "title": "UPSSSC PET 2021 Certificate",
+    "category": "certificate",
+    "file": "content\\certificate\\upsssc-pet-2021-certificate.json"
+  },
+  {
+    "title": "UPSSSC PET 2022 Certificate",
+    "category": "certificate",
+    "file": "content\\certificate\\upsssc-pet-2022-certificate.json"
+  },
+  {
+    "title": "Aadhar Card Download, Correction, Status 2026",
+    "category": "important",
+    "file": "content\\important\\aadhaar-card-download-correction-status-2026.json"
+  },
+  {
+    "title": "Aadhar Card Download | Appointment Book | Update | PVC Order | Etc 2022",
+    "category": "important",
+    "file": "content\\important\\aadhaar-services-download-update-pvc-2022.json"
+  },
+  {
+    "title": "Bihar Dakhil Kharij, Registration Online 2026",
+    "category": "important",
+    "file": "content\\important\\bihar-dakhil-kharij-registration-2026.json"
+  },
+  {
+    "title": "Bihar Income, Cast, Residential Certificate Online Apply & Verification 2026",
+    "category": "important",
+    "file": "content\\important\\bihar-income-caste-residential-certificate-2026.json"
+  },
+  {
+    "title": "BPSC Exam Calendar 2026",
+    "category": "important",
+    "file": "content\\important\\bpsc-exam-calendar-2026.json"
+  },
+  {
+    "title": "CCC Result, Admit Card, Certificate, Online Form",
+    "category": "important",
+    "file": "content\\important\\ccc-result-admit-card-certificate-form.json"
+  },
+  {
+    "title": "Corona Vaccine Online Registration 2021",
+    "category": "important",
+    "file": "content\\important\\corona-vaccine-online-registration-2021.json"
+  },
+  {
+    "title": "Delhi DSSSB E Dossiers Form 2026",
+    "category": "important",
+    "file": "content\\important\\delhi-dsssb-e-dossiers-form-2026.json"
+  },
+  {
+    "title": "E Sharam Card Online Registration 2022",
+    "category": "important",
+    "file": "content\\important\\e-shram-card-online-registration-2022.json"
+  },
+  {
+    "title": "Har Ghar Tiranga Abhiyan Online Registration 2022",
+    "category": "important",
+    "file": "content\\important\\har-ghar-tiranga-abhiyan-2022.json"
+  },
+  {
+    "title": "Har Ghar Tiranga Abhiyan 2023",
+    "category": "important",
+    "file": "content\\important\\har-ghar-tiranga-abhiyan-2023.json"
+  },
+  {
+    "title": "High Security Number Plate HSRP Online Registration 2021",
+    "category": "important",
+    "file": "content\\important\\hsrp-high-security-number-plate-2021.json"
+  },
+  {
+    "title": "Important Government Links 2026",
+    "category": "important",
+    "file": "content\\important\\important-links-2026 copy.json"
+  },
+  {
+    "title": "Important Government Links 2026",
+    "category": "important",
+    "file": "content\\important\\important-links-2026.json"
+  },
+  {
+    "title": "आज है आवेदन करने की अंतिम तिथि – IOB Apprentice + UPPSC PCS + JNU",
+    "category": "important",
+    "file": "content\\important\\last-date-today-apply-27-july-2026.json"
+  },
+  {
+    "title": "आवेदन करने की अंतिम तिथि नजदीक है ✅ – RRB Technician 2026 (6557 Posts)",
+    "category": "important",
+    "file": "content\\important\\last-date-tomorrow-apply-29-july-2026.json"
+  },
+  {
+    "title": "MP Rojgar Panjiyan 2025",
+    "category": "important",
+    "file": "content\\important\\mp-rojgar-panjiyan-2025.json"
+  },
+  {
+    "title": "MP Rojgar Panjiyan Online Form",
+    "category": "important",
+    "file": "content\\important\\mp-rojgar-panjiyan-online-form.json"
+  },
+  {
+    "title": "MPESB Profile Online Registration 2023 Last Date : NA",
+    "category": "important",
+    "file": "content\\important\\mpesb-profile-online-registration-2023.json"
+  },
+  {
+    "title": "NIELIT CCC Online Form 2026 Last Date : NA",
+    "category": "important",
+    "file": "content\\important\\nielit-ccc-online-form-2026.json"
+  },
+  {
+    "title": "PAN Card Registration, Correction & Other Service 2026",
+    "category": "important",
+    "file": "content\\important\\pan-card-registration-correction-2026.json"
+  },
+  {
+    "title": "RPSC Exam Calendar 2026",
+    "category": "important",
+    "file": "content\\important\\rpsc-exam-calendar-2026.json"
+  },
+  {
+    "title": "Sahara Refund Portal Online Registration 2023",
+    "category": "important",
+    "file": "content\\important\\sahara-refund-portal-registration-2023.json"
+  },
+  {
+    "title": "SSC Exam Calendar 2026-27",
+    "category": "important",
+    "file": "content\\important\\ssc-exam-calendar-2026-27.json"
+  },
+  {
+    "title": "SSC One Time Registration OTR Online Form 2024 Last Date : NA",
+    "category": "important",
+    "file": "content\\important\\ssc-otr-online-form-2024.json"
+  },
+  {
+    "title": "UP Bar Declaration Online Form",
+    "category": "important",
+    "file": "content\\important\\up-bar-declaration-online-form.json"
+  },
+  {
+    "title": "UP Dakhil Kharij, Registration Online 2026",
+    "category": "important",
+    "file": "content\\important\\up-dakhil-kharij-registration-2026.json"
+  },
+  {
+    "title": "UP Election 2022 Voter Slip Download",
+    "category": "important",
+    "file": "content\\important\\up-election-2022-voter-slip-download.json"
+  },
+  {
+    "title": "UP Family ID Ek Parivar Ek Pahchan Scheme Online Registration 2023",
+    "category": "important",
+    "file": "content\\important\\up-family-id-ek-parivar-ek-pahchan-2023.json"
+  },
+  {
+    "title": "UP Income, Cast, Residential Certificate Online Verification 2026",
+    "category": "important",
+    "file": "content\\important\\up-income-caste-residential-certificate-verification-2026.json"
+  },
+  {
+    "title": "UP Learning License Online Form 2020",
+    "category": "important",
+    "file": "content\\important\\up-learning-license-online-form-2020.json"
+  },
+  {
+    "title": "UP Mukhyamantri Fellowship Programme Online Form 2022 Last Date : 24/08/2022",
+    "category": "important",
+    "file": "content\\important\\up-mukhyamantri-fellowship-programme-2022.json"
+  },
+  {
+    "title": "UP NTSE Online Form 2020 Last Date : 10/11/2020",
+    "category": "important",
+    "file": "content\\important\\up-ntse-online-form-2020.json"
+  },
+  {
+    "title": "UP Police OTR Registration 2025",
+    "category": "important",
+    "file": "content\\important\\up-police-otr-registration-2025.json"
+  },
+  {
+    "title": "UP Police Recruitment Calendar 2025-26",
+    "category": "important",
+    "file": "content\\important\\up-police-recruitment-calendar-2025-26.json"
+  },
+  {
+    "title": "UP Scholarship Class 9 to 12 Online Form 2020",
+    "category": "important",
+    "file": "content\\important\\up-scholarship-class-9-12-online-form-2020.json"
+  },
+  {
+    "title": "UP Scholarship 2021 Online Form Last Date : 21/10/2021",
+    "category": "important",
+    "file": "content\\important\\up-scholarship-online-form-2021.json"
+  },
+  {
+    "title": "UP Scholarship Online Form 2022",
+    "category": "important",
+    "file": "content\\important\\up-scholarship-online-form-2022.json"
+  },
+  {
+    "title": "UP Scholarship Online Form 2024 Last Date : 31/12/2024",
+    "category": "important",
+    "file": "content\\important\\up-scholarship-online-form-2024.json"
+  },
+  {
+    "title": "UP Scholarship Online Form 2025-26",
+    "category": "important",
+    "file": "content\\important\\up-scholarship-online-form-2025-26.json"
+  },
+  {
+    "title": "UP Scholarship Online Form 2026-27",
+    "category": "important",
+    "file": "content\\important\\up-scholarship-online-form-2026-27.json"
+  },
+  {
+    "title": "UP Self Enumeration Online Registration 2026 Last Date : 21/05/2026",
+    "category": "important",
+    "file": "content\\important\\up-self-enumeration-online-registration-2026.json"
+  },
+  {
+    "title": "UP Teacher Transfer Online Form 2021 Last Date : 02/07/2021",
+    "category": "important",
+    "file": "content\\important\\up-teacher-transfer-online-form-2021.json"
+  },
+  {
+    "title": "UPPSC Exam Calendar 2026",
+    "category": "important",
+    "file": "content\\important\\uppsc-exam-calendar-2026.json"
+  },
+  {
+    "title": "UPSSSC OTR Registration Online Form 2021",
+    "category": "important",
+    "file": "content\\important\\upsssc-otr-registration-2021.json"
+  },
+  {
+    "title": "Voter ID Online Form 2024, E EPIC Download",
+    "category": "important",
+    "file": "content\\important\\voter-id-online-form-e-epic-2024.json"
+  },
+  {
+    "title": "Voter ID Registration & Other Voter Service 2026",
+    "category": "important",
+    "file": "content\\important\\voter-id-registration-services-2026.json"
+  },
+  {
+    "title": "AAI Junior Executive & Manager Online Form 2026 – Start",
+    "category": "latest-job",
+    "file": "content\\jobs\\aai-junior-executive-manager-2026.json"
+  },
+  {
+    "title": "AIIMS NORCET Nursing Officer 11th Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\aiims-norcet-11-2026.json"
+  },
+  {
+    "title": "Bank of Baroda SO Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\bank-of-baroda-so-online-form-2026.json"
+  },
+  {
+    "title": "BPSSC Bihar Home Guard Company Commander Online Form 2026 – अंतिम तिथि नजदीक",
+    "category": "latest-job",
+    "file": "content\\jobs\\bihar-police-home-guard-company-commander-2026.json"
+  },
+  {
+    "title": "Bihar BPSC Additional Director Online Form 2026 – Re-Open",
+    "category": "latest-job",
+    "file": "content\\jobs\\bpsc-additional-director-online-form-2026-reopen.json"
+  },
+  {
+    "title": "Bihar BPSC Deputy Director Online Form 2026 – Re-Open",
+    "category": "latest-job",
+    "file": "content\\jobs\\bpsc-deputy-director-online-form-2026-reopen.json"
+  },
+  {
+    "title": "BPSC School Teacher TRE 4.0 Online Form 2026 (32,388 Posts)",
+    "category": "latest-job",
+    "file": "content\\jobs\\bpsc-school-teacher-tre-4-otr-registration-2026.json"
+  },
+  {
+    "title": "BSIP Lucknow Scientist B Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\bsip-lucknow-scientist-b-online-form-2026.json"
+  },
+  {
+    "title": "CCRUM Various Post Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\ccrum-various-post-online-form-2026.json"
+  },
+  {
+    "title": "Chhattisgarh State Eligibility Test SET Online Form 2026",
+    "category": "admission",
+    "file": "content\\jobs\\cg-set-2026.json"
+  },
+  {
+    "title": "Indian Airforce Agniveer Vayu Intake 02/2027 Online Form – Last Date Today",
+    "category": "latest-job",
+    "file": "content\\jobs\\iaf-agniveer-vayu-02-2027.json"
+  },
+  {
+    "title": "Indian Airforce Group Y/ Medical Assistant Airmen Intake 02/2027 Online Form – Last Date Today",
+    "category": "latest-job",
+    "file": "content\\jobs\\iaf-group-y-medical-assistant-02-2027.json"
+  },
+  {
+    "title": "IBPS Clerk (CSA) 16th Online Form 2026 (11,403 Posts)",
+    "category": "latest-job",
+    "file": "content\\jobs\\ibps-clerk-16th-online-form-2026.json"
+  },
+  {
+    "title": "IBPS PO MT XVI Correction / Edit Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\ibps-po-mt-xvi-2026.json"
+  },
+  {
+    "title": "IBPS SO XVI Online Form 2026 (1035 Posts) – Last Date Today",
+    "category": "latest-job",
+    "file": "content\\jobs\\ibps-so-xvi-2026.json"
+  },
+  {
+    "title": "ICSI Executive Assistant Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\icsi-executive-assistant-online-form-2026.json"
+  },
+  {
+    "title": "IDBI Bank Specialist Officer SO Online Form 2026 – Last Date Today",
+    "category": "latest-job",
+    "file": "content\\jobs\\idbi-bank-so-2026.json"
+  },
+  {
+    "title": "Indian Navy SSC Officers Various Post June 2027 Batch Online Form 2026 Date Extended",
+    "category": "latest-job",
+    "file": "content\\jobs\\indian-navy-ssc-officer-june-2027.json"
+  },
+  {
+    "title": "Indian Overseas Bank IOB Apprentice Online Form 2026 - आज अंतिम तिथि | Link Active",
+    "category": "latest-job",
+    "file": "content\\jobs\\iob-apprentice-2026.json"
+  },
+  {
+    "title": "IOB Local Bank Officer LBO Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\iob-local-bank-officer-lbo-online-form-2026.json"
+  },
+  {
+    "title": "ISRO ICRB Assistant and Other Various Post Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\isro-icrb-assistant-various-post-online-form-2026.json"
+  },
+  {
+    "title": "ISRO Scientist / Engineer Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\isro-scientist-engineer-online-form-2026.json"
+  },
+  {
+    "title": "ISRO URSC Apprentice Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\isro-ursc-apprentice-online-form-2026.json"
+  },
+  {
+    "title": "ITBP CAPF Medical Officer Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\itbp-capf-medical-officer-online-form-2026.json"
+  },
+  {
+    "title": "JNU Non Teaching Post 2026 Online Form – आज अंतिम तिथि",
+    "category": "latest-job",
+    "file": "content\\jobs\\jnu-non-teaching-2026.json"
+  },
+  {
+    "title": "JSSC 10+2 Inter Level JILCCE Online form 2026 – Start",
+    "category": "latest-job",
+    "file": "content\\jobs\\jssc-jilcce-inter-level-online-form-2026.json"
+  },
+  {
+    "title": "JSSC Para Teacher JTAACCE Online form 2026 (7299 Posts)",
+    "category": "latest-job",
+    "file": "content\\jobs\\jssc-para-teacher-jtaacce-2026.json"
+  },
+  {
+    "title": "MPESB Group-2 Sub Group-4 Patwari Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\mpesb-group-2-sub-group-4-patwari-online-form-2026.json"
+  },
+  {
+    "title": "Railway NFR Apprentice Online Form 2026 (6777 Posts)",
+    "category": "latest-job",
+    "file": "content\\jobs\\nfr-apprentice-2026.json"
+  },
+  {
+    "title": "NMDC Executive Trainee Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\nmdc-executive-trainee-online-form-2026.json"
+  },
+  {
+    "title": "NVS Class 6 Online Form 2027-28 – Last Date Today",
+    "category": "latest-job",
+    "file": "content\\jobs\\nvs-class-6-online-form-2027-28.json"
+  },
+  {
+    "title": "Patna High Court Assistant Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\patna-high-court-assistant-online-form-2026.json"
+  },
+  {
+    "title": "PNB Bank LBO Online Form 2026 – Date Extend",
+    "category": "latest-job",
+    "file": "content\\jobs\\pnb-lbo-2026.json"
+  },
+  {
+    "title": "Rajasthan High Court Stenographer Online Form 2026 – Last Date Today",
+    "category": "latest-job",
+    "file": "content\\jobs\\rajasthan-high-court-stenographer-2026.json"
+  },
+  {
+    "title": "RRVUNL JE, Junior Assistant Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\rajasthan-rvunl-je-other-post-online-form-2026.json"
+  },
+  {
+    "title": "Rajasthan Safai Karamchari Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\rajasthan-safai-karamchari-online-form-2026.json"
+  },
+  {
+    "title": "Rajasthan State Eligibility Test SET Online Form 2026 – Last Date Today",
+    "category": "latest-job",
+    "file": "content\\jobs\\rajasthan-set-online-form-2026.json"
+  },
+  {
+    "title": "RCFL Management Trainee MT Online Form 2026 – Start",
+    "category": "latest-job",
+    "file": "content\\jobs\\rcfl-management-trainee-mt-online-form-2026.json"
+  },
+  {
+    "title": "RPSC Physiotherapist Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\rpsc-physiotherapist-2026.json"
+  },
+  {
+    "title": "RRB Junior Engineer JE Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\rrb-junior-engineer-je-2026.json"
+  },
+  {
+    "title": "Railway RRB Section Controller Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\rrb-section-controller-2026.json"
+  },
+  {
+    "title": "Railway RRB Technician Online Form 2026 – अंतिम तिथि नजदीक",
+    "category": "latest-job",
+    "file": "content\\jobs\\rrb-technician-cen-02-2026.json"
+  },
+  {
+    "title": "RSSB Female Supervisor Correction Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\rssb-female-supervisor-2026.json"
+  },
+  {
+    "title": "Sail Rourkela Apprentice Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\sail-rourkela-apprentice-online-form-2026.json"
+  },
+  {
+    "title": "SBI Junior Associates Clerk Backlog Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\sbi-junior-associates-clerk-backlog-online-form-2026.json"
+  },
+  {
+    "title": "SJVN Various Post Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\sjvn-various-post-online-form-2026.json"
+  },
+  {
+    "title": "SKAU Kurukshetra Non Teaching Post Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\skau-kurukshetra-non-teaching-online-form-2026.json"
+  },
+  {
+    "title": "SSC CGL 2026 Notification",
+    "category": "latest-job",
+    "file": "content\\jobs\\ssc-cgl-2026 copy.json"
+  },
+  {
+    "title": "SSC CGL 2026 Notification",
+    "category": "latest-job",
+    "file": "content\\jobs\\ssc-cgl-2026.json"
+  },
+  {
+    "title": "UKSSSC Assistant Accountant Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\uksssc-assistant-accountant-2026.json"
+  },
+  {
+    "title": "Union Bank Specialist Officer SO Online Form 2026 – Last Date Today",
+    "category": "latest-job",
+    "file": "content\\jobs\\union-bank-specialist-officer-so-online-form-2026.json"
+  },
+  {
+    "title": "UP Anganwadi Bharti Online Form 2026 (Updated)",
+    "category": "latest-job",
+    "file": "content\\jobs\\up-anganwadi-bharti-2026.json"
+  },
+  {
+    "title": "UP Anganwadi Helper Bharti Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\up-anganwadi-helper-bharti-online-form-2026.json"
+  },
+  {
+    "title": "UP Anganwadi Worker Bharti Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\up-anganwadi-worker-bharti-online-form-2026.json"
+  },
+  {
+    "title": "UPESSC Principal Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\upessc-principal-2026.json"
+  },
+  {
+    "title": "UPPSC Architectural Assistant Various Post Online Form 2026 – Start",
+    "category": "latest-job",
+    "file": "content\\jobs\\uppsc-architectural-assistant-online-form-2026.json"
+  },
+  {
+    "title": "UPPSC Computer Operator Various Post Online Form 2026 – Start",
+    "category": "latest-job",
+    "file": "content\\jobs\\uppsc-computer-operator-online-form-2026.json"
+  },
+  {
+    "title": "UPPSC GIC Lecturer Mains Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\uppsc-gic-lecturer-mains-online-form-2026.json"
+  },
+  {
+    "title": "UPPSC Pre Online Form 2026 (500 Posts)",
+    "category": "latest-job",
+    "file": "content\\jobs\\uppsc-pre-2026-pcs.json"
+  },
+  {
+    "title": "UPSC Principal and Vice Principal Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\upsc-principal-vice-principal-2026.json"
+  },
+  {
+    "title": "UPSRTC Bus Conductor Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\upsrtc-bus-conductor-2026.json"
+  },
+  {
+    "title": "UPSSSC Auditor / Assistant Accountant Online Form 2026 (1937 Posts)",
+    "category": "latest-job",
+    "file": "content\\jobs\\upsssc-auditor-assistant-accountant-2026.json"
+  },
+  {
+    "title": "UPSSSC Cane Supervisor Online Form 2026 - Link Active",
+    "category": "latest-job",
+    "file": "content\\jobs\\upsssc-cane-supervisor-2026.json"
+  },
+  {
+    "title": "UPSSSC Forensic Science Laboratory Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\upsssc-forensic-science-laboratory-2026.json"
+  },
+  {
+    "title": "UPSSSC OTR One Time Registration, Edit Modify Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\upsssc-otr-one-time-registration-2026.json"
+  },
+  {
+    "title": "UPSSSC PET Online Form 2026",
+    "category": "latest-job",
+    "file": "content\\jobs\\upsssc-pet-online-form-2026.json"
+  },
+  {
+    "title": "WCL Mining Sirdar & Assistant Foreman Online Form 2026 – Last Date Today",
+    "category": "latest-job",
+    "file": "content\\jobs\\wcl-mining-sirdar-assistant-foreman-online-form-2026.json"
+  },
+  {
+    "title": "AIBE 21th Exam Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\aibe-21-result-2026.json"
+  },
+  {
+    "title": "Bank of Baroda Apprentice Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\bank-of-baroda-apprentice-result-2026.json"
+  },
+  {
+    "title": "BCECE Admission 2026 1st Round Allotment Result",
+    "category": "result",
+    "file": "content\\results\\bcece-admission-2026-1st-round-allotment-result.json"
+  },
+  {
+    "title": "BCECE-LE 2026 1st Round Allotment Result",
+    "category": "result",
+    "file": "content\\results\\bcece-le-2026-1st-round-allotment-result.json"
+  },
+  {
+    "title": "Bihar DELED Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\bihar-bseb-deled-result-2026.json"
+  },
+  {
+    "title": "BSSC Office Attendant 02/2022 Final Result",
+    "category": "result",
+    "file": "content\\results\\bihar-bssc-office-attendant-final-result-2026.json"
+  },
+  {
+    "title": "Bihar CET B.Ed 3rd Round Allotment Result 2026",
+    "category": "result",
+    "file": "content\\results\\bihar-cet-bed-3rd-round-allotment-2026.json"
+  },
+  {
+    "title": "Bihar CET B.Ed 4th Round Allotment Result 2026",
+    "category": "result",
+    "file": "content\\results\\bihar-cet-bed-4th-round-allotment-2026.json"
+  },
+  {
+    "title": "Bihar DCECE-PE 2026 2nd Round Revised Allotment Result",
+    "category": "result",
+    "file": "content\\results\\bihar-dcece-pe-2nd-round-allotment-2026.json"
+  },
+  {
+    "title": "Bihar DPED Result 2026",
+    "category": "result",
+    "file": "content\\results\\bihar-dped-result-2026.json"
+  },
+  {
+    "title": "Bihar ITI CAT 2026 2nd Round Allotment Result – Out",
+    "category": "result",
+    "file": "content\\results\\bihar-iti-cat-2nd-round-allotment-2026.json"
+  },
+  {
+    "title": "Bihar Vidhan Parishad Security Guard Final Result 2026",
+    "category": "result",
+    "file": "content\\results\\bihar-vidhan-parishad-security-guard-final-result-2026.json"
+  },
+  {
+    "title": "BOB Office Assistant Peon Final Result 2026",
+    "category": "result",
+    "file": "content\\results\\bob-office-assistant-peon-final-result-2026.json"
+  },
+  {
+    "title": "BPSC 70th CCE Marks 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\bpsc-70th-cce-marks-2026.json"
+  },
+  {
+    "title": "BPSC District Sports Officer DSO Marks 2026",
+    "category": "result",
+    "file": "content\\results\\bpsc-district-sports-officer-dso-marks-2026.json"
+  },
+  {
+    "title": "BRABU UG 4th Merit List 2026",
+    "category": "result",
+    "file": "content\\results\\brabu-ug-4th-merit-list-2026.json"
+  },
+  {
+    "title": "BRABU UG 5th Merit List 2026",
+    "category": "result",
+    "file": "content\\results\\brabu-ug-5th-merit-list-2026.json"
+  },
+  {
+    "title": "BSEB Sakshamta Pariksha 5th Phase Result 2026",
+    "category": "result",
+    "file": "content\\results\\bseb-sakshamta-pariksha-5th-phase-result-2026.json"
+  },
+  {
+    "title": "BSEH Haryana Board 10th and 12th Compartment Result 2026",
+    "category": "result",
+    "file": "content\\results\\bseh-haryana-board-10th-12th-compartment-result-2026.json"
+  },
+  {
+    "title": "CBSE Class 10th Second Board Exam Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\cbse-class-10-second-board-result-2026.json"
+  },
+  {
+    "title": "CBSE KVS, NVS, EMRS Tier II Result Notice 2026",
+    "category": "result",
+    "file": "content\\results\\cbse-kvs-nvs-emrs-tier-ii-result-notice-2026.json"
+  },
+  {
+    "title": "Central Bank of India CBI Apprentice Result 2026",
+    "category": "result",
+    "file": "content\\results\\central-bank-cbi-apprentices-result-2026.json"
+  },
+  {
+    "title": "CGPSC Sub Inspector SI Result 2026",
+    "category": "result",
+    "file": "content\\results\\cgpsc-sub-inspector-si-result-2026.json"
+  },
+  {
+    "title": "CISCE ICSE Board Class 10th, 12th Improvement Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\cisce-icse-improvement-result-2026.json"
+  },
+  {
+    "title": "Delhi DSSSB Various Posts Result 2026",
+    "category": "result",
+    "file": "content\\results\\delhi-dsssb-various-posts-result-2026.json"
+  },
+  {
+    "title": "DSSSB PGT Math Cutoff and Marks 2026",
+    "category": "result",
+    "file": "content\\results\\dsssb-pgt-math-cutoff-marks-2026.json"
+  },
+  {
+    "title": "EMRS Teaching/ Non Teaching Tier-II Result 2026",
+    "category": "result",
+    "file": "content\\results\\emrs-teaching-non-teaching-tier-ii-result-2026.json"
+  },
+  {
+    "title": "Haryana HTET Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\haryana-htet-result-2026.json"
+  },
+  {
+    "title": "HBSE 10th Compartment Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\hbse-10th-compartment-result-2026.json"
+  },
+  {
+    "title": "HBSE 12th Compartment Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\hbse-12th-compartment-result-2026.json"
+  },
+  {
+    "title": "Haryana HSSC Primary Teacher PRT Result 2026 Advt. No. 05/2024",
+    "category": "result",
+    "file": "content\\results\\hssc-primary-teacher-prt-result-2026.json"
+  },
+  {
+    "title": "Jharkhand JSSC Excise Constable 2023 Result",
+    "category": "result",
+    "file": "content\\results\\jharkhand-jssc-excise-constable-2023-result.json"
+  },
+  {
+    "title": "KVS NVS Teaching & Non-Teaching Tier-II Result 2026",
+    "category": "result",
+    "file": "content\\results\\kvs-nvs-teaching-non-teaching-tier-ii-result-2026.json"
+  },
+  {
+    "title": "LNMU UG 2nd Merit List 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\lnmu-ug-2nd-merit-list-2026.json"
+  },
+  {
+    "title": "MP Anganwadi Merit List 2026",
+    "category": "result",
+    "file": "content\\results\\mp-anganwadi-merit-list-2026.json"
+  },
+  {
+    "title": "MPESB ADDET Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\mpesb-addet-2026-result.json"
+  },
+  {
+    "title": "MPESB ASI / HC PPT Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\mpesb-asi-hc-ppt-result-2026.json"
+  },
+  {
+    "title": "MPESB Group 1 Sub Group 2 Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\mpesb-group-1-sub-group-2-result-2026.json"
+  },
+  {
+    "title": "MPESB ITI Training Officer Result 2026",
+    "category": "result",
+    "file": "content\\results\\mpesb-iti-training-officer-result-2026.json"
+  },
+  {
+    "title": "MPESB PNST Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\mpesb-nursing-admissions-pnst-result-2026.json"
+  },
+  {
+    "title": "MPESB Revised Exam Calendar 2026",
+    "category": "result",
+    "file": "content\\results\\mpesb-revised-exam-calendar-2026.json"
+  },
+  {
+    "title": "MPESB MP Police Subedar Stenographer Final Result 2026",
+    "category": "result",
+    "file": "content\\results\\mpesb-subedar-stenographer-final-result-2026.json"
+  },
+  {
+    "title": "NABARD Assistant Manager Grade-A Score Card 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\nabard-assistant-manager-grade-a-score-card-2026.json"
+  },
+  {
+    "title": "Punjab and Sind Bank LBO Result 2026",
+    "category": "result",
+    "file": "content\\results\\punjab-sind-bank-lbo-result-2026.json"
+  },
+  {
+    "title": "RPSC School Lecturer PGT Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\rpsc-school-lecturer-pgt-teacher-result-2026.json"
+  },
+  {
+    "title": "RSSB Conductor Final Result 2026",
+    "category": "result",
+    "file": "content\\results\\rssb-conductor-2024-result-cutoff.json"
+  },
+  {
+    "title": "SBI Circle Based Officer CBO Final Marks 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\sbi-cbo-final-result-2026.json"
+  },
+  {
+    "title": "SSC Sub Inspector CPO SI 2024 Final Mark 2026",
+    "category": "result",
+    "file": "content\\results\\ssc-cpo-si-2024-final-marks.json"
+  },
+  {
+    "title": "SSC JE Engineer Final Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\ssc-je-engineer-final-result-2026.json"
+  },
+  {
+    "title": "SSC MTS / Havaldar Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\ssc-mts-havaldar-result-2026.json"
+  },
+  {
+    "title": "SSC Stenographer C, D 2025 Revised FRTA Result/ Cutoff",
+    "category": "result",
+    "file": "content\\results\\ssc-stenographer-c-d-2025-revised-frta-result.json"
+  },
+  {
+    "title": "SWD UP IAS PCS Free Coaching Admissions 2026 Result",
+    "category": "result",
+    "file": "content\\results\\swd-up-ias-pcs-free-coaching-admissions-2026-result.json"
+  },
+  {
+    "title": "Union Bank of India UBI Apprentices Result 2026",
+    "category": "result",
+    "file": "content\\results\\union-bank-apprentice-result-2026.json"
+  },
+  {
+    "title": "UP DELED 2022, 2024 Semester Exam Result 2026",
+    "category": "result",
+    "file": "content\\results\\up-deled-2022-2024-semester-exam-result-2026.json"
+  },
+  {
+    "title": "UP PGT 2022 Final Result With Institute Allotment Details",
+    "category": "result",
+    "file": "content\\results\\up-pgt-2022-final-result-institute-details-2026.json"
+  },
+  {
+    "title": "UP Police Constable Result 2026",
+    "category": "result",
+    "file": "content\\results\\up-police-constable-result-2026.json"
+  },
+  {
+    "title": "UP Police SI Normalised Marks / Score Card 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\up-police-si-normalised-marks-2026.json"
+  },
+  {
+    "title": "UPESSC UP TGT 2022 Final Result 2026",
+    "category": "result",
+    "file": "content\\results\\up-tgt-pgt-2026.json"
+  },
+  {
+    "title": "UPPSC Assistant Professor Result 2026",
+    "category": "result",
+    "file": "content\\results\\uppsc-assistant-professor-gdc-result-2026.json"
+  },
+  {
+    "title": "UPPSC GIC Lecturer Result 2026 Update",
+    "category": "result",
+    "file": "content\\results\\uppsc-gic-lecturer-result-2026.json"
+  },
+  {
+    "title": "UPSC CDS-II OTA Final Result 2026",
+    "category": "result",
+    "file": "content\\results\\upsc-cds-ii-2025-ota-final-result.json"
+  },
+  {
+    "title": "UPSC CDS Result 2026",
+    "category": "result",
+    "file": "content\\results\\upsc-cds-result-2026 copy.json"
+  },
+  {
+    "title": "UPSC CDS Result 2026",
+    "category": "result",
+    "file": "content\\results\\upsc-cds-result-2026.json"
+  },
+  {
+    "title": "UPSC CAPF AC 2025 Final Result",
+    "category": "result",
+    "file": "content\\results\\upsc-cpf-ac-2025-final-result.json"
+  },
+  {
+    "title": "UPSC Engineering Services Mains Result 2026",
+    "category": "result",
+    "file": "content\\results\\upsc-engineering-services-mains-result-2026.json"
+  },
+  {
+    "title": "UPSC Engineering Services Mains Result 2026",
+    "category": "result",
+    "file": "content\\results\\upsc-ese-mains-result-2026.json"
+  },
+  {
+    "title": "UPSC Geo Scientist Mains Result 2026",
+    "category": "result",
+    "file": "content\\results\\upsc-geo-scientist-mains-result-2026.json"
+  },
+  {
+    "title": "UPSC IES / ISS Result 2026",
+    "category": "result",
+    "file": "content\\results\\upsc-ies-iss-result-2026.json"
+  },
+  {
+    "title": "UPSSSC Exam Calendar 2026",
+    "category": "result",
+    "file": "content\\results\\upsssc-exam-calendar-2026.json"
+  },
+  {
+    "title": "UPSSSC Pharmacist Ayurvedic 2024 Eligibility Result",
+    "category": "result",
+    "file": "content\\results\\upsssc-pharmacist-ayurvedic-2024-eligibility-result.json"
+  },
+  {
+    "title": "UPSSSC Stenographer 09/2023 Result 2026",
+    "category": "result",
+    "file": "content\\results\\upsssc-stenographer-09-2023-result-2026.json"
+  },
+  {
+    "title": "UPSSSC Stenographer 13/2024 Result 2026 – Out",
+    "category": "result",
+    "file": "content\\results\\upsssc-stenographer-13-2024-result-2026.json"
+  },
+  {
+    "title": "UPSSSC UP Excise Constable Eligibility Result 2026",
+    "category": "result",
+    "file": "content\\results\\upsssc-up-excise-constable-eligibility-result-2026.json"
+  },
+  {
+    "title": "UPSSSC Gram Panchayat Adhikari VDO 2023 Supplementary Result",
+    "category": "result",
+    "file": "content\\results\\upsssc-vdo-2023-supplementary-result.json"
+  },
+  {
+    "title": "Allahabad High Court RO, ARO, Computer Assistant Exam Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\allahabad-high-court-ro-aro-computer-assistant-syllabus-2026.json"
+  },
+  {
+    "title": "BPSC CCE Syllabus 2026 – Prelims & Mains",
+    "category": "syllabus",
+    "file": "content\\syllabus\\bpsc-cce-syllabus-2026.json"
+  },
+  {
+    "title": "CLAT 2027 UG PG Syllabus",
+    "category": "syllabus",
+    "file": "content\\syllabus\\clat-2027-ug-pg-syllabus.json"
+  },
+  {
+    "title": "IBPS PO Syllabus 2026 – Prelims & Mains",
+    "category": "syllabus",
+    "file": "content\\syllabus\\ibps-po-syllabus-2026.json"
+  },
+  {
+    "title": "Jharkhand Teacher Eligibility Test JHTET Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\jharkhand-jhtet-syllabus-2026.json"
+  },
+  {
+    "title": "MPESB Nursing Officer, Sister Tutor Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\mpesb-nursing-officer-sister-tutor-syllabus-2026.json"
+  },
+  {
+    "title": "Patna High Court Technical Assistant Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\patna-high-court-technical-assistant-syllabus-2026.json"
+  },
+  {
+    "title": "RRB Group D Syllabus 2026 – CBT Level-1",
+    "category": "syllabus",
+    "file": "content\\syllabus\\rrb-group-d-syllabus-2026.json"
+  },
+  {
+    "title": "RRB JE Syllabus 2026 – CBT 1 & CBT 2",
+    "category": "syllabus",
+    "file": "content\\syllabus\\rrb-je-syllabus-2026.json"
+  },
+  {
+    "title": "RRB NTPC Syllabus 2026 – CBT 1 & CBT 2",
+    "category": "syllabus",
+    "file": "content\\syllabus\\rrb-ntpc-syllabus-2026.json"
+  },
+  {
+    "title": "Rajasthan RSSB 10+2 Senior Secondary CET Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\rssb-10-plus-2-senior-secondary-cet-syllabus-2026.json"
+  },
+  {
+    "title": "RSSB Graduate Level CET Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\rssb-cet-graduate-syllabus-2026.json"
+  },
+  {
+    "title": "SBI PO Syllabus 2026 – Prelims & Mains",
+    "category": "syllabus",
+    "file": "content\\syllabus\\sbi-po-syllabus-2026.json"
+  },
+  {
+    "title": "SSC CGL Syllabus 2026 – Tier 1 & Tier 2",
+    "category": "syllabus",
+    "file": "content\\syllabus\\ssc-cgl-syllabus-2026.json"
+  },
+  {
+    "title": "UP Police SI, ASI Syllabus / Exam Pattern 2025 – Out",
+    "category": "important",
+    "file": "content\\syllabus\\up-police-si-asi-syllabus-exam-pattern-2025.json"
+  },
+  {
+    "title": "UPESSC Principal Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\upessc-principal-syllabus-2026.json"
+  },
+  {
+    "title": "UPESSC UP TGT, UP PGT Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\upessc-up-tgt-pgt-syllabus-2026.json"
+  },
+  {
+    "title": "UPPSC PCS Syllabus 2026 – Prelims & Mains",
+    "category": "syllabus",
+    "file": "content\\syllabus\\uppsc-pcs-syllabus-2026.json"
+  },
+  {
+    "title": "UPSC CAPF AC Syllabus 2026 – Paper 1 & Paper 2",
+    "category": "syllabus",
+    "file": "content\\syllabus\\upsc-capf-ac-syllabus-2026.json"
+  },
+  {
+    "title": "UPSC CSE Syllabus 2026 – Prelims & Mains Complete",
+    "category": "syllabus",
+    "file": "content\\syllabus\\upsc-cse-syllabus-2026 copy.json"
+  },
+  {
+    "title": "UPSC CSE Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\upsc-cse-syllabus-2026.json"
+  },
+  {
+    "title": "UPSSSC Auditor and Assistant Accountant Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\upsssc-auditor-assistant-accountant-syllabus-2026.json"
+  },
+  {
+    "title": "UPSSSC Moharir 2022 Exam Syllabus",
+    "category": "syllabus",
+    "file": "content\\syllabus\\upsssc-moharir-2022-exam-syllabus.json"
+  },
+  {
+    "title": "UPSSSC PET 2026 Syllabus",
+    "category": "syllabus",
+    "file": "content\\syllabus\\upsssc-pet-2026-syllabus.json"
+  },
+  {
+    "title": "UPSSSC Pharmacist Ayurvedic 2024 Syllabus",
+    "category": "syllabus",
+    "file": "content\\syllabus\\upsssc-pharmacist-ayurvedic-2024-syllabus.json"
+  },
+  {
+    "title": "UPSSSC Scientific / Lab Assistant Exam Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\upsssc-scientific-lab-assistant-syllabus-2026.json"
+  },
+  {
+    "title": "UPSSSC UP Vidhan Bhawan Guard / Fireman Syllabus 2026",
+    "category": "syllabus",
+    "file": "content\\syllabus\\upsssc-vidhan-bhawan-guard-fireman-syllabus-2026.json"
+  },
+  {
+    "title": "UPTET 2026 Syllabus",
+    "category": "syllabus",
+    "file": "content\\syllabus\\uptet-2026-syllabus.json"
+  }
+]
