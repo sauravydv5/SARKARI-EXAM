@@ -203,7 +203,7 @@ export default function Admin() {
 
   return (
     <div className="admin-layout">
-      <div className="page-header admin-hero">
+      {/* <div className="page-header admin-hero">
         <div>
           <div className="admin-eyebrow">Content Management</div>
           <h1>Admin Dashboard</h1>
@@ -213,7 +213,7 @@ export default function Admin() {
           <PlusCircle size={16} />
           Back Home
         </button>
-      </div>
+      </div> */}
 
       {showEditor && <section className="admin-card" style={{ marginBottom: 20 }}>
         <div className="admin-card-head">
