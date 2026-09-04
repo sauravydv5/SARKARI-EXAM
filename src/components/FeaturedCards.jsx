@@ -73,11 +73,11 @@ export default function FeaturedCards({ limit = 8, title = '' }) {
         <h2 className="mb-4 text-xl font-bold tracking-tight text-[--text] md:text-2xl">
           {title}
         </h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {Array.from({ length: Math.min(limit, 4) }).map((_, i) => (
             <div
               key={i}
-              className="h-40 animate-pulse rounded-[12px] bg-[--surface-2] shadow-lg"
+              className="h-20 animate-pulse rounded-[7px] bg-[--surface-2] shadow-sm"
             />
           ))}
         </div>
@@ -100,7 +100,7 @@ export default function FeaturedCards({ limit = 8, title = '' }) {
         <span className="hidden text-sm text-[--muted] sm:inline">{posts.length} featured</span>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
         {posts.map((post, index) => {
           const colorClass = CARD_BACKGROUNDS[index % CARD_BACKGROUNDS.length];
           const postsCount = formatPostsCount(post.totalVacancies);
@@ -112,23 +112,23 @@ export default function FeaturedCards({ limit = 8, title = '' }) {
               key={post._id || slug || index}
               to={`/post/${slug}`}
               className={[
-                'flex h-40 cursor-pointer flex-col items-center justify-center rounded-[12px] px-4 py-5 text-center shadow-lg',
-                'transition-all duration-300 hover:scale-105 hover:shadow-xl',
+                'flex h-20 cursor-pointer flex-col items-center justify-center rounded-[7px] px-2 py-2 text-center shadow-sm',
+                'transition-all duration-300 hover:scale-[1.01] hover:shadow-md',
                 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80',
                 colorClass,
               ].join(' ')}
             >
-              <span className="mb-2 inline-flex items-center rounded-full bg-white/20 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
+              <span className="mb-0.5 inline-flex items-center rounded-full bg-white/20 px-1.5 py-0.5 text-[7px] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
                 {badge}
               </span>
 
-              <h3 className="line-clamp-3 text-sm font-bold leading-snug text-white md:text-[15px]">
+              <h3 className="line-clamp-3 text-[10px] font-bold leading-snug text-white md:text-[11px]">
                 {post.title}
               </h3>
 
               {postsCount && (
-                <p className="mt-2 text-xs font-semibold text-white/95 md:text-sm">
-                  <span className="text-base font-extrabold tabular-nums md:text-lg">
+                <p className="mt-0.5 text-[8px] font-semibold text-white/95 md:text-[9px]">
+                  <span className="text-[9px] font-extrabold tabular-nums md:text-[10px]">
                     {postsCount}
                   </span>{' '}
                   Posts

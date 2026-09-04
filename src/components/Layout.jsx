@@ -133,6 +133,30 @@ export default function Layout() {
             <span className="top-bar-tagline">
               🔔 Daily exam updates — <Link to="/latest-jobs">SSC | Railway | Bank | UPSC →</Link>
             </span>
+            <a
+              href="https://whatsapp.com/channel/0029Vb9NzB6LikgCNJ40Zu0O"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whatsapp-link"
+              aria-label="Join our WhatsApp channel for latest news updates"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.04 2C6.58 2 2.15 6.38 2.15 11.81c0 1.92.55 3.79 1.58 5.41L2 22l4.94-1.64a9.79 9.79 0 0 0 4.97 1.45h.01c5.46 0 9.89-4.38 9.89-9.81S17.5 2 12.04 2Zm0 17.9h-.01c-1.6 0-3.17-.43-4.54-1.24l-.33-.2-2.94.97 1-2.86-.21-.34A7.99 7.99 0 0 1 4.15 11.8c0-4.38 3.53-7.94 7.89-7.94 4.35 0 7.89 3.56 7.89 7.94 0 4.38-3.54 7.95-7.89 7.95Zm4.34-5.94c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.19-.71-.63-1.19-1.4-1.33-1.64-.14-.24-.02-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.29-.74-1.77-.2-.46-.39-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.17.86 2.31.98 2.47.12.16 1.69 2.58 4.09 3.62.57.25 1.02.4 1.37.51.57.18 1.1.16 1.51.09.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"/>
+              </svg>
+              <span>WhatsApp</span>
+            </a>
+            <a
+              href="https://t.me/freepdfannotes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="telegram-link"
+              aria-label="Join our Telegram channel for free PDF notes and more updates"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21.6 4.3 18.5 19c-.2 1-1 1.3-1.8.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.2 12.8l-4.7-1.5c-1-.3-1-1 .2-1.5L20 2.4c.8-.3 1.8.2 1.6 1.9Z"/>
+              </svg>
+              <span>Telegram</span>
+            </a>
             <ThemeToggle />
           </div>
         </div>
@@ -215,6 +239,20 @@ export default function Layout() {
             <span>
               Welcome to Sarkari Job Hub — latest government jobs, exam guidance, admit cards, answer keys, syllabus and admissions for India · SSC · UPSC · Railway · Banking · Police · Teaching
             </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="top-update-strip">
+        <div className="container top-update-strip-inner">
+          <div className="update-note">
+            <strong>Update:</strong> Due to some unavoidable circumstances, the website was not updated on time earlier, but from today onward, all forms, notifications, and exam updates will be refreshed daily. <span className="update-note-hindi">(Kuch zaroori wajahon se website pehle timely update nahi ho paayi, lekin ab se har chiz ki daily update hogi.)</span>
+          </div>
+          <div className="update-links">
+            <Link to="/latest-jobs">Latest Jobs</Link>
+            <Link to="/results">Results</Link>
+            <Link to="/admit-cards">Admit Cards</Link>
+            <a href="https://whatsapp.com/channel/0029Vb9NzB6LikgCNJ40Zu0O" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           </div>
         </div>
       </div>
@@ -324,6 +362,11 @@ export default function Layout() {
             Stay organized with daily notifications, mobile-friendly pages and verified links to
             official portals. Start searching for Sarkari Jobs 2026, set alerts for your
             preferred categories, and prepare confidently with our study material and tips.
+          </p>
+          <p className="footer-update-note">
+            Due to some unavoidable circumstances, the website was not updated on time earlier, but from
+            today onward, all forms, notifications, and exam updates will be refreshed daily to provide
+            timely and consistent coverage. <span className="update-note-hindi">(Kuch zaroori wajahon se website pehle timely update nahi ho paayi, lekin ab se har chiz ki daily update hogi.)</span>
           </p>
         </div>
 
