@@ -64,7 +64,18 @@ export const generateJobPostingSchema = (post) => {
     .replace(/<[^>]+>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-  const hasJobLocation = Boolean(address.addressLocality || location.city);
+  const validThrough = toSchemaDate(dates.lastDate);
+  const salary = buildSalary(post.salary);
+  const hasCompleteJobLocation = Boolean(
+    address.streetAddress &&
+    (address.addressLocality || location.city) &&
+    (address.addressRegion || location.state) &&
+    address.postalCode
+  );
+
+  // Do not emit partial JobPosting markup. Google treats missing optional fields
+  // as enhancement issues, while a normal Article schema remains valid here.
+  if (!validThrough || !salary || !hasCompleteJobLocation) return null;
 
   return {
     '@context': 'https://schema.org',
@@ -72,29 +83,26 @@ export const generateJobPostingSchema = (post) => {
     title: post.title,
     description,
     datePosted: toSchemaDate(post.publishedAt),
-    ...(toSchemaDate(dates.lastDate) ? { validThrough: toSchemaDate(dates.lastDate) } : {}),
+    validThrough,
     ...(post.employmentType ? { employmentType: post.employmentType } : {}),
     hiringOrganization: {
       '@type': 'Organization',
       name: post.organization || 'Government Organization',
       ...(officialWebsite ? { sameAs: officialWebsite, url: officialWebsite } : {}),
     },
-    ...(hasJobLocation
-      ? {
-          jobLocation: {
-            '@type': 'Place',
-            ...(locationName ? { name: locationName } : {}),
-            address: {
-              '@type': 'PostalAddress',
-              ...(address.streetAddress ? { streetAddress: address.streetAddress } : {}),
-              ...(address.addressLocality || location.city ? { addressLocality: address.addressLocality || location.city } : {}),
-              ...(address.addressRegion || location.state ? { addressRegion: address.addressRegion || location.state } : {}),
-              addressCountry: address.addressCountry || 'IN',
-            },
-          },
-        }
-      : {}),
-    ...(buildSalary(post.salary) ? { baseSalary: buildSalary(post.salary) } : {}),
+    jobLocation: {
+      '@type': 'Place',
+      ...(locationName ? { name: locationName } : {}),
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: address.streetAddress,
+        addressLocality: address.addressLocality || location.city,
+        addressRegion: address.addressRegion || location.state,
+        postalCode: address.postalCode,
+        addressCountry: address.addressCountry || 'IN',
+      },
+    },
+    baseSalary: salary,
     ...(post.applicantLocationRequirements
       ? {
           applicantLocationRequirements: {
