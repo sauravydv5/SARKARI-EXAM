@@ -15,7 +15,7 @@ export default function BlogDetailPage() {
   useSeo({
     title: `${article.title} - Sarkari Job Hub Blog`,
     description: article.summary,
-    url: `https://sarkarijobhud.website/blog/${article.slug}`,
+    url: `https://sarkarijobhub.website/blog/${article.slug}`,
     keywords: `${article.title}, ${article.category}, government exam guide, preparation strategy`,
     schemaType: 'Article',
     schemaData: {

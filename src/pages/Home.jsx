@@ -104,7 +104,7 @@ export default function Home() {
     title: 'Latest Sarkari Jobs 2026 - Government Exam Results, Admit Cards & Notifications',
     description:
       'Sarkari Job Hub - India\'s trusted authority for latest SSC, Railway, Bank, UPSC, Police jobs, exam results, admit cards, answer keys, syllabus and practical exam-guidance content.',
-    url: 'https://sarkarijobhud.website/',
+    url: 'https://sarkarijobhub.website/',
     keywords:
       'sarkari job, sarkari naukri, govt jobs, government jobs, SSC jobs, Railway jobs, Bank jobs, UPSC jobs, admit card, answer key, syllabus, exam notification, job alert, 2026, India',
   });

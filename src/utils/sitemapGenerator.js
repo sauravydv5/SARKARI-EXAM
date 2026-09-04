@@ -2,7 +2,7 @@
 import { CATEGORIES } from '../api';
 
 export const generateSitemapXML = (posts = []) => {
-  const baseUrl = 'https://sarkarijobhud.website';
+  const baseUrl = 'https://sarkarijobhub.website';
   const today = new Date().toISOString().split('T')[0];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -42,12 +42,14 @@ export const generateSitemapXML = (posts = []) => {
 
   // Individual posts
   (posts || []).forEach((post) => {
-    const lastmod = (post.updatedAt || post.publishedAt || new Date()).toISOString().split('T')[0];
+    const rawLastmod = post.updatedAt || post.lastUpdated || post.publishedAt;
+    const parsedLastmod = rawLastmod ? new Date(rawLastmod) : new Date();
+    const lastmod = Number.isNaN(parsedLastmod.getTime()) ? today : parsedLastmod.toISOString().split('T')[0];
     xml += `  <url>
     <loc>${baseUrl}/post/${post.slug}</loc>
     <lastmod>${lastmod}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
 `;
     if (post.image) {
       xml += `    <image:image>

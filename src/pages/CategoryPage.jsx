@@ -60,7 +60,7 @@ export default function CategoryPage({ category, title, description }) {
   useSeo({
     title: `${pageTitle} - Latest Sarkari Job Notifications & Updates 2026`,
     description: `Browse all latest ${pageTitle} updates, government exam notifications and sarkari job alerts for India. Daily updated notifications with eligibility, dates and official links.`,
-    url: `https://sarkarijobhud.website${meta.path}`,
+    url: `https://sarkarijobhub.website${meta.path}`,
     keywords: categoryKeywords,
   });
 
@@ -78,6 +78,15 @@ export default function CategoryPage({ category, title, description }) {
           {description || `Browse all ${pageTitle.toLowerCase()} updates for latest Sarkari jobs, results and government notices.`}
         </p>
       </div>
+
+      <section className="panel" aria-labelledby="category-usage-note" style={{ marginBottom: 12 }}>
+        <div className="panel-body" style={{ padding: '14px 16px' }}>
+          <h2 id="category-usage-note" className="sr-only">How to use this section</h2>
+          <p className="m-0 text-sm leading-6 text-slate-700 dark:text-slate-300">
+            Use each update as a readable summary, then open its official source before you apply, pay a fee, download a document, or make a preparation decision. Dates and eligibility can change through an official corrigendum.
+          </p>
+        </div>
+      </section>
 
       <form className="toolbar" onSubmit={onSearch}>
         <input

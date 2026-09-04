@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link, NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { CATEGORIES } from '../api';
+import { useState } from 'react';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 
 const ADMIN_SECRET = import.meta.env.VITE_ADMIN_SECRET || '1111';
@@ -20,9 +19,7 @@ const navItems = [
 export default function Layout() {
   const [q, setQ] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
-  const [newsletterEmail, setNewsletterEmail] = useState('');
   const navigate = useNavigate();
-  const location = useLocation();
   const today = new Date().toLocaleDateString('en-IN', {
     weekday: 'long',
     day: 'numeric',
@@ -41,27 +38,6 @@ export default function Layout() {
     navigate(term ? `/search?q=${encodeURIComponent(term)}` : '/search');
     setMenuOpen(false);
   }
-
-  useEffect(() => {
-    // Inject AdSense script only on non-admin pages to avoid loading ads in admin
-    try {
-      if (typeof window === 'undefined') return;
-      const path = location?.pathname || window.location.pathname || '/';
-      if (path.startsWith('/admin')) return; // do not inject on admin
-
-      const existing = document.querySelector('script[data-adsbygoogle-injected="1"]');
-      if (existing) return;
-
-      const s = document.createElement('script');
-      s.async = true;
-      s.setAttribute('data-adsbygoogle-injected', '1');
-      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5984910720229186';
-      s.crossOrigin = 'anonymous';
-      document.head.appendChild(s);
-    } catch (e) {
-      // ignore injection errors in dev
-    }
-  }, [location]);
 
   return (
     <div className="app-shell">
@@ -236,15 +212,6 @@ export default function Layout() {
               </ul>
             </section>
 
-            <section className="col tools" aria-label="Tools">
-              <h3>Tools</h3>
-              <ul>
-                {['Age Calculator','Percentage Calculator','CGPA Calculator','Typing Test','Mock Test','Resume Builder','Document Checker'].map((t)=> (
-                  <li key={t}><Link to="/tools">{t}</Link></li>
-                ))}
-              </ul>
-            </section>
-
             <section className="col trending-searches" aria-label="Trending Searches">
               <h3>Trending Searches</h3>
               <ul>
@@ -255,40 +222,14 @@ export default function Layout() {
             </section>
 
             <section className="col trust-badges" aria-label="Trust Badges">
-              <h3>Trust &amp; Reliability</h3>
+              <h3>Information standards</h3>
               <ul>
-                {['Daily Updated','Verified Notifications','Mobile Friendly','Secure Website','Free Job Alerts','Fast Loading','Trusted by Students'].map((t)=> (
+                {['Independent informational website', 'Official source links shown on update pages', 'Corrections and feedback welcome', 'Read our editorial policy'].map((t)=> (
                   <li key={t} className="badge">✔ {t}</li>
                 ))}
               </ul>
             </section>
 
-            <section className="col newsletter" aria-label="Newsletter">
-              <h3>Get Daily Government Job Alerts</h3>
-              <form onSubmit={(e)=>{e.preventDefault(); setNewsletterEmail(''); }}>
-                <input aria-label="Email" placeholder="Enter your email" value={newsletterEmail} onChange={(e)=>setNewsletterEmail(e.target.value)} />
-                <button type="submit" className="btn btn-primary">Subscribe</button>
-                <small className="privacy-text">We respect your privacy. No spam. Unsubscribe anytime.</small>
-              </form>
-            </section>
-
-            <section className="col download-app" aria-label="Download App">
-              <h3>Download App</h3>
-              <p>Mobile-friendly study tools are being expanded.</p>
-              <div className="app-links">
-                <button className="btn btn-outline">Android</button>
-                <button className="btn btn-outline">iOS</button>
-              </div>
-              <div className="social-links">
-                <a href="#" aria-label="Facebook">Facebook</a>
-                <a href="#" aria-label="Instagram">Instagram</a>
-                <a href="#" aria-label="Twitter">Twitter</a>
-                <a href="#" aria-label="Telegram">Telegram</a>
-                <a href="#" aria-label="YouTube">YouTube</a>
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" aria-label="GitHub">GitHub</a>
-              </div>
-            </section>
           </div>
         </div>
 

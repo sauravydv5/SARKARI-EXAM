@@ -1,0 +1,114 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
+const rootDirectory = path.resolve(scriptDirectory, '..');
+const contentDirectory = path.join(rootDirectory, 'content');
+const outputFile = path.join(rootDirectory, 'public', 'sitemap.xml');
+const siteUrl = 'https://sarkarijobhub.website';
+
+const categories = [
+  ['/latest-jobs', 'daily', '0.9'],
+  ['/results', 'daily', '0.9'],
+  ['/admit-cards', 'daily', '0.9'],
+  ['/answer-keys', 'weekly', '0.8'],
+  ['/syllabus', 'weekly', '0.8'],
+  ['/admission', 'weekly', '0.8'],
+  ['/important', 'weekly', '0.7'],
+  ['/certificates', 'monthly', '0.7'],
+];
+
+const staticPages = [
+  ['/', 'daily', '1.0'],
+  ['/faq', 'monthly', '0.6'],
+  ['/blog', 'weekly', '0.7'],
+  ['/about-us', 'monthly', '0.5'],
+  ['/contact', 'monthly', '0.5'],
+  ['/privacy-policy', 'yearly', '0.3'],
+  ['/disclaimer', 'yearly', '0.3'],
+  ['/terms', 'yearly', '0.3'],
+  ['/editorial-policy', 'yearly', '0.4'],
+  ['/fact-checking-policy', 'yearly', '0.3'],
+  ['/correction-policy', 'yearly', '0.3'],
+  ['/cookie-policy', 'yearly', '0.3'],
+  ['/dmca', 'yearly', '0.3'],
+];
+
+function escapeXml(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&apos;');
+}
+
+function isoDate(value) {
+  if (!value) return undefined;
+  const text = String(value).trim();
+  const parsed = new Date(text);
+  if (!Number.isNaN(parsed.getTime())) return parsed.toISOString().slice(0, 10);
+
+  const match = text.match(/^(\d{1,2})[\s/-]+([A-Za-z]+)[\s/-]+(\d{4})$/);
+  if (!match) return undefined;
+  const humanDate = new Date(`${match[1]} ${match[2]} ${match[3]} UTC`);
+  return Number.isNaN(humanDate.getTime()) ? undefined : humanDate.toISOString().slice(0, 10);
+}
+
+function walkJsonFiles(directory) {
+  const files = [];
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) files.push(...walkJsonFiles(entryPath));
+    else if (entry.isFile() && entry.name.toLowerCase().endsWith('.json')) files.push(entryPath);
+  }
+  return files;
+}
+
+function postSlug(post, filePath) {
+  const filenameSlug = path.basename(filePath, '.json');
+  return String(post.slug || post.id || filenameSlug).trim().toLowerCase();
+}
+
+function postLastModified(post, filePath) {
+  const fromPost = isoDate(post.updatedAt || post.lastUpdated || post.publishedAt);
+  if (fromPost) return fromPost;
+  return new Date(fs.statSync(filePath).mtime).toISOString().slice(0, 10);
+}
+
+function urlEntry(urlPath, lastmod, changefreq, priority) {
+  return `  <url>\n    <loc>${escapeXml(`${siteUrl}${urlPath}`)}</loc>\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+}
+
+const entries = new Map();
+const today = new Date().toISOString().slice(0, 10);
+
+for (const [urlPath, changefreq, priority] of staticPages) {
+  entries.set(urlPath, urlEntry(urlPath, today, changefreq, priority));
+}
+
+for (const [urlPath, changefreq, priority] of categories) {
+  entries.set(urlPath, urlEntry(urlPath, today, changefreq, priority));
+}
+
+for (const filePath of walkJsonFiles(contentDirectory)) {
+  if (path.basename(filePath).toLowerCase().includes(' copy.json')) continue;
+  let post;
+  try {
+    post = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch (error) {
+    throw new Error(`Cannot parse ${path.relative(rootDirectory, filePath)}: ${error.message}`);
+  }
+  if (!post || typeof post !== 'object') continue;
+
+  const slug = postSlug(post, filePath);
+  if (!slug) continue;
+  const urlPath = `/post/${encodeURIComponent(slug)}`;
+  entries.set(urlPath, urlEntry(urlPath, postLastModified(post, filePath), 'daily', '0.9'));
+}
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...entries.values()].join('\n')}\n</urlset>\n`;
+fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+fs.writeFileSync(outputFile, sitemap, 'utf8');
+console.log(`Generated ${entries.size} URLs in ${path.relative(rootDirectory, outputFile)}`);

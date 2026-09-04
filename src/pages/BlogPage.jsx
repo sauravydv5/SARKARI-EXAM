@@ -14,7 +14,7 @@ export default function BlogPage() {
   useSeo({
     title: 'Government Exam Blogs & Career Guides - Sarkari Job Hub',
     description: 'Read in-depth guides on SSC, UPSC, BPSC, Railway, teaching, bank, police, defence, and career planning to improve your exam preparation journey.',
-    url: 'https://sarkarijobhud.website/blog',
+    url: 'https://sarkarijobhub.website/blog',
     keywords: 'blog, government exam blog, ssc blog, upsc blog, railway blog, bank blog, preparation strategy, career guidance',
   });
 

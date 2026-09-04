@@ -50,7 +50,7 @@ export default function FAQPage() {
     title: 'FAQ - Frequently Asked Questions about Sarkari Jobs',
     description:
       'Get answers to frequently asked questions about government jobs, admit cards, results, exam notifications and how to use Sarkari Job Hub portal.',
-    url: 'https://sarkarijobhud.website/faq',
+    url: 'https://sarkarijobhub.website/faq',
     keywords: 'FAQ, frequently asked questions, sarkari jobs, government jobs, help, support, how to',
   });
 
@@ -73,7 +73,7 @@ export default function FAQPage() {
       <div className="faq-contact">
         <h2>Still have questions?</h2>
         <p>
-          Email us at <strong>support@sarkarijobhud.website</strong>
+          Email us at <strong>support@sarkarijobhub.website</strong>
         </p>
       </div>
     </div>

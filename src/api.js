@@ -37,6 +37,11 @@ function normalizePost(raw, sourcePath) {
   const folder = sourcePath.split('/').slice(-2, -1)[0] || '';
   const category = raw.category || CATEGORY_FOLDERS[folder] || 'latest-job';
 
+  const publishedAt = raw.publishedAt || raw.applyStart || raw.lastDate || new Date().toISOString();
+  const lastDate = raw.importantDates?.lastDate || raw.lastDate;
+  const lastDateValue = lastDate ? new Date(lastDate).getTime() : Number.NaN;
+  const hasPassedDeadline = Number.isFinite(lastDateValue) && lastDateValue < Date.now();
+
   return {
     ...raw,
     sourcePath,
@@ -46,13 +51,14 @@ function normalizePost(raw, sourcePath) {
     category,
     title: raw.title || 'Untitled Update',
     organization: raw.organization || 'Government Organization',
-    publishedAt: raw.publishedAt || raw.applyStart || raw.lastDate || new Date().toISOString(),
+    publishedAt,
     importantDates: raw.importantDates || {},
     links: raw.links || {},
     tags: raw.tags || [],
     isFeatured: Boolean(raw.isFeatured),
     isNew: Boolean(raw.isNew),
     statusNote: raw.statusNote || raw.status || '',
+    isArchived: Boolean(raw.isArchived) || hasPassedDeadline,
     totalVacancies: Number(raw.totalVacancies || raw.vacancy || 0) || 0,
     vacancyDetails: raw.vacancyDetails || raw.vacancy || '',
     qualification: raw.qualification || '',
@@ -86,8 +92,10 @@ const POSTS = Object.entries(contentModules)
     }
 
     const existing = acc[existingIndex];
+    // Keep the canonical content file. " copy" files are editorial leftovers,
+    // not a second update and must never override the canonical record.
     const shouldReplace =
-      !existing.sourcePath?.includes(' copy') && post.sourcePath?.includes(' copy');
+      existing.sourcePath?.includes(' copy') && !post.sourcePath?.includes(' copy');
 
     if (shouldReplace) {
       acc[existingIndex] = post;

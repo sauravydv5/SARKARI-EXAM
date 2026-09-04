@@ -119,9 +119,9 @@ export default function PostDetail() {
     description:
       post?.shortDescription ||
       (post
-        ? `${pageTitle} - Apply Now. Full details on eligibility, fees, exam dates, result dates and official links. ${cat.label} notification.`
+        ? `${pageTitle} from ${post.organization || 'the recruiting organization'}: eligibility, important dates, application details, selection process and official links.`
         : 'Latest government job updates, results, admit cards and answer keys.'),
-    url: `https://sarkarijobhud.website/post/${post?.slug || ''}`,
+    url: `https://sarkarijobhub.website/post/${post?.slug || ''}`,
     image: post?.image || '/logo.png',
     keywords: postKeywords,
     schemaType: 'Article',
@@ -131,10 +131,7 @@ export default function PostDetail() {
       articleSection: cat.label || 'Government Jobs',
       datePublished: post?.publishedAt || new Date().toISOString(),
       dateModified: post?.updatedAt || post?.publishedAt || new Date().toISOString(),
-      author: {
-        '@type': 'Organization',
-        name: post?.organization || 'Government Organization',
-      },
+      author: { '@type': 'Organization', name: 'Sarkari Job Hub Editorial Team' },
       publisher: {
         '@type': 'Organization',
         name: 'Sarkari Job Hub',
@@ -155,25 +152,26 @@ export default function PostDetail() {
 
   useEffect(() => {
     if (!post) return;
-    // JobPosting schema for vacancy-style notifications
+    const currentFaqItems = buildPostGuide(post, categoryMeta(post.category).label).faqItems;
+    // Only valid, current vacancy records return JobPosting schema.
     const jobSchema = generateJobPostingSchema(post);
     if (jobSchema) setJsonLd(jobSchema, 'jobposting-jsonld');
 
     // Article schema with publisher logo and author details
     const articleSchema = generateArticleSchema({
-      headline: pageTitle,
+      headline: post.title,
       description: post?.shortDescription || post?.title,
       image: post?.image || '/logo.png',
       datePublished: post?.publishedAt,
       dateModified: post?.updatedAt || post?.publishedAt,
-      url: `https://sarkarijobhud.website/post/${post?.slug}`,
-      author: { name: post?.organization || 'Sarkari Job Hub Editorial Team' },
+      url: `https://sarkarijobhub.website/post/${post?.slug}`,
+      author: { name: 'Sarkari Job Hub Editorial Team' },
     });
     if (articleSchema) setJsonLd(articleSchema, 'article-jsonld');
 
     // FAQ schema for generated FAQ items
-    if (faqItems && faqItems.length > 0) {
-      const faqSchema = generateFAQSchema(faqItems);
+    if (currentFaqItems && currentFaqItems.length > 0) {
+      const faqSchema = generateFAQSchema(currentFaqItems);
       if (faqSchema) setJsonLd(faqSchema, 'faq-jsonld');
     }
   }, [post]);
@@ -270,6 +268,16 @@ export default function PostDetail() {
               {val(post.organization, 'Government Organization')}
               {post.department ? ` · ${post.department}` : ''}
             </p>
+            {post.image && post.image !== '/uploads/images/placeholder.svg' && (
+              <img
+                src={post.image}
+                alt={`${pageTitle} official ${cat.label.toLowerCase()} image`}
+                className="mt-4 max-h-64 w-full rounded-xl object-cover"
+                width="960"
+                height="360"
+                loading="eager"
+              />
+            )}
             <p className="pd-summary">
               {val(
                 post.shortDescription,

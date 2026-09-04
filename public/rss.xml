@@ -2,17 +2,17 @@
 <rss version="2.0">
   <channel>
     <title>Sarkari Job Hub Updates</title>
-    <link>https://sarkarijobhud.website/</link>
+    <link>https://sarkarijobhub.website/</link>
     <description>Latest government job updates, exam notifications, admit cards, and preparation guides.</description>
     <language>en-in</language>
     <item>
       <title>Latest Government Job Alerts</title>
-      <link>https://sarkarijobhud.website/latest-jobs</link>
+      <link>https://sarkarijobhub.website/latest-jobs</link>
       <description>Browse fresh job notifications, official links, and recruitment summaries.</description>
     </item>
     <item>
       <title>Government Exam Blogs and Career Guides</title>
-      <link>https://sarkarijobhud.website/blog</link>
+      <link>https://sarkarijobhub.website/blog</link>
       <description>Read detailed guides for SSC, UPSC, Railway, Banking, Teaching, and more.</description>
     </item>
   </channel>

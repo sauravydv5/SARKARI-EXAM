@@ -5,7 +5,7 @@ const DEFAULT_DESCRIPTION =
   'Explore practical government job updates, exam guidance, eligibility explainers, admit-card notices, results, and preparation resources for Indian aspirants.';
 const DEFAULT_KEYWORDS =
   'sarkari job, government jobs, exam guidance, admit card, answer key, syllabus, admission, job notification, preparation strategy';
-const DEFAULT_URL = 'https://sarkarijobhud.website/';
+const DEFAULT_URL = 'https://sarkarijobhub.website/';
 const DEFAULT_IMAGE = '/logo.png';
 
 function setMeta(selector, attr, value) {
@@ -74,7 +74,7 @@ export default function useSeo({
 
     setMeta('meta[name="description"]', 'content', description || DEFAULT_DESCRIPTION);
     setMeta('meta[name="keywords"]', 'content', keywords || DEFAULT_KEYWORDS);
-    setMeta('meta[name="robots"]', 'content', noIndex ? 'noindex, nofollow' : 'index, follow');
+    setMeta('meta[name="robots"]', 'content', noIndex ? 'noindex, follow' : 'index, follow');
     setMeta('meta[name="author"]', 'content', 'Sarkari Job Hub');
     setMeta('meta[name="language"]', 'content', 'en');
     setMeta('meta[property="og:type"]', 'content', 'website');

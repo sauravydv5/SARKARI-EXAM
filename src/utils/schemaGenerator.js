@@ -1,41 +1,113 @@
 // Schema generators for structured data markup
 
+function toSchemaDate(value) {
+  if (!value) return undefined;
+  const text = String(value).trim();
+  if (!text) return undefined;
+  const parsed = new Date(text);
+  if (!Number.isNaN(parsed.getTime())) return parsed.toISOString();
+
+  const match = text.match(/^(\d{1,2})[\s/-]+([A-Za-z]+)[\s/-]+(\d{4})$/);
+  if (!match) return undefined;
+  const normalized = new Date(`${match[1]} ${match[2]} ${match[3]} UTC`);
+  return Number.isNaN(normalized.getTime()) ? undefined : normalized.toISOString();
+}
+
+function toNumber(value) {
+  if (typeof value === 'number' && Number.isFinite(value)) return value;
+  if (typeof value !== 'string') return undefined;
+  const number = Number(value.replace(/[^\d.]/g, ''));
+  return Number.isFinite(number) ? number : undefined;
+}
+
+function buildSalary(salary) {
+  if (!salary) return undefined;
+  if (typeof salary === 'object') {
+    const minValue = toNumber(salary.minValue);
+    const maxValue = toNumber(salary.maxValue);
+    const value = toNumber(salary.value);
+    if (minValue === undefined && maxValue === undefined && value === undefined) return undefined;
+    return {
+      '@type': 'MonetaryAmount',
+      currency: salary.currency || 'INR',
+      value: {
+        '@type': 'QuantitativeValue',
+        ...(value !== undefined ? { value } : {}),
+        ...(minValue !== undefined ? { minValue } : {}),
+        ...(maxValue !== undefined ? { maxValue } : {}),
+        ...(salary.unitText ? { unitText: salary.unitText } : {}),
+      },
+    };
+  }
+
+  const value = toNumber(salary);
+  return value === undefined
+    ? undefined
+    : {
+        '@type': 'MonetaryAmount',
+        currency: 'INR',
+        value: { '@type': 'QuantitativeValue', value },
+      };
+}
+
 export const generateJobPostingSchema = (post) => {
-  if (!post) return null;
+  // JobPosting markup is only valid for a live vacancy. Results, answer keys,
+  // admit cards and generic service pages must not be labelled as job offers.
+  if (!post || post.category !== 'latest-job' || !post.links?.officialWebsite) return null;
 
   const dates = post.importantDates || {};
-  
+  const location = post.jobLocation || post.location || {};
+  const locationName = typeof location === 'string' ? location : location.name;
+  const address = typeof location === 'object' ? location.address || {} : {};
+  const officialWebsite = post.links?.officialWebsite || post.officialWebsite;
+  const description = String(post.content || post.shortDescription || post.title)
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
   return {
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
     title: post.title,
-    description: post.shortDescription || post.title,
-    datePosted: post.publishedAt,
-    validThrough: dates.lastDate || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-    employmentType: 'FULL_TIME',
+    description,
+    datePosted: toSchemaDate(post.publishedAt),
+    ...(toSchemaDate(dates.lastDate) ? { validThrough: toSchemaDate(dates.lastDate) } : {}),
+    ...(post.employmentType ? { employmentType: post.employmentType } : {}),
     hiringOrganization: {
       '@type': 'Organization',
       name: post.organization || 'Government Organization',
-      sameAs: 'https://sarkarijobhud.website',
+      ...(officialWebsite ? { sameAs: officialWebsite, url: officialWebsite } : {}),
     },
     jobLocation: {
       '@type': 'Place',
+      ...(locationName ? { name: locationName } : {}),
       address: {
         '@type': 'PostalAddress',
-        addressCountry: 'IN',
+        ...(address.streetAddress ? { streetAddress: address.streetAddress } : {}),
+        ...(address.addressLocality || location.city ? { addressLocality: address.addressLocality || location.city } : {}),
+        ...(address.addressRegion || location.state ? { addressRegion: address.addressRegion || location.state } : {}),
+        addressCountry: address.addressCountry || 'IN',
       },
     },
-    baseSalary: post.salary
+    ...(buildSalary(post.salary) ? { baseSalary: buildSalary(post.salary) } : {}),
+    ...(post.applicantLocationRequirements
       ? {
-          '@type': 'PriceSpecification',
-          priceCurrency: 'INR',
-          price: post.salary,
+          applicantLocationRequirements: {
+            '@type': 'Country',
+            name: post.applicantLocationRequirements,
+          },
         }
-      : undefined,
-    applicantLocationRequirements: {
-      '@type': 'Country',
-      name: 'IN',
-    },
+      : {
+          applicantLocationRequirements: {
+            '@type': 'Country',
+            name: 'IN',
+          },
+        }),
+    ...(post.industry ? { industry: post.industry } : {}),
+    ...(post.educationRequirements || post.qualification
+      ? { educationRequirements: post.educationRequirements || post.qualification }
+      : {}),
+    ...(post.identifier ? { identifier: post.identifier } : {}),
   };
 };
 
@@ -55,6 +127,7 @@ export const generateFAQSchema = (faqs) => {
     })),
   };
 };
+
 
 export const generateBreadcrumbSchema = (breadcrumbs) => {
   if (!breadcrumbs || breadcrumbs.length === 0) return null;
@@ -89,12 +162,12 @@ export const generateSearchActionSchema = () => {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Sarkari Job Hub',
-    url: 'https://sarkarijobhud.website',
+    url: 'https://sarkarijobhub.website',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://sarkarijobhud.website/search?q={search_term_string}',
+        urlTemplate: 'https://sarkarijobhub.website/search?q={search_term_string}',
       },
       'query-input': 'required name=search_term_string',
     },
@@ -121,7 +194,7 @@ export const generateArticleSchema = (article) => {
       name: 'Sarkari Job Hub',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://sarkarijobhud.website/logo.png',
+        url: 'https://sarkarijobhub.website/logo.png',
       },
     },
     mainEntityOfPage: {

@@ -18,6 +18,9 @@ export default function PostListItem({ post, showMeta = true }) {
           {post.statusNote && (
             <span className="status-note">✅ {post.statusNote}</span>
           )}
+          {post.isArchived && !post.statusNote && (
+            <span className="status-note">Archived update</span>
+          )}
           {showMeta && (
             <span className="meta">
               {post.organization ? `${post.organization} · ` : ''}

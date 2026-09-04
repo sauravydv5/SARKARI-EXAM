@@ -23,7 +23,8 @@ export default function SearchPage() {
     description: query
       ? `Search results for "${query}" - Find latest government jobs, exam results, admit cards, answer keys and notifications on Sarkari Job Hub.`
       : 'Search across all Sarkari government jobs, exam results, admit cards, answer keys, syllabus and admission notices. Find your job in seconds.',
-    url: `https://sarkarijobhud.website/search${query ? `?q=${encodeURIComponent(query)}` : ''}`,
+    url: 'https://sarkarijobhub.website/search',
+    noIndex: true,
     keywords: `search, ${query || 'sarkari jobs'}, govt jobs, government exam, sarkari result, admit card, answer key, syllabus, 2026, India`,
   });
 

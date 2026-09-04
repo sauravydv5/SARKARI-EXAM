@@ -9,19 +9,19 @@ export const policyPages = [
     slug: 'editorial-policy',
     title: 'Editorial Policy',
     description: 'Read our editorial standards for accuracy, independence, and helpfulness across every article and notification guide.',
-    content: '<h2>Editorial Policy</h2><p>We aim to publish original, educational, and well-researched content that helps readers make informed decisions about government exams, recruitment updates, and career planning.</p><p>Our editorial process includes reviewing source material, cross-checking official announcements, and rewriting information in clear plain language. We do not publish copied government text or raw notification text without transformation and added value.</p><p>Readers should use our guides as educational summaries and always verify deadlines, application steps, and eligibility conditions through the official recruitment portal.</p>'
+    content: '<h2>Editorial Policy</h2><p>We publish independent, plain-language summaries of public recruitment and examination information. A page is intended to help a reader identify the issuing authority, important dates, eligibility conditions, action required, and the official place to verify the update.</p><h3>Source and review standard</h3><p>Editors use the official recruitment portal, notification, corrigendum, result notice, admit-card portal, or other primary authority material available for that update. We link readers to the official source wherever it is available. We do not represent a summary as an official notice, and we do not knowingly publish an unverified vacancy, fee, date, result, or selection claim.</p><h3>How we add value</h3><p>We organize source information into readable tables and checklists, explain what a candidate should verify, and distinguish a confirmed update from a detail that is still awaited. We do not copy a full official notification simply to create a page.</p><h3>Updates and corrections</h3><p>When an authority revises a notice, we aim to update the affected page or mark the older update as archived. Readers can report a specific issue through our Contact page with the page URL and official reference.</p>'
   },
   {
     slug: 'fact-checking-policy',
     title: 'Fact Checking Policy',
     description: 'See how we verify recruitment and exam details before publishing them on our portal.',
-    content: '<h2>Fact Checking Policy</h2><p>We review official notifications, public recruitment portals, and verified government announcements before publishing or updating a page.</p><p>When official information changes, we update our content promptly and note whenever a page is pending final confirmation from the issuing authority.</p>'
+    content: '<h2>Fact Checking Policy</h2><p>Before publishing an update, we check the named authority, title, available official link, and the fields that affect a candidate most: dates, eligibility, vacancy information, fees, and action link. A primary source is preferred over a social-media post, forwarded message, or third-party summary.</p><p>If a page cannot identify an official source or a material fact cannot be confirmed, it should not be presented as confirmed recruitment information. Dates and rules can change, so the official notice remains the final authority.</p><p>Corrections are made when reliable official material shows an error or when a reader provides a verifiable source. We do not invent missing data to make an update appear complete.</p>'
   },
   {
     slug: 'correction-policy',
     title: 'Correction Policy',
     description: 'Our process for correcting outdated, incomplete, or inaccurate content promptly and clearly.',
-    content: '<h2>Correction Policy</h2><p>If a user, official source, or internal review identifies an error, we correct it as quickly as possible and update the page history where relevant.</p>'
+    content: '<h2>Correction Policy</h2><p>If an official source, reader, or internal review identifies a factual error, please send the affected page URL and a link to the relevant official material through our Contact page. We review the report and correct, clarify, archive, or remove the information when warranted.</p><p>We do not alter an official rule or date based only on an unverified message. For time-sensitive changes, readers should rely on the authority portal until the update has been reviewed here.</p>'
   },
   {
     slug: 'privacy-policy',
@@ -33,7 +33,7 @@ export const policyPages = [
     slug: 'contact',
     title: 'Contact',
     description: 'Get in touch with the Sarkari Job Hub editorial and support team for questions, feedback, or corrections.',
-    content: '<h2>Contact Us</h2><p>For questions, feedback, or content corrections, contact the team at support@sarkarijobhud.website.</p><p>We respond to genuine inquiries, editorial feedback, and partnership requests during business hours.</p>'
+    content: '<h2>Contact Us</h2><p>For questions, feedback, or content corrections, contact the team at support@sarkarijobhub.website.</p><p>We respond to genuine inquiries, editorial feedback, and partnership requests during business hours.</p>'
   },
   {
     slug: 'disclaimer',
@@ -45,7 +45,7 @@ export const policyPages = [
     slug: 'terms',
     title: 'Terms',
     description: 'Review the usage terms and responsibilities for visitors to Sarkari Job Hub.',
-    content: '<h2>Terms & Conditions</h2><p>By using our website, you agree to use the information for educational and informational purposes. You also agree not to misuse the site, scrape data irresponsibly, or misrepresent official notices.</p>'
+    content: '<h2>Terms & Conditions</h2><p>Sarkari Job Hub provides general informational summaries and links to public recruitment and examination sources. It is not a government portal, recruitment board, payment processor, or application service. By using the website, you agree to verify material information on the official authority website before applying, paying a fee, travelling, or making a career decision.</p><h3>Acceptable use</h3><p>You may browse and share links to our pages for lawful personal use. You must not misrepresent the site as an official authority, interfere with its operation, submit harmful material through contact channels, or use automated activity that harms normal access.</p><h3>External websites</h3><p>Official portals and other external sites have their own rules, availability, and privacy practices. We are not responsible for their forms, accounts, payments, or decisions. Please read our Privacy Policy and Disclaimer for additional information.</p>'
   },
   {
     slug: 'cookie-policy',

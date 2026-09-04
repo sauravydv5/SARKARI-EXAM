@@ -5,7 +5,7 @@ export default function AboutPage() {
   useSeo({
     title: 'About Sarkari Job Hub - India\'s Leading Government Job Portal',
     description: 'Learn about Sarkari Job Hub - the most trusted source for latest government jobs, exam updates, admit cards and results. Join lakhs of job seekers in India.',
-    url: 'https://sarkarijobhud.website/about',
+    url: 'https://sarkarijobhub.website/about',
     keywords: 'about sarkari job hub, government job portal, job notification, sarkari jobs, government exam, job alerts',
   });
 
@@ -99,7 +99,7 @@ export default function AboutPage() {
           <p>
             Have questions or suggestions? We\\'d love to hear from you!
             <br />
-            <strong>Email:</strong> support@sarkarijobhud.website
+            <strong>Email:</strong> support@sarkarijobhub.website
             <br />
             <strong>Hours:</strong> Monday to Friday, 9 AM to 6 PM IST
           </p>
