@@ -136,6 +136,7 @@ const POSTS = Object.entries(contentModules)
 const STORAGE_DELETED_POSTS = 'sr_deleted_posts';
 const STORAGE_INACTIVE_POSTS = 'sr_inactive_posts';
 const STORAGE_NEW_POSTS = 'sr_new_posts';
+const STORAGE_POST_OVERRIDES = 'sr_post_overrides';
 const CONTENT_CUTOFF_DATE = new Date('2026-08-01T00:00:00.000Z').getTime();
 const MINIMUM_CONTENT_WORDS = 30;
 const GENERIC_CONTENT_PATTERNS = [
@@ -206,9 +207,11 @@ function withResolvedFlags(post) {
   const slug = post.slug || post.id;
   const map = readStorageMap(STORAGE_NEW_POSTS);
   const hasExplicitNewOverride = Object.prototype.hasOwnProperty.call(map, slug);
+  const overrides = readStorageMap(STORAGE_POST_OVERRIDES)[slug] || {};
 
   return {
     ...post,
+    ...overrides,
     isNew: hasExplicitNewOverride ? Boolean(map[slug]) : Boolean(post.isNew),
     hasExplicitNewOverride,
   };
@@ -428,5 +431,11 @@ export const api = {
     map[slug] = Boolean(value);
     writeStorageMap(STORAGE_NEW_POSTS, map);
     return Promise.resolve({ data: { slug, value: Boolean(value) } });
+  },
+  updatePostMeta: (slug, changes) => {
+    const map = readStorageMap(STORAGE_POST_OVERRIDES);
+    map[slug] = { ...(map[slug] || {}), ...changes };
+    writeStorageMap(STORAGE_POST_OVERRIDES, map);
+    return Promise.resolve({ data: { slug, ...changes } });
   },
 };

@@ -5,7 +5,6 @@ import {
   ChevronDown,
   FilterX,
   MoreHorizontal,
-  PencilLine,
   PlusCircle,
   Search,
   Trash2,
@@ -13,74 +12,6 @@ import {
 } from 'lucide-react';
 import { api, CATEGORIES } from '../api';
 import useSeo from '../hooks/useSeo';
-
-const emptyForm = {
-  title: '',
-  category: 'latest-job',
-  organization: '',
-  department: '',
-  postName: '',
-  totalVacancies: 0,
-  vacancyDetails: '',
-  qualification: '',
-  ageLimit: '',
-  applicationFee: '',
-  selectionProcess: '',
-  documentsRequired: '',
-  howToApply: '',
-  shortDescription: '',
-  content: '',
-  isFeatured: false,
-  isNew: false,
-  importantDates: {
-    notificationDate: '',
-    startDate: '',
-    lastDate: '',
-    examDate: '',
-    resultDate: '',
-    admitCardDate: '',
-  },
-  links: {
-    applyOnline: '',
-    importantLink: '',
-    officialNotification: '',
-    officialWebsite: '',
-    downloadAdmitCard: '',
-    checkResult: '',
-    answerKey: '',
-  },
-  image: '/uploads/images/placeholder.svg',
-  pdf: '',
-  publishedAt: new Date().toISOString(),
-  tags: [],
-  views: 0,
-};
-
-function makeSlug(value) {
-  return String(value || '')
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
-}
-
-function downloadJson(filename, data) {
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
-async function copyToClipboard(value) {
-  if (typeof navigator !== 'undefined' && navigator.clipboard) {
-    await navigator.clipboard.writeText(value);
-  }
-}
 
 export default function Admin() {
   const [posts, setPosts] = useState([]);
@@ -90,11 +21,9 @@ export default function Admin() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [sortOrder, setSortOrder] = useState('newest');
   const [loading, setLoading] = useState(true);
-  const [form, setForm] = useState(emptyForm);
-  const [editingId, setEditingId] = useState(null);
   const [message, setMessage] = useState('');
-  const [preview, setPreview] = useState(null);
   const navigate = useNavigate();
+  const showEditor = false;
 
   useSeo({ title: 'Admin - Dashboard', description: 'Admin dashboard (noindex)', noIndex: true });
 
@@ -122,14 +51,6 @@ export default function Admin() {
     }
   }
 
-  function updateField(path, value) {
-    setForm((prev) => {
-      if (!path.includes('.')) return { ...prev, [path]: value };
-      const [a, b] = path.split('.');
-      return { ...prev, [a]: { ...prev[a], [b]: value } };
-    });
-  }
-
   async function handleDelete(post) {
     const slug = post.slug || post.id;
     await api.deletePost(slug);
@@ -137,12 +58,11 @@ export default function Admin() {
     setMessage(`Deleted content: ${post.title}`);
   }
 
-  async function handleToggleInactive(post) {
+  async function handleToggleInactive(post, inactive = !post.isInactive) {
     const slug = post.slug || post.id;
-    const nextState = !post.isInactive;
-    await api.setInactive(slug, nextState);
-    setPosts((prev) => prev.map((item) => ((item.slug || item.id) === slug ? { ...item, isInactive: nextState } : item)));
-    setMessage(`${post.title} is now ${nextState ? 'inactive' : 'active'}.`);
+    await api.setInactive(slug, inactive);
+    setPosts((prev) => prev.map((item) => ((item.slug || item.id) === slug ? { ...item, isInactive: inactive } : item)));
+    setMessage(`${post.title} is now ${inactive ? 'inactive' : 'active'}.`);
   }
 
   async function handleToggleNew(post) {
@@ -153,86 +73,20 @@ export default function Admin() {
     setMessage(`${post.title} is now ${nextState ? 'marked as new' : 'no longer marked as new'}.`);
   }
 
-  const payload = useMemo(() => ({
-    id: makeSlug(form.title || 'sample-post'),
-    slug: makeSlug(form.title || 'sample-post'),
-    title: form.title || 'Untitled Update',
-    organization: form.organization || 'Government Organization',
-    category: form.category || 'latest-job',
-    postName: form.postName || form.title || 'Update',
-    totalVacancies: Number(form.totalVacancies) || 0,
-    vacancyDetails: form.vacancyDetails || '',
-    qualification: form.qualification || '',
-    ageLimit: form.ageLimit || '',
-    applicationFee: form.applicationFee || '',
-    selectionProcess: form.selectionProcess || '',
-    documentsRequired: form.documentsRequired || '',
-    howToApply: form.howToApply || '',
-    shortDescription: form.shortDescription || '',
-    content: form.content || '',
-    isFeatured: Boolean(form.isFeatured),
-    isNew: Boolean(form.isNew),
-    importantDates: { ...form.importantDates },
-    links: { ...form.links },
-    image: form.image || '/uploads/images/placeholder.svg',
-    pdf: form.pdf || '',
-    publishedAt: form.publishedAt || new Date().toISOString(),
-    tags: form.tags || [],
-    views: Number(form.views || 0) || 0,
-  }), [form]);
-
-  function handleGenerate() {
-    setPreview(payload);
-    setMessage('JSON preview generated.');
+  async function handleMetaChange(post, field, value) {
+    const slug = post.slug || post.id;
+    const nextValue = field === 'publishedAt' || field === 'lastUpdated'
+      ? (value ? `${value}T00:00:00.000Z` : '')
+      : value;
+    await api.updatePostMeta(slug, { [field]: nextValue });
+    setPosts((prev) => prev.map((item) => (
+      (item.slug || item.id) === slug ? { ...item, [field]: nextValue } : item
+    )));
+    setMessage(`${post.title} ${field === 'category' ? 'category' : field === 'publishedAt' ? 'published date' : 'last updated date'} updated.`);
   }
 
-  function handleDownload() {
-    const filename = `${payload.slug || makeSlug(payload.title)}.json`;
-    downloadJson(filename, payload);
-    setMessage('JSON downloaded. Move it into the matching content folder to publish it.');
-  }
-
-  async function handleCopy() {
-    await copyToClipboard(JSON.stringify(payload, null, 2));
-    setMessage('JSON copied to clipboard.');
-  }
-
-  function startEdit(post) {
-    setEditingId(post._id || post.id);
-    setForm({
-      ...emptyForm,
-      title: post.title || '',
-      category: post.category || 'latest-job',
-      organization: post.organization || '',
-      postName: post.postName || '',
-      totalVacancies: post.totalVacancies || 0,
-      vacancyDetails: post.vacancyDetails || '',
-      qualification: post.qualification || '',
-      ageLimit: post.ageLimit || '',
-      applicationFee: post.applicationFee || '',
-      selectionProcess: post.selectionProcess || '',
-      documentsRequired: post.documentsRequired || '',
-      howToApply: post.howToApply || '',
-      shortDescription: post.shortDescription || '',
-      content: post.content || '',
-      isFeatured: Boolean(post.isFeatured),
-      isNew: Boolean(post.isNew),
-      importantDates: { ...emptyForm.importantDates, ...(post.importantDates || {}) },
-      links: { ...emptyForm.links, ...(post.links || {}) },
-      image: post.image || '/uploads/images/placeholder.svg',
-      pdf: post.pdf || '',
-      publishedAt: post.publishedAt || new Date().toISOString(),
-      tags: post.tags || [],
-      views: post.views || 0,
-    });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function resetForm() {
-    setEditingId(null);
-    setForm(emptyForm);
-    setPreview(null);
-    setMessage('');
+  function dateInputValue(value) {
+    return value ? String(value).slice(0, 10) : '';
   }
 
   function normalizeCategory(value) {
@@ -340,7 +194,7 @@ export default function Admin() {
         </button>
       </div>
 
-      <section className="admin-card" style={{ marginBottom: 20 }}>
+      {showEditor && <section className="admin-card" style={{ marginBottom: 20 }}>
         <div className="admin-card-head">
           <div>
             <h2>{editingId ? 'Edit Existing JSON' : 'Create New JSON'}</h2>
@@ -542,9 +396,9 @@ export default function Admin() {
             </div>
           </form>
         </div>
-      </section>
+      </section>}
 
-      {preview && (
+      {showEditor && preview && (
         <section className="panel" style={{ marginBottom: 20 }}>
           <div className="panel-head">
             <h2>Preview</h2>
@@ -668,14 +522,25 @@ export default function Admin() {
                           <span>{p.organization || 'Government Organization'}</span>
                         </div>
                       </td>
-                      <td>{categoryBadge(p.category)}</td>
+                      <td>
+                        <select
+                          className="admin-status-select"
+                          value={p.category || 'latest-job'}
+                          onChange={(e) => handleMetaChange(p, 'category', e.target.value)}
+                          aria-label={`Change category for ${p.title}`}
+                        >
+                          {CATEGORIES.map((category) => (
+                            <option key={category.key} value={category.key}>{category.label}</option>
+                          ))}
+                        </select>
+                      </td>
                       <td>
                         <div className="admin-status-cell">
                           {statusBadge(p)}
                           <select
                             className="admin-status-select"
                             value={p.isInactive ? 'inactive' : 'active'}
-                            onChange={() => handleToggleInactive(p)}
+                            onChange={(e) => handleToggleInactive(p, e.target.value === 'inactive')}
                             disabled={p.isDeleted}
                             aria-label={`Change status for ${p.title}`}
                           >
@@ -684,13 +549,26 @@ export default function Admin() {
                           </select>
                         </div>
                       </td>
-                      <td>{p.publishedAt ? new Date(p.publishedAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</td>
-                      <td>{p.updatedAt ? new Date(p.updatedAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</td>
+                      <td>
+                        <input
+                          className="admin-status-select"
+                          type="date"
+                          value={dateInputValue(p.publishedAt)}
+                          onChange={(e) => handleMetaChange(p, 'publishedAt', e.target.value)}
+                          aria-label={`Change published date for ${p.title}`}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          className="admin-status-select"
+                          type="date"
+                          value={dateInputValue(p.lastUpdated || p.updatedAt)}
+                          onChange={(e) => handleMetaChange(p, 'lastUpdated', e.target.value)}
+                          aria-label={`Change last updated date for ${p.title}`}
+                        />
+                      </td>
                       <td>
                         <div className="admin-actions">
-                          <button type="button" className="admin-icon-button" onClick={() => startEdit(p)} aria-label={`Edit ${p.title}`}>
-                            <PencilLine size={15} />
-                          </button>
                           <button type="button" className="admin-icon-button" onClick={() => handleToggleNew(p)} aria-label={`Toggle new for ${p.title}`}>
                             <CheckCircle2 size={15} />
                           </button>
@@ -733,9 +611,6 @@ export default function Admin() {
                     <span>{p.publishedAt ? new Date(p.publishedAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</span>
                   </div>
                   <div className="admin-actions">
-                    <button type="button" className="admin-icon-button" onClick={() => startEdit(p)} aria-label={`Edit ${p.title}`}>
-                      <PencilLine size={15} />
-                    </button>
                     <button type="button" className="admin-icon-button" onClick={() => handleToggleInactive(p)} aria-label={`Toggle status for ${p.title}`}>
                       <CheckCircle2 size={15} />
                     </button>

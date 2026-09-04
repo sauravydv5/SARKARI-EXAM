@@ -2809,11 +2809,8 @@ table.data-table tr:last-child td {
   align-items: center;
 }
 
-/* sticky table header inside table-wrap */
+/* Keep the table header in normal flow so it cannot cover the first row. */
 .table-wrap .data-table thead th {
-  position: sticky;
-  top: 68px; /* offset so it doesn't overlap toolbar/header */
-  z-index: 6;
   background: var(--card);
 }
 
@@ -2837,9 +2834,6 @@ table.data-table tr:last-child td {
   .admin-summary-row {
     padding: 6px 12px 0;
     gap: 8px;
-  }
-  .table-wrap .data-table thead th {
-    top: 52px; /* smaller offset for mobile */
   }
 }
 
