@@ -137,6 +137,18 @@ const STORAGE_DELETED_POSTS = 'sr_deleted_posts';
 const STORAGE_INACTIVE_POSTS = 'sr_inactive_posts';
 const STORAGE_NEW_POSTS = 'sr_new_posts';
 const CONTENT_CUTOFF_DATE = new Date('2026-08-01T00:00:00.000Z').getTime();
+const MINIMUM_CONTENT_WORDS = 30;
+const GENERIC_CONTENT_PATTERNS = [
+  /is accepting \(or has reopened\) online applications/i,
+  /read the detailed advertisement for eligibility/i,
+  /apply only through the official portal and read/i,
+];
+
+function hasLowQualityContent(post) {
+  const plainText = String(post.content || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  const wordCount = plainText ? plainText.split(' ').length : 0;
+  return wordCount < MINIMUM_CONTENT_WORDS || GENERIC_CONTENT_PATTERNS.some((pattern) => pattern.test(plainText));
+}
 
 function readStorageList(key) {
   if (typeof window === 'undefined') return [];
@@ -212,9 +224,17 @@ function isInactivePost(post) {
   return getStatusLists().inactive.includes(slug);
 }
 
+function isRecentPost(post) {
+  const dateValue = new Date(post.lastUpdated || post.updatedAt || post.publishedAt || 0).getTime();
+  return Number.isFinite(dateValue) && Date.now() - dateValue < 1000 * 60 * 60 * 24 * 14;
+}
+
 function sortPosts(posts) {
   return [...posts].sort((a, b) => {
-    const newValue = Number(Boolean(b.isNew)) - Number(Boolean(a.isNew));
+    const priorityValue = Number(b.sortPriority || 0) - Number(a.sortPriority || 0);
+    if (priorityValue !== 0) return priorityValue;
+
+    const newValue = Number(Boolean(b.isNew) || isRecentPost(b)) - Number(Boolean(a.isNew) || isRecentPost(a));
     if (newValue !== 0) return newValue;
 
     const dateValue = (post) => new Date(post.lastUpdated || post.updatedAt || post.publishedAt || 0).getTime();
@@ -230,7 +250,7 @@ function getVisiblePosts() {
   return getAllPosts().filter((post) => {
     const publicationDate = new Date(post.publishedAt || 0).getTime();
     const isCertificate = post.category === 'certificate';
-    return (isCertificate || publicationDate >= CONTENT_CUTOFF_DATE) && !isDeletedPost(post) && !isInactivePost(post);
+    return (isCertificate || publicationDate >= CONTENT_CUTOFF_DATE) && !hasLowQualityContent(post) && !isDeletedPost(post) && !isInactivePost(post);
   });
 }
 

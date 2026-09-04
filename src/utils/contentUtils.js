@@ -229,49 +229,12 @@ export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
     },
   ];
 
-  const fallbackFaqItems = [
-    {
-      question: `Who issued ${title}?`,
-      answer: `${org}${department ? `, through ${department},` : ''} is the organisation named on this page. Confirm the same name on the official website before you apply, pay, or download ${copy.document}.`,
-    },
-    {
-      question: qualification ? `What qualification is listed for ${title}?` : `Where should I check eligibility for ${title}?`,
-      answer: qualification
-        ? `This page currently lists the qualification as ${qualification}. Read the official notification for subject rules, equivalent degrees, and the date on which the qualification must be held.`
-        : `This page does not replace the eligibility clause. Open the official notification from ${org} and check education, age, nationality, and category conditions there.`,
-    },
-    {
-      question: lastDate ? `What last date is shown for ${title}?` : `Is a deadline listed for ${title}?`,
-      answer: lastDate
-        ? `The last date currently shown is ${lastDate}. Portals can close by server time, and a corrigendum can change the date. Check the live official page on the day you submit.`
-        : `A closing date is not clearly listed on this summary. Do not assume the form is open. Check the official ${org} notice.`,
-    },
-    {
-      question: vacancies ? `How many vacancies are listed in ${title}?` : `Does ${title} include a vacancy total?`,
-      answer: vacancies
-        ? `This summary currently lists ${vacancies}${vacancyDetails ? ` — ${vacancyDetails}` : ''}. Post-wise and category-wise numbers, if any, must be taken from the official advertisement.`
-        : vacancyDetails
-          ? `Vacancy wording currently shown: ${vacancyDetails}. Use the official notice for the legally relevant count.`
-          : `A vacancy total is not listed here. Treat the page as an update until ${org} publishes a numbered advertisement.`,
-    },
-    {
-      question: `How should I ${copy.action} for ${title}?`,
-      answer: howSteps.length
-        ? `${howSteps.join(' ')} Complete those steps on the official portal, not on a copy of this website.`
-        : `Use the official link on this page, sign in with the registration details issued by ${org}, and follow the on-screen instructions for ${copy.document}.`,
-    },
-    {
-      question: `Can I treat this page as the official ${copy.document}?`,
-      answer: `No. Sarkari Job Hub is an independent information website. ${org} remains the only authority for applications, fees, admit cards, answer keys, results, and appointment decisions.`,
-    },
-  ];
-
   const faqItems = Array.isArray(post.faqs) && post.faqs.length > 0
     ? post.faqs
       .filter((item) => item && String(item.question || '').trim() && String(item.answer || '').trim())
       .slice(0, 5)
       .map((item) => ({ question: String(item.question).trim(), answer: String(item.answer).trim() }))
-    : fallbackFaqItems.slice(0, 3);
+    : [];
 
   const keyPoints = [
     `Issuing body: ${org}`,

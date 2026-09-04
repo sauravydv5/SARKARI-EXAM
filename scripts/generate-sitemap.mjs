@@ -8,6 +8,12 @@ const contentDirectory = path.join(rootDirectory, 'content');
 const outputFile = path.join(rootDirectory, 'public', 'sitemap.xml');
 const siteUrl = 'https://sarkarijobhub.website';
 const contentCutoffDate = new Date('2026-08-01T00:00:00.000Z').getTime();
+const minimumContentWords = 30;
+const genericContentPatterns = [
+  /is accepting \(or has reopened\) online applications/i,
+  /read the detailed advertisement for eligibility/i,
+  /apply only through the official portal and read/i,
+];
 
 const categories = [
   ['/latest-jobs', 'daily', '0.9'],
@@ -78,6 +84,12 @@ function postLastModified(post, filePath) {
   return new Date(fs.statSync(filePath).mtime).toISOString().slice(0, 10);
 }
 
+function hasLowQualityContent(post) {
+  const plainText = String(post.content || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  const wordCount = plainText ? plainText.split(' ').length : 0;
+  return wordCount < minimumContentWords || genericContentPatterns.some((pattern) => pattern.test(plainText));
+}
+
 function urlEntry(urlPath, lastmod, changefreq, priority) {
   return `  <url>\n    <loc>${escapeXml(`${siteUrl}${urlPath}`)}</loc>\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }
@@ -106,6 +118,7 @@ for (const filePath of walkJsonFiles(contentDirectory)) {
   const publicationDate = new Date(post.publishedAt || 0).getTime();
   const isCertificate = post.category === 'certificate';
   if (!isCertificate && (!Number.isFinite(publicationDate) || publicationDate < contentCutoffDate)) continue;
+  if (hasLowQualityContent(post)) continue;
 
   const slug = postSlug(post, filePath);
   if (!slug) continue;

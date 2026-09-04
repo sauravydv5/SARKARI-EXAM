@@ -2,9 +2,10 @@
   "id": "mpesb-mspstet-online-form-2026",
   "slug": "mpesb-mspstet-online-form-2026",
   "category": "latest-job",
-  "title": "MPESB Primary and Secondary Teachers MSPSTET Online Form 2026",
+  "title": "MPESB MSPSTET 2026 Rule Book and Teacher Recruitment Update",
   "organization": "Madhya Pradesh Employees Selection Board",
   "postName": "MSPSTET – Primary and Secondary Teachers",
+  "pdf": "https://esb.mp.gov.in/Rulebooks/RB_2026/MSPSTET_2026_RuleBookforTeachers_17082026.pdf",
   "totalVacancies": 0,
   "vacancyDetails": "MSPSTET – Primary and Secondary Teachers",
   "qualification": "As per MP teacher eligibility / MSPSTET notification (D.El.Ed / B.Ed / TET as applicable)",
@@ -12,14 +13,15 @@
   "applicationFee": "As published in the official notification",
   "selectionProcess": "Online application → Written exam / CBT / PET as notified → Document verification → Final merit",
   "documentsRequired": "Photo, signature, educational certificates, category certificate (if any) and valid photo ID",
-  "howToApply": "1. Visit https://esb.mp.gov.in\n2. Open the latest advertisement for MPESB Primary and Secondary Teachers MSPSTET Online Form 2026\n3. Register or log in and fill the application\n4. Upload photo, signature and required documents, then pay the fee if applicable\n5. Submit and print the confirmation page",
-  "shortDescription": "MPESB Primary and Secondary Teachers MSPSTET Online Form 2026. Verify the latest notice on esb.mp.gov.in before you apply, download or treat a result as final.",
-  "content": "<p><strong>Madhya Pradesh Employees Selection Board</strong> is accepting (or has reopened) online applications for <strong>MSPSTET – Primary and Secondary Teachers</strong>.</p><p>Read the detailed advertisement for eligibility, fee, dates and district/post-wise vacancies before you submit the form.</p><h3>How to apply</h3><ol><li>Open <strong>esb.mp.gov.in</strong></li><li>Complete registration / OTR if required</li><li>Fill the form, upload documents and pay the fee</li><li>Print the confirmation page</li></ol>",
-  "publishedAt": "2026-08-19T11:19:00.000Z",
-  "lastUpdated": "2026-08-19",
+  "howToApply": "1. Open the official MSPSTET 2026 Rule Book.\n2. Check level-wise eligibility, syllabus, exam pattern and application instructions.\n3. Visit https://esb.mp.gov.in for the live application or notice link.\n4. Complete the form, upload the required documents and save the confirmation page.",
+  "shortDescription": "MPESB MSPSTET 2026 Rule Book for Primary and Secondary Teachers. Download the official PDF and verify the live application schedule on esb.mp.gov.in.",
+  "content": "<p>The <strong>Madhya Pradesh Employees Selection Board (MPESB)</strong> has published the <strong>MSPSTET 2026 Rule Book for Teachers</strong> covering the Primary and Secondary Teacher Eligibility Test process.</p><p>The rule book is the controlling source for level-wise eligibility, syllabus, examination pattern, application instructions, important conditions and document requirements. Candidates should read the PDF before completing any application or preparing for the examination.</p><h3>How to use the rule book</h3><ol><li>Download the official PDF from the link below.</li><li>Check the required educational qualification for the selected teacher level.</li><li>Review the syllabus, examination scheme and application instructions.</li><li>Use only the official MPESB portal for registration, fee payment and notices.</li></ol>",
+  "publishedAt": "2026-09-04T00:00:00.000Z",
+  "lastUpdated": "2026-09-04",
   "sourceUrl": "https://esb.mp.gov.in",
-  "isFeatured": false,
+  "isFeatured": true,
   "isNew": true,
+  "sortPriority": 100,
   "importantDates": {
     "notificationDate": "See official notice",
     "startDate": "See official notice",
@@ -31,7 +33,7 @@
   "links": {
     "applyOnline": "https://esb.mp.gov.in",
     "officialWebsite": "https://esb.mp.gov.in",
-    "officialNotification": "https://esb.mp.gov.in"
+    "officialNotification": "https://esb.mp.gov.in/Rulebooks/RB_2026/MSPSTET_2026_RuleBookforTeachers_17082026.pdf"
   },
   "tags": [
     "MPESB",
@@ -42,12 +44,12 @@
   "importantInstructions": "Do not share login OTPs. Download PDFs only from the official domain. Dates and vacancy counts on aggregator sites can lag behind the notice.",
   "faqs": [
     {
-      "question": "Where can I verify MPESB Primary and Secondary Teachers MSPSTET Online Form 2026?",
-      "answer": "Use the official website: https://esb.mp.gov.in. This page only points you there."
+      "question": "Where can I download the MSPSTET 2026 Rule Book?",
+      "answer": "Download the official rule book from the notification link on this page and confirm any later correction on https://esb.mp.gov.in."
     },
     {
-      "question": "Are the dates on this page final?",
-      "answer": "No. Treat every date as a prompt to re-check the latest PDF or login dashboard on the official portal."
+      "question": "What does the MSPSTET 2026 Rule Book contain?",
+      "answer": "It contains the teacher eligibility requirements, syllabus, examination pattern, application instructions and other conditions for the notified process."
     },
     {
       "question": "What should I keep ready?",

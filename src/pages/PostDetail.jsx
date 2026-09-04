@@ -91,8 +91,12 @@ function DateTable({ dates }) {
     ['Last Date for Apply Online', dates.lastDate],
     ['Last Date for Fee Payment', dates.feePaymentLastDate],
     ['Fee Adjustment / Correction Last Date', dates.correctionDate],
+    ['Exam City Details Available', dates.examCityDate],
     ['Admit Card Available', dates.admitCardDate],
     ['Examination Date', dates.examDate],
+    ['Answer Key Available', dates.answerKeyDate],
+    ['Final Answer Key Available', dates.finalAnswerKeyDate],
+    ['OMR Sheet Available', dates.omrDate],
     ['Result Declared', dates.resultDate],
   ].filter(([, value]) => value !== null && value !== undefined && String(value).trim());
   if (!rows.length) return null;
@@ -611,19 +615,21 @@ export default function PostDetail() {
           </section>
           : null}
 
-          <section className="pd-section">
-            <div className="pd-section-head">
-              <h2>❓ Frequently Asked Questions</h2>
-            </div>
-            <div className="pd-content">
-              {faqItems.map((item) => (
-                <div key={item.question} className="faq-block">
-                  <h3>{item.question}</h3>
-                  <p>{item.answer}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+          {faqItems.length > 0 && (
+            <section className="pd-section">
+              <div className="pd-section-head">
+                <h2>❓ Frequently Asked Questions</h2>
+              </div>
+              <div className="pd-content">
+                {faqItems.map((item) => (
+                  <div key={item.question} className="faq-block">
+                    <h3>{item.question}</h3>
+                    <p>{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Important Links — classic table */}
           <section className="pd-section pd-links-section">
@@ -636,11 +642,20 @@ export default function PostDetail() {
                   <LinkRow label={primaryLabel} href={primaryHref} text="Open Official Link" />
                   {links.writtenResult && <LinkRow label="Download Written Result" href={links.writtenResult} text="Open Written Result" />}
                   {links.answerKey && <LinkRow label="Download Answer Key" href={links.answerKey} text="Open Answer Key" />}
-                  {links.downloadAdmitCard && <LinkRow label="Download Admit Card" href={links.downloadAdmitCard} text="Open Admit Card" />}
-                  {links.examCity && <LinkRow label="Exam City Details" href={links.examCity} text="Open City Details" />}
-                  {links.examSchedule && <LinkRow label="Exam Schedule Notice" href={links.examSchedule} text="Open Schedule" />}
+                  {links.answerKeyNotice && <LinkRow label="Answer Key Notice" href={links.answerKeyNotice} text="Open Notice" />}
                   {links.finalAnswerKey && <LinkRow label="Download Final Answer Key" href={links.finalAnswerKey} text="Open Final Key" />}
+                  {links.scoreCard && <LinkRow label="Download Score Card / Certificate" href={links.scoreCard} text="Open Score Card" />}
+                  {links.omrSheet && <LinkRow label="Download OMR Sheet" href={links.omrSheet} text="Open OMR Sheet" />}
+                  {links.downloadAdmitCard && <LinkRow label="Download Admit Card" href={links.downloadAdmitCard} text="Open Admit Card" />}
+                  {links.admitCardNotice && <LinkRow label="Admit Card Notice" href={links.admitCardNotice} text="Open Notice" />}
+                  {links.examCity && <LinkRow label="Exam City Details" href={links.examCity} text="Open City Details" />}
+                  {links.examCityNotice && <LinkRow label="Exam City Notice" href={links.examCityNotice} text="Open Notice" />}
+                  {links.correctionForm && <LinkRow label="Correction Form" href={links.correctionForm} text="Open Correction Form" />}
+                  {links.correctionNotice && <LinkRow label="Correction Notice" href={links.correctionNotice} text="Open Notice" />}
+                  {links.disqualifiedList && <LinkRow label="Disqualified List" href={links.disqualifiedList} text="Open List" />}
+                  {links.examSchedule && <LinkRow label="Exam Schedule Notice" href={links.examSchedule} text="Open Schedule" />}
                   {(links.officialNotification || links.importantLink) && <LinkRow label="Notification" href={links.officialNotification || links.importantLink} text="Download Notification" />}
+                  {links.brochure && <LinkRow label="Download Brochure" href={links.brochure} text="Open Brochure" />}
                   {links.officialWebsite && <LinkRow label="Official Website" href={links.officialWebsite} text="Visit Website" />}
                 </tbody>
               </table>
