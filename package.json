@@ -8,6 +8,7 @@
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "prebuild": "npm run generate:sitemap",
     "build": "vite build",
+    "postbuild": "node scripts/prerender-posts.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },
