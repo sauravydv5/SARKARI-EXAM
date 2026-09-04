@@ -91,7 +91,12 @@ function hasLowQualityContent(post) {
 }
 
 function urlEntry(urlPath, lastmod, changefreq, priority) {
-  return `  <url>\n    <loc>${escapeXml(`${siteUrl}${urlPath}`)}</loc>\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+  const absoluteUrl = `${siteUrl}${urlPath}`;
+  if (!/^https:\/\//.test(absoluteUrl)) throw new Error(`Sitemap URL must be HTTPS: ${absoluteUrl}`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(lastmod) || Number.isNaN(new Date(`${lastmod}T00:00:00Z`).getTime())) {
+    throw new Error(`Invalid sitemap lastmod: ${lastmod}`);
+  }
+  return `  <url>\n    <loc>${escapeXml(absoluteUrl)}</loc>\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }
 
 const entries = new Map();
