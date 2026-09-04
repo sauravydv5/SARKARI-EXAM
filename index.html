@@ -55,6 +55,20 @@
     <link rel="canonical" href="https://sarkarijobhub.website/" />
     <link rel="alternate" hreflang="en-IN" href="https://sarkarijobhub.website/" />
     <link rel="alternate" hreflang="en" href="https://sarkarijobhub.website/" />
+    <script>
+      (function () {
+        var origin = 'https://sarkarijobhub.website';
+        var routeUrl = origin + (window.location.pathname || '/');
+        var canonical = document.querySelector('link[rel="canonical"]');
+        var ogUrl = document.querySelector('meta[property="og:url"]');
+        var hreflangIn = document.querySelector('link[hreflang="en-IN"]');
+        var hreflangEn = document.querySelector('link[hreflang="en"]');
+        if (canonical) canonical.setAttribute('href', routeUrl);
+        if (ogUrl) ogUrl.setAttribute('content', routeUrl);
+        if (hreflangIn) hreflangIn.setAttribute('href', routeUrl);
+        if (hreflangEn) hreflangEn.setAttribute('href', routeUrl);
+      }());
+    </script>
     <title>Sarkari Job Hub 2026 — Latest Sarkari Jobs, Results & Admit Cards</title>
     <!-- Kept in the document head so AdSense can verify the served production HTML. -->
     <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5984910720229186"></script>
