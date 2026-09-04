@@ -213,11 +213,7 @@ export default function PostDetail() {
     const currentFaqItems = buildPostGuide(post, categoryMeta(post.category).label).faqItems;
     // Only valid, current vacancy records return JobPosting schema.
     const jobSchema = generateJobPostingSchema(post);
-    if (jobSchema) {
-      setJsonLd(jobSchema, 'jobposting-jsonld');
-    } else {
-      document.getElementById('jobposting-jsonld')?.remove();
-    }
+    if (jobSchema) setJsonLd(jobSchema, 'jobposting-jsonld');
 
     // Article schema with publisher logo and author details
     const articleSchema = generateArticleSchema({
