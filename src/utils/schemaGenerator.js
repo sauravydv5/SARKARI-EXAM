@@ -64,6 +64,7 @@ export const generateJobPostingSchema = (post) => {
     .replace(/<[^>]+>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
+  const hasJobLocation = Boolean(address.addressLocality || location.city);
 
   return {
     '@context': 'https://schema.org',
@@ -78,17 +79,21 @@ export const generateJobPostingSchema = (post) => {
       name: post.organization || 'Government Organization',
       ...(officialWebsite ? { sameAs: officialWebsite, url: officialWebsite } : {}),
     },
-    jobLocation: {
-      '@type': 'Place',
-      ...(locationName ? { name: locationName } : {}),
-      address: {
-        '@type': 'PostalAddress',
-        ...(address.streetAddress ? { streetAddress: address.streetAddress } : {}),
-        ...(address.addressLocality || location.city ? { addressLocality: address.addressLocality || location.city } : {}),
-        ...(address.addressRegion || location.state ? { addressRegion: address.addressRegion || location.state } : {}),
-        addressCountry: address.addressCountry || 'IN',
-      },
-    },
+    ...(hasJobLocation
+      ? {
+          jobLocation: {
+            '@type': 'Place',
+            ...(locationName ? { name: locationName } : {}),
+            address: {
+              '@type': 'PostalAddress',
+              ...(address.streetAddress ? { streetAddress: address.streetAddress } : {}),
+              ...(address.addressLocality || location.city ? { addressLocality: address.addressLocality || location.city } : {}),
+              ...(address.addressRegion || location.state ? { addressRegion: address.addressRegion || location.state } : {}),
+              addressCountry: address.addressCountry || 'IN',
+            },
+          },
+        }
+      : {}),
     ...(buildSalary(post.salary) ? { baseSalary: buildSalary(post.salary) } : {}),
     ...(post.applicantLocationRequirements
       ? {
