@@ -51,6 +51,11 @@ function normalizePostType(raw, category, title = '') {
   return 'notification';
 }
 
+function normalizeAsset(value) {
+  const asset = String(value || '').trim();
+  return /\/placeholder\.(svg|pdf)$/i.test(asset) ? '' : asset;
+}
+
 function normalizePost(raw, sourcePath) {
   if (!raw || typeof raw !== 'object') return null;
 
@@ -92,8 +97,8 @@ function normalizePost(raw, sourcePath) {
     howToApply: raw.howToApply || '',
     shortDescription: raw.shortDescription || raw.description || '',
     content: raw.content || '',
-    image: raw.image || '',
-    pdf: raw.pdf || '',
+    image: normalizeAsset(raw.image),
+    pdf: normalizeAsset(raw.pdf),
     views: Number(raw.views || 0) || 0,
   };
 }
@@ -131,6 +136,7 @@ const POSTS = Object.entries(contentModules)
 const STORAGE_DELETED_POSTS = 'sr_deleted_posts';
 const STORAGE_INACTIVE_POSTS = 'sr_inactive_posts';
 const STORAGE_NEW_POSTS = 'sr_new_posts';
+const CONTENT_CUTOFF_DATE = new Date('2026-08-01T00:00:00.000Z').getTime();
 
 function readStorageList(key) {
   if (typeof window === 'undefined') return [];
@@ -208,6 +214,9 @@ function isInactivePost(post) {
 
 function sortPosts(posts) {
   return [...posts].sort((a, b) => {
+    const newValue = Number(Boolean(b.isNew)) - Number(Boolean(a.isNew));
+    if (newValue !== 0) return newValue;
+
     const dateValue = (post) => new Date(post.lastUpdated || post.updatedAt || post.publishedAt || 0).getTime();
     return dateValue(b) - dateValue(a);
   });
@@ -218,7 +227,11 @@ function getAllPosts() {
 }
 
 function getVisiblePosts() {
-  return getAllPosts().filter((post) => !isDeletedPost(post) && !isInactivePost(post));
+  return getAllPosts().filter((post) => {
+    const publicationDate = new Date(post.publishedAt || 0).getTime();
+    const isCertificate = post.category === 'certificate';
+    return (isCertificate || publicationDate >= CONTENT_CUTOFF_DATE) && !isDeletedPost(post) && !isInactivePost(post);
+  });
 }
 
 function applySectionNewBadgeLimit(items) {
@@ -248,7 +261,7 @@ function getPostsWithSearch(items, search) {
   const term = (search || '').trim().toLowerCase();
   if (!term) return items;
   return items.filter((post) => {
-    const haystack = [post.title, post.organization, post.postName, post.shortDescription, post.content, post.category]
+    const haystack = [post.id, post.slug, post.title, post.organization, post.postName, post.shortDescription, post.content, post.category]
       .filter(Boolean)
       .join(' ')
       .toLowerCase();

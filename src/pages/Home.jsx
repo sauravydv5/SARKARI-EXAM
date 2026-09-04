@@ -134,7 +134,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="container my-6 md:my-8">
+      <div className="container home-featured-block my-6 md:my-8">
         <FeaturedCards limit={8} title="" />
       </div>
 

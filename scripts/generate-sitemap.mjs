@@ -7,6 +7,7 @@ const rootDirectory = path.resolve(scriptDirectory, '..');
 const contentDirectory = path.join(rootDirectory, 'content');
 const outputFile = path.join(rootDirectory, 'public', 'sitemap.xml');
 const siteUrl = 'https://sarkarijobhub.website';
+const contentCutoffDate = new Date('2026-08-01T00:00:00.000Z').getTime();
 
 const categories = [
   ['/latest-jobs', 'daily', '0.9'],
@@ -101,6 +102,10 @@ for (const filePath of walkJsonFiles(contentDirectory)) {
     throw new Error(`Cannot parse ${path.relative(rootDirectory, filePath)}: ${error.message}`);
   }
   if (!post || typeof post !== 'object') continue;
+
+  const publicationDate = new Date(post.publishedAt || 0).getTime();
+  const isCertificate = post.category === 'certificate';
+  if (!isCertificate && (!Number.isFinite(publicationDate) || publicationDate < contentCutoffDate)) continue;
 
   const slug = postSlug(post, filePath);
   if (!slug) continue;

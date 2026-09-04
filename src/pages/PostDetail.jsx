@@ -341,6 +341,15 @@ export default function PostDetail() {
           {/* Quick info strip — always 5 cards with values */}
           <QuickInfo post={post} dates={dates} postType={postType} />
 
+          {(isRecruitment || isAdmission || isNotification || isResult || isAdmitCard || isAnswerKey) && (
+            <section className="pd-section pd-dates-priority">
+              <div className="pd-section-head">
+                <h2>📅 Important Dates</h2>
+              </div>
+              <DateTable dates={dates} />
+            </section>
+          )}
+
           {isResult && (
             <section className="pd-section">
               <div className="pd-section-head"><h2>📊 Result Overview</h2></div>
@@ -355,43 +364,46 @@ export default function PostDetail() {
             </section>
           )}
 
-          {(isRecruitment || isAdmission || isNotification) && <section className="pd-section">
+          {(isRecruitment || isAdmission || isNotification) && <section className="pd-section pd-intro-compact">
             <div className="pd-section-head">
               <h2>🧭 Introduction</h2>
             </div>
             <div className="pd-content">
-              <p>{guideIntro}</p>
-              <ul className="guide-list">
-                <li>Vacancy summary and eligibility details are explained in simple language.</li>
-                <li>Important dates, fee, exam pattern, and selection process are listed for quick reference.</li>
-                <li>Official links and editorial notes help you verify each step without jumping between several portals.</li>
-              </ul>
+              <p>{val(post.shortDescription, `${post.title} notification details, eligibility, fee and official links are given below.`)}</p>
             </div>
           </section>}
 
-          {(isRecruitment || isAdmission || isNotification) && <section className="pd-section">
-            <div className="pd-section-head">
-              <h2>🧠 Key Takeaways</h2>
-            </div>
-            <div className="pd-content">
-              <ul className="guide-list">
-                {guide.keyPoints.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </div>
-          </section>}
-
-          {(isRecruitment || isAdmission || isNotification || isSyllabus) && guide.sections.map((section) => (
-            <section className="pd-section" key={section.id}>
+          {(isRecruitment || isAdmission) && (
+            <section className="pd-section pd-eligibility-section">
               <div className="pd-section-head">
-                <h2>{section.title}</h2>
+                <h2>Eligibility, Fee &amp; Selection</h2>
               </div>
-              <div className="pd-content">
-                <p>{section.body}</p>
+              <div className="pd-focus-grid">
+                <article className="pd-focus-card pd-focus-eligibility">
+                  <span className="pd-focus-kicker">01 · Eligibility</span>
+                  <h3>Who can apply?</h3>
+                  <p>{val(post.ageLimit, 'Check the official notification for age rules.')}</p>
+                  <p className="pd-focus-note">{val(post.qualification, 'Check the official notification for qualification.')}</p>
+                </article>
+                <article className="pd-focus-card pd-focus-fee">
+                  <span className="pd-focus-kicker">02 · Application Fee</span>
+                  <h3>Fee structure</h3>
+                  <p>{val(post.applicationFee, 'Check the official notification for category-wise fee.')}</p>
+                  <p className="pd-focus-note">Pay only through the recruiting organisation&apos;s official payment gateway.</p>
+                </article>
+                <article className="pd-focus-card pd-focus-selection">
+                  <span className="pd-focus-kicker">03 · Selection</span>
+                  <h3>Stages of recruitment</h3>
+                  <p>{val(post.selectionProcess, 'Selection stages are given in the official notification.')}</p>
+                  <p className="pd-focus-note">The authority may require document verification, skill, physical or medical tests.</p>
+                </article>
+              </div>
+              <div className="pd-doc-strip">
+                <strong>Documents to keep ready</strong>
+                <span>{val(post.documentsRequired, 'Photo, signature, identity proof and educational certificates.')}</span>
               </div>
             </section>
-          ))}
+          )}
 
           {(isResult || isAdmitCard || isAnswerKey || isSyllabus || isCertificate) && (
             <section className="pd-section">
@@ -442,14 +454,6 @@ export default function PostDetail() {
                 </tbody>
               </table>
             </div>
-          </section>}
-
-          {/* Important Dates table */}
-          {(isRecruitment || isAdmission || isNotification || isResult || isAdmitCard || isAnswerKey) && <section className="pd-section">
-            <div className="pd-section-head">
-              <h2>📅 Important Dates</h2>
-            </div>
-            <DateTable dates={dates} />
           </section>}
 
           {/* Application Fee */}
@@ -693,38 +697,6 @@ export default function PostDetail() {
                   🌐 Official Website
                 </a>
               )}
-            </div>
-          </div>
-
-          {(isRecruitment || isAdmission) && <div className="pd-side-card">
-            <div className="pd-side-title">Key Information</div>
-            <ul className="pd-side-dates">
-              {post.totalVacancies > 0 && <li><span>Posts</span><strong>{post.totalVacancies.toLocaleString('en-IN')}</strong></li>}
-              {dates.startDate && <li><span>Start</span><strong>{dates.startDate}</strong></li>}
-              {dates.lastDate && <li className="urgent"><span>Last Date</span><strong>{dates.lastDate}</strong></li>}
-              {dates.examDate && <li><span>Exam</span><strong>{dates.examDate}</strong></li>}
-              {dates.resultDate && <li><span>Result</span><strong>{dates.resultDate}</strong></li>}
-              {dates.admitCardDate && <li><span>Admit Card</span><strong>{dates.admitCardDate}</strong></li>}
-            </ul>
-          </div>}
-
-          {(isRecruitment || isAdmission) && <div className="pd-side-card">
-            <div className="pd-side-title">At a Glance</div>
-            <ul className="pd-side-dates pd-glance">
-              {post.organization && <li><span>Board</span><strong>{post.organization}</strong></li>}
-              {post.qualification && <li><span>Qualification</span><strong>{post.qualification}</strong></li>}
-              {post.ageLimit && <li><span>Age</span><strong>{post.ageLimit}</strong></li>}
-              {post.applicationFee && <li><span>Fee</span><strong>{post.applicationFee}</strong></li>}
-            </ul>
-          </div>}
-
-          <div className="pd-side-card">
-            <div className="pd-side-title">Related Reading</div>
-            <div className="pd-side-links">
-              <Link to="/blog">📘 Exam preparation blogs</Link>
-              <Link to="/syllabus">📚 Syllabus and pattern guides</Link>
-              <Link to="/faq">❓ Frequently asked questions</Link>
-              <Link to="/about-us">🏛 About our editorial standards</Link>
             </div>
           </div>
 

@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import { api } from '../api';
 
 const ADMIN_SECRET = import.meta.env.VITE_ADMIN_SECRET || '1111';
 const CURRENT_YEAR = new Date().getFullYear();
@@ -104,6 +105,7 @@ function ExternalFooterLinks({ links }) {
 export default function Layout() {
   const [q, setQ] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [featuredPosts, setFeaturedPosts] = useState([]);
   const navigate = useNavigate();
   const today = new Date().toLocaleDateString('en-IN', {
     weekday: 'long',
@@ -111,6 +113,11 @@ export default function Layout() {
     month: 'long',
     year: 'numeric',
   });
+
+  useEffect(() => {
+    const { data } = api.getFeaturedPosts(8);
+    setFeaturedPosts(Array.isArray(data) ? data : []);
+  }, []);
 
   function onSearch(e) {
     e.preventDefault();
@@ -229,6 +236,22 @@ export default function Layout() {
               </li>
             ))}
           </ul>
+          {menuOpen && featuredPosts.length > 0 && (
+            <div className="mobile-featured-links" aria-label="Latest featured updates">
+              <div className="mobile-featured-heading">Latest Updates</div>
+              <div className="mobile-featured-grid">
+                {featuredPosts.map((post) => (
+                  <Link
+                    key={post._id || post.slug || post.id}
+                    to={`/post/${post.slug || post.id}`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {post.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 

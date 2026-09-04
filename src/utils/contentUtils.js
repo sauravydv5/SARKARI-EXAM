@@ -229,7 +229,7 @@ export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
     },
   ];
 
-  const faqItems = [
+  const fallbackFaqItems = [
     {
       question: `Who issued ${title}?`,
       answer: `${org}${department ? `, through ${department},` : ''} is the organisation named on this page. Confirm the same name on the official website before you apply, pay, or download ${copy.document}.`,
@@ -265,6 +265,13 @@ export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
       answer: `No. Sarkari Job Hub is an independent information website. ${org} remains the only authority for applications, fees, admit cards, answer keys, results, and appointment decisions.`,
     },
   ];
+
+  const faqItems = Array.isArray(post.faqs) && post.faqs.length > 0
+    ? post.faqs
+      .filter((item) => item && String(item.question || '').trim() && String(item.answer || '').trim())
+      .slice(0, 5)
+      .map((item) => ({ question: String(item.question).trim(), answer: String(item.answer).trim() }))
+    : fallbackFaqItems.slice(0, 3);
 
   const keyPoints = [
     `Issuing body: ${org}`,
