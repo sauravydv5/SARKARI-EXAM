@@ -530,7 +530,20 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+}
+
+.brand-row .header-search {
+  align-self: flex-start;
+}
+
+.brand-row .brand {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.brand-row .brand-text {
+  min-width: 0;
 }
 
 .brand {
@@ -584,7 +597,8 @@ textarea {
 .header-search {
   display: flex;
   gap: 0;
-  min-width: min(460px, 100%);
+  width: min(380px, 42vw);
+  min-width: 280px;
   background: var(--input-bg);
   border-radius: 999px;
   padding: 6px;
@@ -947,7 +961,10 @@ textarea {
 }
 
 @media (max-width: 560px) {
-  .header-search { min-width: 100%; }
+  .header-search {
+    width: 100%;
+    min-width: 100%;
+  }
   .brand-text p { display: none; }
   .brand-text h1 { font-size: 1.15rem; }
 }
@@ -2807,6 +2824,67 @@ table.data-table tr:last-child td {
   display: inline-flex;
   gap: 8px;
   align-items: center;
+}
+
+.admin-status-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-status-toggle.is-active {
+  color: #15803d;
+}
+
+.admin-status-toggle.is-inactive {
+  color: #b91c1c;
+}
+
+.admin-status-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.admin-status-toggle:focus-visible .admin-status-toggle-track {
+  outline: 3px solid rgba(37, 99, 235, 0.25);
+  outline-offset: 2px;
+}
+
+.admin-status-toggle-track {
+  display: inline-flex;
+  align-items: center;
+  width: 34px;
+  height: 20px;
+  padding: 2px;
+  border-radius: 999px;
+  background: #b91c1c;
+  transition: background-color 0.2s ease;
+}
+
+.admin-status-toggle.is-active .admin-status-toggle-track {
+  background: #16a34a;
+}
+
+.admin-status-toggle-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
+  transform: translateX(0);
+  transition: transform 0.2s ease;
+}
+
+.admin-status-toggle.is-active .admin-status-toggle-thumb {
+  transform: translateX(14px);
 }
 
 /* Keep the table header in normal flow so it cannot cover the first row. */

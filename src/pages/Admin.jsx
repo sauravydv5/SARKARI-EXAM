@@ -165,6 +165,27 @@ export default function Admin() {
     return <span className="admin-badge admin-badge-green">Active</span>;
   }
 
+  function statusToggle(post) {
+    const isActive = !post.isInactive;
+
+    return (
+      <button
+        type="button"
+        className={`admin-status-toggle ${isActive ? 'is-active' : 'is-inactive'}`}
+        role="switch"
+        aria-checked={isActive}
+        aria-label={`Change status for ${post.title}`}
+        onClick={() => handleToggleInactive(post, isActive)}
+        disabled={post.isDeleted}
+      >
+        <span className="admin-status-toggle-track" aria-hidden="true">
+          <span className="admin-status-toggle-thumb" />
+        </span>
+        <span>{isActive ? 'Active' : 'Inactive'}</span>
+      </button>
+    );
+  }
+
   function categoryBadge(category) {
     const palette = {
       'latest-job': 'admin-badge-blue',
@@ -537,16 +558,7 @@ export default function Admin() {
                       <td>
                         <div className="admin-status-cell">
                           {statusBadge(p)}
-                          <select
-                            className="admin-status-select"
-                            value={p.isInactive ? 'inactive' : 'active'}
-                            onChange={(e) => handleToggleInactive(p, e.target.value === 'inactive')}
-                            disabled={p.isDeleted}
-                            aria-label={`Change status for ${p.title}`}
-                          >
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                          </select>
+                          {statusToggle(p)}
                         </div>
                       </td>
                       <td>
@@ -611,9 +623,7 @@ export default function Admin() {
                     <span>{p.publishedAt ? new Date(p.publishedAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</span>
                   </div>
                   <div className="admin-actions">
-                    <button type="button" className="admin-icon-button" onClick={() => handleToggleInactive(p)} aria-label={`Toggle status for ${p.title}`}>
-                      <CheckCircle2 size={15} />
-                    </button>
+                    {statusToggle(p)}
                     <button type="button" className="admin-icon-button" onClick={() => handleDelete(p)} aria-label={`Delete ${p.title}`}>
                       <Trash2 size={15} />
                     </button>

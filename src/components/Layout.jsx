@@ -186,7 +186,7 @@ export default function Layout() {
             </div>
           </Link>
 
-          <form className="header-search flex items-center w-full max-w-xl md:max-w-2xl" onSubmit={onSearch}>
+          <form className="header-search flex items-center ml-auto w-full max-w-sm" onSubmit={onSearch}>
             <label htmlFor="site-search" className="sr-only">Search</label>
             <input
               id="site-search"
@@ -199,6 +199,7 @@ export default function Layout() {
             />
             <button type="submit" className="ml-3 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-300 text-black font-semibold shadow-md hover:scale-[1.02] transition">Search</button>
           </form>
+
         </div>
       </header>
 
