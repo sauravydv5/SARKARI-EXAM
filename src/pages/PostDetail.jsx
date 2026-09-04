@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { api, categoryMeta, formatDate } from '../api';
 import { sanitizeHtml } from '../utils/sanitize';
 import useSeo from '../hooks/useSeo';
-import { buildPostGuide } from '../utils/contentUtils';
+import { buildPostGuide, isStaleLowValuePost } from '../utils/contentUtils';
 import {
   generateJobPostingSchema,
   generateArticleSchema,
@@ -21,7 +21,7 @@ const CATEGORY_ICONS = {
   certificate: '📜',
 };
 
-const SOON = 'Check official notification';
+const SOON = '';
 
 function val(v, fallback = SOON) {
   if (v === 0) return '0';
@@ -32,6 +32,7 @@ function val(v, fallback = SOON) {
 }
 
 function TableRow({ label, children, highlight }) {
+  if (children === null || children === undefined || (typeof children === 'string' && !children.trim())) return null;
   return (
     <tr className={highlight ? 'pd-tr-hot' : ''}>
       <th>{label}</th>
@@ -55,6 +56,47 @@ function LinkRow({ label, href, text }) {
       </td>
     </tr>
   );
+}
+
+function QuickInfo({ post, dates, postType }) {
+  const values = postType === 'result'
+    ? [['Exam / Post', post.postName], ['Result Status', post.statusNote || post.status], ['Result Date', dates.resultDate], ['Exam Date', dates.examDate], ['Authority', post.organization]]
+    : postType === 'admit_card'
+      ? [['Exam / Post', post.postName], ['Release Date', dates.admitCardDate], ['Exam Date', dates.examDate], ['Authority', post.organization]]
+      : postType === 'answer_key'
+        ? [['Exam / Post', post.postName], ['Answer Key Status', post.statusNote || post.status], ['Release Date', dates.answerKeyDate || dates.resultDate], ['Exam Date', dates.examDate], ['Authority', post.organization]]
+        : postType === 'syllabus'
+          ? [['Exam / Post', post.postName], ['Exam Pattern', post.examPattern], ['Total Questions', post.totalQuestions], ['Total Marks', post.totalMarks], ['Duration', post.duration]]
+          : postType === 'certificate'
+            ? [['Certificate', post.postName || post.title], ['Status', post.statusNote || post.status], ['Authority', post.organization]]
+            : [['Total Posts', post.totalVacancies > 0 ? post.totalVacancies.toLocaleString('en-IN') : null], ['Last Date', dates.lastDate], ['Qualification', post.qualification], ['Authority', post.organization]];
+
+  const available = values.filter(([, value]) => value !== null && value !== undefined && String(value).trim());
+  if (!available.length) return null;
+  return (
+    <div className="pd-stats pd-stats-full">
+      {available.map(([label, value], index) => (
+        <div className={`pd-stat ${['red', 'amber', 'blue', 'green', 'purple'][index % 5]}`} key={label}>
+          <div><span className="pd-stat-label">{label}</span><strong className="pd-stat-value pd-stat-clamp">{value}</strong></div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function DateTable({ dates }) {
+  const rows = [
+    ['Notification / Advt. Date', dates.notificationDate],
+    ['Application Begin', dates.startDate],
+    ['Last Date for Apply Online', dates.lastDate],
+    ['Last Date for Fee Payment', dates.feePaymentLastDate],
+    ['Fee Adjustment / Correction Last Date', dates.correctionDate],
+    ['Admit Card Available', dates.admitCardDate],
+    ['Examination Date', dates.examDate],
+    ['Result Declared', dates.resultDate],
+  ].filter(([, value]) => value !== null && value !== undefined && String(value).trim());
+  if (!rows.length) return null;
+  return <div className="pd-table-wrap"><table className="pd-full-table"><tbody>{rows.map(([label, value]) => <TableRow key={label} label={label}>{value}</TableRow>)}</tbody></table></div>;
 }
 
 export default function PostDetail() {
@@ -93,6 +135,15 @@ export default function PostDetail() {
   const dates = post?.importantDates || {};
   const links = post?.links || {};
   const icon = CATEGORY_ICONS[post?.category] || '📌';
+  const postType = post?.postType || 'notification';
+  const isRecruitment = postType === 'recruitment';
+  const isResult = postType === 'result';
+  const isAdmitCard = postType === 'admit_card';
+  const isAnswerKey = postType === 'answer_key';
+  const isSyllabus = postType === 'syllabus';
+  const isCertificate = postType === 'certificate';
+  const isAdmission = postType === 'admission';
+  const isNotification = postType === 'notification';
   const pageTitle = post?.title || 'Sarkari Job Hub';
   const keywordList = [
     cat.label,
@@ -114,6 +165,8 @@ export default function PostDetail() {
     .slice(0, 15)
     .join(', ');
 
+  const stalePage = post ? isStaleLowValuePost(post) : false;
+
   useSeo({
     title: pageTitle,
     description:
@@ -122,8 +175,9 @@ export default function PostDetail() {
         ? `${pageTitle} from ${post.organization || 'the recruiting organization'}: eligibility, important dates, application details, selection process and official links.`
         : 'Latest government job updates, results, admit cards and answer keys.'),
     url: `https://sarkarijobhub.website/post/${post?.slug || ''}`,
-    image: post?.image || '/logo.png',
+    image: post?.image && post.image !== '/uploads/images/placeholder.svg' ? post.image : '/logo.png',
     keywords: postKeywords,
+    noIndex: stalePage,
     schemaType: 'Article',
     schemaData: {
       headline: pageTitle,
@@ -197,26 +251,9 @@ export default function PostDetail() {
     );
   }
 
-  const vacanciesText =
-    post.totalVacancies > 0
-      ? `${post.totalVacancies.toLocaleString('en-IN')} Posts`
-      : post.vacancyDetails
-        ? val(post.vacancyDetails)
-        : SOON;
-
-  const primaryHref =
-    links.importantLink || links.applyOnline || links.checkResult || links.downloadAdmitCard || links.answerKey;
-  const primaryLabel = links.importantLink
-    ? 'Important Link'
-    : links.applyOnline
-      ? 'Apply Online'
-      : links.checkResult
-        ? 'Check Result'
-        : links.downloadAdmitCard
-          ? 'Download Admit Card'
-          : links.answerKey
-            ? 'Answer Key'
-            : 'Official Link';
+  const vacanciesText = post.totalVacancies > 0
+    ? `${post.totalVacancies.toLocaleString('en-IN')} Posts`
+    : post.vacancyDetails;
 
   const howSteps = (post.howToApply || '')
     .split('\n')
@@ -228,16 +265,22 @@ export default function PostDetail() {
     .map((s) => s.trim())
     .filter(Boolean);
 
+  const primaryAction = isResult
+    ? ['checkResult', 'Check Result']
+    : isAdmitCard
+      ? ['downloadAdmitCard', 'Download Admit Card']
+      : isAnswerKey
+        ? ['answerKey', 'Download Answer Key']
+        : isSyllabus
+          ? ['downloadSyllabus', 'Download Syllabus']
+          : isCertificate
+            ? ['downloadCertificate', 'Download Certificate']
+            : ['applyOnline', 'Apply Online'];
+  const primaryHref = links[primaryAction[0]] || links.applyOnline || links.officialWebsite;
+  const primaryLabel = primaryHref ? primaryAction[1] : 'Official Link';
+
   const guide = buildPostGuide(post, cat.label);
   const guideIntro = guide.overview;
-
-  const preparationTips = [
-    'Start with the official notification and compare the eligibility criteria carefully.',
-    'Build a weekly study schedule that covers current affairs, revision, and mock tests.',
-    'Keep your documents ready in advance to avoid last-minute application issues.',
-    'Track the official website for any changes in dates, fees, or instructions.',
-  ];
-
   const faqItems = guide.faqItems;
 
   return (
@@ -260,7 +303,8 @@ export default function PostDetail() {
               </span>
               {post.isFeatured && <span className="pd-featured-badge">★ Featured</span>}
               {post.isNew && <span className="pd-featured-badge">🆕 New</span>}
-              <span className="pd-views-badge">👁 {post.views || 0} views</span>
+              {post.statusNote && <span className="pd-featured-badge">{post.statusNote}</span>}
+              {post.views > 0 && <span className="pd-views-badge">👁 {post.views} views</span>}
             </div>
             <h1 className="pd-title">{post.title}</h1>
             <p className="pd-org">
@@ -286,58 +330,32 @@ export default function PostDetail() {
             </p>
             <div className="pd-meta-chips">
               <span className="pd-chip">📅 Published {formatDate(post.publishedAt)}</span>
-              <span className="pd-chip">🕒 Updated {formatDate(post.updatedAt || post.publishedAt)}</span>
+              <span className="pd-chip">🕒 Updated {formatDate(post.lastUpdated || post.updatedAt || post.publishedAt)}</span>
               <span className="pd-chip">✍️ Author: Sarkari Job Hub Editorial Team</span>
+              {post.lastVerified && <span className="pd-chip">✓ Verified {formatDate(post.lastVerified)}</span>}
+              {post.sourceUrl && <span className="pd-chip">Source: Official Website</span>}
               <span className="pd-chip">📖 Read time: {Math.max(3, Math.ceil((post.content?.split(/\s+/).length || 600) / 180))} min</span>
             </div>
           </header>
 
           {/* Quick info strip — always 5 cards with values */}
-          <div className="pd-stats pd-stats-full">
-            <div className="pd-stat red">
-              <span className="pd-stat-icon">👥</span>
-              <div>
-                <span className="pd-stat-label">Total Post</span>
-                <strong className="pd-stat-value">
-                  {post.totalVacancies > 0
-                    ? post.totalVacancies.toLocaleString('en-IN')
-                    : 'See Details'}
-                </strong>
-              </div>
-            </div>
-            <div className="pd-stat amber">
-              <span className="pd-stat-icon">⏰</span>
-              <div>
-                <span className="pd-stat-label">Last Date</span>
-                <strong className="pd-stat-value">{val(dates.lastDate)}</strong>
-              </div>
-            </div>
-            <div className="pd-stat blue">
-              <span className="pd-stat-icon">📝</span>
-              <div>
-                <span className="pd-stat-label">Exam Date</span>
-                <strong className="pd-stat-value">{val(dates.examDate)}</strong>
-              </div>
-            </div>
-            <div className="pd-stat green">
-              <span className="pd-stat-icon">🏆</span>
-              <div>
-                <span className="pd-stat-label">Result Date</span>
-                <strong className="pd-stat-value">{val(dates.resultDate)}</strong>
-              </div>
-            </div>
-            <div className="pd-stat purple">
-              <span className="pd-stat-icon">🎓</span>
-              <div>
-                <span className="pd-stat-label">Qualification</span>
-                <strong className="pd-stat-value pd-stat-clamp">
-                  {val(post.qualification)}
-                </strong>
-              </div>
-            </div>
-          </div>
+          <QuickInfo post={post} dates={dates} postType={postType} />
 
-          <section className="pd-section">
+          {isResult && (
+            <section className="pd-section">
+              <div className="pd-section-head"><h2>📊 Result Overview</h2></div>
+              <div className="pd-content">
+                <p>{val(post.shortDescription, `${post.title} result update from ${val(post.organization)}.`)}</p>
+                <ul className="guide-list">
+                  {(post.statusNote || post.status) && <li><strong>Result status:</strong> {post.statusNote || post.status}</li>}
+                  {dates.resultDate && <li><strong>Result date:</strong> {dates.resultDate}</li>}
+                  {dates.examDate && <li><strong>Exam date:</strong> {dates.examDate}</li>}
+                </ul>
+              </div>
+            </section>
+          )}
+
+          {(isRecruitment || isAdmission || isNotification) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>🧭 Introduction</h2>
             </div>
@@ -349,9 +367,9 @@ export default function PostDetail() {
                 <li>Official links and editorial notes help you verify each step without jumping between several portals.</li>
               </ul>
             </div>
-          </section>
+          </section>}
 
-          <section className="pd-section">
+          {(isRecruitment || isAdmission || isNotification) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>🧠 Key Takeaways</h2>
             </div>
@@ -362,9 +380,9 @@ export default function PostDetail() {
                 ))}
               </ul>
             </div>
-          </section>
+          </section>}
 
-          {guide.sections.map((section) => (
+          {(isRecruitment || isAdmission || isNotification || isSyllabus) && guide.sections.map((section) => (
             <section className="pd-section" key={section.id}>
               <div className="pd-section-head">
                 <h2>{section.title}</h2>
@@ -375,8 +393,18 @@ export default function PostDetail() {
             </section>
           ))}
 
+          {(isResult || isAdmitCard || isAnswerKey || isSyllabus || isCertificate) && (
+            <section className="pd-section">
+              <div className="pd-section-head"><h2>{isResult ? '✅ How to Check Result' : isAdmitCard ? '🎫 How to Download Admit Card' : isAnswerKey ? '🔑 How to Download Answer Key' : isSyllabus ? '📘 Syllabus Overview' : '📜 Certificate Download Process'}</h2></div>
+              <div className="pd-content">
+                <p>{isResult ? 'Open the official result notice or scorecard link, sign in with the required credentials, and verify your roll number before saving the result.' : isAdmitCard ? 'Use the official admit-card or exam-city link and check the reporting time, centre details and required identity proof.' : isAnswerKey ? 'Download the official answer key or response sheet, compare the question-paper series and note the objection deadline.' : isSyllabus ? 'Use the official syllabus and exam-pattern information to plan subjects, marks and preparation topics.' : isCertificate ? 'Open the official service portal, confirm the required credentials and download the certificate only after checking the displayed details.' : guideIntro}</p>
+                {howSteps.length > 0 && <ol className="pd-steps">{howSteps.map((step, i) => <li key={i}><span className="pd-step-num">{i + 1}</span><div><strong>{step.replace(/^\d+\.\s*/, '')}</strong></div></li>)}</ol>}
+              </div>
+            </section>
+          )}
+
           {/* ===== FULL INFO TABLE ===== */}
-          <section className="pd-section">
+          {(isRecruitment || isAdmission || isNotification) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>📋 {post.title} – Complete Information</h2>
             </div>
@@ -414,32 +442,18 @@ export default function PostDetail() {
                 </tbody>
               </table>
             </div>
-          </section>
+          </section>}
 
           {/* Important Dates table */}
-          <section className="pd-section">
+          {(isRecruitment || isAdmission || isNotification || isResult || isAdmitCard || isAnswerKey) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>📅 Important Dates</h2>
             </div>
-            <div className="pd-table-wrap">
-              <table className="pd-full-table">
-                <tbody>
-                  <TableRow label="Notification / Advt. Date">{val(dates.notificationDate)}</TableRow>
-                  <TableRow label="Application Begin">{val(dates.startDate)}</TableRow>
-                  <TableRow label="Last Date for Apply Online" highlight>
-                    {val(dates.lastDate)}
-                  </TableRow>
-                  <TableRow label="Last Date for Fee Payment">{val(dates.lastDate)}</TableRow>
-                  <TableRow label="Admit Card Available">{val(dates.admitCardDate)}</TableRow>
-                  <TableRow label="Examination Date">{val(dates.examDate)}</TableRow>
-                  <TableRow label="Result Declared">{val(dates.resultDate)}</TableRow>
-                </tbody>
-              </table>
-            </div>
-          </section>
+            <DateTable dates={dates} />
+          </section>}
 
           {/* Application Fee */}
-          <section className="pd-section">
+          {(isRecruitment || isAdmission) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>💳 Application Fee</h2>
             </div>
@@ -455,10 +469,10 @@ export default function PostDetail() {
                 </tbody>
               </table>
             </div>
-          </section>
+          </section>}
 
           {/* Age Limit */}
-          <section className="pd-section">
+          {isRecruitment && <section className="pd-section">
             <div className="pd-section-head">
               <h2>⏳ Age Limit</h2>
             </div>
@@ -475,10 +489,10 @@ export default function PostDetail() {
                 </tbody>
               </table>
             </div>
-          </section>
+          </section>}
 
           {/* Vacancy + Eligibility */}
-          <section className="pd-section">
+          {(isRecruitment || isAdmission) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>👥 Vacancy &amp; Eligibility Details</h2>
             </div>
@@ -499,10 +513,10 @@ export default function PostDetail() {
                 </tbody>
               </table>
             </div>
-          </section>
+          </section>}
 
           {/* Documents */}
-          <section className="pd-section">
+          {(isRecruitment || isAdmission || isAdmitCard || isAnswerKey || isCertificate) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>📁 Documents Required</h2>
             </div>
@@ -512,15 +526,12 @@ export default function PostDetail() {
                   <li key={d}>{d}</li>
                 ))}
               </ul>
-            ) : (
-              <div className="pd-content">
-                <p>{SOON} — check official notification for document list.</p>
-              </div>
-            )}
+            ) : null}
           </section>
+          }
 
           {/* How to apply */}
-          <section className="pd-section">
+          {isRecruitment || isAdmission ? <section className="pd-section">
             <div className="pd-section-head">
               <h2>✅ How to Fill Online Form</h2>
             </div>
@@ -564,22 +575,11 @@ export default function PostDetail() {
               </ol>
             )}
           </section>
-          <section className="pd-section">
-            <div className="pd-section-head">
-              <h2>🧠 Preparation Tips</h2>
-            </div>
-            <div className="pd-content">
-              <ul className="guide-list">
-                {preparationTips.map((tip) => (
-                  <li key={tip}>{tip}</li>
-                ))}
-              </ul>
-            </div>
-          </section>
+          : null}
           {/* About / description */}
           <section className="pd-section">
             <div className="pd-section-head">
-              <h2>📖 About This Recruitment / Update</h2>
+              <h2>📖 About This {isResult ? 'Result' : isAdmitCard ? 'Admit Card' : isAnswerKey ? 'Answer Key' : isSyllabus ? 'Syllabus' : isCertificate ? 'Certificate' : 'Update'}</h2>
             </div>
             <div className="pd-content content-html">
               {post.content ? (
@@ -593,18 +593,19 @@ export default function PostDetail() {
             </div>
           </section>
 
-          <section className="pd-section">
+          {isResult ? <section className="pd-section">
             <div className="pd-section-head">
-              <h2>🔗 Related Guidance</h2>
+              <h2>🧭 What After Result?</h2>
             </div>
             <div className="pd-content">
               <ul className="guide-list">
-                <li>Compare this notice with related exam updates to understand whether it fits your current preparation plan.</li>
-                <li>Review our blogs for preparation strategy, previous-year papers, and interview advice before you submit your application.</li>
-                <li>Use the internal links in this page to move from vacancies to results, admit cards, and syllabus updates quickly.</li>
+                <li>Download and keep the result or scorecard PDF for the next stage.</li>
+                <li>Read the authority's notice for cut-off, merit-list and document-verification instructions.</li>
+                <li>Use the related updates below to find the next admit card, answer key or recruitment notice when available.</li>
               </ul>
             </div>
           </section>
+          : null}
 
           <section className="pd-section">
             <div className="pd-section-head">
@@ -628,25 +629,15 @@ export default function PostDetail() {
             <div className="pd-table-wrap">
               <table className="pd-full-table pd-links-table">
                 <tbody>
-                  <LinkRow label="Important Link" href={links.importantLink} text="Click Here" />
-                  <LinkRow label="Apply Online" href={links.applyOnline} text="Click Here" />
-                  <LinkRow label="Check Result" href={links.checkResult} text="Click Here" />
-                  <LinkRow
-                    label="Download Admit Card"
-                    href={links.downloadAdmitCard}
-                    text="Click Here"
-                  />
-                  <LinkRow label="Download Answer Key" href={links.answerKey} text="Click Here" />
-                  <LinkRow
-                    label="Download Notification"
-                    href={links.officialNotification}
-                    text="Click Here"
-                  />
-                  <LinkRow
-                    label="Official Website"
-                    href={links.officialWebsite}
-                    text="Click Here"
-                  />
+                  <LinkRow label={primaryLabel} href={primaryHref} text="Open Official Link" />
+                  {links.writtenResult && <LinkRow label="Download Written Result" href={links.writtenResult} text="Open Written Result" />}
+                  {links.answerKey && <LinkRow label="Download Answer Key" href={links.answerKey} text="Open Answer Key" />}
+                  {links.downloadAdmitCard && <LinkRow label="Download Admit Card" href={links.downloadAdmitCard} text="Open Admit Card" />}
+                  {links.examCity && <LinkRow label="Exam City Details" href={links.examCity} text="Open City Details" />}
+                  {links.examSchedule && <LinkRow label="Exam Schedule Notice" href={links.examSchedule} text="Open Schedule" />}
+                  {links.finalAnswerKey && <LinkRow label="Download Final Answer Key" href={links.finalAnswerKey} text="Open Final Key" />}
+                  {(links.officialNotification || links.importantLink) && <LinkRow label="Notification" href={links.officialNotification || links.importantLink} text="Download Notification" />}
+                  {links.officialWebsite && <LinkRow label="Official Website" href={links.officialWebsite} text="Visit Website" />}
                 </tbody>
               </table>
             </div>
@@ -681,33 +672,19 @@ export default function PostDetail() {
               </a>
             )}
             <div className="pd-side-links">
-              {links.importantLink && (
-                <a href={links.importantLink} target="_blank" rel="noopener noreferrer">
-                  🔗 Important Link
+              {primaryHref && (
+                <a href={primaryHref} target="_blank" rel="noopener noreferrer">
+                  🚀 {primaryLabel}
                 </a>
               )}
-              {links.applyOnline && (
-                <a href={links.applyOnline} target="_blank" rel="noopener noreferrer">
-                  🚀 Apply Online
-                </a>
-              )}
-              {links.checkResult && (
-                <a href={links.checkResult} target="_blank" rel="noopener noreferrer">
-                  📊 Check Result
-                </a>
-              )}
-              {links.downloadAdmitCard && (
-                <a href={links.downloadAdmitCard} target="_blank" rel="noopener noreferrer">
-                  🎫 Admit Card
-                </a>
-              )}
-              {links.answerKey && (
-                <a href={links.answerKey} target="_blank" rel="noopener noreferrer">
-                  🔑 Answer Key
-                </a>
-              )}
-              {links.officialNotification && (
-                <a href={links.officialNotification} target="_blank" rel="noopener noreferrer">
+              {links.writtenResult && <a href={links.writtenResult} target="_blank" rel="noopener noreferrer">📄 Written Result</a>}
+              {links.answerKey && <a href={links.answerKey} target="_blank" rel="noopener noreferrer">🔑 Answer Key</a>}
+              {links.downloadAdmitCard && <a href={links.downloadAdmitCard} target="_blank" rel="noopener noreferrer">🎫 Admit Card</a>}
+              {links.examCity && <a href={links.examCity} target="_blank" rel="noopener noreferrer">📍 Exam City</a>}
+              {links.examSchedule && <a href={links.examSchedule} target="_blank" rel="noopener noreferrer">📅 Exam Schedule</a>}
+              {links.finalAnswerKey && <a href={links.finalAnswerKey} target="_blank" rel="noopener noreferrer">✅ Final Answer Key</a>}
+              {(links.officialNotification || links.importantLink) && (
+                <a href={links.officialNotification || links.importantLink} target="_blank" rel="noopener noreferrer">
                   📄 Notification
                 </a>
               )}
@@ -719,61 +696,27 @@ export default function PostDetail() {
             </div>
           </div>
 
-          <div className="pd-side-card">
+          {(isRecruitment || isAdmission) && <div className="pd-side-card">
             <div className="pd-side-title">Key Information</div>
             <ul className="pd-side-dates">
-              <li>
-                <span>Posts</span>
-                <strong>
-                  {post.totalVacancies > 0
-                    ? post.totalVacancies.toLocaleString('en-IN')
-                    : 'See table'}
-                </strong>
-              </li>
-              <li>
-                <span>Start</span>
-                <strong>{val(dates.startDate)}</strong>
-              </li>
-              <li className="urgent">
-                <span>Last Date</span>
-                <strong>{val(dates.lastDate)}</strong>
-              </li>
-              <li>
-                <span>Exam</span>
-                <strong>{val(dates.examDate)}</strong>
-              </li>
-              <li>
-                <span>Result</span>
-                <strong>{val(dates.resultDate)}</strong>
-              </li>
-              <li>
-                <span>Admit Card</span>
-                <strong>{val(dates.admitCardDate)}</strong>
-              </li>
+              {post.totalVacancies > 0 && <li><span>Posts</span><strong>{post.totalVacancies.toLocaleString('en-IN')}</strong></li>}
+              {dates.startDate && <li><span>Start</span><strong>{dates.startDate}</strong></li>}
+              {dates.lastDate && <li className="urgent"><span>Last Date</span><strong>{dates.lastDate}</strong></li>}
+              {dates.examDate && <li><span>Exam</span><strong>{dates.examDate}</strong></li>}
+              {dates.resultDate && <li><span>Result</span><strong>{dates.resultDate}</strong></li>}
+              {dates.admitCardDate && <li><span>Admit Card</span><strong>{dates.admitCardDate}</strong></li>}
             </ul>
-          </div>
+          </div>}
 
-          <div className="pd-side-card">
+          {(isRecruitment || isAdmission) && <div className="pd-side-card">
             <div className="pd-side-title">At a Glance</div>
             <ul className="pd-side-dates pd-glance">
-              <li>
-                <span>Board</span>
-                <strong>{val(post.organization, '—')}</strong>
-              </li>
-              <li>
-                <span>Qualification</span>
-                <strong>{val(post.qualification)}</strong>
-              </li>
-              <li>
-                <span>Age</span>
-                <strong>{val(post.ageLimit)}</strong>
-              </li>
-              <li>
-                <span>Fee</span>
-                <strong>{val(post.applicationFee)}</strong>
-              </li>
+              {post.organization && <li><span>Board</span><strong>{post.organization}</strong></li>}
+              {post.qualification && <li><span>Qualification</span><strong>{post.qualification}</strong></li>}
+              {post.ageLimit && <li><span>Age</span><strong>{post.ageLimit}</strong></li>}
+              {post.applicationFee && <li><span>Fee</span><strong>{post.applicationFee}</strong></li>}
             </ul>
-          </div>
+          </div>}
 
           <div className="pd-side-card">
             <div className="pd-side-title">Related Reading</div>

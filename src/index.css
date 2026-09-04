@@ -110,6 +110,7 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
+  scroll-padding-top: 92px;
 }
 
 *,
@@ -426,7 +427,7 @@ textarea {
 .site-header {
   background: var(--header-grad);
   color: #fff;
-  padding: 18px 0 16px;
+  padding: 12px 0 10px;
   position: sticky;
   top: 0;
   z-index: 120;
@@ -434,6 +435,12 @@ textarea {
   box-shadow: 0 6px 20px rgba(2, 6, 23, 0.12);
   backdrop-filter: blur(6px);
   transition: padding 0.18s ease, box-shadow 0.18s ease, backdrop-filter 0.18s;
+}
+
+.site-header,
+.pd-section,
+.pd-section-head {
+  scroll-margin-top: 92px;
 }
 
 .site-header::before {
@@ -1556,6 +1563,7 @@ textarea {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
+  scroll-margin-top: 92px;
 }
 
 .pd-section-head {

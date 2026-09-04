@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
-const DEFAULT_TITLE = 'Sarkari Job Hub 2026 — Government Jobs, Results, Admit Cards & Exam Guidance';
+const CURRENT_YEAR = new Date().getFullYear();
+const DEFAULT_TITLE = `Sarkari Job Hub ${CURRENT_YEAR} — Government Jobs, Results, Admit Cards & Exam Guidance`;
 const DEFAULT_DESCRIPTION =
   'Explore practical government job updates, exam guidance, eligibility explainers, admit-card notices, results, and preparation resources for Indian aspirants.';
 const DEFAULT_KEYWORDS =

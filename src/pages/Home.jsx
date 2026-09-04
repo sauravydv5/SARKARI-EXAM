@@ -6,6 +6,8 @@ import FeaturedCards from '../components/FeaturedCards';
 import useSeo from '../hooks/useSeo';
 import { blogArticles } from '../data/blogArticles';
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 // Quick links and category-card data removed per request
 
 function CountUp({ value = 0, duration = 800 }) {
@@ -101,12 +103,12 @@ export default function Home() {
   }, []);
 
   useSeo({
-    title: 'Latest Sarkari Jobs 2026 - Government Exam Results, Admit Cards & Notifications',
+    title: `Latest Sarkari Jobs ${CURRENT_YEAR} - Government Exam Results, Admit Cards & Notifications`,
     description:
       'Sarkari Job Hub - India\'s trusted authority for latest SSC, Railway, Bank, UPSC, Police jobs, exam results, admit cards, answer keys, syllabus and practical exam-guidance content.',
     url: 'https://sarkarijobhub.website/',
     keywords:
-      'sarkari job, sarkari naukri, govt jobs, government jobs, SSC jobs, Railway jobs, Bank jobs, UPSC jobs, admit card, answer key, syllabus, exam notification, job alert, 2026, India',
+      `sarkari job, sarkari naukri, govt jobs, government jobs, SSC jobs, Railway jobs, Bank jobs, UPSC jobs, admit card, answer key, syllabus, exam notification, job alert, ${CURRENT_YEAR}, India`,
   });
 
   if (loading) return <div className="loading">Loading latest updates…</div>;

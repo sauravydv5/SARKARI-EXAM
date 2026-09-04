@@ -58,7 +58,7 @@ export default function CategoryPage({ category, title, description }) {
     .join(', ');
 
   useSeo({
-    title: `${pageTitle} - Latest Sarkari Job Notifications & Updates 2026`,
+    title: `${pageTitle} - Latest Sarkari Job Notifications & Updates ${new Date().getFullYear()}`,
     description: `Browse all latest ${pageTitle} updates, government exam notifications and sarkari job alerts for India. Daily updated notifications with eligibility, dates and official links.`,
     url: `https://sarkarijobhub.website${meta.path}`,
     keywords: categoryKeywords,

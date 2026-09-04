@@ -30,12 +30,34 @@ function toSlug(value) {
     .replace(/(^-|-$)/g, '');
 }
 
+function normalizePostType(raw, category, title = '') {
+  if (raw) {
+    const type = String(raw).toLowerCase().replace(/[-\s]+/g, '_');
+    if (type === 'online_form') return 'recruitment';
+    if (['recruitment', 'result', 'admit_card', 'answer_key', 'syllabus', 'certificate', 'admission', 'notification'].includes(type)) return type;
+  }
+  if (category === 'latest-job') return 'recruitment';
+  if (category === 'admit-card') return 'admit_card';
+  if (category === 'answer-key') return 'answer_key';
+  if (category === 'result') return 'result';
+  if (category === 'syllabus') return 'syllabus';
+  if (category === 'certificate') return 'certificate';
+  if (category === 'admission') return 'admission';
+  if (/\b(result|merit list|scorecard)\b/i.test(title)) return 'result';
+  if (/\b(admit card|hall ticket|exam city)\b/i.test(title)) return 'admit_card';
+  if (/\b(answer key|response sheet)\b/i.test(title)) return 'answer_key';
+  if (/\b(syllabus|exam pattern)\b/i.test(title)) return 'syllabus';
+  if (/\b(certificate|registration|download)\b/i.test(title)) return 'certificate';
+  return 'notification';
+}
+
 function normalizePost(raw, sourcePath) {
   if (!raw || typeof raw !== 'object') return null;
 
   const sourceName = sourcePath.split('/').pop()?.replace(/\.json$/i, '') || 'post';
   const folder = sourcePath.split('/').slice(-2, -1)[0] || '';
   const category = raw.category || CATEGORY_FOLDERS[folder] || 'latest-job';
+  const postType = normalizePostType(raw.postType, category, raw.title);
 
   const publishedAt = raw.publishedAt || raw.applyStart || raw.lastDate || new Date().toISOString();
   const lastDate = raw.importantDates?.lastDate || raw.lastDate;
@@ -49,6 +71,7 @@ function normalizePost(raw, sourcePath) {
     id: raw.id || raw._id || toSlug(raw.slug || raw.title || sourceName),
     slug: raw.slug || raw.id || toSlug(raw.title || sourceName),
     category,
+    postType,
     title: raw.title || 'Untitled Update',
     organization: raw.organization || 'Government Organization',
     publishedAt,
@@ -185,10 +208,8 @@ function isInactivePost(post) {
 
 function sortPosts(posts) {
   return [...posts].sort((a, b) => {
-    const aNew = Boolean(a.isNew);
-    const bNew = Boolean(b.isNew);
-    if (aNew !== bNew) return bNew ? 1 : -1;
-    return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+    const dateValue = (post) => new Date(post.lastUpdated || post.updatedAt || post.publishedAt || 0).getTime();
+    return dateValue(b) - dateValue(a);
   });
 }
 

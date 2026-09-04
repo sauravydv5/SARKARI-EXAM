@@ -1,6 +1,7 @@
 /** Homepage panel order matching the live Sarkari Result layout. */
 export const HOMEPAGE_SECTIONS = {
   result: [
+    'rpsc-sub-jailor-result-2024',
     'bihar-police-prohibition-constable-result-2026',
     'bihar-police-csbc-constable-operator-result-2026',
     'bihar-police-csbc-constable-gd-result-2026',
@@ -55,10 +56,13 @@ export const HOMEPAGE_SECTIONS = {
     'up-police-constable-dv-pst-admit-card-2026',
   ],
   'latest-job': [
+    'upessc-special-tet-2026',
+    'indiapost-gds-schedule-ii-july-2026',
     'mpesb-group-2-sub-group-4-patwari-online-form-2026',
     'bpsc-school-teacher-tre-4-otr-registration-2026',
     'rssb-junior-engineer-online-form-2026',
     'bank-of-baroda-lbo-online-form-2026',
+    'ibps-rrb-crp-xv-online-form-2026',
     'mpesb-mspstet-online-form-2026',
     'mpesb-group-3-sub-engineer-online-form-2026',
     'mp-high-court-assistant-grade-iii-online-form-2026',

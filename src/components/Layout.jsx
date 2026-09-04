@@ -3,6 +3,7 @@ import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 
 const ADMIN_SECRET = import.meta.env.VITE_ADMIN_SECRET || '1111';
+const CURRENT_YEAR = new Date().getFullYear();
 
 const navItems = [
   { to: '/', label: 'Home', end: true, icon: '🏠' },
@@ -15,6 +16,90 @@ const navItems = [
   { to: '/important', label: 'Documents', icon: '📄' },
   { to: '/search', label: 'Search', icon: '🔎' },
 ];
+
+const footerLink = (label, href) => ({ label, href });
+
+const jobsByQualification = [
+  footerLink('10th Pass Jobs', 'https://www.ncs.gov.in/'),
+  footerLink('12th Pass Jobs', 'https://www.ncs.gov.in/'),
+  footerLink('ITI Jobs', 'https://www.ncs.gov.in/'),
+  footerLink('Diploma Jobs', 'https://www.ncs.gov.in/'),
+  footerLink('Graduate Jobs', 'https://www.ncs.gov.in/'),
+  footerLink('Post Graduate Jobs', 'https://www.ncs.gov.in/'),
+  footerLink('B.Tech Jobs', 'https://www.ncs.gov.in/'),
+  footerLink('B.Ed Jobs', 'https://www.ncs.gov.in/'),
+  footerLink('MBA Jobs', 'https://www.ncs.gov.in/'),
+  footerLink('Engineering Jobs', 'https://www.ncs.gov.in/'),
+];
+
+const jobsByState = [
+  footerLink('Bihar Jobs', 'https://state.bihar.gov.in/'),
+  footerLink('UP Jobs', 'https://sewayojan.up.nic.in/'),
+  footerLink('Delhi Jobs', 'https://employment.delhi.gov.in/'),
+  footerLink('Rajasthan Jobs', 'https://employment.livelihoods.rajasthan.gov.in/'),
+  footerLink('MP Jobs', 'https://mprojgar.gov.in/'),
+  footerLink('Jharkhand Jobs', 'https://rojgar.jharkhand.gov.in/'),
+  footerLink('Punjab Jobs', 'https://pgrkam.com/'),
+  footerLink('Haryana Jobs', 'https://hrex.gov.in/'),
+  footerLink('Maharashtra Jobs', 'https://rojgar.mahaswayam.gov.in/'),
+  footerLink('Gujarat Jobs', 'https://anubandham.gujarat.gov.in/'),
+  footerLink('Tamil Nadu Jobs', 'https://www.tnvelaivalippu.gov.in/'),
+  footerLink('Karnataka Jobs', 'https://skillconnect.kaushalkar.com/'),
+  footerLink('West Bengal Jobs', 'https://www.wb.gov.in/'),
+  footerLink('Odisha Jobs', 'https://www.ncs.gov.in/'),
+  footerLink('Chhattisgarh Jobs', 'https://employment.cg.gov.in/'),
+  footerLink('All State Jobs', 'https://www.ncs.gov.in/'),
+];
+
+const topRecruiters = [
+  footerLink('SSC', 'https://ssc.gov.in/'),
+  footerLink('UPSC', 'https://upsc.gov.in/'),
+  footerLink('Railway (RRB)', 'https://www.rrbcdg.gov.in/'),
+  footerLink('IBPS', 'https://www.ibps.in/'),
+  footerLink('SBI', 'https://sbi.co.in/web/careers'),
+  footerLink('RBI', 'https://opportunities.rbi.org.in/'),
+  footerLink('BPSC', 'https://bpsc.bihar.gov.in/'),
+  footerLink('UPPSC', 'https://uppsc.up.nic.in/'),
+  footerLink('Indian Army', 'https://joinindianarmy.nic.in/'),
+  footerLink('Indian Navy', 'https://www.joinindiannavy.gov.in/'),
+  footerLink('Indian Air Force', 'https://agnipathvayu.cdac.in/'),
+  footerLink('DRDO', 'https://www.drdo.gov.in/'),
+  footerLink('ISRO', 'https://www.isro.gov.in/Careers.html'),
+  footerLink('BSF', 'https://rectt.bsf.gov.in/'),
+  footerLink('CRPF', 'https://rect.crpf.gov.in/'),
+  footerLink('CISF', 'https://cisfrectt.cisf.gov.in/'),
+  footerLink('ITBP', 'https://recruitment.itbpolice.nic.in/'),
+  footerLink('NTA', 'https://www.nta.ac.in/'),
+  footerLink('UGC', 'https://www.ugc.gov.in/'),
+  footerLink('AIIMS', 'https://www.aiimsexams.ac.in/'),
+  footerLink('ESIC', 'https://www.esic.gov.in/recruitments'),
+];
+
+const popularExams = [
+  footerLink('SSC CGL', 'https://ssc.gov.in/'),
+  footerLink('SSC CHSL', 'https://ssc.gov.in/'),
+  footerLink('SSC GD', 'https://ssc.gov.in/'),
+  footerLink('SSC MTS', 'https://ssc.gov.in/'),
+  footerLink('UPSC CSE', 'https://upsc.gov.in/'),
+  footerLink('UPSC CDS', 'https://upsc.gov.in/'),
+  footerLink('NDA', 'https://upsc.gov.in/'),
+  footerLink('RRB NTPC', 'https://www.rrbcdg.gov.in/'),
+  footerLink('RRB Group D', 'https://www.rrbcdg.gov.in/'),
+  footerLink('IBPS PO', 'https://www.ibps.in/'),
+  footerLink('IBPS Clerk', 'https://www.ibps.in/'),
+  footerLink('SBI PO', 'https://sbi.co.in/web/careers'),
+  footerLink('CTET', 'https://ctet.nic.in/'),
+  footerLink('REET', 'https://reet2024.co.in/'),
+  footerLink('BPSC TRE', 'https://bpsc.bihar.gov.in/'),
+  footerLink('Bihar Police', 'https://csbc.bihar.gov.in/'),
+  footerLink('UP Police', 'https://uppbpb.gov.in/'),
+];
+
+function ExternalFooterLinks({ links }) {
+  return links.map(({ label, href }) => (
+    <li key={label}><a href={href} target="_blank" rel="noopener noreferrer">{label}</a></li>
+  ));
+}
 
 export default function Layout() {
   const [q, setQ] = useState('');
@@ -66,7 +151,7 @@ export default function Layout() {
             />
             <div className="brand-text leading-tight">
               <h1 className="m-0 font-poppins text-[1.05rem] md:text-[1.2rem] font-extrabold">Sarkari Job Hub</h1>
-              <p className="m-0 text-xs md:text-sm text-[--muted]">Sarkari Jobs | Government Exam Results | Admit Cards | Answer Keys | Notifications | 2026</p>
+              <p className="m-0 text-xs md:text-sm text-[--muted]">Sarkari Jobs | Government Exam Results | Admit Cards | Answer Keys | Notifications | {CURRENT_YEAR}</p>
             </div>
           </Link>
 
@@ -150,36 +235,28 @@ export default function Layout() {
             <section className="col jobs-qualification" aria-label="Jobs by Qualification">
               <h3>Jobs by Qualification</h3>
               <ul>
-                {['10th Pass Jobs','12th Pass Jobs','ITI Jobs','Diploma Jobs','Graduate Jobs','Post Graduate Jobs','B.Tech Jobs','B.Ed Jobs','MBA Jobs','Engineering Jobs'].map((t)=> (
-                  <li key={t}><Link to="/search">{t}</Link></li>
-                ))}
+                <ExternalFooterLinks links={jobsByQualification} />
               </ul>
             </section>
 
             <section className="col jobs-state" aria-label="Jobs by State">
               <h3>Jobs by State</h3>
               <ul>
-                {['Bihar Jobs','UP Jobs','Delhi Jobs','Rajasthan Jobs','MP Jobs','Jharkhand Jobs','Punjab Jobs','Haryana Jobs','Maharashtra Jobs','Gujarat Jobs','Tamil Nadu Jobs','Karnataka Jobs','West Bengal Jobs','Odisha Jobs','Chhattisgarh Jobs','All State Jobs'].map((t)=> (
-                  <li key={t}><Link to="/search">{t}</Link></li>
-                ))}
+                <ExternalFooterLinks links={jobsByState} />
               </ul>
             </section>
 
             <section className="col top-recruiters" aria-label="Top Recruiters">
               <h3>Top Recruiters</h3>
               <ul>
-                {['SSC','UPSC','Railway (RRB)','IBPS','SBI','RBI','BPSC','UPPSC','Indian Army','Indian Navy','Indian Air Force','DRDO','ISRO','BSF','CRPF','CISF','ITBP','NTA','UGC','AIIMS','ESIC'].map((t)=> (
-                  <li key={t}><Link to="/search">{t}</Link></li>
-                ))}
+                <ExternalFooterLinks links={topRecruiters} />
               </ul>
             </section>
 
             <section className="col popular-exams" aria-label="Popular Exams">
               <h3>Popular Exams</h3>
               <ul>
-                {['SSC CGL','SSC CHSL','SSC GD','SSC MTS','UPSC CSE','UPSC CDS','NDA','RRB NTPC','RRB Group D','IBPS PO','IBPS Clerk','SBI PO','CTET','REET','BPSC TRE','Bihar Police','UP Police'].map((t)=> (
-                  <li key={t}><Link to="/search">{t}</Link></li>
-                ))}
+                <ExternalFooterLinks links={popularExams} />
               </ul>
             </section>
 
@@ -215,7 +292,7 @@ export default function Layout() {
             <section className="col trending-searches" aria-label="Trending Searches">
               <h3>Trending Searches</h3>
               <ul>
-                {['Latest Government Jobs','Government Jobs 2026','Sarkari Result','Free Job Alert','Latest Admit Card','Latest Results','Upcoming Exams','Online Form','Offline Form','Recruitment Notification'].map((t)=> (
+                {['Latest Government Jobs',`Government Jobs ${CURRENT_YEAR}`,'Sarkari Result','Free Job Alert','Latest Admit Card','Latest Results','Upcoming Exams','Online Form','Offline Form','Recruitment Notification'].map((t)=> (
                   <li key={t}><Link to="/search">{t}</Link></li>
                 ))}
               </ul>

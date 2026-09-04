@@ -5,6 +5,7 @@ import PostListItem from '../components/PostListItem';
 import useSeo from '../hooks/useSeo';
 
 const ADMIN_SECRET = import.meta.env.VITE_ADMIN_SECRET || '1111';
+const CURRENT_YEAR = new Date().getFullYear();
 
 export default function SearchPage() {
   const [params, setParams] = useSearchParams();
@@ -25,7 +26,7 @@ export default function SearchPage() {
       : 'Search across all Sarkari government jobs, exam results, admit cards, answer keys, syllabus and admission notices. Find your job in seconds.',
     url: 'https://sarkarijobhub.website/search',
     noIndex: true,
-    keywords: `search, ${query || 'sarkari jobs'}, govt jobs, government exam, sarkari result, admit card, answer key, syllabus, 2026, India`,
+    keywords: `search, ${query || 'sarkari jobs'}, govt jobs, government exam, sarkari result, admit card, answer key, syllabus, ${CURRENT_YEAR}, India`,
   });
 
   useEffect(() => {
