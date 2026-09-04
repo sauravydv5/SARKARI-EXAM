@@ -267,20 +267,6 @@ export default function Layout() {
         </div>
       </div>
 
-      <div className="top-update-strip">
-        <div className="container top-update-strip-inner">
-          <div className="update-note">
-            <strong>Update:</strong> Due to some unavoidable circumstances, the website was not updated on time earlier, but from today onward, all forms, notifications, and exam updates will be refreshed daily. <span className="update-note-hindi">(Kuch zaroori wajahon se website pehle timely update nahi ho paayi, lekin ab se har chiz ki daily update hogi.)</span>
-          </div>
-          <div className="update-links">
-            <Link to="/latest-jobs">Latest Jobs</Link>
-            <Link to="/results">Results</Link>
-            <Link to="/admit-cards">Admit Cards</Link>
-            <a href="https://whatsapp.com/channel/0029Vb9NzB6LikgCNJ40Zu0O" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          </div>
-        </div>
-      </div>
-
       <main className="main-content">
         <div className="container">
           <Outlet />

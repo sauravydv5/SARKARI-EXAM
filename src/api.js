@@ -30,6 +30,23 @@ function toSlug(value) {
     .replace(/(^-|-$)/g, '');
 }
 
+function parseDeadline(value) {
+  const raw = String(value || '').trim();
+  if (!raw || /see official|to be announced|extended/i.test(raw)) return Number.NaN;
+
+  const dateOnly = raw.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/);
+  if (dateOnly) {
+    const [, day, month, year] = dateOnly;
+    return new Date(Number(year), Number(month) - 1, Number(day), 23, 59, 59, 999).getTime();
+  }
+
+  const parsed = new Date(raw).getTime();
+  if (!Number.isFinite(parsed)) return Number.NaN;
+  const date = new Date(parsed);
+  date.setHours(23, 59, 59, 999);
+  return date.getTime();
+}
+
 function normalizePostType(raw, category, title = '') {
   if (raw) {
     const type = String(raw).toLowerCase().replace(/[-\s]+/g, '_');
@@ -66,7 +83,7 @@ function normalizePost(raw, sourcePath) {
 
   const publishedAt = raw.publishedAt || raw.applyStart || raw.lastDate || new Date().toISOString();
   const lastDate = raw.importantDates?.lastDate || raw.lastDate;
-  const lastDateValue = lastDate ? new Date(lastDate).getTime() : Number.NaN;
+  const lastDateValue = parseDeadline(lastDate);
   const hasPassedDeadline = Number.isFinite(lastDateValue) && lastDateValue < Date.now();
 
   return {
@@ -86,6 +103,7 @@ function normalizePost(raw, sourcePath) {
     isFeatured: Boolean(raw.isFeatured),
     isNew: Boolean(raw.isNew),
     statusNote: raw.statusNote || raw.status || '',
+    hasPassedDeadline,
     isArchived: Boolean(raw.isArchived) || hasPassedDeadline,
     totalVacancies: Number(raw.totalVacancies || raw.vacancy || 0) || 0,
     vacancyDetails: raw.vacancyDetails || raw.vacancy || '',
@@ -224,7 +242,7 @@ function isDeletedPost(post) {
 
 function isInactivePost(post) {
   const slug = post.slug || post.id;
-  return getStatusLists().inactive.includes(slug);
+  return getStatusLists().inactive.includes(slug) || Boolean(post.hasPassedDeadline);
 }
 
 function isRecentPost(post) {
@@ -407,7 +425,7 @@ export const api = {
     const posts = sortPosts(getAllPosts()).map((post) => ({
       ...post,
       isDeleted: status.deleted.includes(post.slug || post.id),
-      isInactive: status.inactive.includes(post.slug || post.id),
+      isInactive: status.inactive.includes(post.slug || post.id) || Boolean(post.hasPassedDeadline),
     }));
     return { data: posts };
   },
