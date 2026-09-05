@@ -140,8 +140,12 @@ const POSTS = Object.entries(contentModules)
     const existing = acc[existingIndex];
     // Keep the canonical content file. " copy" files are editorial leftovers,
     // not a second update and must never override the canonical record.
+    const existingIsStale = existing.hasPassedDeadline;
+    const postIsNewer = new Date(post.publishedAt || 0).getTime() > new Date(existing.publishedAt || 0).getTime();
     const shouldReplace =
-      existing.sourcePath?.includes(' copy') && !post.sourcePath?.includes(' copy');
+      (existing.sourcePath?.includes(' copy') && !post.sourcePath?.includes(' copy')) ||
+      (existingIsStale && !post.hasPassedDeadline) ||
+      (!existingIsStale && !post.hasPassedDeadline && postIsNewer);
 
     if (shouldReplace) {
       acc[existingIndex] = post;

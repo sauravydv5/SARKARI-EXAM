@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
+    "postinstall": "playwright install chromium",
     "prebuild": "npm run generate:sitemap",
     "build": "vite build",
     "postbuild": "node scripts/prerender-posts.mjs",

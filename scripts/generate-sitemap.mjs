@@ -63,6 +63,29 @@ function isoDate(value) {
   return Number.isNaN(humanDate.getTime()) ? undefined : humanDate.toISOString().slice(0, 10);
 }
 
+function deadlineTimestamp(value) {
+  const raw = String(value || '').trim();
+  if (!raw || /see official|to be announced|extended/i.test(raw)) return Number.NaN;
+
+  const dateOnly = raw.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/);
+  if (dateOnly) {
+    const [, day, month, year] = dateOnly;
+    return new Date(Number(year), Number(month) - 1, Number(day), 23, 59, 59, 999).getTime();
+  }
+
+  const parsed = new Date(raw).getTime();
+  if (!Number.isFinite(parsed)) return Number.NaN;
+  const date = new Date(parsed);
+  date.setHours(23, 59, 59, 999);
+  return date.getTime();
+}
+
+function hasPassedDeadline(post) {
+  const lastDate = post.importantDates?.lastDate || post.lastDate;
+  const timestamp = deadlineTimestamp(lastDate);
+  return Number.isFinite(timestamp) && timestamp < Date.now();
+}
+
 function walkJsonFiles(directory) {
   const files = [];
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -100,6 +123,7 @@ function urlEntry(urlPath, lastmod, changefreq, priority) {
 }
 
 const entries = new Map();
+const postsBySlug = new Map();
 const today = new Date().toISOString().slice(0, 10);
 
 for (const [urlPath, changefreq, priority] of staticPages) {
@@ -124,9 +148,18 @@ for (const filePath of walkJsonFiles(contentDirectory)) {
   const isCertificate = post.category === 'certificate';
   if (!isCertificate && (!Number.isFinite(publicationDate) || publicationDate < contentCutoffDate)) continue;
   if (hasLowQualityContent(post)) continue;
+  if (hasPassedDeadline(post)) continue;
 
   const slug = postSlug(post, filePath);
   if (!slug) continue;
+  const existing = postsBySlug.get(slug);
+  const postDate = new Date(post.publishedAt || 0).getTime();
+  if (!existing || postDate > existing.date || (postDate === existing.date && existing.isCopy && !filePath.includes(' copy.json'))) {
+    postsBySlug.set(slug, { filePath, date: postDate, isCopy: filePath.includes(' copy.json'), post });
+  }
+}
+
+for (const [slug, { filePath, post }] of postsBySlug) {
   const urlPath = `/post/${encodeURIComponent(slug)}`;
   entries.set(urlPath, urlEntry(urlPath, postLastModified(post, filePath), 'daily', '0.9'));
 }
