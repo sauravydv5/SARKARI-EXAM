@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { api, categoryMeta } from '../api';
 import PostListItem from '../components/PostListItem';
 import useSeo from '../hooks/useSeo';
@@ -7,13 +7,15 @@ import useSeo from '../hooks/useSeo';
 export default function CategoryPage({ category, title, description }) {
   const meta = categoryMeta(category);
   const pageTitle = title || meta.label;
+  const [searchParams] = useSearchParams();
   const [posts, setPosts] = useState([]);
   const [pagination, setPagination] = useState({ page: 1, pages: 1, total: 0 });
-  const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const requestedPage = Number(searchParams.get('page'));
+  const page = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
 
   useEffect(() => {
     let cancelled = false;
@@ -66,7 +68,6 @@ export default function CategoryPage({ category, title, description }) {
 
   function onSearch(e) {
     e.preventDefault();
-    setPage(1);
     setQuery(search.trim());
   }
 
@@ -105,7 +106,6 @@ export default function CategoryPage({ category, title, description }) {
             onClick={() => {
               setSearch('');
               setQuery('');
-              setPage(1);
             }}
           >
             Clear
@@ -148,23 +148,19 @@ export default function CategoryPage({ category, title, description }) {
 
       {pagination.pages > 1 && (
         <div className="pagination">
-          <button
-            className="btn btn-outline btn-sm"
-            disabled={page <= 1}
-            onClick={() => setPage((p) => p - 1)}
-          >
-            ← Prev
-          </button>
+          {page > 1 ? (
+            <Link className="btn btn-outline btn-sm" to={`${meta.path}?page=${page - 1}`}>← Prev</Link>
+          ) : (
+            <span className="btn btn-outline btn-sm" aria-disabled="true">← Prev</span>
+          )}
           <span>
             Page {pagination.page} of {pagination.pages}
           </span>
-          <button
-            className="btn btn-outline btn-sm"
-            disabled={page >= pagination.pages}
-            onClick={() => setPage((p) => p + 1)}
-          >
-            Next →
-          </button>
+          {page < pagination.pages ? (
+            <Link className="btn btn-outline btn-sm" to={`${meta.path}?page=${page + 1}`}>Next →</Link>
+          ) : (
+            <span className="btn btn-outline btn-sm" aria-disabled="true">Next →</span>
+          )}
         </div>
       )}
     </>

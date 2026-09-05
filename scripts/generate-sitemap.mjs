@@ -113,25 +113,25 @@ function hasLowQualityContent(post) {
   return wordCount < minimumContentWords || genericContentPatterns.some((pattern) => pattern.test(plainText));
 }
 
-function urlEntry(urlPath, lastmod, changefreq, priority) {
+function urlEntry(urlPath, lastmod) {
   const absoluteUrl = `${siteUrl}${urlPath}`;
   if (!/^https:\/\//.test(absoluteUrl)) throw new Error(`Sitemap URL must be HTTPS: ${absoluteUrl}`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(lastmod) || Number.isNaN(new Date(`${lastmod}T00:00:00Z`).getTime())) {
     throw new Error(`Invalid sitemap lastmod: ${lastmod}`);
   }
-  return `  <url>\n    <loc>${escapeXml(absoluteUrl)}</loc>\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+  return `  <url>\n    <loc>${escapeXml(absoluteUrl)}</loc>\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n  </url>`;
 }
 
 const entries = new Map();
 const postsBySlug = new Map();
 const today = new Date().toISOString().slice(0, 10);
 
-for (const [urlPath, changefreq, priority] of staticPages) {
-  entries.set(urlPath, urlEntry(urlPath, today, changefreq, priority));
+for (const [urlPath] of staticPages) {
+  entries.set(urlPath, urlEntry(urlPath, today));
 }
 
-for (const [urlPath, changefreq, priority] of categories) {
-  entries.set(urlPath, urlEntry(urlPath, today, changefreq, priority));
+for (const [urlPath] of categories) {
+  entries.set(urlPath, urlEntry(urlPath, today));
 }
 
 for (const filePath of walkJsonFiles(contentDirectory)) {
@@ -161,7 +161,7 @@ for (const filePath of walkJsonFiles(contentDirectory)) {
 
 for (const [slug, { filePath, post }] of postsBySlug) {
   const urlPath = `/post/${encodeURIComponent(slug)}`;
-  entries.set(urlPath, urlEntry(urlPath, postLastModified(post, filePath), 'daily', '0.9'));
+  entries.set(urlPath, urlEntry(urlPath, postLastModified(post, filePath)));
 }
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...entries.values()].join('\n')}\n</urlset>\n`;

@@ -15,6 +15,8 @@ if (postPaths.some((postPath) => !postPath.startsWith('/post/') || postPath.incl
   throw new Error('Sitemap contains an invalid post route.');
 }
 
+const indexableSectionPaths = ['/', '/latest-jobs', '/results', '/admit-cards', '/answer-keys', '/syllabus', '/admission', '/important', '/certificates'];
+
 const previewCommand = process.platform === 'win32' ? process.env.ComSpec || 'cmd.exe' : 'npm';
 const previewArgs = process.platform === 'win32'
   ? ['/d', '/s', '/c', 'npm run preview -- --host 127.0.0.1 --port 4173']
@@ -45,6 +47,26 @@ try {
     const page = await browser.newPage();
     page.setDefaultTimeout(10000);
     const failures = [];
+
+    for (const sectionPath of indexableSectionPaths) {
+      const output = sectionPath === '/' ? path.join(dist, 'index.html') : path.join(dist, sectionPath.slice(1), 'index.html');
+      const temporaryOutput = `${output}.tmp-${process.pid}`;
+
+      try {
+        await page.goto(`http://127.0.0.1:4173${sectionPath}`, { waitUntil: 'domcontentloaded' });
+        await page.locator(sectionPath === '/' ? '.home-grid' : '.page-header').first().waitFor();
+        const html = await page.content();
+        if (!html.includes('<html') || !html.includes('<body')) {
+          throw new Error('Rendered output is not a complete page document.');
+        }
+        await fs.mkdir(path.dirname(output), { recursive: true });
+        await fs.writeFile(temporaryOutput, html, 'utf8');
+        await fs.rename(temporaryOutput, output);
+      } catch (error) {
+        failures.push(`${sectionPath}: ${error.message}`);
+        await fs.rm(temporaryOutput, { force: true });
+      }
+    }
 
     for (const postPath of postPaths) {
       const output = path.join(dist, postPath.slice(1), 'index.html');

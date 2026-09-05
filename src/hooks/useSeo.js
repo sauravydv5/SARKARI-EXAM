@@ -70,7 +70,10 @@ export default function useSeo({
 }) {
   useEffect(() => {
     const pageTitle = title ? `${title} | Sarkari Job Hub` : DEFAULT_TITLE;
-    const pageUrl = url || DEFAULT_URL;
+    const requestedUrl = url || DEFAULT_URL;
+    const parsedUrl = new URL(requestedUrl, DEFAULT_URL);
+    const normalizedPath = parsedUrl.pathname === '/' ? '/' : `/${parsedUrl.pathname.replace(/^\/+|\/+$/g, '')}`;
+    const pageUrl = `${DEFAULT_URL.replace(/\/$/, '')}${normalizedPath}`;
     document.title = pageTitle;
 
     setMeta('meta[name="description"]', 'content', description || DEFAULT_DESCRIPTION);
