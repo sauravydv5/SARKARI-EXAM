@@ -1,6 +1,38 @@
+import { useState } from 'react';
 import useSeo from '../hooks/useSeo';
 
 export default function ContactUs() {
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const [submitting, setSubmitting] = useState(false);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setSubmitting(true);
+    setStatus({ type: '', message: '' });
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/.netlify/functions/send-query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.message || 'Could not send your message.');
+
+      form.reset();
+      setStatus({ type: 'success', message: 'Your query has been sent successfully.' });
+    } catch (error) {
+      setStatus({ type: 'error', message: error.message || 'Could not send your message. Please try again.' });
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   useSeo({
     title: 'Contact Us',
     description: 'Contact Sarkari Job Hub for corrections, feedback, questions, and website support.',
@@ -35,7 +67,7 @@ export default function ContactUs() {
 
         <section aria-labelledby="form-heading" className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8">
           <h2 id="form-heading" className="mb-6 text-2xl font-bold text-slate-900 dark:text-white">Send a message</h2>
-          <form action="mailto:support@sarkarijobhub.website" method="post" encType="text/plain" className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label htmlFor="contact-name" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Name</label>
               <input id="contact-name" name="name" type="text" required autoComplete="name" className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white" />
@@ -45,10 +77,16 @@ export default function ContactUs() {
               <input id="contact-email" name="email" type="email" required autoComplete="email" className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white" />
             </div>
             <div>
-              <label htmlFor="contact-message" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Message</label>
-              <textarea id="contact-message" name="message" required rows="7" className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white" />
+              <label htmlFor="contact-subject" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Subject</label>
+              <input id="contact-subject" name="subject" type="text" required maxLength="160" autoComplete="off" className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white" />
             </div>
-            <button type="submit" className="rounded-lg bg-red-700 px-5 py-3 font-semibold text-white transition hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Send message</button>
+            <div>
+              <label htmlFor="contact-message" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Message</label>
+              <textarea id="contact-message" name="message" required maxLength="5000" rows="7" className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-200 dark:border-slate-600 dark:bg-slate-800 dark:text-white" />
+            </div>
+            <input name="website" type="text" tabIndex="-1" autoComplete="off" aria-hidden="true" className="hidden" />
+            {status.message && <p role="status" className={status.type === 'success' ? 'text-sm font-semibold text-emerald-700' : 'text-sm font-semibold text-red-700'}>{status.message}</p>}
+            <button type="submit" disabled={submitting} className="rounded-lg bg-red-700 px-5 py-3 font-semibold text-white transition hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60">{submitting ? 'Sending…' : 'Send message'}</button>
           </form>
         </section>
       </div>

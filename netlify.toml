@@ -2,6 +2,9 @@
   publish = "dist"
   command = "npx playwright install chromium && npm run build"
 
+[functions]
+  directory = "netlify/functions"
+
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]
