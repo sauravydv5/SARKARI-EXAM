@@ -7,74 +7,64 @@ import useSeo from '../hooks/useSeo';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-// Quick links and category-card data removed per request
+const HOME_LOADING_SECTIONS = [
+  ['Latest Jobs', '/latest-jobs'],
+  ['Latest Results', '/results'],
+  ['Admit Cards', '/admit-cards'],
+  ['Answer Keys', '/answer-keys'],
+  ['Admissions', '/admission'],
+  ['Syllabus', '/syllabus'],
+  ['Certificates', '/certificates'],
+  ['Important Updates', '/important'],
+];
 
-function CountUp({ value = 0, duration = 800 }) {
-  const [display, setDisplay] = useState(0);
-  useEffect(() => {
-    let start = 0;
-    const end = Number(value) || 0;
-    if (end === 0) {
-      setDisplay(0);
-      return;
-    }
-    const stepTime = Math.max(Math.floor(duration / end), 8);
-    const timer = setInterval(() => {
-      start += Math.ceil(end / (duration / stepTime));
-      if (start >= end) {
-        setDisplay(end);
-        clearInterval(timer);
-      } else {
-        setDisplay(start);
-      }
-    }, stepTime);
-    return () => clearInterval(timer);
-  }, [value, duration]);
-  return <span className="countup">{display}</span>;
-}
-
-function StatsPanel({ stats = {} }) {
-  const latest = stats['latest-job'] || 0;
-  const results = stats['result'] || 0;
-  const admit = stats['admit-card'] || 0;
-  const notifications = Object.values(stats).reduce((s, v) => s + (v || 0), 0);
+function HomeLoadingState({ initialPosts = [] }) {
   return (
-    <div className="stats-grid">
-      <div className="stat-card">
-        <div className="stat-icon">💼</div>
-        <div className="stat-body">
-          <div className="stat-num"><CountUp value={latest} /></div>
-          <div className="stat-label">Latest Jobs</div>
+    <div className="home-loading-state" aria-busy="true" aria-label="Loading latest updates">
+      <section className="home-compact-shell">
+        <div className="home-search-card home-loading-search">
+          <div>
+            <div className="home-loading-line home-loading-line-wide" />
+            <div className="home-loading-line home-loading-line-heading" />
+          </div>
+          <div className="home-loading-button" />
         </div>
+      </section>
+      <div className="home-loading-featured">
+        {Array.from({ length: 8 }, (_, index) => <div className="home-loading-card" key={index} />)}
       </div>
-      <div className="stat-card">
-        <div className="stat-icon">📊</div>
-        <div className="stat-body">
-          <div className="stat-num"><CountUp value={results} /></div>
-          <div className="stat-label">Latest Results</div>
+      {[[0, 3], [3, 3], [6, 2]].map(([start, columns]) => (
+        <div className={`home-grid home-grid-${columns}col home-loading-grid`} key={start}>
+          {HOME_LOADING_SECTIONS.slice(start, start + columns).map(([title, viewAllTo], index) => (
+            start === 0 && index === 0 && initialPosts.length > 0 ? (
+              <CategoryPanel title={title} viewAllTo={viewAllTo} posts={initialPosts} key={title} />
+            ) : (
+              <section className="panel home-loading-panel" key={title}>
+                <div className="panel-head"><div className="home-loading-line home-loading-line-title" /></div>
+                <div className="panel-body">
+                  {Array.from({ length: 10 }, (_, rowIndex) => <div className="home-loading-row" key={rowIndex} />)}
+                </div>
+              </section>
+            )
+          ))}
         </div>
-      </div>
-      <div className="stat-card">
-        <div className="stat-icon">🎫</div>
-        <div className="stat-body">
-          <div className="stat-num"><CountUp value={admit} /></div>
-          <div className="stat-label">Admit Cards</div>
+      ))}
+      <section className="panel home-loading-faq">
+        <div className="panel-head"><div className="home-loading-line home-loading-line-title" /></div>
+        <div className="panel-body">
+          <div className="home-loading-faq-row" />
+          <div className="home-loading-faq-row" />
+          <div className="home-loading-faq-row" />
         </div>
-      </div>
-      <div className="stat-card">
-        <div className="stat-icon">🔔</div>
-        <div className="stat-body">
-          <div className="stat-num"><CountUp value={notifications} /></div>
-          <div className="stat-label">Active Alerts</div>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
 
+// Quick links and category-card data removed per request
+
 export default function Home() {
-  const [sections, setSections] = useState(null);
-  const [stats, setStats] = useState({});
+  const [sections, setSections] = useState(() => api.initialHomeSections().data);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -82,14 +72,9 @@ export default function Home() {
     let cancelled = false;
     (async () => {
       try {
-        const [sec, st] = await Promise.all([api.homeSections(), api.categoryStats()]);
+        const sec = await api.homeSections();
         if (cancelled) return;
         setSections(sec.data);
-        const map = {};
-        (st.data || []).forEach((s) => {
-          map[s.category] = s.count;
-        });
-        setStats(map);
       } catch (err) {
         if (!cancelled) setError(err.message);
       } finally {
@@ -110,7 +95,7 @@ export default function Home() {
       `sarkari job, sarkari naukri, govt jobs, government jobs, SSC jobs, Railway jobs, Bank jobs, UPSC jobs, admit card, answer key, syllabus, exam notification, job alert, ${CURRENT_YEAR}, India`,
   });
 
-  if (loading) return <div className="loading">Loading latest updates…</div>;
+  if (loading) return <HomeLoadingState initialPosts={sections?.['latest-job'] || []} />;
   if (error) {
     return (
       <div className="error-box">

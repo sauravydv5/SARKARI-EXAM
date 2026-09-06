@@ -336,7 +336,6 @@ textarea {
 
 /* ===== Footer Extended ===== */
 .site-footer {
-  min-height: 760px;
   padding-top: 18px;
   background: linear-gradient(180deg, rgba(0,0,0,0.01), transparent 30%), var(--card);
   color: var(--muted);
@@ -416,7 +415,6 @@ img {
   .footer-seo-copy p { max-width:100%; }
 }
 @media (max-width: 520px) {
-  .site-footer { min-height: 1420px; }
   .footer-grid-extended { grid-template-columns: 1fr; }
   .footer-bottom-row { flex-direction:column; align-items:flex-start; }
 }
@@ -1073,6 +1071,83 @@ img {
 
 .home-compact-shell {
   margin-bottom: 12px;
+}
+
+.home-loading-state {
+  padding-bottom: 28px;
+}
+
+.home-loading-search {
+  min-height: 84px;
+}
+
+.home-loading-line,
+.home-loading-button,
+.home-loading-card,
+.home-loading-row,
+.home-loading-faq-row {
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface-3) 50%, var(--surface-2) 75%);
+  background-size: 200% 100%;
+  animation: home-skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+.home-loading-line {
+  height: 10px;
+  border-radius: 999px;
+}
+
+.home-loading-line-wide { width: min(420px, 60vw); }
+.home-loading-line-heading { width: min(260px, 42vw); height: 18px; margin-top: 10px; }
+.home-loading-line-title { width: 130px; }
+
+.home-loading-button {
+  width: 170px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+}
+
+.home-loading-featured {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 24px 0 32px;
+}
+
+.home-loading-card {
+  min-height: 80px;
+  border-radius: 7px;
+}
+
+.home-loading-grid { margin-bottom: 16px; }
+.home-loading-panel { min-height: 500px; }
+.home-loading-row { height: 43px; margin-bottom: 8px; border-radius: 6px; }
+.home-loading-faq { min-height: 250px; }
+.home-loading-faq-row { height: 54px; margin-bottom: 10px; border-radius: 6px; }
+
+@keyframes home-skeleton-pulse {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+@media (max-width: 800px) {
+  .home-loading-featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .home-loading-search { align-items: flex-start; flex-direction: column; }
+  .home-loading-button { width: 150px; }
+  .home-loading-grid { grid-template-columns: 1fr; }
+  .home-loading-panel { min-height: 500px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-loading-line,
+  .home-loading-button,
+  .home-loading-card,
+  .home-loading-row,
+  .home-loading-faq-row {
+    animation: none;
+  }
 }
 
 .home-search-card {
@@ -2581,91 +2656,6 @@ table.data-table tr:last-child td {
   font-weight: 650;
   text-transform: capitalize;
   border: 1px solid var(--border);
-}
-
-/* ===== Footer ===== */
-.site-footer {
-  background: #0f172a;
-  color: #94a3b8;
-  margin-top: auto;
-}
-
-.footer-top {
-  background: linear-gradient(90deg, #991b1b, #dc2626, #b91c1c);
-  color: #fff;
-  padding: 16px 0;
-  text-align: center;
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.footer-main {
-  padding: 32px 0 28px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 28px;
-}
-
-.footer-grid h4 {
-  color: #fff;
-  margin: 0 0 12px;
-  font-size: 0.95rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-}
-
-.footer-grid a {
-  display: block;
-  color: #94a3b8;
-  padding: 4px 0;
-  font-size: 0.88rem;
-  font-weight: 500;
-}
-
-.footer-grid a:hover {
-  color: #fcd34d;
-}
-
-.footer-extra {
-  padding: 24px 0 16px;
-  border-top: 1px solid #1e293b;
-}
-
-.footer-extra-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-}
-
-.footer-extra h4 {
-  color: #fff;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-}
-
-.footer-extra p {
-  margin: 0 0 8px;
-  color: #cbd5e1;
-  line-height: 1.75;
-  font-size: 0.9rem;
-}
-
-.footer-bottom {
-  border-top: 1px solid #1e293b;
-  padding: 18px 0;
-  text-align: center;
-  font-size: 0.78rem;
-  color: #64748b;
-}
-
-.footer-bottom p {
-  margin: 4px 0;
 }
 
 .disclaimer {

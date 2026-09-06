@@ -178,7 +178,7 @@ export default function Layout() {
         <div className="container brand-row flex items-center justify-between gap-6">
           <Link to="/" className="brand flex items-center gap-4 no-underline">
             <img
-              src="/logo.png"
+              src="/logo-108.webp"
               alt="Sarkari Jobs Hub logo"
               className="brand-logo-img rounded-md shadow-sm"
               width={72}

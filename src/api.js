@@ -1,3 +1,5 @@
+import initialHomePost from '../content/jobs/mpesb-mspstet-online-form-2026.json';
+
 const contentModules = import.meta.glob('../content/**/*.json', { import: 'default' });
 
 export const CATEGORIES = [
@@ -121,7 +123,7 @@ function normalizePost(raw, sourcePath) {
   };
 }
 
-let POSTS = [];
+let POSTS = [normalizePost(initialHomePost, '../content/jobs/mpesb-mspstet-online-form-2026.json')];
 let postsPromise;
 
 async function loadPosts() {
@@ -402,6 +404,11 @@ export function formatDate(d) {
 
 export const api = {
   health: () => Promise.resolve({ data: { ok: true } }),
+  initialHomeSections: () => ({
+    data: {
+      'latest-job': applySectionNewBadgeLimit(POSTS.filter((post) => post.category === 'latest-job')),
+    },
+  }),
   homeSections: async () => {
     await loadPosts();
     const sections = {};
