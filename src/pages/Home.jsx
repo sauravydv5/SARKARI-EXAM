@@ -37,7 +37,7 @@ function HomeLoadingState({ initialPosts = [] }) {
         <div className={`home-grid home-grid-${columns}col home-loading-grid`} key={start}>
           {HOME_LOADING_SECTIONS.slice(start, start + columns).map(([title, viewAllTo], index) => (
             start === 0 && index === 0 && initialPosts.length > 0 ? (
-              <CategoryPanel title={title} viewAllTo={viewAllTo} posts={initialPosts} key={title} />
+              <CategoryPanel title={title} viewAllTo={viewAllTo} posts={initialPosts} className="home-loading-panel" key={title} />
             ) : (
               <section className="panel home-loading-panel" key={title}>
                 <div className="panel-head"><div className="home-loading-line home-loading-line-title" /></div>
@@ -70,7 +70,7 @@ export default function Home() {
 
   useEffect(() => {
     let cancelled = false;
-    (async () => {
+    const loadSections = async () => {
       try {
         const sec = await api.homeSections();
         if (cancelled) return;
@@ -80,9 +80,19 @@ export default function Home() {
       } finally {
         if (!cancelled) setLoading(false);
       }
-    })();
+    };
+
+    const idleId = typeof window.requestIdleCallback === 'function'
+      ? window.requestIdleCallback(loadSections, { timeout: 1200 })
+      : window.requestAnimationFrame(loadSections);
+
     return () => {
       cancelled = true;
+      if (typeof window.cancelIdleCallback === 'function' && typeof idleId === 'number') {
+        window.cancelIdleCallback(idleId);
+      } else {
+        window.cancelAnimationFrame(idleId);
+      }
     };
   }, []);
 

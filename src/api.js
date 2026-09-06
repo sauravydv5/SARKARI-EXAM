@@ -1,6 +1,16 @@
-import initialHomePost from '../content/jobs/mpesb-mspstet-online-form-2026.json';
-
-const contentModules = import.meta.glob('../content/**/*.json', { import: 'default' });
+const contentModulesByCategory = {
+  'latest-job': {
+    ...import.meta.glob('../content/jobs/*.json', { import: 'default' }),
+    ...import.meta.glob('../content/upcoming/*.json', { import: 'default' }),
+  },
+  result: import.meta.glob('../content/results/*.json', { import: 'default' }),
+  'admit-card': import.meta.glob('../content/admit-cards/*.json', { import: 'default' }),
+  'answer-key': import.meta.glob('../content/answer-keys/*.json', { import: 'default' }),
+  syllabus: import.meta.glob('../content/syllabus/*.json', { import: 'default' }),
+  admission: import.meta.glob('../content/admission/*.json', { import: 'default' }),
+  important: import.meta.glob('../content/important/*.json', { import: 'default' }),
+  certificate: import.meta.glob('../content/certificate/*.json', { import: 'default' }),
+};
 
 export const CATEGORIES = [
   { key: 'latest-job', label: 'Latest Jobs', path: '/latest-jobs', color: '#c62828' },
@@ -15,6 +25,7 @@ export const CATEGORIES = [
 
 const CATEGORY_FOLDERS = {
   jobs: 'latest-job',
+  upcoming: 'latest-job',
   results: 'result',
   'admit-cards': 'admit-card',
   'answer-keys': 'answer-key',
@@ -25,23 +36,17 @@ const CATEGORY_FOLDERS = {
 };
 
 function toSlug(value) {
-  return String(value || '')
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)/g, '');
+  return String(value || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
 function parseDeadline(value) {
   const raw = String(value || '').trim();
   if (!raw || /see official|to be announced|extended/i.test(raw)) return Number.NaN;
-
   const dateOnly = raw.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/);
   if (dateOnly) {
     const [, day, month, year] = dateOnly;
     return new Date(Number(year), Number(month) - 1, Number(day), 23, 59, 59, 999).getTime();
   }
-
   const parsed = new Date(raw).getTime();
   if (!Number.isFinite(parsed)) return Number.NaN;
   const date = new Date(parsed);
@@ -77,12 +82,10 @@ function normalizeAsset(value) {
 
 function normalizePost(raw, sourcePath) {
   if (!raw || typeof raw !== 'object') return null;
-
   const sourceName = sourcePath.split('/').pop()?.replace(/\.json$/i, '') || 'post';
   const folder = sourcePath.split('/').slice(-2, -1)[0] || '';
   const category = raw.category || CATEGORY_FOLDERS[folder] || 'latest-job';
   const postType = normalizePostType(raw.postType, category, raw.title);
-
   const publishedAt = raw.publishedAt || raw.applyStart || raw.lastDate || new Date().toISOString();
   const lastDate = raw.importantDates?.lastDate || raw.lastDate;
   const lastDateValue = parseDeadline(lastDate);
@@ -123,52 +126,50 @@ function normalizePost(raw, sourcePath) {
   };
 }
 
-let POSTS = [normalizePost(initialHomePost, '../content/jobs/mpesb-mspstet-online-form-2026.json')];
-let postsPromise;
+let POSTS = [];
+const categoryPromises = new Map();
+let visiblePostsCache = null;
 
-async function loadPosts() {
-  if (postsPromise) return postsPromise;
-
-  postsPromise = Promise.all(
-    Object.entries(contentModules).map(async ([path, loadModule]) => normalizePost(await loadModule(), path))
-  ).then((posts) => {
-    POSTS = posts
-      .filter(Boolean)
-  .filter(Boolean)
-  .reduce((acc, post) => {
+function mergePosts(posts) {
+  POSTS = [...POSTS, ...posts.filter(Boolean)].reduce((acc, post) => {
     const key = String(post.slug || post.id || '').trim().toLowerCase();
     if (!key) {
       acc.push(post);
       return acc;
     }
-
     const existingIndex = acc.findIndex((item) => String(item.slug || item.id || '').trim().toLowerCase() === key);
     if (existingIndex === -1) {
       acc.push(post);
       return acc;
     }
-
     const existing = acc[existingIndex];
-    // Keep the canonical content file. " copy" files are editorial leftovers,
-    // not a second update and must never override the canonical record.
     const existingIsStale = existing.hasPassedDeadline;
     const postIsNewer = new Date(post.publishedAt || 0).getTime() > new Date(existing.publishedAt || 0).getTime();
     const shouldReplace =
       (existing.sourcePath?.includes(' copy') && !post.sourcePath?.includes(' copy')) ||
       (existingIsStale && !post.hasPassedDeadline) ||
       (!existingIsStale && !post.hasPassedDeadline && postIsNewer);
-
-    if (shouldReplace) {
-      acc[existingIndex] = post;
-    }
-
+    if (shouldReplace) acc[existingIndex] = post;
     return acc;
-      }, [])
-      .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
-    return POSTS;
-  });
+  }, []).sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
+  visiblePostsCache = null;
+}
 
-  return postsPromise;
+function loadCategory(category) {
+  if (categoryPromises.has(category)) return categoryPromises.get(category);
+  const modules = contentModulesByCategory[category] || {};
+  const promise = Promise.all(
+    Object.entries(modules).map(async ([path, loadModule]) => normalizePost(await loadModule(), path))
+  ).then((posts) => {
+    mergePosts(posts);
+    return posts;
+  });
+  categoryPromises.set(category, promise);
+  return promise;
+}
+
+function loadPosts() {
+  return Promise.all(CATEGORIES.map(({ key }) => loadCategory(key)));
 }
 
 const STORAGE_DELETED_POSTS = 'sr_deleted_posts';
@@ -234,35 +235,15 @@ function getStatusLists() {
   };
 }
 
-function getNewFlag(post) {
+function withResolvedFlags(post, storage) {
   const slug = post.slug || post.id;
-  const map = readStorageMap(STORAGE_NEW_POSTS);
-  if (Object.prototype.hasOwnProperty.call(map, slug)) return Boolean(map[slug]);
-  return Boolean(post.isNew);
-}
-
-function withResolvedFlags(post) {
-  const slug = post.slug || post.id;
-  const map = readStorageMap(STORAGE_NEW_POSTS);
-  const hasExplicitNewOverride = Object.prototype.hasOwnProperty.call(map, slug);
-  const overrides = readStorageMap(STORAGE_POST_OVERRIDES)[slug] || {};
-
+  const hasExplicitNewOverride = Object.prototype.hasOwnProperty.call(storage.newFlags, slug);
   return {
     ...post,
-    ...overrides,
-    isNew: hasExplicitNewOverride ? Boolean(map[slug]) : Boolean(post.isNew),
+    ...(storage.overrides[slug] || {}),
+    isNew: hasExplicitNewOverride ? Boolean(storage.newFlags[slug]) : Boolean(post.isNew),
     hasExplicitNewOverride,
   };
-}
-
-function isDeletedPost(post) {
-  const slug = post.slug || post.id;
-  return getStatusLists().deleted.includes(slug);
-}
-
-function isInactivePost(post) {
-  const slug = post.slug || post.id;
-  return getStatusLists().inactive.includes(slug) || Boolean(post.hasPassedDeadline);
 }
 
 function isRecentPost(post) {
@@ -274,116 +255,82 @@ function sortPosts(posts) {
   return [...posts].sort((a, b) => {
     const priorityValue = Number(b.sortPriority || 0) - Number(a.sortPriority || 0);
     if (priorityValue !== 0) return priorityValue;
-
     const newValue = Number(Boolean(b.isNew) || isRecentPost(b)) - Number(Boolean(a.isNew) || isRecentPost(a));
     if (newValue !== 0) return newValue;
-
-    const dateValue = (post) => new Date(post.lastUpdated || post.updatedAt || post.publishedAt || 0).getTime();
-    return dateValue(b) - dateValue(a);
+    return new Date(b.lastUpdated || b.updatedAt || b.publishedAt || 0).getTime() - new Date(a.lastUpdated || a.updatedAt || a.publishedAt || 0).getTime();
   });
+}
+
+function getStorageSnapshot() {
+  return {
+    deleted: new Set(readStorageList(STORAGE_DELETED_POSTS)),
+    inactive: new Set(readStorageList(STORAGE_INACTIVE_POSTS)),
+    newFlags: readStorageMap(STORAGE_NEW_POSTS),
+    overrides: readStorageMap(STORAGE_POST_OVERRIDES),
+  };
 }
 
 function getAllPosts() {
-  return sortPosts(POSTS.map(withResolvedFlags));
+  const storage = getStorageSnapshot();
+  return sortPosts(POSTS.map((post) => withResolvedFlags(post, storage)));
 }
 
 function getVisiblePosts() {
-  return getAllPosts().filter((post) => {
+  if (visiblePostsCache) return visiblePostsCache;
+  const storage = getStorageSnapshot();
+  visiblePostsCache = sortPosts(POSTS.map((post) => withResolvedFlags(post, storage)).filter((post) => {
     const publicationDate = new Date(post.publishedAt || 0).getTime();
-    const isCertificate = post.category === 'certificate';
-    return (isCertificate || publicationDate >= CONTENT_CUTOFF_DATE) && !hasLowQualityContent(post) && !isDeletedPost(post) && !isInactivePost(post);
-  });
+    const slug = post.slug || post.id;
+    return (post.category === 'certificate' || publicationDate >= CONTENT_CUTOFF_DATE) &&
+      !hasLowQualityContent(post) && !storage.deleted.has(slug) && !storage.inactive.has(slug) && !post.hasPassedDeadline;
+  }));
+  return visiblePostsCache;
 }
 
 function applySectionNewBadgeLimit(items) {
-  const sorted = sortPosts([...items]);
+  const sorted = sortPosts(items);
   let visibleCount = 0;
-
   return sorted.map((post) => {
-    const isRecent =
-      post.publishedAt && Date.now() - new Date(post.publishedAt).getTime() < 1000 * 60 * 60 * 24 * 14;
+    const isRecent = post.publishedAt && Date.now() - new Date(post.publishedAt).getTime() < 1000 * 60 * 60 * 24 * 14;
     const shouldShowBadge = visibleCount < 4 && (Boolean(post.isNew) || (!post.hasExplicitNewOverride && isRecent));
-
     if (shouldShowBadge) visibleCount += 1;
-
-    return {
-      ...post,
-      showNewBadge: shouldShowBadge,
-    };
+    return { ...post, showNewBadge: shouldShowBadge };
   });
 }
 
 function getPostsByCategory(category) {
-  const key = category || 'latest-job';
-  return applySectionNewBadgeLimit(getVisiblePosts().filter((post) => post.category === key));
+  return applySectionNewBadgeLimit(getVisiblePosts().filter((post) => post.category === (category || 'latest-job')));
 }
 
 function getPostsWithSearch(items, search) {
   const term = (search || '').trim().toLowerCase();
   if (!term) return items;
-  return items.filter((post) => {
-    const haystack = [post.id, post.slug, post.title, post.organization, post.postName, post.shortDescription, post.content, post.category]
-      .filter(Boolean)
-      .join(' ')
-      .toLowerCase();
-    return haystack.includes(term);
-  });
+  return items.filter((post) => [post.id, post.slug, post.title, post.organization, post.postName, post.shortDescription, post.content, post.category]
+    .filter(Boolean).join(' ').toLowerCase().includes(term));
 }
 
 function buildPagination(items, page, limit) {
   const safePage = Math.max(1, Number(page) || 1);
   const safeLimit = Math.max(1, Number(limit) || 20);
-  const total = items.length;
-  const pages = Math.max(1, Math.ceil(total / safeLimit));
+  const pages = Math.max(1, Math.ceil(items.length / safeLimit));
   const start = (safePage - 1) * safeLimit;
-  const end = start + safeLimit;
-  return {
-    page: Math.min(safePage, pages),
-    pages,
-    total,
-    items: items.slice(start, end),
-  };
+  return { page: Math.min(safePage, pages), pages, total: items.length, items: items.slice(start, start + safeLimit) };
 }
 
 export function setAuth(token, user) {
-  if (token) localStorage.setItem('sr_token', token);
-  else localStorage.removeItem('sr_token');
-  if (user) localStorage.setItem('sr_user', JSON.stringify(user));
-  else localStorage.removeItem('sr_user');
+  if (token) localStorage.setItem('sr_token', token); else localStorage.removeItem('sr_token');
+  if (user) localStorage.setItem('sr_user', JSON.stringify(user)); else localStorage.removeItem('sr_user');
 }
 
 export function getStoredUser() {
-  try {
-    return JSON.parse(localStorage.getItem('sr_user') || 'null');
-  } catch {
-    return null;
-  }
+  try { return JSON.parse(localStorage.getItem('sr_user') || 'null'); } catch { return null; }
 }
 
-export async function getJobs() {
-  await loadPosts();
-  return getPostsByCategory('latest-job');
-}
-
-export async function getResults() {
-  await loadPosts();
-  return getPostsByCategory('result');
-}
-
-export async function getAdmitCards() {
-  await loadPosts();
-  return getPostsByCategory('admit-card');
-}
-
-export async function getAnswerKeys() {
-  await loadPosts();
-  return getPostsByCategory('answer-key');
-}
-
-export async function getSyllabus() {
-  await loadPosts();
-  return getPostsByCategory('syllabus');
-}
+export async function getJobs() { await loadCategory('latest-job'); return getPostsByCategory('latest-job'); }
+export async function getResults() { await loadCategory('result'); return getPostsByCategory('result'); }
+export async function getAdmitCards() { await loadCategory('admit-card'); return getPostsByCategory('admit-card'); }
+export async function getAnswerKeys() { await loadCategory('answer-key'); return getPostsByCategory('answer-key'); }
+export async function getSyllabus() { await loadCategory('syllabus'); return getPostsByCategory('syllabus'); }
 
 export function categoryMeta(key) {
   return CATEGORIES.find((c) => c.key === key) || { key, label: key, path: `/${key}` };
@@ -392,11 +339,7 @@ export function categoryMeta(key) {
 export function formatDate(d) {
   if (!d) return '';
   try {
-    return new Date(d).toLocaleDateString('en-IN', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-    });
+    return new Date(d).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
   } catch {
     return String(d);
   }
@@ -404,92 +347,72 @@ export function formatDate(d) {
 
 export const api = {
   health: () => Promise.resolve({ data: { ok: true } }),
-  initialHomeSections: () => ({
-    data: {
-      'latest-job': applySectionNewBadgeLimit(POSTS.filter((post) => post.category === 'latest-job')),
-    },
-  }),
+  initialHomeSections: () => ({ data: { 'latest-job': applySectionNewBadgeLimit(POSTS.filter((post) => post.category === 'latest-job')) } }),
   homeSections: async () => {
     await loadPosts();
+    const visible = getVisiblePosts();
     const sections = {};
-    CATEGORIES.forEach((c) => {
-      const posts = getPostsByCategory(c.key).slice(0, 10);
-      sections[c.key] = posts;
+    CATEGORIES.forEach((category) => {
+      sections[category.key] = applySectionNewBadgeLimit(visible.filter((post) => post.category === category.key)).slice(0, 10);
     });
     return { data: sections };
   },
-  /** Latest featured posts for FeaturedCards (max `limit`, defaults to 8). */
   getFeaturedPosts: async (limit = 8) => {
     await loadPosts();
-    const safeLimit = Math.max(0, Number(limit) || 8);
     const visible = getVisiblePosts();
     const featured = sortPosts(visible.filter((post) => post.isFeatured));
-    const source = featured.length > 0 ? featured : sortPosts(visible);
-    return { data: source.slice(0, safeLimit) };
+    return { data: (featured.length ? featured : visible).slice(0, Math.max(0, Number(limit) || 8)) };
   },
   categoryStats: async () => {
     await loadPosts();
-    const data = CATEGORIES.map((c) => ({ category: c.key, count: getPostsByCategory(c.key).length }));
-    return { data };
+    const visible = getVisiblePosts();
+    return { data: CATEGORIES.map((category) => ({ category: category.key, count: visible.filter((post) => post.category === category.key).length })) };
   },
   listPosts: async (params = {}) => {
-    await loadPosts();
     const category = params.category;
-    const page = params.page || 1;
-    const limit = params.limit || 20;
-    const search = params.search || '';
-    const items = sortPosts(getPostsWithSearch(category ? getPostsByCategory(category) : getVisiblePosts(), search));
-    const paged = buildPagination(items, page, limit);
+    await (category ? loadCategory(category) : loadPosts());
+    const items = sortPosts(getPostsWithSearch(category ? getPostsByCategory(category) : getVisiblePosts(), params.search || ''));
+    const paged = buildPagination(items, params.page || 1, params.limit || 20);
     return { data: paged.items, pagination: { page: paged.page, pages: paged.pages, total: paged.total } };
   },
   getPost: async (slug) => {
     await loadPosts();
     const post = getVisiblePosts().find((item) => item.slug === slug || item.id === slug);
-    if (!post) {
-      return { data: null, related: [] };
-    }
-    const related = sortPosts(getPostsByCategory(post.category))
-      .filter((item) => item.slug !== post.slug)
-      .slice(0, 4);
-    return { data: post, related };
+    if (!post) return { data: null, related: [] };
+    return { data: post, related: getPostsByCategory(post.category).filter((item) => item.slug !== post.slug).slice(0, 4) };
   },
   login: () => Promise.resolve({ token: 'static-token', user: { email: 'admin@sarkariresult.local' } }),
   me: () => Promise.resolve({ user: { email: 'admin@sarkariresult.local' } }),
   adminList: async () => {
     await loadPosts();
     const status = getStatusLists();
-    const posts = sortPosts(getAllPosts()).map((post) => ({
-      ...post,
-      isDeleted: status.deleted.includes(post.slug || post.id),
-      isInactive: status.inactive.includes(post.slug || post.id) || Boolean(post.hasPassedDeadline),
-    }));
-    return { data: posts };
+    return { data: getAllPosts().map((post) => ({ ...post, isDeleted: status.deleted.includes(post.slug || post.id), isInactive: status.inactive.includes(post.slug || post.id) || Boolean(post.hasPassedDeadline) })) };
   },
   createPost: (body) => Promise.resolve({ data: { ...body, _id: String(Date.now()) } }),
   updatePost: (id, body) => Promise.resolve({ data: { _id: id, ...body } }),
   deletePost: (slug) => {
-    const deleted = readStorageList(STORAGE_DELETED_POSTS);
-    writeStorageList(STORAGE_DELETED_POSTS, [...deleted, slug]);
+    writeStorageList(STORAGE_DELETED_POSTS, [...readStorageList(STORAGE_DELETED_POSTS), slug]);
+    visiblePostsCache = null;
     return Promise.resolve({ data: { slug } });
   },
   setInactive: (slug, inactive = true) => {
-    const inactiveList = readStorageList(STORAGE_INACTIVE_POSTS);
-    const updated = inactive
-      ? [...inactiveList, slug]
-      : inactiveList.filter((item) => item !== slug);
-    writeStorageList(STORAGE_INACTIVE_POSTS, updated);
+    const current = readStorageList(STORAGE_INACTIVE_POSTS);
+    writeStorageList(STORAGE_INACTIVE_POSTS, inactive ? [...current, slug] : current.filter((item) => item !== slug));
+    visiblePostsCache = null;
     return Promise.resolve({ data: { slug, inactive } });
   },
   setNew: (slug, value = true) => {
     const map = readStorageMap(STORAGE_NEW_POSTS);
     map[slug] = Boolean(value);
     writeStorageMap(STORAGE_NEW_POSTS, map);
+    visiblePostsCache = null;
     return Promise.resolve({ data: { slug, value: Boolean(value) } });
   },
   updatePostMeta: (slug, changes) => {
     const map = readStorageMap(STORAGE_POST_OVERRIDES);
     map[slug] = { ...(map[slug] || {}), ...changes };
     writeStorageMap(STORAGE_POST_OVERRIDES, map);
+    visiblePostsCache = null;
     return Promise.resolve({ data: { slug, ...changes } });
   },
 };

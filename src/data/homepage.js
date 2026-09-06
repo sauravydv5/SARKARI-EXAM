@@ -63,7 +63,6 @@ export const HOMEPAGE_SECTIONS = {
     'rssb-junior-engineer-online-form-2026',
     'bank-of-baroda-lbo-online-form-2026',
     'ibps-rrb-crp-xv-online-form-2026',
-    'mpesb-mspstet-online-form-2026',
     'mpesb-group-3-sub-engineer-online-form-2026',
     'mp-high-court-assistant-grade-iii-online-form-2026',
     'nfr-apprentice-2026',

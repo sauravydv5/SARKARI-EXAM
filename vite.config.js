@@ -7,7 +7,8 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('/content/')) return 'content-data';
+          const contentMatch = id.match(/\/content\/([^/]+)\//);
+          if (contentMatch) return `content-${contentMatch[1]}`;
         },
       },
     },

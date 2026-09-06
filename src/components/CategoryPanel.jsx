@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import PostListItem from './PostListItem';
 
-export default function CategoryPanel({ title, viewAllTo, posts = [], emptyText = 'No updates yet.' }) {
+export default function CategoryPanel({ title, viewAllTo, posts = [], emptyText = 'No updates yet.', className = '' }) {
   return (
-    <section className="panel">
+    <section className={`panel ${className}`.trim()}>
       <div className="panel-head">
         <h2>{title}</h2>
         {viewAllTo && <Link to={viewAllTo}>View All →</Link>}

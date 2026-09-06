@@ -115,6 +115,7 @@ export default function Layout() {
   });
 
   useEffect(() => {
+    if (!menuOpen) return undefined;
     let cancelled = false;
     api.getFeaturedPosts(8).then(({ data }) => {
       if (!cancelled) setFeaturedPosts(Array.isArray(data) ? data : []);
@@ -122,7 +123,7 @@ export default function Layout() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [menuOpen]);
 
   function onSearch(e) {
     e.preventDefault();
@@ -364,6 +365,35 @@ export default function Layout() {
         </div>
 
         <div className="footer-seo-copy container">
+          <div className="footer-directory" aria-label="Sarkari Job Hub directory">
+            <section>
+              <h2>Government Job Updates</h2>
+              <ul>
+                <li><Link to="/latest-jobs">Latest Government Jobs</Link></li>
+                <li><Link to="/results">Sarkari Results</Link></li>
+                <li><Link to="/admit-cards">Admit Cards</Link></li>
+                <li><Link to="/answer-keys">Answer Keys</Link></li>
+              </ul>
+            </section>
+            <section>
+              <h2>Application Help</h2>
+              <ul>
+                <li><Link to="/search?q=eligibility">Eligibility and Qualification</Link></li>
+                <li><Link to="/search?q=application+fee">Application Fee Details</Link></li>
+                <li><Link to="/search?q=documents">Documents Required</Link></li>
+                <li><Link to="/search?q=selection+process">Selection Process</Link></li>
+              </ul>
+            </section>
+            <section>
+              <h2>Exam Preparation</h2>
+              <ul>
+                <li><Link to="/syllabus">Syllabus and Exam Pattern</Link></li>
+                <li><Link to="/important">Exam Calendar and Documents</Link></li>
+                <li><Link to="/search?q=previous+year+papers">Previous Year Papers</Link></li>
+                <li><Link to="/search?q=mock+test">Mock Tests and Preparation</Link></li>
+              </ul>
+            </section>
+          </div>
           <h2>Find Latest Sarkari Jobs &amp; Exam Updates</h2>
           <p>
             Sarkari Job Hub brings you the most trusted and up-to-date Sarkari Jobs and government
@@ -377,11 +407,6 @@ export default function Layout() {
             Stay organized with daily notifications, mobile-friendly pages and verified links to
             official portals. Start searching for Sarkari Jobs 2026, set alerts for your
             preferred categories, and prepare confidently with our study material and tips.
-          </p>
-          <p className="footer-update-note">
-            Due to some unavoidable circumstances, the website was not updated on time earlier, but from
-            today onward, all forms, notifications, and exam updates will be refreshed daily to provide
-            timely and consistent coverage. <span className="update-note-hindi">(Kuch zaroori wajahon se website pehle timely update nahi ho paayi, lekin ab se har chiz ki daily update hogi.)</span>
           </p>
         </div>
 
