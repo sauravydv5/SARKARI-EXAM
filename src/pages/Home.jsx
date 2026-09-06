@@ -4,7 +4,6 @@ import { api } from '../api';
 import CategoryPanel from '../components/CategoryPanel';
 import FeaturedCards from '../components/FeaturedCards';
 import useSeo from '../hooks/useSeo';
-import { blogArticles } from '../data/blogArticles';
 
 const CURRENT_YEAR = new Date().getFullYear();
 

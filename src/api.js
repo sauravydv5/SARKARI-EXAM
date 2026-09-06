@@ -1,4 +1,4 @@
-const contentModules = import.meta.glob('../content/**/*.json', { eager: true, import: 'default' });
+const contentModules = import.meta.glob('../content/**/*.json', { import: 'default' });
 
 export const CATEGORIES = [
   { key: 'latest-job', label: 'Latest Jobs', path: '/latest-jobs', color: '#c62828' },
@@ -121,8 +121,17 @@ function normalizePost(raw, sourcePath) {
   };
 }
 
-const POSTS = Object.entries(contentModules)
-  .map(([path, module]) => normalizePost(module, path))
+let POSTS = [];
+let postsPromise;
+
+async function loadPosts() {
+  if (postsPromise) return postsPromise;
+
+  postsPromise = Promise.all(
+    Object.entries(contentModules).map(async ([path, loadModule]) => normalizePost(await loadModule(), path))
+  ).then((posts) => {
+    POSTS = posts
+      .filter(Boolean)
   .filter(Boolean)
   .reduce((acc, post) => {
     const key = String(post.slug || post.id || '').trim().toLowerCase();
@@ -152,8 +161,13 @@ const POSTS = Object.entries(contentModules)
     }
 
     return acc;
-  }, [])
-  .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
+      }, [])
+      .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0));
+    return POSTS;
+  });
+
+  return postsPromise;
+}
 
 const STORAGE_DELETED_POSTS = 'sr_deleted_posts';
 const STORAGE_INACTIVE_POSTS = 'sr_inactive_posts';
@@ -344,23 +358,28 @@ export function getStoredUser() {
   }
 }
 
-export function getJobs() {
+export async function getJobs() {
+  await loadPosts();
   return getPostsByCategory('latest-job');
 }
 
-export function getResults() {
+export async function getResults() {
+  await loadPosts();
   return getPostsByCategory('result');
 }
 
-export function getAdmitCards() {
+export async function getAdmitCards() {
+  await loadPosts();
   return getPostsByCategory('admit-card');
 }
 
-export function getAnswerKeys() {
+export async function getAnswerKeys() {
+  await loadPosts();
   return getPostsByCategory('answer-key');
 }
 
-export function getSyllabus() {
+export async function getSyllabus() {
+  await loadPosts();
   return getPostsByCategory('syllabus');
 }
 
@@ -383,7 +402,8 @@ export function formatDate(d) {
 
 export const api = {
   health: () => Promise.resolve({ data: { ok: true } }),
-  homeSections: () => {
+  homeSections: async () => {
+    await loadPosts();
     const sections = {};
     CATEGORIES.forEach((c) => {
       const posts = getPostsByCategory(c.key).slice(0, 10);
@@ -392,18 +412,21 @@ export const api = {
     return { data: sections };
   },
   /** Latest featured posts for FeaturedCards (max `limit`, defaults to 8). */
-  getFeaturedPosts: (limit = 8) => {
+  getFeaturedPosts: async (limit = 8) => {
+    await loadPosts();
     const safeLimit = Math.max(0, Number(limit) || 8);
     const visible = getVisiblePosts();
     const featured = sortPosts(visible.filter((post) => post.isFeatured));
     const source = featured.length > 0 ? featured : sortPosts(visible);
     return { data: source.slice(0, safeLimit) };
   },
-  categoryStats: () => {
+  categoryStats: async () => {
+    await loadPosts();
     const data = CATEGORIES.map((c) => ({ category: c.key, count: getPostsByCategory(c.key).length }));
     return { data };
   },
-  listPosts: (params = {}) => {
+  listPosts: async (params = {}) => {
+    await loadPosts();
     const category = params.category;
     const page = params.page || 1;
     const limit = params.limit || 20;
@@ -412,7 +435,8 @@ export const api = {
     const paged = buildPagination(items, page, limit);
     return { data: paged.items, pagination: { page: paged.page, pages: paged.pages, total: paged.total } };
   },
-  getPost: (slug) => {
+  getPost: async (slug) => {
+    await loadPosts();
     const post = getVisiblePosts().find((item) => item.slug === slug || item.id === slug);
     if (!post) {
       return { data: null, related: [] };
@@ -424,7 +448,8 @@ export const api = {
   },
   login: () => Promise.resolve({ token: 'static-token', user: { email: 'admin@sarkariresult.local' } }),
   me: () => Promise.resolve({ user: { email: 'admin@sarkariresult.local' } }),
-  adminList: () => {
+  adminList: async () => {
+    await loadPosts();
     const status = getStatusLists();
     const posts = sortPosts(getAllPosts()).map((post) => ({
       ...post,

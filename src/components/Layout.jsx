@@ -115,8 +115,13 @@ export default function Layout() {
   });
 
   useEffect(() => {
-    const { data } = api.getFeaturedPosts(8);
-    setFeaturedPosts(Array.isArray(data) ? data : []);
+    let cancelled = false;
+    api.getFeaturedPosts(8).then(({ data }) => {
+      if (!cancelled) setFeaturedPosts(Array.isArray(data) ? data : []);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   function onSearch(e) {

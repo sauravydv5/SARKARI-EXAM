@@ -40,9 +40,9 @@ export default function FeaturedCards({ limit = 8, title = '' }) {
   useEffect(() => {
     let cancelled = false;
 
-    const load = () => {
+    const load = async () => {
       try {
-        const { data } = api.getFeaturedPosts(limit);
+        const { data } = await api.getFeaturedPosts(limit);
         if (!cancelled) setPosts(Array.isArray(data) ? data : []);
       } catch {
         if (!cancelled) setPosts([]);
