@@ -7,10 +7,66 @@ import useSeo from '../hooks/useSeo';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
+const HOME_LOADING_SECTIONS = [
+  ['Latest Jobs', '/latest-jobs'],
+  ['Latest Results', '/results'],
+  ['Admit Cards', '/admit-cards'],
+  ['Answer Keys', '/answer-keys'],
+  ['Admissions', '/admission'],
+  ['Syllabus', '/syllabus'],
+  ['Certificates', '/certificates'],
+  ['Important Updates', '/important'],
+];
+
+function HomeLoadingState({ initialPosts = [] }) {
+  return (
+    <div className="home-loading-state" aria-busy="true" aria-label="Loading latest updates">
+      <section className="home-compact-shell">
+        <div className="home-search-card home-loading-search">
+          <div>
+            <div className="home-loading-line home-loading-line-wide" />
+            <div className="home-loading-line home-loading-line-heading" />
+          </div>
+          <div className="home-loading-button" />
+        </div>
+      </section>
+      <div className="home-loading-featured">
+        {Array.from({ length: 8 }, (_, index) => <div className="home-loading-card" key={index} />)}
+      </div>
+      {[[0, 3], [3, 3], [6, 2]].map(([start, columns]) => (
+        <div className={`home-grid home-grid-${columns}col home-loading-grid`} key={start}>
+          {HOME_LOADING_SECTIONS.slice(start, start + columns).map(([title, viewAllTo], index) => (
+            start === 0 && index === 0 && initialPosts.length > 0 ? (
+              <CategoryPanel title={title} viewAllTo={viewAllTo} posts={initialPosts} className="home-loading-panel" key={title} />
+            ) : (
+              <section className="panel home-loading-panel" key={title}>
+                <div className="panel-head"><div className="home-loading-line home-loading-line-title" /></div>
+                <div className="panel-body">
+                  {Array.from({ length: 10 }, (_, rowIndex) => <div className="home-loading-row" key={rowIndex} />)}
+                </div>
+              </section>
+            )
+          ))}
+        </div>
+      ))}
+      <section className="panel home-loading-faq">
+        <div className="panel-head"><div className="home-loading-line home-loading-line-title" /></div>
+        <div className="panel-body">
+          <div className="home-loading-faq-row" />
+          <div className="home-loading-faq-row" />
+          <div className="home-loading-faq-row" />
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// Quick links and category-card data removed per request
 
 export default function Home() {
   const [sections, setSections] = useState(() => api.initialHomeSections().data);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
@@ -18,16 +74,25 @@ export default function Home() {
       try {
         const sec = await api.homeSections();
         if (cancelled) return;
-        setSections(sec.data || {});
+        setSections(sec.data);
       } catch (err) {
         if (!cancelled) setError(err.message);
+      } finally {
+        if (!cancelled) setLoading(false);
       }
     };
 
-    loadSections();
+    const idleId = typeof window.requestIdleCallback === 'function'
+      ? window.requestIdleCallback(loadSections, { timeout: 1200 })
+      : window.requestAnimationFrame(loadSections);
 
     return () => {
       cancelled = true;
+      if (typeof window.cancelIdleCallback === 'function' && typeof idleId === 'number') {
+        window.cancelIdleCallback(idleId);
+      } else {
+        window.cancelAnimationFrame(idleId);
+      }
     };
   }, []);
 
@@ -40,6 +105,7 @@ export default function Home() {
       `sarkari job, sarkari naukri, govt jobs, government jobs, SSC jobs, Railway jobs, Bank jobs, UPSC jobs, admit card, answer key, syllabus, exam notification, job alert, ${CURRENT_YEAR}, India`,
   });
 
+  if (loading) return <HomeLoadingState initialPosts={sections?.['latest-job'] || []} />;
   if (error) {
     return (
       <div className="error-box">

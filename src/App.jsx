@@ -1,8 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
-import Home from './pages/Home';
 
+const Home = lazy(() => import('./pages/Home'));
 const CategoryPage = lazy(() => import('./pages/CategoryPage'));
 const PostDetail = lazy(() => import('./pages/PostDetail'));
 const SearchPage = lazy(() => import('./pages/SearchPage'));

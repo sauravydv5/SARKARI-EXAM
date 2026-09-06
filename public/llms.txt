@@ -1,0 +1,29 @@
+# Sarkari Job Hub
+
+> Sarkari Job Hub publishes current government job notifications, exam results, admit cards, answer keys, syllabi, admissions, and other official updates for applicants in India.
+
+## Main Sections
+
+- [Home](https://sarkarijobhub.website/): Latest government job and exam updates.
+- [Latest Jobs](https://sarkarijobhub.website/latest-jobs): Government recruitment notifications.
+- [Results](https://sarkarijobhub.website/results): Examination results and score updates.
+- [Admit Cards](https://sarkarijobhub.website/admit-cards): Admit card and exam date updates.
+- [Answer Keys](https://sarkarijobhub.website/answer-keys): Examination answer keys.
+- [Syllabus](https://sarkarijobhub.website/syllabus): Recruitment and examination syllabi.
+- [Admission](https://sarkarijobhub.website/admission): Admission and counselling notifications.
+- [Important Updates](https://sarkarijobhub.website/important): Important government notices.
+- [Certificates](https://sarkarijobhub.website/certificates): Certificate and document-related updates.
+
+## Policies and Information
+
+- [About Us](https://sarkarijobhub.website/about-us)
+- [Editorial Policy](https://sarkarijobhub.website/editorial-policy)
+- [Fact-Checking Policy](https://sarkarijobhub.website/fact-checking-policy)
+- [Correction Policy](https://sarkarijobhub.website/correction-policy)
+- [Disclaimer](https://sarkarijobhub.website/disclaimer)
+- [Contact](https://sarkarijobhub.website/contact)
+
+## Site Index
+
+- [XML Sitemap](https://sarkarijobhub.website/sitemap.xml): Complete list of publicly indexed URLs.
+- [RSS Feed](https://sarkarijobhub.website/rss.xml): Recent published updates.

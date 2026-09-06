@@ -42,13 +42,10 @@ async function waitForPreview() {
 
 try {
   await waitForPreview();
-  const browser = await chromium.launch({
-    headless: true,
-    args: ['--disable-dev-shm-usage', '--no-sandbox'],
-  });
+  const browser = await chromium.launch({ headless: true });
   try {
-    const page = await browser.newPage({ viewport: { width: 1440, height: 1200 } });
-    page.setDefaultTimeout(20000);
+    const page = await browser.newPage();
+    page.setDefaultTimeout(10000);
     const failures = [];
 
     for (const sectionPath of indexableSectionPaths) {
@@ -95,10 +92,10 @@ try {
     }
 
     if (failures.length) {
-      console.warn(`Prerender completed with ${failures.length} warnings. Some post pages were skipped because they are unavailable or failed to render in the preview browser.\n${failures.slice(0, 8).join('\n')}`);
+      throw new Error(`Failed to prerender ${failures.length} post page(s):\n${failures.join('\n')}`);
     }
 
-    console.log(`Prerendered ${Math.max(0, postPaths.length - failures.length)} published post pages.`);
+    console.log(`Prerendered ${postPaths.length} published post pages.`);
   } finally {
     await browser.close();
   }

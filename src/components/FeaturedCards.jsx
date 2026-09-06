@@ -35,6 +35,7 @@ function categoryLabel(categoryKey) {
  */
 export default function FeaturedCards({ limit = 8, title = '' }) {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
@@ -45,6 +46,8 @@ export default function FeaturedCards({ limit = 8, title = '' }) {
         if (!cancelled) setPosts(Array.isArray(data) ? data : []);
       } catch {
         if (!cancelled) setPosts([]);
+      } finally {
+        if (!cancelled) setLoading(false);
       }
     };
 
@@ -63,6 +66,24 @@ export default function FeaturedCards({ limit = 8, title = '' }) {
       window.removeEventListener('focus', load);
     };
   }, [limit]);
+
+  if (loading) {
+    return (
+      <section className="w-full" aria-busy="true" aria-label={title}>
+        <h2 className="mb-4 text-xl font-bold tracking-tight text-[--text] md:text-2xl">
+          {title}
+        </h2>
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {Array.from({ length: Math.min(limit, 4) }).map((_, i) => (
+            <div
+              key={i}
+              className="h-20 animate-pulse rounded-[7px] bg-[--surface-2] shadow-sm"
+            />
+          ))}
+        </div>
+      </section>
+    );
+  }
 
   if (!posts.length) return null;
 
