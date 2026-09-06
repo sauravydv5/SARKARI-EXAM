@@ -184,6 +184,8 @@ export default function Layout() {
               className="brand-logo-img rounded-md shadow-sm"
               width={72}
               height={72}
+              loading="eager"
+              fetchPriority="high"
               decoding="async"
             />
             <div className="brand-text leading-tight">

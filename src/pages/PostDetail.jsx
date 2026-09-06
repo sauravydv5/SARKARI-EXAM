@@ -658,6 +658,9 @@ export default function PostDetail() {
                   {links.correctionNotice && <LinkRow label="Correction Notice" href={links.correctionNotice} text="Open Notice" />}
                   {links.disqualifiedList && <LinkRow label="Disqualified List" href={links.disqualifiedList} text="Open List" />}
                   {links.examSchedule && <LinkRow label="Exam Schedule Notice" href={links.examSchedule} text="Open Schedule" />}
+                  {links.downloadSyllabus && <LinkRow label="Paper I & II Exam Syllabus" href={links.downloadSyllabus} text="Download Syllabus" />}
+                  {links.notificationEnglish && <LinkRow label="Notification (English)" href={links.notificationEnglish} text="Download English PDF" />}
+                  {links.notificationHindi && <LinkRow label="Notification (Hindi)" href={links.notificationHindi} text="Download Hindi PDF" />}
                   {(links.officialNotification || links.importantLink) && <LinkRow label="Notification" href={links.officialNotification || links.importantLink} text="Download Notification" />}
                   {links.brochure && <LinkRow label="Download Brochure" href={links.brochure} text="Open Brochure" />}
                   {links.officialWebsite && <LinkRow label="Official Website" href={links.officialWebsite} text="Visit Website" />}
@@ -705,7 +708,18 @@ export default function PostDetail() {
               {links.downloadAdmitCard && <a href={links.downloadAdmitCard} target="_blank" rel="noopener noreferrer">🎫 Admit Card</a>}
               {links.examCity && <a href={links.examCity} target="_blank" rel="noopener noreferrer">📍 Exam City</a>}
               {links.examSchedule && <a href={links.examSchedule} target="_blank" rel="noopener noreferrer">📅 Exam Schedule</a>}
+              {links.downloadSyllabus && <a href={links.downloadSyllabus} target="_blank" rel="noopener noreferrer">📘 Paper I &amp; II Syllabus</a>}
               {links.finalAnswerKey && <a href={links.finalAnswerKey} target="_blank" rel="noopener noreferrer">✅ Final Answer Key</a>}
+              {links.notificationEnglish && (
+                <a href={links.notificationEnglish} target="_blank" rel="noopener noreferrer">
+                  📄 Notification (English)
+                </a>
+              )}
+              {links.notificationHindi && (
+                <a href={links.notificationHindi} target="_blank" rel="noopener noreferrer">
+                  📄 Notification (Hindi)
+                </a>
+              )}
               {(links.officialNotification || links.importantLink) && (
                 <a href={links.officialNotification || links.importantLink} target="_blank" rel="noopener noreferrer">
                   📄 Notification

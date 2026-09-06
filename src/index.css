@@ -339,6 +339,7 @@ textarea {
   padding-top: 18px;
   background: linear-gradient(180deg, rgba(0,0,0,0.01), transparent 30%), var(--card);
   color: var(--muted);
+  contain: layout style;
 }
 
 /* Keep ad space stable while an ad network decides whether to fill it. */
@@ -865,6 +866,7 @@ img {
 .main-content {
   flex: 1;
   padding: 22px 0 48px;
+  min-height: calc(100vh - var(--nav-h));
 }
 
 /* ===== Hero ===== */
