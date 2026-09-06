@@ -6,17 +6,6 @@
   directory = "netlify/functions"
 
 [[headers]]
-  for = "/*"
-  [headers.values]
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; form-action 'self' https:; upgrade-insecure-requests"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Cross-Origin-Opener-Policy = "same-origin"
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
-
-[[headers]]
   for = "/sitemap.xml"
   [headers.values]
     Content-Type = "application/xml; charset=utf-8"
@@ -26,11 +15,6 @@
   from = "/post/*"
   to = "/post/:splat/index.html"
   status = 200
-
-[[redirects]]
-  from = "/assets/*"
-  to = "/404.html"
-  status = 404
 
 [[redirects]]
   from = "/*"
