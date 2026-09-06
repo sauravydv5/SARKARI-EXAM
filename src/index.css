@@ -1712,7 +1712,7 @@ img {
   display: block;
   font-size: 0.72rem;
   font-weight: 650;
-  color: var(--muted);
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-bottom: 3px;
@@ -1841,13 +1841,13 @@ img {
   min-width: 140px;
   background: var(--table-th);
   font-weight: 700;
-  color: var(--text-secondary);
+  color: var(--text);
   font-size: 0.86rem;
 }
 
 .pd-full-table td {
   color: var(--text);
-  font-weight: 500;
+  font-weight: 600;
   background: var(--card);
 }
 
@@ -1941,8 +1941,8 @@ img {
 
 .pd-doc-list li {
   font-size: 0.9rem;
-  color: #334155;
-  font-weight: 500;
+  color: var(--text-secondary);
+  font-weight: 600;
   padding: 4px 0;
 }
 
@@ -3661,9 +3661,10 @@ table.data-table tr:last-child td {
 
 .pd-focus-card p {
   margin: 0 0 9px;
-  color: var(--text-secondary);
+  color: var(--text);
   font-size: 0.86rem;
   line-height: 1.55;
+  font-weight: 500;
 }
 
 .pd-focus-card p:last-child {
@@ -3673,8 +3674,9 @@ table.data-table tr:last-child td {
 .pd-focus-note {
   padding-top: 9px;
   border-top: 1px solid var(--border);
-  color: var(--muted) !important;
+  color: var(--text-secondary) !important;
   font-size: 0.78rem !important;
+  font-weight: 600;
 }
 
 .pd-doc-strip {
@@ -3685,9 +3687,10 @@ table.data-table tr:last-child td {
   padding: 13px 17px;
   background: #f8fafc;
   border-top: 1px solid #dbe3ee;
-  color: var(--text-secondary);
+  color: var(--text);
   font-size: 0.82rem;
   line-height: 1.5;
+  font-weight: 500;
 }
 
 .pd-doc-strip strong {

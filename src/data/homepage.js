@@ -56,6 +56,7 @@ export const HOMEPAGE_SECTIONS = {
     'up-police-constable-dv-pst-admit-card-2026',
   ],
   'latest-job': [
+    'upsc-epfo-apfc-advt-no-52-2026',
     'upessc-special-tet-2026',
     'indiapost-gds-schedule-ii-july-2026',
     'mpesb-group-2-sub-group-4-patwari-online-form-2026',
