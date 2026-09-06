@@ -73,7 +73,7 @@ export default function FeaturedCards({ limit = 8, title = '' }) {
         <h2 className="mb-4 text-xl font-bold tracking-tight text-[--text] md:text-2xl">
           {title}
         </h2>
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
           {Array.from({ length: Math.min(limit, 4) }).map((_, i) => (
             <div
               key={i}
@@ -100,7 +100,7 @@ export default function FeaturedCards({ limit = 8, title = '' }) {
         <span className="hidden text-sm text-[--muted] sm:inline">{posts.length} featured</span>
       </div>
 
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
         {posts.map((post, index) => {
           const colorClass = CARD_BACKGROUNDS[index % CARD_BACKGROUNDS.length];
           const postsCount = formatPostsCount(post.totalVacancies);

@@ -134,19 +134,13 @@ export default function Home() {
 
       {/* Category cards removed — lists below move up immediately under Featured Cards */}
 
-      <div className="home-grid home-grid-3col">
+      <div className="home-grid home-grid-all">
         <CategoryPanel title="Latest Jobs" viewAllTo="/latest-jobs" posts={sections?.['latest-job'] || []} />
         <CategoryPanel title="Latest Results" viewAllTo="/results" posts={sections?.result || []} />
         <CategoryPanel title="Admit Cards" viewAllTo="/admit-cards" posts={sections?.['admit-card'] || []} />
-      </div>
-
-      <div className="home-grid home-grid-3col">
         <CategoryPanel title="Answer Keys" viewAllTo="/answer-keys" posts={sections?.['answer-key'] || []} />
         <CategoryPanel title="Admissions" viewAllTo="/admission" posts={sections?.admission || []} />
         <CategoryPanel title="Syllabus" viewAllTo="/syllabus" posts={sections?.syllabus || []} />
-      </div>
-
-      <div className="home-grid home-grid-2col">
         <CategoryPanel title="Certificates" viewAllTo="/certificates" posts={sections?.certificate || []} />
         <CategoryPanel title="Important Updates" viewAllTo="/important" posts={sections?.important || []} />
       </div>

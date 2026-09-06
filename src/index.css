@@ -1067,6 +1067,11 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  min-width: 0;
+}
+
+.home-grid > .panel {
+  min-width: 0;
 }
 
 .home-grid-3col {
@@ -1075,6 +1080,10 @@ img {
 
 .home-grid-2col {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.home-grid-all {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .home-compact-shell {
@@ -1188,7 +1197,7 @@ img {
 
 @media (max-width: 800px) {
   .home-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1308,6 +1317,7 @@ img {
   flex-direction: column;
   gap: 3px;
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .post-list .compact-list-title-row {
@@ -3729,6 +3739,58 @@ table.data-table tr:last-child td {
   }
 }
 
+/* Keep post detail surfaces readable when dark mode follows the later refresh styles. */
+[data-theme='dark'] .pd-stat,
+[data-theme='dark'] .pd-section,
+[data-theme='dark'] .pd-side-card {
+  background: var(--card);
+  color: var(--text);
+}
+
+[data-theme='dark'] .pd-stat-label,
+[data-theme='dark'] .pd-content,
+[data-theme='dark'] .pd-full-table th,
+[data-theme='dark'] .pd-full-table td {
+  color: var(--text-secondary);
+}
+
+[data-theme='dark'] .pd-stat-value,
+[data-theme='dark'] .pd-section-head h2,
+[data-theme='dark'] .pd-full-table th {
+  color: var(--text);
+}
+
+[data-theme='dark'] .pd-section-head,
+[data-theme='dark'] .pd-full-table th,
+[data-theme='dark'] .pd-full-table tr:nth-child(even) th {
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .pd-full-table td,
+[data-theme='dark'] .pd-full-table tr:nth-child(even) td {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .pd-focus-grid {
+  background: var(--surface-2);
+}
+
+[data-theme='dark'] .pd-focus-card {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+[data-theme='dark'] .pd-focus-card h3 {
+  color: var(--text);
+}
+
+[data-theme='dark'] .pd-focus-card p {
+  color: var(--text-secondary);
+}
+
 /* Floating feel for cards */
 .cat-card,
 .panel,
@@ -4291,4 +4353,55 @@ table.data-table tr:last-child td {
     min-height: 0;
     padding: 18px 16px;
   }
+}
+
+/* Final dark-mode overrides for the post detail refresh styles. */
+[data-theme='dark'] .pd-hero {
+  background: var(--card) !important;
+  border-color: var(--border);
+}
+
+[data-theme='dark'] .pd-org,
+[data-theme='dark'] .pd-summary {
+  color: var(--text-secondary);
+}
+
+[data-theme='dark'] .pd-chip {
+  background: var(--surface-2);
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+[data-theme='dark'] .pd-stat,
+[data-theme='dark'] .pd-stat:nth-child(2) {
+  background: var(--card) !important;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+[data-theme='dark'] .pd-section-head {
+  background: var(--surface-2);
+  border-bottom-color: var(--border);
+}
+
+[data-theme='dark'] .pd-section-head h2,
+[data-theme='dark'] .pd-stat-value,
+[data-theme='dark'] .pd-full-table th,
+[data-theme='dark'] .pd-full-table td {
+  color: var(--text);
+}
+
+[data-theme='dark'] .pd-content {
+  background: var(--card);
+  color: var(--text-secondary);
+}
+
+[data-theme='dark'] .pd-full-table th,
+[data-theme='dark'] .pd-full-table tr:nth-child(even) th {
+  background: var(--surface-2);
+}
+
+[data-theme='dark'] .pd-full-table td,
+[data-theme='dark'] .pd-full-table tr:nth-child(even) td {
+  background: var(--card);
 }
