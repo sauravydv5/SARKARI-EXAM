@@ -187,7 +187,7 @@ export default function Layout() {
               decoding="async"
             />
             <div className="brand-text leading-tight">
-              <h1 className="m-0 font-poppins text-[1.05rem] md:text-[1.2rem] font-extrabold">Sarkari Job Hub</h1>
+              <h1 className="m-0 text-[1.05rem] font-extrabold md:text-[1.2rem]">Sarkari Job Hub</h1>
               <p className="m-0 text-xs md:text-sm text-[--muted]">Sarkari Jobs | Government Exam Results | Admit Cards | Answer Keys | Notifications | {CURRENT_YEAR}</p>
             </div>
           </Link>
