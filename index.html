@@ -63,8 +63,32 @@
       }());
     </script>
     <title>Sarkari Job Hub 2026 — Latest Sarkari Jobs, Results & Admit Cards</title>
-    <!-- Kept in the document head so AdSense can verify the served production HTML. -->
-    <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5984910720229186"></script>
+    <!-- Load AdSense after the first render so the ad network is not on the critical path. -->
+    <script>
+      (function () {
+        function loadAdsense() {
+          if (document.querySelector('script[data-adsense-loader]')) return;
+          var script = document.createElement('script');
+          script.async = true;
+          script.crossOrigin = 'anonymous';
+          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5984910720229186';
+          script.dataset.adsenseLoader = 'true';
+          document.head.appendChild(script);
+        }
+        function scheduleAdsense() {
+          var events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
+          events.forEach(function (eventName) {
+            window.addEventListener(eventName, loadAdsense, { once: true, passive: true });
+          });
+          window.setTimeout(loadAdsense, 10000);
+        }
+        if (document.readyState === 'complete') {
+          scheduleAdsense();
+        } else {
+          window.addEventListener('load', scheduleAdsense, { once: true });
+        }
+      }());
+    </script>
     <!-- Prevent theme flash before React hydrates (production-ready) -->
     <script>
       (function () {
