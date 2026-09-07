@@ -651,6 +651,22 @@ export default function PostDetail() {
                   {links.notificationEnglish && <LinkRow label="Notification (English)" href={links.notificationEnglish} text="Download English PDF" />}
                   {links.notificationHindi && <LinkRow label="Notification (Hindi)" href={links.notificationHindi} text="Download Hindi PDF" />}
                   {(links.officialNotification || links.importantLink) && <LinkRow label="Notification" href={links.officialNotification || links.importantLink} text="Download Notification" />}
+                  {links.registration && <LinkRow label="खुद का पंजीकरण" href={links.registration} text="पंजीकरण करें" />}
+                  {links.forgotPassword && <LinkRow label="पासवर्ड भूल गए?" href={links.forgotPassword} text="पासवर्ड सहायता" />}
+                  {links.applicationStatus && <LinkRow label="आवेदन की स्थिति देखें" href={links.applicationStatus} text="स्थिति देखें" />}
+                  {links.certificateDownload && <LinkRow label="सर्टिफिकेट डाउनलोड करें" href={links.certificateDownload} text="डाउनलोड करें" />}
+                  {links.eligibilityCheck && <LinkRow label="अपनी पात्रता जानें" href={links.eligibilityCheck} text="पात्रता जांचें" />}
+                  {links.residenceCertificate && <LinkRow label="आवासीय प्रमाण-पत्र" href={links.residenceCertificate} text="आवेदन करें" />}
+                  {links.casteCertificate && <LinkRow label="जाति प्रमाण-पत्र" href={links.casteCertificate} text="आवेदन करें" />}
+                  {links.incomeCertificate && <LinkRow label="आय प्रमाण-पत्र" href={links.incomeCertificate} text="आवेदन करें" />}
+                  {links.nclStateCertificate && <LinkRow label="नॉन क्रीमी लेयर प्रमाण-पत्र (बिहार)" href={links.nclStateCertificate} text="आवेदन करें" />}
+                  {links.nclCentralCertificate && <LinkRow label="नॉन क्रीमी लेयर प्रमाण-पत्र (केंद्र)" href={links.nclCentralCertificate} text="आवेदन करें" />}
+                  {links.ewsCertificate && <LinkRow label="EWS आय और संपत्ति प्रमाण-पत्र" href={links.ewsCertificate} text="आवेदन करें" />}
+                  {links.nclFormPdf && <LinkRow label="NCL Form VIII PDF" href={links.nclFormPdf} text="PDF डाउनलोड करें" />}
+                  {links.formXIPdf && <LinkRow label="Form XI PDF" href={links.formXIPdf} text="PDF डाउनलोड करें" />}
+                  {Array.isArray(links.serviceLinks) && links.serviceLinks.map((service) => (
+                    <LinkRow key={`${service.label}-${service.href}`} label={service.label} href={service.href} text={service.text} />
+                  ))}
                   {links.brochure && <LinkRow label="Download Brochure" href={links.brochure} text="Open Brochure" />}
                   {links.officialWebsite && <LinkRow label="Official Website" href={links.officialWebsite} text="Visit Website" />}
                 </tbody>
@@ -676,22 +692,6 @@ export default function PostDetail() {
             )}
           </section>
 
-          {faqItems.length > 0 && (
-            <section className="pd-section">
-              <div className="pd-section-head">
-                <h2>❓ Frequently Asked Questions</h2>
-              </div>
-              <div className="pd-content">
-                {faqItems.map((item) => (
-                  <div key={item.question} className="faq-block">
-                    <h3>{item.question}</h3>
-                    <p>{item.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
           <section className="pd-section">
             <div className="pd-section-head">
               <h2>📖 About This {isResult ? 'Result' : isAdmitCard ? 'Admit Card' : isAnswerKey ? 'Answer Key' : isSyllabus ? 'Syllabus' : isCertificate ? 'Certificate' : 'Update'}</h2>
@@ -707,6 +707,22 @@ export default function PostDetail() {
               )}
             </div>
           </section>
+
+          {faqItems.length > 0 && (
+            <section className="pd-section">
+              <div className="pd-section-head">
+                <h2>❓ Frequently Asked Questions</h2>
+              </div>
+              <div className="pd-content">
+                {faqItems.map((item) => (
+                  <div key={item.question} className="faq-block">
+                    <h3>{item.question}</h3>
+                    <p>{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
 
         {/* Sidebar */}

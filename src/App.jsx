@@ -104,6 +104,16 @@ export default function App() {
                 />
               }
             />
+            <Route
+              path="bihar-special"
+              element={
+                <CategoryPage
+                  category="bihar-special"
+                  title="Bihar Special"
+                  description="Bihar-only government jobs, exams, admissions, results and official notices."
+                />
+              }
+            />
             <Route path="search" element={<SearchPage />} />
             <Route path="faq" element={<FAQPage />} />
             <Route path="about-us" element={<AboutUs />} />

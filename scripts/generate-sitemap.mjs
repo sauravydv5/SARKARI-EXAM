@@ -24,6 +24,7 @@ const categories = [
   ['/admission', 'weekly', '0.8'],
   ['/important', 'weekly', '0.7'],
   ['/certificates', 'monthly', '0.7'],
+  ['/bihar-special', 'daily', '0.8'],
 ];
 
 const staticPages = [

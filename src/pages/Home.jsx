@@ -8,17 +8,18 @@ import useSeo from '../hooks/useSeo';
 const CURRENT_YEAR = new Date().getFullYear();
 
 const HOME_LOADING_SECTIONS = [
-  ['Latest Jobs', '/latest-jobs'],
   ['Latest Results', '/results'],
   ['Admit Cards', '/admit-cards'],
+  ['Latest Jobs', '/latest-jobs'],
   ['Answer Keys', '/answer-keys'],
   ['Admissions', '/admission'],
   ['Syllabus', '/syllabus'],
   ['Certificates', '/certificates'],
   ['Important Updates', '/important'],
+  ['Bihar Special', '/bihar-special'],
 ];
 
-function HomeLoadingState({ initialPosts = [] }) {
+function HomeLoadingState() {
   return (
     <div className="home-loading-state" aria-busy="true" aria-label="Loading latest updates">
       <section className="home-compact-shell">
@@ -33,19 +34,15 @@ function HomeLoadingState({ initialPosts = [] }) {
       <div className="home-loading-featured">
         {Array.from({ length: 8 }, (_, index) => <div className="home-loading-card" key={index} />)}
       </div>
-      {[[0, 3], [3, 3], [6, 2]].map(([start, columns]) => (
+      {[[0, 3], [3, 3], [6, 3]].map(([start, columns]) => (
         <div className={`home-grid home-grid-${columns}col home-loading-grid`} key={start}>
-          {HOME_LOADING_SECTIONS.slice(start, start + columns).map(([title, viewAllTo], index) => (
-            start === 0 && index === 0 && initialPosts.length > 0 ? (
-              <CategoryPanel title={title} viewAllTo={viewAllTo} posts={initialPosts} className="home-loading-panel" key={title} />
-            ) : (
-              <section className="panel home-loading-panel" key={title}>
-                <div className="panel-head"><div className="home-loading-line home-loading-line-title" /></div>
-                <div className="panel-body">
-                  {Array.from({ length: 10 }, (_, rowIndex) => <div className="home-loading-row" key={rowIndex} />)}
-                </div>
-              </section>
-            )
+          {HOME_LOADING_SECTIONS.slice(start, start + columns).map(([title]) => (
+            <section className="panel home-loading-panel" key={title}>
+              <div className="panel-head"><div className="home-loading-line home-loading-line-title" /></div>
+              <div className="panel-body">
+                {Array.from({ length: 6 }, (_, rowIndex) => <div className="home-loading-row" key={rowIndex} />)}
+              </div>
+            </section>
           ))}
         </div>
       ))}
@@ -105,7 +102,7 @@ export default function Home() {
       `sarkari job, sarkari naukri, govt jobs, government jobs, SSC jobs, Railway jobs, Bank jobs, UPSC jobs, admit card, answer key, syllabus, exam notification, job alert, ${CURRENT_YEAR}, India`,
   });
 
-  if (loading) return <HomeLoadingState initialPosts={sections?.['latest-job'] || []} />;
+  if (loading) return <HomeLoadingState />;
   if (error) {
     return (
       <div className="error-box">
@@ -135,14 +132,15 @@ export default function Home() {
       {/* Category cards removed — lists below move up immediately under Featured Cards */}
 
       <div className="home-grid home-grid-all">
-        <CategoryPanel title="Latest Jobs" viewAllTo="/latest-jobs" posts={sections?.['latest-job'] || []} />
         <CategoryPanel title="Latest Results" viewAllTo="/results" posts={sections?.result || []} />
         <CategoryPanel title="Admit Cards" viewAllTo="/admit-cards" posts={sections?.['admit-card'] || []} />
+        <CategoryPanel title="Latest Jobs" viewAllTo="/latest-jobs" posts={sections?.['latest-job'] || []} />
         <CategoryPanel title="Answer Keys" viewAllTo="/answer-keys" posts={sections?.['answer-key'] || []} />
         <CategoryPanel title="Admissions" viewAllTo="/admission" posts={sections?.admission || []} />
         <CategoryPanel title="Syllabus" viewAllTo="/syllabus" posts={sections?.syllabus || []} />
         <CategoryPanel title="Certificates" viewAllTo="/certificates" posts={sections?.certificate || []} />
         <CategoryPanel title="Important Updates" viewAllTo="/important" posts={sections?.important || []} />
+        <CategoryPanel title="Bihar Special" viewAllTo="/bihar-special" posts={sections?.['bihar-special'] || []} />
       </div>
 
       <section className="panel">

@@ -10,6 +10,7 @@ const contentModulesByCategory = {
   admission: import.meta.glob('../content/admission/*.json', { import: 'default' }),
   important: import.meta.glob('../content/important/*.json', { import: 'default' }),
   certificate: import.meta.glob('../content/certificate/*.json', { import: 'default' }),
+  'bihar-special': import.meta.glob('../content/bihar-special/*.json', { import: 'default' }),
 };
 
 export const CATEGORIES = [
@@ -21,6 +22,7 @@ export const CATEGORIES = [
   { key: 'admission', label: 'Admission', path: '/admission', color: '#00838f' },
   { key: 'important', label: 'Important', path: '/important', color: '#ad1457' },
   { key: 'certificate', label: 'Certificates', path: '/certificates', color: '#455a64' },
+  { key: 'bihar-special', label: 'Bihar Special', path: '/bihar-special', color: '#8e24aa' },
 ];
 
 const CATEGORY_FOLDERS = {
@@ -33,6 +35,7 @@ const CATEGORY_FOLDERS = {
   admission: 'admission',
   important: 'important',
   certificate: 'certificate',
+  'bihar-special': 'bihar-special',
 };
 
 function toSlug(value) {
@@ -291,7 +294,8 @@ function getVisiblePosts() {
     const publicationDate = new Date(post.publishedAt || 0).getTime();
     const slug = post.slug || post.id;
     return (post.category === 'certificate' || publicationDate >= CONTENT_CUTOFF_DATE) &&
-        !hasLowQualityContent(post) && !storage.deleted.has(slug) && !storage.inactive.has(slug) && (!post.hasPassedDeadline || hasUpcomingMilestone(post));
+      (post.category === 'bihar-special' || !hasLowQualityContent(post)) &&
+      !storage.deleted.has(slug) && !storage.inactive.has(slug) && (!post.hasPassedDeadline || hasUpcomingMilestone(post));
   }));
   return visiblePostsCache;
 }
