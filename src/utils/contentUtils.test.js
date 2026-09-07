@@ -23,8 +23,8 @@ test('buildPostGuide creates structured guidance for job detail pages', () => {
     shortDescription: 'Recruitment for multi-tasking staff',
   }, 'Latest Jobs');
 
-  assert.equal(guide.sections.length >= 4, true);
-  assert.equal(guide.faqItems.length >= 4, true);
+  assert.equal(guide.sections.length, 0);
+  assert.equal(guide.faqItems.length, 0);
   assert.match(guide.overview, /SSC CGL 2026 Notification/i);
 });
 

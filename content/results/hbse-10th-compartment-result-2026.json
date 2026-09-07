@@ -14,7 +14,7 @@
   "documentsRequired": "Roll number, admit card details; school details for marksheet collection",
   "howToApply": "1. Visit https://bseh.org.in\n2. Open Class 10 Compartment Result\n3. Enter roll number\n4. View and print result\n5. Collect marksheet via school",
   "shortDescription": "HBSE / BSEH Class 10 Compartment Result 2026 is out. Check marks with roll number at bseh.org.in.",
-  "content": "<p>The <strong>Board of School Education Haryana (BSEH / HBSE)</strong> has declared the <strong>Class 10 Compartment / Supplementary Result 2026</strong>.</p><p>Students who appeared in the Secondary compartment examination can check pass status subject-wise on the official portal.</p><h3>How to check</h3><ol><li>Visit <strong>bseh.org.in</strong></li><li>Open Class 10 Compartment Result 2026</li><li>Enter roll number</li><li>Download / print the result</li></ol>",
+  "content": "<p>The <strong>Board of School Education Haryana (BSEH / HBSE)</strong> has declared the <strong>Class 10 Compartment / Supplementary Result 2026</strong>.</p><p>Students who appeared in the Secondary compartment examination can check pass status subject-wise on the official portal.</p>",
   "publishedAt": "2026-08-10T11:10:00.000Z",
   "isFeatured": true,
   "isNew": true,
@@ -30,7 +30,14 @@
     "checkResult": "https://bseh.org.in",
     "officialWebsite": "https://bseh.org.in"
   },
-  "tags": ["HBSE", "BSEH", "Class 10", "Compartment", "Haryana Board", "Result"],
+  "tags": [
+    "HBSE",
+    "BSEH",
+    "Class 10",
+    "Compartment",
+    "Haryana Board",
+    "Result"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 4590

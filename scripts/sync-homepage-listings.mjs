@@ -69,20 +69,20 @@ function html(item) {
   const site = item.official.replace(/^https?:\/\//, '');
   const kind = item.kind;
   if (kind === 'result') {
-    return `<p><strong>${item.org}</strong> has published an update for <strong>${item.title}</strong>.</p><p>Use this page as a quick listing only. Open the official website, download the result PDF or scorecard, and confirm your roll number before treating the outcome as final.</p><h3>How to check</h3><ol><li>Go to <strong>${site}</strong></li><li>Open the Results / Latest notice section</li><li>Download the PDF or log in with your credentials</li><li>Read cut-off, next-stage and document-verification instructions if they are in the same notice</li></ol><p>NaukriMitra does not declare government results. The recruiting body website is the only authentic source.</p>`;
+    return `<p><strong>${item.org}</strong> has published <strong>${item.title}</strong>. Check the official result notice for the result PDF, scorecard and next-stage instructions.</p>`;
   }
   if (kind === 'admit-card') {
-    return `<p><strong>${item.org}</strong> has issued an exam-city, schedule or admit-card related update for <strong>${item.title}</strong>.</p><p>Download the hall ticket or city intimation only from the official portal. Carry a printed copy and photo ID to the venue.</p><h3>How to download</h3><ol><li>Open <strong>${site}</strong></li><li>Use the Admit Card / Exam City login</li><li>Enter registration number and password or date of birth</li><li>Print the PDF and check shift, city and reporting time</li></ol>`;
+    return `<p><strong>${item.org}</strong> has issued <strong>${item.title}</strong>. Use the official portal to download the hall ticket or exam-city details and check the reporting instructions.</p>`;
   }
   if (kind === 'answer-key') {
-    return `<p>The official answer key / OMR or response-sheet process for <strong>${item.title}</strong> is handled by <strong>${item.org}</strong>.</p><p>Match the question booklet series carefully. Raise objections only inside the official window and through the official portal.</p><h3>How to download</h3><ol><li>Visit <strong>${site}</strong></li><li>Open Answer Key / Response Sheet</li><li>Log in if the key is candidate-wise</li><li>Save the PDF and note the objection closing date</li></ol>`;
+    return `<p><strong>${item.org}</strong> has published <strong>${item.title}</strong>. Download the official key or response sheet and follow the notified objection process, if available.</p>`;
   }
   if (kind === 'latest-job') {
     const vacancy = item.vacancies ? ` Reported vacancies in public notices: <strong>${item.vacancies.toLocaleString('en-IN')}</strong> — confirm the count in the advertisement.` : '';
-    return `<p><strong>${item.org}</strong> is accepting (or has reopened) online applications for <strong>${item.postName || item.title}</strong>.${vacancy}</p><p>Read the detailed advertisement for eligibility, fee, dates and district/post-wise vacancies before you submit the form.</p><h3>How to apply</h3><ol><li>Open <strong>${site}</strong></li><li>Complete registration / OTR if required</li><li>Fill the form, upload documents and pay the fee</li><li>Print the confirmation page</li></ol>`;
+    return `<p><strong>${item.org}</strong> is accepting (or has reopened) online applications for <strong>${item.postName || item.title}</strong>.${vacancy} See the official advertisement for eligibility, fee, dates and vacancies.</p>`;
   }
   if (kind === 'admission') {
-    return `<p><strong>${item.org}</strong> has an active form or counselling update for <strong>${item.title}</strong>.</p><p>Counselling schedules, mop-up rounds and last dates change quickly. Use the official counselling or board portal for choice filling and allotment.</p><h3>What to do</h3><ol><li>Visit <strong>${site}</strong></li><li>Register or log in</li><li>Fill the form or choices and upload documents</li><li>Pay the counselling / form fee if asked</li></ol>`;
+    return `<p><strong>${item.org}</strong> has published a form or counselling update for <strong>${item.title}</strong>. Use the official portal for registration, choice filling and allotment details.</p>`;
   }
   return `<p><strong>${item.org}</strong> provides the official service or notice for <strong>${item.title}</strong>.</p><p>Use the government portal linked below for application, download, correction or verification. Keep Aadhaar and registered mobile ready.</p>`;
 }
@@ -106,7 +106,7 @@ function build(item, index) {
     selectionProcess: item.selection || meta.selection,
     documentsRequired: item.documents || meta.documents,
     howToApply: meta.steps(item.title, item.official),
-    shortDescription: `${item.title}. Verify the latest notice on ${item.official.replace(/^https?:\/\//, '')} before you apply, download or treat a result as final.`,
+    shortDescription: `${item.title}. See the official notice at ${item.official.replace(/^https?:\/\//, '')}.`,
     content: html(item),
     publishedAt: published,
     lastUpdated: '2026-08-19',
@@ -127,22 +127,7 @@ function build(item, index) {
       officialNotification: item.official,
     },
     tags: item.tags || [],
-    editorNotes: 'Independent listing for candidates. NaukriMitra is not a government website. Always open the official recruiting-body URL before paying a fee or relying on a result.',
-    importantInstructions: 'Do not share login OTPs. Download PDFs only from the official domain. Dates and vacancy counts on aggregator sites can lag behind the notice.',
-    faqs: [
-      {
-        question: `Where can I verify ${item.title}?`,
-        answer: `Use the official website: ${item.official}. This page only points you there.`,
-      },
-      {
-        question: 'Are the dates on this page final?',
-        answer: 'No. Treat every date as a prompt to re-check the latest PDF or login dashboard on the official portal.',
-      },
-      {
-        question: 'What should I keep ready?',
-        answer: item.documents || meta.documents,
-      },
-    ],
+    faqs: [],
     views: 1200 + index * 17,
   };
 }

@@ -186,84 +186,8 @@ function categoryCopy(category) {
   }
 }
 
-function buildFallbackFaqs(post = {}, categoryLabel = 'Government Jobs') {
-  const org = text(post.organization, 'the issuing organisation');
-  const postName = text(post.postName);
-  const vacancies = Number(post.totalVacancies) > 0 ? `${Number(post.totalVacancies).toLocaleString('en-IN')} posts` : text(post.vacancyDetails);
-  const qualification = text(post.qualification);
-  const ageLimit = text(post.ageLimit);
-  const fee = text(post.applicationFee);
-  const selection = text(post.selectionProcess);
-  const dates = post.importantDates || {};
-  const lastDate = text(dates.lastDate);
-  const examDate = text(dates.examDate);
-  const resultDate = text(dates.resultDate);
-
-  const faqItems = [];
-
-  if (postName) {
-    faqItems.push({
-      question: `What is the ${postName} notice about?`,
-      answer: `${postName} is the key post or examination covered by this update, issued by ${org}. The official notice remains the final source for form dates and eligibility.`,
-    });
-  }
-
-  if (vacancies) {
-    faqItems.push({
-      question: 'How many vacancies are currently listed?',
-      answer: `This update currently lists ${vacancies}. Vacancy numbers can change in a corrigendum, so candidates should verify the official notice before submitting an application.`,
-    });
-  }
-
-  if (qualification) {
-    faqItems.push({
-      question: 'What qualification is required?',
-      answer: `The stated requirement is ${qualification}. Candidates should check the official notification for exact subject, degree, and category conditions before applying.`,
-    });
-  }
-
-  if (ageLimit) {
-    faqItems.push({
-      question: 'What is the age condition?',
-      answer: `The age condition currently listed is ${ageLimit}. Relaxation rules, if any, are governed by the official recruitment notice and category rules.`,
-    });
-  }
-
-  if (fee) {
-    faqItems.push({
-      question: 'What fee is mentioned for this notice?',
-      answer: `The published fee is ${fee}. Candidates should use only the payment route shown on the recruiting body’s official portal.`,
-    });
-  }
-
-  if (selection) {
-    faqItems.push({
-      question: 'What is the selection flow?',
-      answer: `The notice currently describes the process as ${selection}. The final selection stages are always controlled by the official advertisement and subsequent notices.`,
-    });
-  }
-
-  if (lastDate || examDate || resultDate) {
-    const dateSummary = [
-      lastDate ? `last date: ${lastDate}` : '',
-      examDate ? `exam date: ${examDate}` : '',
-      resultDate ? `result date: ${resultDate}` : '',
-    ].filter(Boolean).join('; ');
-
-    faqItems.push({
-      question: 'Which dates should I track?',
-      answer: `The main dates currently listed are ${dateSummary}. If the authority updates the notice, the official portal should be treated as the final authority.`,
-    });
-  }
-
-  if (faqItems.length < 4) {
-    faqItems.push({
-      question: `Why should I verify this ${categoryLabel.toLowerCase()} update?`,
-      answer: `This page is a readable summary, but the official notification remains the final source for dates, fee, eligibility, and the next step.`,
-    });
-  }
-
-  return faqItems.slice(0, 5);
+function buildFallbackFaqs() {
+  return [];
 }
 
 export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
@@ -307,54 +231,7 @@ export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
     `Use this page to understand the notice in plain language, then ${copy.action} only on the official portal.`,
   ]);
 
-  const sections = [
-    {
-      id: 'what-this-notice-covers',
-      title: 'What this notice covers',
-      body: joinSentences([
-        `${title} should be read as a structured briefing, not as a replacement for the PDF or portal page published by ${org}.`,
-        vacancies ? `If you are counting competition, start with the listed figure of ${vacancies}${vacancyDetails ? ` (${vacancyDetails})` : ''}.` : vacancyDetails ? `Vacancy wording on this page: ${vacancyDetails}.` : 'If a vacancy total is not listed, treat the notice as an update until the official advertisement states a number.',
-        qualification ? `Candidates who do not hold ${qualification} should stop and read the official eligibility clause before paying a fee.` : 'Confirm the exact qualification, subject combination, and cut-off date of the degree or certificate on the official notification.',
-        `Sarkari Job Hub does not accept forms, fees, or documents for ${org}.`,
-      ]),
-    },
-    {
-      id: 'dates-and-action',
-      title: 'Dates and the action required',
-      body: joinSentences([
-        notificationDate ? `The notification date currently shown is ${notificationDate}.` : '',
-        startDate ? `Online activity, if listed, begins on ${startDate}.` : '',
-        lastDate ? `The closing date currently shown is ${lastDate}. Treat a portal clock, not this summary, as the final cut-off.` : 'If a last date is not printed here, open the official notice before you assume the window is open.',
-        examDate ? `The exam date currently shown is ${examDate}.` : '',
-        admitCardDate ? `Admit-card or city information is listed as ${admitCardDate}.` : '',
-        resultDate ? `The result date currently shown is ${resultDate}.` : '',
-        `The practical next step is to ${copy.nextStep}.`,
-      ]),
-    },
-    {
-      id: 'eligibility-and-selection',
-      title: 'Eligibility, fee and selection',
-      body: joinSentences([
-        ageLimit ? `Age limit currently listed: ${ageLimit}. Category-wise relaxation, if any, is controlled by the official advertisement, not by this page.` : 'Read the official age calculation date. A one-day difference can make a form invalid.',
-        fee ? `Application fee currently listed: ${fee}. Pay only through the recruiting organisation's payment gateway.` : 'Fee rules are often different for category, gender, or ex-servicemen. Check the official table.',
-        salary ? `Pay scale currently listed: ${salary}.` : '',
-        selection ? `Selection process currently listed: ${selection}.` : `After the written stage, ${org} may still require document verification, a skill test, a physical test, or a medical examination.`,
-        documents ? `Documents mentioned for this update: ${documents}.` : `Keep identity proof, educational certificates, photographs, and category documents ready in the format ${org} asks for.`,
-      ]),
-    },
-    {
-      id: 'how-to-use-this-page',
-      title: 'How to use this page safely',
-      body: joinSentences([
-        `Open the official link in the Important Links section, confirm that the domain belongs to ${org}, and only then ${copy.action}.`,
-        howSteps.length
-          ? `Steps recorded from the notice: ${howSteps.slice(0, 5).join('; ')}.`
-          : 'If the application or download steps are not listed, follow the instructions on the authority website rather than a forwarded message.',
-        'Do not share one-time passwords, payment card details, or scanned identity documents with anyone who contacts you after you read this page.',
-        'If a date, vacancy, or fee on this page disagrees with the official notice, the official notice wins. Use the Contact page to report the difference.',
-      ]),
-    },
-  ];
+  const sections = [];
 
   const faqItems = Array.isArray(post.faqs) && post.faqs.length > 0
     ? post.faqs
@@ -363,16 +240,7 @@ export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
       .map((item) => ({ question: String(item.question).trim(), answer: String(item.answer).trim() }))
     : buildFallbackFaqs(post, categoryLabel);
 
-  const keyPoints = [
-    `Issuing body: ${org}`,
-    postName ? `Post / exam: ${postName}` : `Category: ${categoryLabel}`,
-    qualification ? `Qualification: ${qualification}` : null,
-    ageLimit ? `Age limit: ${ageLimit}` : null,
-    vacancies ? `Vacancies: ${vacancies}` : vacancyDetails ? `Vacancies: ${vacancyDetails}` : null,
-    fee ? `Fee: ${fee}` : null,
-    selection ? `Selection: ${selection}` : null,
-    lastDate ? `Last date listed: ${lastDate}` : examDate ? `Exam date listed: ${examDate}` : resultDate ? `Result date listed: ${resultDate}` : null,
-  ].filter(Boolean);
+  const keyPoints = [];
 
   return {
     overview,

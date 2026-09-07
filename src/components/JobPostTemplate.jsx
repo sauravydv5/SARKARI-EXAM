@@ -1,27 +1,4 @@
-const DEFAULT_FAQS = [
-  {
-    question: 'Who can apply for this recruitment?',
-    answer: 'Candidates who meet the educational qualification, age limit, nationality conditions, and any post-specific requirements in the official notification can apply. Always check the post-wise eligibility before submitting the form.',
-  },
-  {
-    question: 'What documents are usually needed?',
-    answer: 'Applicants commonly need an identity document, educational certificates, a recent photograph, a signature, and category or disability certificates where applicable. The official notification controls the accepted formats and sizes.',
-  },
-  {
-    question: 'How can I check the application status?',
-    answer: 'Open the official recruitment portal, sign in with the registration details provided during application, and use its application-status or candidate-login option. This template does not replace the authority portal.',
-  },
-  {
-    question: 'Where will the admit card or result be published?',
-    answer: 'The recruiting organization normally publishes admit cards, answer keys, results, and cutoffs on its official website or candidate portal. Use the official link supplied in this post and verify the notice date.',
-  },
-  {
-    question: 'Can the dates or vacancies change?',
-    answer: 'Yes. A recruiting authority may revise dates, vacancies, eligibility rules, or instructions through a corrigendum or fresh notice. Check the latest official update before taking action.',
-  },
-];
-
-const EMPTY_VALUE = 'As mentioned in the official notification';
+const EMPTY_VALUE = '';
 
 function valueOrFallback(value, fallback = EMPTY_VALUE) {
   if (value === 0) return '0';
@@ -92,7 +69,7 @@ export default function JobPostTemplate({
   selectionProcess = [],
   howToApply = [],
   previousYearCutoff = [],
-  faqs = DEFAULT_FAQS,
+  faqs = [],
   officialLink = '',
   officialLinkLabel = 'Visit Official Website',
 }) {
@@ -115,7 +92,7 @@ export default function JobPostTemplate({
   const cutoffRows = Array.isArray(previousYearCutoff)
     ? previousYearCutoff.map((row) => [row.year, row.category, valueOrFallback(row.cutoff ?? row.marks)])
     : [];
-  const faqItems = faqs?.length ? faqs : DEFAULT_FAQS;
+  const faqItems = Array.isArray(faqs) ? faqs : [];
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-8 text-slate-800 dark:text-slate-200 sm:px-6 lg:px-8">

@@ -390,7 +390,11 @@ export const api = {
   },
   getPost: async (slug) => {
     await loadPosts();
-    const post = getVisiblePosts().find((item) => item.slug === slug || item.id === slug);
+    const storage = getStorageSnapshot();
+    const post = getAllPosts().find((item) => {
+      const itemSlug = item.slug || item.id;
+      return itemSlug === slug && !storage.deleted.has(itemSlug);
+    });
     if (!post) return { data: null, related: [] };
     return { data: post, related: getPostsByCategory(post.category).filter((item) => item.slug !== post.slug).slice(0, 4) };
   },

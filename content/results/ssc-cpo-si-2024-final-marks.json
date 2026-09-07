@@ -14,7 +14,7 @@
   "documentsRequired": "SSC login credentials to download marks; educational & category certificates for record",
   "howToApply": "1. Visit https://ssc.gov.in\n2. Login with Registration Number and Password\n3. Open Final Marks link for SI CPO-2024\n4. Download marks PDF / scorecard\n5. Read Final Marks write-up on SSC Notice Board",
   "shortDescription": "SSC has released Final Marks for CPO SI 2024 (Delhi Police & CAPFs). Candidates can download marks via SSC login; final marks notice dated around 24 July 2026.",
-  "content": "<p>The <strong>Staff Selection Commission (SSC)</strong> has published <strong>Final Marks</strong> for the <strong>Sub-Inspector in Delhi Police and CAPFs Examination, 2024</strong>.</p><p>Key milestones: Paper-I (Jun 2024) → PET/PST → Paper-II (08 Mar 2025) → Medical → Final result & marks. Final marks link activated for candidates on the SSC portal.</p><h3>How to download</h3><ul><li>Login at ssc.gov.in</li><li>Use Registration ID and Password</li><li>Download Final Marks and related write-up PDF from Notice Board</li></ul><p>Cut-offs and last selected candidates’ marks/DOB were published earlier with the final result. Keep your scorecard saved for future reference.</p>",
+  "content": "<p>The <strong>Staff Selection Commission (SSC)</strong> has published <strong>Final Marks</strong> for the <strong>Sub-Inspector in Delhi Police and CAPFs Examination, 2024</strong>.</p><p>Key milestones: Paper-I (Jun 2024) → PET/PST → Paper-II (08 Mar 2025) → Medical → Final result & marks. Final marks link activated for candidates on the SSC portal.</p>",
   "publishedAt": "2026-07-24T00:00:00.000Z",
   "isFeatured": true,
   "isNew": true,
@@ -31,7 +31,15 @@
     "officialWebsite": "https://ssc.gov.in",
     "officialNotification": "https://ssc.gov.in"
   },
-  "tags": ["SSC", "CPO", "SI", "Delhi Police", "CAPF", "Final Marks", "Result"],
+  "tags": [
+    "SSC",
+    "CPO",
+    "SI",
+    "Delhi Police",
+    "CAPF",
+    "Final Marks",
+    "Result"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 3120

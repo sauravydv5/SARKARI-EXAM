@@ -14,7 +14,7 @@
   "documentsRequired": "Roll number / registration number; educational certificates and photo ID for document verification",
   "howToApply": "1. Visit https://www.biharvidhanparishad.gov.in\n2. Open Results / Latest Notifications\n3. Download Security Guard Final Result (Advt. 03/2023) PDF\n4. Search roll number\n5. Attend DV on notified date if selected",
   "shortDescription": "Bihar Vidhan Parishad Security Guard Final Result 2026 is out for Advt. 03/2023 (about 56 posts). Check PDF on official portal.",
-  "content": "<p><strong>Bihar Vidhan Parishad</strong> has released the <strong>Security Guard Final Result 2026</strong> for recruitment under <strong>Advt. No. 03/2023</strong> (approximately <strong>56 vacancies</strong>).</p><p>Candidates who appeared in the selection process including PET / written / interview stages (as applicable) can check the final list on the official Bihar Vidhan Parishad website.</p><h3>Highlights</h3><ul><li>Post: Security Guard</li><li>Advertisement: 03/2023</li><li>Stage: Final Result / selection list</li><li>Document verification: follow dates notified on the official notice</li></ul><h3>How to check</h3><ol><li>Visit the official Bihar Vidhan Parishad website</li><li>Open Results / Notifications section</li><li>Download Security Guard Final Result PDF (Advt. 03/2023)</li><li>Search your roll number / name</li><li>Report for document verification if selected as per schedule</li></ol><p>Always rely on the official PDF for authentic selection status.</p>",
+  "content": "<p><strong>Bihar Vidhan Parishad</strong> has released the <strong>Security Guard Final Result 2026</strong> for recruitment under <strong>Advt. No. 03/2023</strong> (approximately <strong>56 vacancies</strong>).</p><p>Candidates who appeared in the selection process including PET / written / interview stages (as applicable) can check the final list on the official Bihar Vidhan Parishad website.</p><h3>Highlights</h3><ul><li>Post: Security Guard</li><li>Advertisement: 03/2023</li><li>Stage: Final Result / selection list</li><li>Document verification: follow dates notified on the official notice</li></ul>",
   "publishedAt": "2026-08-10T12:00:00.000Z",
   "isFeatured": true,
   "isNew": true,
@@ -30,7 +30,13 @@
     "checkResult": "https://www.biharvidhanparishad.gov.in",
     "officialWebsite": "https://www.biharvidhanparishad.gov.in"
   },
-  "tags": ["Bihar", "Vidhan Parishad", "Security Guard", "Final Result", "2026"],
+  "tags": [
+    "Bihar",
+    "Vidhan Parishad",
+    "Security Guard",
+    "Final Result",
+    "2026"
+  ],
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "views": 4120

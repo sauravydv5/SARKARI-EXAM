@@ -13,8 +13,8 @@
   "selectionProcess": "Online application → Admit card / exam city → Examination / PET",
   "documentsRequired": "Registration number, password or date of birth, photo ID and printed admit card",
   "howToApply": "1. Visit https://aiapget.nta.ac.in\n2. Open the NTA AIAPGET Admit Card 2026 – Out / Admit Card / Exam City link\n3. Log in with registration number and password or date of birth\n4. Download and print the admit card or city slip\n5. Carry photo ID and the printed copy to the exam / PET venue",
-  "shortDescription": "NTA AIAPGET Admit Card 2026 – Out. Verify the latest notice on aiapget.nta.ac.in before you apply, download or treat a result as final.",
-  "content": "<p><strong>National Testing Agency</strong> has issued an exam-city, schedule or admit-card related update for <strong>NTA AIAPGET Admit Card 2026 – Out</strong>.</p><p>Download the hall ticket or city intimation only from the official portal. Carry a printed copy and photo ID to the venue.</p><h3>How to download</h3><ol><li>Open <strong>aiapget.nta.ac.in</strong></li><li>Use the Admit Card / Exam City login</li><li>Enter registration number and password or date of birth</li><li>Print the PDF and check shift, city and reporting time</li></ol>",
+  "shortDescription": "NTA AIAPGET Admit Card 2026 – Out. See the official notice at aiapget.nta.ac.in.",
+  "content": "<p><strong>National Testing Agency</strong> has issued an exam-city, schedule or admit-card related update for <strong>NTA AIAPGET Admit Card 2026 – Out</strong>.</p><p>Download the hall ticket or city intimation only from the official portal. Carry a printed copy and photo ID to the venue.</p>",
   "publishedAt": "2026-08-19T11:40:00.000Z",
   "lastUpdated": "2026-08-19",
   "sourceUrl": "https://aiapget.nta.ac.in",
@@ -37,22 +37,6 @@
     "NTA",
     "AIAPGET",
     "Admit Card"
-  ],
-  "editorNotes": "Independent listing for candidates. NaukriMitra is not a government website. Always open the official recruiting-body URL before paying a fee or relying on a result.",
-  "importantInstructions": "Do not share login OTPs. Download PDFs only from the official domain. Dates and vacancy counts on aggregator sites can lag behind the notice.",
-  "faqs": [
-    {
-      "question": "Where can I verify NTA AIAPGET Admit Card 2026 – Out?",
-      "answer": "Use the official website: https://aiapget.nta.ac.in. This page only points you there."
-    },
-    {
-      "question": "Are the dates on this page final?",
-      "answer": "No. Treat every date as a prompt to re-check the latest PDF or login dashboard on the official portal."
-    },
-    {
-      "question": "What should I keep ready?",
-      "answer": "Registration number, password or date of birth, photo ID and printed admit card"
-    }
   ],
   "views": 1540
 }

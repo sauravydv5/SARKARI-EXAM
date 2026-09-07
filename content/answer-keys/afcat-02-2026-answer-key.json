@@ -13,8 +13,8 @@
   "selectionProcess": "Examination → Provisional answer key / objections → Final key → Result",
   "documentsRequired": "Application number, roll number and password used at the exam",
   "howToApply": "1. Visit https://afcat.cdac.in\n2. Open Answer Key / Response Sheet for AFCAT 02/2026 Answer Key – Out\n3. Download the official key or log in to view your response sheet\n4. Compare answers and note the objection window\n5. Submit objections only through the official portal if allowed",
-  "shortDescription": "AFCAT 02/2026 Answer Key – Out. Verify the latest notice on afcat.cdac.in before you apply, download or treat a result as final.",
-  "content": "<p>The official answer key / OMR or response-sheet process for <strong>AFCAT 02/2026 Answer Key – Out</strong> is handled by <strong>Indian Air Force</strong>.</p><p>Match the question booklet series carefully. Raise objections only inside the official window and through the official portal.</p><h3>How to download</h3><ol><li>Visit <strong>afcat.cdac.in</strong></li><li>Open Answer Key / Response Sheet</li><li>Log in if the key is candidate-wise</li><li>Save the PDF and note the objection closing date</li></ol>",
+  "shortDescription": "AFCAT 02/2026 Answer Key – Out. See the official notice at afcat.cdac.in.",
+  "content": "<p>Match the question booklet series carefully. Raise objections only inside the official window and through the official portal.</p>",
   "publishedAt": "2026-08-19T11:05:00.000Z",
   "lastUpdated": "2026-08-19",
   "sourceUrl": "https://afcat.cdac.in",
@@ -37,22 +37,6 @@
     "AFCAT",
     "IAF",
     "Answer Key"
-  ],
-  "editorNotes": "Independent listing for candidates. NaukriMitra is not a government website. Always open the official recruiting-body URL before paying a fee or relying on a result.",
-  "importantInstructions": "Do not share login OTPs. Download PDFs only from the official domain. Dates and vacancy counts on aggregator sites can lag behind the notice.",
-  "faqs": [
-    {
-      "question": "Where can I verify AFCAT 02/2026 Answer Key – Out?",
-      "answer": "Use the official website: https://afcat.cdac.in. This page only points you there."
-    },
-    {
-      "question": "Are the dates on this page final?",
-      "answer": "No. Treat every date as a prompt to re-check the latest PDF or login dashboard on the official portal."
-    },
-    {
-      "question": "What should I keep ready?",
-      "answer": "Application number, roll number and password used at the exam"
-    }
   ],
   "views": 2135
 }
