@@ -181,10 +181,12 @@ export default function Layout() {
           <Link to="/" className="brand flex items-center gap-4 no-underline">
             <img
               src="/logo-108.webp"
+              srcSet="/logo-54.webp 54w, /logo-108.webp 108w"
+              sizes="(max-width: 480px) 54px, 60px"
               alt="Sarkari Jobs Hub logo"
               className="brand-logo-img rounded-md shadow-sm"
-              width={72}
-              height={72}
+              width={60}
+              height={60}
               loading="eager"
               fetchPriority="high"
               decoding="async"
