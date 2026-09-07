@@ -56,23 +56,35 @@ export function isStaleLowValuePost(post = {}) {
   return STALE_SLUG_PATTERNS.some((pattern) => slug.includes(pattern));
 }
 
+const GENERIC_PLACEHOLDER_VALUES = [
+  '—',
+  '-',
+  'n/a',
+  'na',
+  'soon',
+  'see official notice',
+  'see official notification',
+  'check official notice',
+  'check official notification',
+  'as mentioned in the official notification',
+  'as published in official notification',
+  'as published in the official notification',
+  'as per notification',
+  'as per official notification',
+  'as per official notice',
+  'official notice',
+  'official notification',
+  'result: to be announced',
+  'to be announced',
+];
+
 function hasValue(value) {
   if (value === 0) return true;
   if (value === null || value === undefined) return false;
   const text = String(value).trim();
   if (!text) return false;
-  const lowered = text.toLowerCase();
-  return ![
-    '—',
-    '-',
-    'n/a',
-    'na',
-    'soon',
-    'check official notification',
-    'as mentioned in the official notification',
-    'as per notification',
-    'as per official notification',
-  ].includes(lowered);
+  const lowered = text.toLowerCase().replace(/\s+/g, ' ');
+  return !GENERIC_PLACEHOLDER_VALUES.includes(lowered);
 }
 
 function text(value, fallback = '') {
@@ -137,6 +149,86 @@ function categoryCopy(category) {
         nextStep: 'compare eligibility, fee, and last date with the official notification before submitting a form',
       };
   }
+}
+
+function buildFallbackFaqs(post = {}, categoryLabel = 'Government Jobs') {
+  const org = text(post.organization, 'the issuing organisation');
+  const postName = text(post.postName);
+  const vacancies = Number(post.totalVacancies) > 0 ? `${Number(post.totalVacancies).toLocaleString('en-IN')} posts` : text(post.vacancyDetails);
+  const qualification = text(post.qualification);
+  const ageLimit = text(post.ageLimit);
+  const fee = text(post.applicationFee);
+  const selection = text(post.selectionProcess);
+  const dates = post.importantDates || {};
+  const lastDate = text(dates.lastDate);
+  const examDate = text(dates.examDate);
+  const resultDate = text(dates.resultDate);
+
+  const faqItems = [];
+
+  if (postName) {
+    faqItems.push({
+      question: `What is the ${postName} notice about?`,
+      answer: `${postName} is the key post or examination covered by this update, issued by ${org}. The official notice remains the final source for form dates and eligibility.`,
+    });
+  }
+
+  if (vacancies) {
+    faqItems.push({
+      question: 'How many vacancies are currently listed?',
+      answer: `This update currently lists ${vacancies}. Vacancy numbers can change in a corrigendum, so candidates should verify the official notice before submitting an application.`,
+    });
+  }
+
+  if (qualification) {
+    faqItems.push({
+      question: 'What qualification is required?',
+      answer: `The stated requirement is ${qualification}. Candidates should check the official notification for exact subject, degree, and category conditions before applying.`,
+    });
+  }
+
+  if (ageLimit) {
+    faqItems.push({
+      question: 'What is the age condition?',
+      answer: `The age condition currently listed is ${ageLimit}. Relaxation rules, if any, are governed by the official recruitment notice and category rules.`,
+    });
+  }
+
+  if (fee) {
+    faqItems.push({
+      question: 'What fee is mentioned for this notice?',
+      answer: `The published fee is ${fee}. Candidates should use only the payment route shown on the recruiting body’s official portal.`,
+    });
+  }
+
+  if (selection) {
+    faqItems.push({
+      question: 'What is the selection flow?',
+      answer: `The notice currently describes the process as ${selection}. The final selection stages are always controlled by the official advertisement and subsequent notices.`,
+    });
+  }
+
+  if (lastDate || examDate || resultDate) {
+    const dateSummary = [
+      lastDate ? `last date: ${lastDate}` : '',
+      examDate ? `exam date: ${examDate}` : '',
+      resultDate ? `result date: ${resultDate}` : '',
+    ].filter(Boolean).join('; ');
+
+    faqItems.push({
+      question: 'Which dates should I track?',
+      answer: `The main dates currently listed are ${dateSummary}. If the authority updates the notice, the official portal should be treated as the final authority.`,
+    });
+  }
+
+  if (faqItems.length < 4) {
+    faqItems.push({
+      question: `Why should I verify this ${categoryLabel.toLowerCase()} update?`,
+      answer: `This page is a readable summary, but the official notification remains the final source for dates, fee, eligibility, and the next step.`,
+    });
+  }
+
+  return faqItems.slice(0, 5);
 }
 
 export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
@@ -234,7 +326,7 @@ export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
       .filter((item) => item && String(item.question || '').trim() && String(item.answer || '').trim())
       .slice(0, 5)
       .map((item) => ({ question: String(item.question).trim(), answer: String(item.answer).trim() }))
-    : [];
+    : buildFallbackFaqs(post, categoryLabel);
 
   const keyPoints = [
     `Issuing body: ${org}`,

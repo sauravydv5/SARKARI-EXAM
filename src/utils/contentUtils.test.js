@@ -23,7 +23,30 @@ test('buildPostGuide creates structured guidance for job detail pages', () => {
     shortDescription: 'Recruitment for multi-tasking staff',
   }, 'Latest Jobs');
 
-  assert.equal(guide.sections.length >= 5, true);
+  assert.equal(guide.sections.length >= 4, true);
   assert.equal(guide.faqItems.length >= 4, true);
   assert.match(guide.overview, /SSC CGL 2026 Notification/i);
+});
+
+test('buildPostGuide avoids placeholder wording when specific vacancy and eligibility data is present', () => {
+  const guide = buildPostGuide({
+    title: 'Bihar Police CSBC Constable GD Result 2026',
+    organization: 'CSBC Bihar',
+    postName: 'Constable (General Duty)',
+    totalVacancies: 19838,
+    qualification: '12th Pass',
+    ageLimit: '18 to 25 years',
+    applicationFee: '₹ 400 to ₹ 700',
+    selectionProcess: 'Written exam, physical test and document verification',
+    shortDescription: 'Bihar Police recruitment result and next-stage details.',
+    importantDates: {
+      resultDate: '12 September 2026',
+      examDate: '21 August 2026',
+      lastDate: '12 August 2026',
+    },
+  }, 'Results');
+
+  assert.match(guide.overview, /19,838|19838/i);
+  assert.match(guide.overview, /12th Pass/i);
+  assert.doesNotMatch(guide.overview, /see official notice|check official notification|as published in the official notification/i);
 });

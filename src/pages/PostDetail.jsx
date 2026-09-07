@@ -28,6 +28,26 @@ function val(v, fallback = SOON) {
   if (v === null || v === undefined) return fallback;
   const s = String(v).trim();
   if (!s || s === '—' || s === '-') return fallback;
+
+  const normalized = s.toLowerCase().replace(/\s+/g, ' ');
+  const genericPlaceholders = [
+    'see official notice',
+    'see official notification',
+    'check official notice',
+    'check official notification',
+    'as mentioned in the official notification',
+    'as published in official notification',
+    'as published in the official notification',
+    'as per notification',
+    'as per official notification',
+    'as per official notice',
+    'official notice',
+    'official notification',
+    'result: to be announced',
+    'to be announced',
+  ];
+
+  if (genericPlaceholders.includes(normalized)) return fallback;
   return s;
 }
 
