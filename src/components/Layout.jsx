@@ -103,6 +103,28 @@ function ExternalFooterLinks({ links }) {
   ));
 }
 
+function DmcaBadge() {
+  return (
+    <a
+      href="https://www.dmca.com/Protection/Status.aspx?ID=1c0be530-44e2-44da-b223-341dec080cfe&refurl=https://sarkarijobhub.website/"
+      title="DMCA.com Protection Status"
+      className="dmca-badge"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="DMCA protection status for Sarkari Job Hub"
+    >
+      <img
+        src="https://images.dmca.com/Badges/dmca_protected_16_120.png?ID=1c0be530-44e2-44da-b223-341dec080cfe"
+        alt="DMCA.com Protection Status"
+        width="120"
+        height="16"
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
+  );
+}
+
 export default function Layout() {
   const [q, setQ] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
@@ -447,6 +469,9 @@ export default function Layout() {
               <Link to="/rss">RSS</Link>
               <button className="btn btn-sm" onClick={()=>window.scrollTo({top:0,behavior:'smooth'})}>Back To Top</button>
             </div>
+          </div>
+          <div className="footer-bottom-badge" style={{ display: 'flex', justifyContent: 'center', paddingTop: '12px' }}>
+            <DmcaBadge />
           </div>
         </div>
       </footer>
