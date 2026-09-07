@@ -12,6 +12,24 @@
     Cache-Control = "public, max-age=300, s-maxage=300, must-revalidate"
 
 [[redirects]]
+  from = "https://www.sarkarijobhub.website/*"
+  to = "https://sarkarijobhub.website/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://sarkarijobhub.website/*"
+  to = "https://sarkarijobhub.website/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.sarkarijobhub.website/*"
+  to = "https://sarkarijobhub.website/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/post/*"
   to = "/post/:splat/index.html"
   status = 200

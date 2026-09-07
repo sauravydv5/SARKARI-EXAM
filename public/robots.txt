@@ -1,35 +1,31 @@
 User-agent: *
 Allow: /
-Disallow: /admin
+Allow: /search
 Disallow: /admin/
-Disallow: /private
 Disallow: /private/
-Disallow: /*.json$
-Disallow: /search
-Disallow: /search?
 Disallow: /api/
+Disallow: /search?
+Disallow: /*.json$
 Allow: /post/
 
 User-agent: Googlebot
 Allow: /
-Disallow: /admin
+Allow: /search
 Disallow: /admin/
-Disallow: /private
 Disallow: /private/
-Disallow: /search
-Disallow: /search?
 Disallow: /api/
+Disallow: /search?
+Disallow: /*.json$
 Allow: /post/
 
 User-agent: Mediapartners-Google
 Allow: /
-Disallow: /admin
+Allow: /search
 Disallow: /admin/
-Disallow: /private
 Disallow: /private/
-Disallow: /search
-Disallow: /search?
 Disallow: /api/
+Disallow: /search?
+Disallow: /*.json$
 Allow: /post/
 
 Sitemap: https://sarkarijobhub.website/sitemap.xml

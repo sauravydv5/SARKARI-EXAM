@@ -6,8 +6,27 @@ const DEFAULT_DESCRIPTION =
   'Explore practical government job updates, exam guidance, eligibility explainers, admit-card notices, results, and preparation resources for Indian aspirants.';
 const DEFAULT_KEYWORDS =
   'sarkari job, government jobs, exam guidance, admit card, answer key, syllabus, admission, job notification, preparation strategy';
-const DEFAULT_URL = 'https://sarkarijobhub.website/';
+const DEFAULT_URL = 'https://sarkarijobhub.website';
 const DEFAULT_IMAGE = '/logo.png';
+const BLOCKED_CANONICAL_PARAMS = /^(utm_|gclid|fbclid|mc_cid|mc_eid|ga_|igshid|msclkid|dclid|hsa_|twclid|pk_campaign|pk_kwd)/i;
+
+function normalizeCanonicalUrl(inputUrl) {
+  const baseUrl = DEFAULT_URL;
+  const source = String(inputUrl || baseUrl).trim();
+  const fullUrl = source.startsWith('http') ? source : `${baseUrl}${source.startsWith('/') ? source : `/${source}`}`;
+  const parsed = new URL(fullUrl, baseUrl);
+
+  parsed.protocol = 'https:';
+  parsed.hostname = parsed.hostname.replace(/^www\./i, '').toLowerCase();
+  parsed.search = '';
+  parsed.hash = '';
+
+  const rawPath = parsed.pathname || '/';
+  const normalizedPath = rawPath === '/' ? '/' : rawPath.replace(/\/+$/g, '');
+  const canonical = `${baseUrl}${normalizedPath === '/' ? '/' : normalizedPath}`;
+
+  return canonical;
+}
 
 function setMeta(selector, attr, value) {
   if (!value) return;
@@ -70,10 +89,7 @@ export default function useSeo({
 }) {
   useEffect(() => {
     const pageTitle = title ? `${title} | Sarkari Job Hub` : DEFAULT_TITLE;
-    const requestedUrl = url || DEFAULT_URL;
-    const parsedUrl = new URL(requestedUrl, DEFAULT_URL);
-    const normalizedPath = parsedUrl.pathname === '/' ? '/' : `/${parsedUrl.pathname.replace(/^\/+|\/+$/g, '')}`;
-    const pageUrl = `${DEFAULT_URL.replace(/\/$/, '')}${normalizedPath}`;
+    const pageUrl = normalizeCanonicalUrl(url || DEFAULT_URL);
     document.title = pageTitle;
 
     setMeta('meta[name="description"]', 'content', description || DEFAULT_DESCRIPTION);
