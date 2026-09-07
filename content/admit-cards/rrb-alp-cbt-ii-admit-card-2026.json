@@ -18,6 +18,8 @@
   "publishedAt": "2026-08-05T10:05:00.000Z",
   "isFeatured": true,
   "isNew": true,
+  "isInactive": true,
+  "statusNote": "Exam completed",
   "importantDates": {
     "notificationDate": "CEN 01/2025",
     "startDate": "As per CEN",

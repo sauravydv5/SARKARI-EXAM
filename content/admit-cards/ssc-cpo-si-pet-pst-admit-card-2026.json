@@ -18,6 +18,8 @@
   "publishedAt": "2026-07-13T00:00:00.000Z",
   "isFeatured": true,
   "isNew": true,
+  "isInactive": true,
+  "statusNote": "Exam completed",
   "importantDates": {
     "notificationDate": "As per CPO cycle",
     "startDate": "As per notification",

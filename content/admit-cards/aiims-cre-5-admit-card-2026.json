@@ -18,6 +18,8 @@
   "publishedAt": "2026-08-10T11:25:00.000Z",
   "isFeatured": true,
   "isNew": true,
+  "isInactive": true,
+  "statusNote": "Exam completed",
   "importantDates": {
     "notificationDate": "Jun 2026",
     "startDate": "06 Jun 2026",
