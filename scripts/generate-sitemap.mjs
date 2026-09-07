@@ -86,6 +86,15 @@ function hasPassedDeadline(post) {
   return Number.isFinite(timestamp) && timestamp < Date.now();
 }
 
+function hasUpcomingMilestone(post) {
+  const dates = post.importantDates || {};
+  return [dates.examDate, dates.admitCardDate, dates.answerKeyDate, dates.resultDate]
+    .some((value) => {
+      const timestamp = deadlineTimestamp(value);
+      return Number.isFinite(timestamp) && timestamp >= Date.now();
+    });
+}
+
 function walkJsonFiles(directory) {
   const files = [];
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -148,7 +157,7 @@ for (const filePath of walkJsonFiles(contentDirectory)) {
   const isCertificate = post.category === 'certificate';
   if (!isCertificate && (!Number.isFinite(publicationDate) || publicationDate < contentCutoffDate)) continue;
   if (hasLowQualityContent(post)) continue;
-  if (hasPassedDeadline(post)) continue;
+  if (hasPassedDeadline(post) && !hasUpcomingMilestone(post)) continue;
 
   const slug = postSlug(post, filePath);
   if (!slug) continue;

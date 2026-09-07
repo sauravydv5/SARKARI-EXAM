@@ -3,7 +3,11 @@ import { Link, useParams } from 'react-router-dom';
 import { api, categoryMeta, formatDate } from '../api';
 import { sanitizeHtml } from '../utils/sanitize';
 import useSeo from '../hooks/useSeo';
-import { buildPostGuide, isStaleLowValuePost } from '../utils/contentUtils';
+import {
+  buildPostGuide,
+  dedupeFacts,
+  isStaleLowValuePost,
+} from '../utils/contentUtils';
 import {
   generateJobPostingSchema,
   generateArticleSchema,
@@ -79,6 +83,8 @@ function LinkRow({ label, href, text }) {
 }
 
 function QuickInfo({ post, dates, postType }) {
+  if (['recruitment', 'notification', 'admission'].includes(postType)) return null;
+
   const values = postType === 'result'
     ? [['Exam / Post', post.postName], ['Result Status', post.statusNote || post.status], ['Result Date', dates.resultDate], ['Exam Date', dates.examDate], ['Authority', post.organization]]
     : postType === 'admit_card'
@@ -89,7 +95,7 @@ function QuickInfo({ post, dates, postType }) {
           ? [['Exam / Post', post.postName], ['Exam Pattern', post.examPattern], ['Total Questions', post.totalQuestions], ['Total Marks', post.totalMarks], ['Duration', post.duration]]
           : postType === 'certificate'
             ? [['Certificate', post.postName || post.title], ['Status', post.statusNote || post.status], ['Authority', post.organization]]
-            : [['Total Posts', post.totalVacancies > 0 ? post.totalVacancies.toLocaleString('en-IN') : null], ['Last Date', dates.lastDate], ['Qualification', post.qualification], ['Authority', post.organization]];
+            : [['Total Posts', post.totalVacancies > 0 ? post.totalVacancies.toLocaleString('en-IN') : null], ['Authority', post.organization]];
 
   const available = values.filter(([, value]) => value !== null && value !== undefined && String(value).trim());
   if (!available.length) return null;
@@ -104,16 +110,40 @@ function QuickInfo({ post, dates, postType }) {
   );
 }
 
+function renderCanonicalFactValue(label, value, fallback = SOON) {
+  if (value === null || value === undefined || String(value).trim() === '') {
+    return fallback;
+  }
+  return String(value).trim();
+}
+
+function summarizeRecruitmentFacts(post) {
+  const values = [
+    { key: 'organization', value: renderCanonicalFactValue('Authority', post.organization) },
+    { key: 'totalVacancy', value: post.totalVacancies > 0 ? `${post.totalVacancies.toLocaleString('en-IN')} Posts` : renderCanonicalFactValue('Total vacancy', post.vacancyDetails, '') },
+    { key: 'qualification', value: renderCanonicalFactValue('Qualification', post.qualification, '') },
+    { key: 'ageLimit', value: renderCanonicalFactValue('Age limit', post.ageLimit, '') },
+    { key: 'applicationFee', value: renderCanonicalFactValue('Application fee', post.applicationFee, '') },
+    { key: 'selectionProcess', value: renderCanonicalFactValue('Selection process', post.selectionProcess, '') },
+    { key: 'documentsRequired', value: renderCanonicalFactValue('Documents required', post.documentsRequired, '') },
+  ].filter((item) => item.value && String(item.value).trim());
+
+  return dedupeFacts(values);
+}
+
 function DateTable({ dates }) {
+  const tier2Date = dates.tier2Date || dates.tierII || dates['tier-2'];
   const rows = [
     ['Notification / Advt. Date', dates.notificationDate],
     ['Application Begin', dates.startDate],
     ['Last Date for Apply Online', dates.lastDate],
+    ['Re-open Apply Online', dates.reopenDate],
     ['Last Date for Fee Payment', dates.feePaymentLastDate],
     ['Fee Adjustment / Correction Last Date', dates.correctionDate],
     ['Exam City Details Available', dates.examCityDate],
     ['Admit Card Available', dates.admitCardDate],
     ['Examination Date', dates.examDate],
+    ['Tier II Exam Date', tier2Date],
     ['Answer Key Available', dates.answerKeyDate],
     ['Final Answer Key Available', dates.finalAnswerKeyDate],
     ['OMR Sheet Available', dates.omrDate],
@@ -305,11 +335,18 @@ export default function PostDetail() {
             ? ['downloadCertificate', 'Download Certificate']
             : ['applyOnline', 'Apply Online'];
   const primaryHref = links[primaryAction[0]] || links.applyOnline || links.officialWebsite;
-  const primaryLabel = primaryHref ? primaryAction[1] : 'Official Link';
+  const activationText = (dates.startDate || post?.publishedAt)
+    ? `[Link will be Activate ${dates.startDate || formatDate(post?.publishedAt)}]`
+    : '[Link will be Activate soon]';
+  const primaryLabel = primaryHref ? primaryAction[1] : activationText;
 
   const guide = buildPostGuide(post, cat.label);
   const guideIntro = guide.overview;
   const faqItems = guide.faqItems;
+  const canonicalFacts = summarizeRecruitmentFacts(post);
+
+  const factMap = new Map(canonicalFacts.map((fact) => [fact.key, fact.value]));
+  const uniqueFactValue = (key, fallback = SOON) => factMap.get(key) || fallback;
 
   return (
     <div className="pd-page">
@@ -397,41 +434,14 @@ export default function PostDetail() {
               <h2>🧭 Introduction</h2>
             </div>
             <div className="pd-content">
-              <p>{val(post.shortDescription, `${post.title} notification details, eligibility, fee and official links are given below.`)}</p>
+              <p>
+                {val(
+                  post.shortDescription,
+                  `${post.title} is a recruitment update issued by ${val(post.organization, 'the recruiting authority')}. Read the official notice for the latest dates, eligibility rules and link activation details before applying.`
+                )}
+              </p>
             </div>
           </section>}
-
-          {(isRecruitment || isAdmission) && (
-            <section className="pd-section pd-eligibility-section">
-              <div className="pd-section-head">
-                <h2>Eligibility, Fee &amp; Selection</h2>
-              </div>
-              <div className="pd-focus-grid">
-                <article className="pd-focus-card pd-focus-eligibility">
-                  <span className="pd-focus-kicker">01 · Eligibility</span>
-                  <h3>Who can apply?</h3>
-                  <p>{val(post.ageLimit, 'Check the official notification for age rules.')}</p>
-                  <p className="pd-focus-note">{val(post.qualification, 'Check the official notification for qualification.')}</p>
-                </article>
-                <article className="pd-focus-card pd-focus-fee">
-                  <span className="pd-focus-kicker">02 · Application Fee</span>
-                  <h3>Fee structure</h3>
-                  <p>{val(post.applicationFee, 'Check the official notification for category-wise fee.')}</p>
-                  <p className="pd-focus-note">Pay only through the recruiting organisation&apos;s official payment gateway.</p>
-                </article>
-                <article className="pd-focus-card pd-focus-selection">
-                  <span className="pd-focus-kicker">03 · Selection</span>
-                  <h3>Stages of recruitment</h3>
-                  <p>{val(post.selectionProcess, 'Selection stages are given in the official notification.')}</p>
-                  <p className="pd-focus-note">The authority may require document verification, skill, physical or medical tests.</p>
-                </article>
-              </div>
-              <div className="pd-doc-strip">
-                <strong>Documents to keep ready</strong>
-                <span>{val(post.documentsRequired, 'Photo, signature, identity proof and educational certificates.')}</span>
-              </div>
-            </section>
-          )}
 
           {(isResult || isAdmitCard || isAnswerKey || isSyllabus || isCertificate) && (
             <section className="pd-section">
@@ -459,26 +469,20 @@ export default function PostDetail() {
                   </TableRow>
                   <TableRow label="Department">{val(post.department, '—')}</TableRow>
                   <TableRow label="Total Vacancy / Posts" highlight>
-                    {vacanciesText}
+                    {uniqueFactValue('totalVacancy', vacanciesText)}
                   </TableRow>
                   <TableRow label="Vacancy Details">{val(post.vacancyDetails)}</TableRow>
                   <TableRow label="Qualification / Eligibility" highlight>
-                    {val(post.qualification)}
+                    {uniqueFactValue('qualification', val(post.qualification))}
                   </TableRow>
-                  <TableRow label="Age Limit">{val(post.ageLimit)}</TableRow>
+                  <TableRow label="Age Limit">{uniqueFactValue('ageLimit', val(post.ageLimit))}</TableRow>
                   <TableRow label="Application Fee" highlight>
-                    {val(post.applicationFee)}
+                    {uniqueFactValue('applicationFee', val(post.applicationFee))}
                   </TableRow>
                   <TableRow label="Pay Scale / Salary">{val(post.salary)}</TableRow>
-                  <TableRow label="Selection Process">{val(post.selectionProcess)}</TableRow>
-                  <TableRow label="Notification Date">{val(dates.notificationDate)}</TableRow>
-                  <TableRow label="Online Apply Start Date">{val(dates.startDate)}</TableRow>
-                  <TableRow label="Last Date for Apply Online" highlight>
-                    {val(dates.lastDate)}
-                  </TableRow>
-                  <TableRow label="Admit Card Date">{val(dates.admitCardDate)}</TableRow>
-                  <TableRow label="Exam Date">{val(dates.examDate)}</TableRow>
-                  <TableRow label="Result Date">{val(dates.resultDate)}</TableRow>
+                  <TableRow label="Selection Process">{uniqueFactValue('selectionProcess', val(post.selectionProcess))}</TableRow>
+                  <TableRow label="Application Begin Date">{val(dates.startDate)}</TableRow>
+                  <TableRow label="Reference Link">{primaryHref ? 'Official portal link available in Important Links section' : 'Official link will be active as per notice'}</TableRow>
                 </tbody>
               </table>
             </div>
@@ -493,7 +497,7 @@ export default function PostDetail() {
               <table className="pd-full-table">
                 <tbody>
                   <TableRow label="Fee Details" highlight>
-                    {val(post.applicationFee)}
+                    {uniqueFactValue('applicationFee', val(post.applicationFee))}
                   </TableRow>
                   <TableRow label="Payment Mode">
                     Debit Card / Credit Card / Net Banking / UPI (as per official portal)
@@ -512,7 +516,7 @@ export default function PostDetail() {
               <table className="pd-full-table">
                 <tbody>
                   <TableRow label="Age Limit Details" highlight>
-                    {val(post.ageLimit)}
+                    {uniqueFactValue('ageLimit', val(post.ageLimit))}
                   </TableRow>
                   <TableRow label="Age Relaxation">
                     Extra age relaxation for SC / ST / OBC / PwBD / Ex-Servicemen as per Government
@@ -532,16 +536,14 @@ export default function PostDetail() {
               <table className="pd-full-table">
                 <tbody>
                   <TableRow label="Total Post" highlight>
-                    {post.totalVacancies > 0
-                      ? post.totalVacancies.toLocaleString('en-IN')
-                      : val(post.vacancyDetails, 'As per notification')}
+                    {uniqueFactValue('totalVacancy', post.totalVacancies > 0 ? `${post.totalVacancies.toLocaleString('en-IN')} Posts` : val(post.vacancyDetails, 'As per notification'))}
                   </TableRow>
                   <TableRow label="Vacancy Information">{val(post.vacancyDetails)}</TableRow>
                   <TableRow label="Educational Qualification" highlight>
-                    {val(post.qualification)}
+                    {uniqueFactValue('qualification', val(post.qualification))}
                   </TableRow>
                   <TableRow label="Pay Scale / Salary">{val(post.salary)}</TableRow>
-                  <TableRow label="Selection Process">{val(post.selectionProcess)}</TableRow>
+                  <TableRow label="Selection Process">{uniqueFactValue('selectionProcess', val(post.selectionProcess))}</TableRow>
                 </tbody>
               </table>
             </div>
@@ -608,23 +610,6 @@ export default function PostDetail() {
             )}
           </section>
           : null}
-          {/* About / description */}
-          <section className="pd-section">
-            <div className="pd-section-head">
-              <h2>📖 About This {isResult ? 'Result' : isAdmitCard ? 'Admit Card' : isAnswerKey ? 'Answer Key' : isSyllabus ? 'Syllabus' : isCertificate ? 'Certificate' : 'Update'}</h2>
-            </div>
-            <div className="pd-content content-html">
-              {post.content ? (
-                <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }} />
-              ) : (
-                <p>
-                  {val(post.shortDescription)} Full details are given in the tables above. Always
-                  confirm on the official website before applying.
-                </p>
-              )}
-            </div>
-          </section>
-
           {isResult ? <section className="pd-section">
             <div className="pd-section-head">
               <h2>🧭 What After Result?</h2>
@@ -638,22 +623,6 @@ export default function PostDetail() {
             </div>
           </section>
           : null}
-
-          {faqItems.length > 0 && (
-            <section className="pd-section">
-              <div className="pd-section-head">
-                <h2>❓ Frequently Asked Questions</h2>
-              </div>
-              <div className="pd-content">
-                {faqItems.map((item) => (
-                  <div key={item.question} className="faq-block">
-                    <h3>{item.question}</h3>
-                    <p>{item.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
 
           {/* Important Links — classic table */}
           <section className="pd-section pd-links-section">
@@ -687,18 +656,56 @@ export default function PostDetail() {
                 </tbody>
               </table>
             </div>
-            {primaryHref && (
+            {(primaryHref || (isRecruitment || isAdmission || isNotification)) && (
               <div className="pd-big-cta-wrap">
-                <a
-                  href={primaryHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pd-big-cta"
-                >
-                  {primaryLabel} ↗
-                </a>
+                {primaryHref ? (
+                  <a
+                    href={primaryHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pd-big-cta"
+                  >
+                    {primaryLabel} ↗
+                  </a>
+                ) : (
+                  <div className="pd-big-cta" style={{ pointerEvents: 'none', opacity: 0.9 }}>
+                    {primaryLabel}
+                  </div>
+                )}
               </div>
             )}
+          </section>
+
+          {faqItems.length > 0 && (
+            <section className="pd-section">
+              <div className="pd-section-head">
+                <h2>❓ Frequently Asked Questions</h2>
+              </div>
+              <div className="pd-content">
+                {faqItems.map((item) => (
+                  <div key={item.question} className="faq-block">
+                    <h3>{item.question}</h3>
+                    <p>{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section className="pd-section">
+            <div className="pd-section-head">
+              <h2>📖 About This {isResult ? 'Result' : isAdmitCard ? 'Admit Card' : isAnswerKey ? 'Answer Key' : isSyllabus ? 'Syllabus' : isCertificate ? 'Certificate' : 'Update'}</h2>
+            </div>
+            <div className="pd-content content-html">
+              {post.content ? (
+                <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }} />
+              ) : (
+                <p>
+                  {val(post.shortDescription)} Full details are given in the tables above. Always
+                  confirm on the official website before applying.
+                </p>
+              )}
+            </div>
           </section>
         </div>
 
@@ -706,7 +713,7 @@ export default function PostDetail() {
         <aside className="pd-sidebar">
           <div className="pd-side-card pd-side-actions">
             <div className="pd-side-title">Quick Actions</div>
-            {primaryHref && (
+            {primaryHref ? (
               <a
                 href={primaryHref}
                 target="_blank"
@@ -716,6 +723,11 @@ export default function PostDetail() {
                 <span className="pd-cta-label">{primaryLabel}</span>
                 <span className="pd-cta-sub">Official portal ↗</span>
               </a>
+            ) : (
+              <div className="pd-cta" style={{ cursor: 'default', opacity: 0.9, pointerEvents: 'none' }}>
+                <span className="pd-cta-label">{primaryLabel}</span>
+                <span className="pd-cta-sub">Official portal</span>
+              </div>
             )}
             <div className="pd-side-links">
               {primaryHref && (

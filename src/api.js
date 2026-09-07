@@ -251,6 +251,15 @@ function isRecentPost(post) {
   return Number.isFinite(dateValue) && Date.now() - dateValue < 1000 * 60 * 60 * 24 * 14;
 }
 
+function hasUpcomingMilestone(post) {
+  const dates = post.importantDates || {};
+  return [dates.examDate, dates.admitCardDate, dates.answerKeyDate, dates.resultDate]
+    .some((value) => {
+      const timestamp = parseDeadline(value);
+      return Number.isFinite(timestamp) && timestamp >= Date.now();
+    });
+}
+
 function sortPosts(posts) {
   return [...posts].sort((a, b) => {
     const priorityValue = Number(b.sortPriority || 0) - Number(a.sortPriority || 0);
@@ -282,7 +291,7 @@ function getVisiblePosts() {
     const publicationDate = new Date(post.publishedAt || 0).getTime();
     const slug = post.slug || post.id;
     return (post.category === 'certificate' || publicationDate >= CONTENT_CUTOFF_DATE) &&
-      !hasLowQualityContent(post) && !storage.deleted.has(slug) && !storage.inactive.has(slug) && !post.hasPassedDeadline;
+        !hasLowQualityContent(post) && !storage.deleted.has(slug) && !storage.inactive.has(slug) && (!post.hasPassedDeadline || hasUpcomingMilestone(post));
   }));
   return visiblePostsCache;
 }

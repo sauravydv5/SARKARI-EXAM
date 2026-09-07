@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPostGuide, buildReadingTime, toSlug } from './contentUtils.js';
+import { buildPostGuide, buildReadingTime, dedupeFacts, toSlug } from './contentUtils.js';
 
 test('toSlug formats titles into stable URL slugs', () => {
   assert.equal(toSlug('SSC CGL Preparation Strategy 2026'), 'ssc-cgl-preparation-strategy-2026');
@@ -49,4 +49,27 @@ test('buildPostGuide avoids placeholder wording when specific vacancy and eligib
   assert.match(guide.overview, /19,838|19838/i);
   assert.match(guide.overview, /12th Pass/i);
   assert.doesNotMatch(guide.overview, /see official notice|check official notification|as published in the official notification/i);
+});
+
+test('dedupeFacts suppresses duplicate recruitment facts across sections while keeping unique entries', () => {
+  const items = [
+    { key: 'totalVacancy', value: '225 Posts' },
+    { key: 'totalVacancy', value: '225 vacancies' },
+    { key: 'qualification', value: 'Graduation' },
+    { key: 'qualification', value: 'Graduation required' },
+    { key: 'ageLimit', value: '18 to 30 years' },
+    { key: 'selectionProcess', value: 'Written exam + interview' },
+    { key: 'selectionProcess', value: 'Written exam + interview' },
+    { key: 'documentsRequired', value: 'Photo, signatures, educational certificate' },
+  ];
+
+  const unique = dedupeFacts(items);
+
+  assert.deepEqual(unique.map((item) => item.key), [
+    'totalVacancy',
+    'qualification',
+    'ageLimit',
+    'selectionProcess',
+    'documentsRequired',
+  ]);
 });

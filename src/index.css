@@ -1831,6 +1831,7 @@ img {
 .pd-full-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
   font-size: 0.92rem;
 }
 
@@ -1850,6 +1851,7 @@ img {
 
 .pd-full-table th {
   width: 34%;
+  overflow-wrap: anywhere;
   min-width: 140px;
   background: var(--table-th);
   font-weight: 700;
@@ -1858,6 +1860,8 @@ img {
 }
 
 .pd-full-table td {
+  width: 66%;
+  overflow-wrap: anywhere;
   color: var(--text);
   font-weight: 600;
   background: var(--card);

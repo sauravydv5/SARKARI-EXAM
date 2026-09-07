@@ -26,6 +26,41 @@ export function countWords(value = '') {
   return stripHtml(value).split(/\s+/).filter(Boolean).length;
 }
 
+export function normalizeFactText(value = '') {
+  return String(value || '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/(\.|,|;|:|\(|\)|\[|\]|\{|\}|\/|\+|=)/g, ' ')
+    .replace(/\b(post|posts|vacancy|vacancies|seat|seats|candidate|candidates|applicant|applicants)\b/gi, ' ')
+    .replace(/\b(qualification|required|eligible|eligibility|for|the|and|or)\b/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+export function dedupeFacts(items = []) {
+  const seen = new Set();
+  const deduped = [];
+
+  for (const item of items) {
+    if (!item || item.value === null || item.value === undefined) continue;
+
+    const rawText = String(item.value).trim();
+    if (!rawText) continue;
+
+    const normalized = normalizeFactText(rawText);
+    if (!normalized) continue;
+
+    const fingerprint = `${item.key || 'fact'}|${normalized}`;
+    if (seen.has(fingerprint)) continue;
+
+    seen.add(fingerprint);
+    deduped.push(item);
+  }
+
+  return deduped;
+}
+
 const STALE_SLUG_PATTERNS = [
   'corona-vaccine',
   'har-ghar-tiranga',
