@@ -227,15 +227,13 @@ export default function Layout() {
           <div className="nav-actions-mobile">
             <ThemeToggle />
           </div>
-          <ul id="main-nav-list" className={`flex flex-wrap items-center gap-2 ${menuOpen ? 'open' : ''}`}>
+          <ul id="main-nav-list" className={`main-nav-list ${menuOpen ? 'open' : ''}`}>
             {navItems.map((item) => (
               <li key={item.to}>
                 <NavLink
                   to={item.to}
                   end={item.end}
-                  className={({ isActive }) =>
-                    `inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-semibold transition ${isActive ? 'bg-gradient-to-r from-red-600 to-red-500 text-white shadow-md' : 'text-white/90 hover:bg-white/6'}`
-                  }
+                  className={({ isActive }) => `main-nav-link${isActive ? ' active' : ''}`}
                   onClick={() => setMenuOpen(false)}
                 >
                   <span className="nav-icon" aria-hidden>
