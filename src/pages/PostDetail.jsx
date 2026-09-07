@@ -232,7 +232,7 @@ export default function PostDetail() {
     image: post?.image && post.image !== '/uploads/images/placeholder.svg' ? post.image : '/logo.png',
     keywords: postKeywords,
     noIndex: stalePage,
-    schemaType: 'Article',
+    schemaType: 'none',
     schemaData: {
       headline: pageTitle,
       image: post?.image || '/logo.png',

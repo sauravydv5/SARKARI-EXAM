@@ -8,7 +8,6 @@ const DEFAULT_KEYWORDS =
   'sarkari job, government jobs, exam guidance, admit card, answer key, syllabus, admission, job notification, preparation strategy';
 const DEFAULT_URL = 'https://sarkarijobhub.website';
 const DEFAULT_IMAGE = '/logo.png';
-const BLOCKED_CANONICAL_PARAMS = /^(utm_|gclid|fbclid|mc_cid|mc_eid|ga_|igshid|msclkid|dclid|hsa_|twclid|pk_campaign|pk_kwd)/i;
 
 function normalizeCanonicalUrl(inputUrl) {
   const baseUrl = DEFAULT_URL;
@@ -26,6 +25,11 @@ function normalizeCanonicalUrl(inputUrl) {
   const canonical = `${baseUrl}${normalizedPath === '/' ? '/' : normalizedPath}`;
 
   return canonical;
+}
+
+function normalizeImageUrl(inputImage) {
+  const image = String(inputImage || DEFAULT_IMAGE).trim();
+  return new URL(image, DEFAULT_URL).href;
 }
 
 function setMeta(selector, attr, value) {
@@ -90,6 +94,7 @@ export default function useSeo({
   useEffect(() => {
     const pageTitle = title ? `${title} | Sarkari Job Hub` : DEFAULT_TITLE;
     const pageUrl = normalizeCanonicalUrl(url || DEFAULT_URL);
+    const pageImage = normalizeImageUrl(image || DEFAULT_IMAGE);
     document.title = pageTitle;
 
     setMeta('meta[name="description"]', 'content', description || DEFAULT_DESCRIPTION);
@@ -101,13 +106,13 @@ export default function useSeo({
     setMeta('meta[property="og:title"]', 'content', pageTitle);
     setMeta('meta[property="og:description"]', 'content', description || DEFAULT_DESCRIPTION);
     setMeta('meta[property="og:url"]', 'content', pageUrl);
-    setMeta('meta[property="og:image"]', 'content', image || DEFAULT_IMAGE);
+    setMeta('meta[property="og:image"]', 'content', pageImage);
     setMeta('meta[property="og:site_name"]', 'content', 'Sarkari Job Hub');
     setMeta('meta[property="og:locale"]', 'content', 'en_IN');
     setMeta('meta[name="twitter:card"]', 'content', 'summary_large_image');
     setMeta('meta[name="twitter:title"]', 'content', pageTitle);
     setMeta('meta[name="twitter:description"]', 'content', description || DEFAULT_DESCRIPTION);
-    setMeta('meta[name="twitter:image"]', 'content', image || DEFAULT_IMAGE);
+    setMeta('meta[name="twitter:image"]', 'content', pageImage);
 
     const siteUrl = pageUrl.replace(/\/$/, '');
 
@@ -117,7 +122,7 @@ export default function useSeo({
         '@type': 'Article',
         headline: schemaData?.headline || pageTitle,
         description: description || DEFAULT_DESCRIPTION,
-        image: schemaData?.image || image || DEFAULT_IMAGE,
+        image: normalizeImageUrl(schemaData?.image || image || DEFAULT_IMAGE),
         author: schemaData?.author || { '@type': 'Organization', name: 'Sarkari Job Hub' },
         publisher: schemaData?.publisher || {
           '@type': 'Organization',
@@ -133,7 +138,7 @@ export default function useSeo({
         articleSection: schemaData?.articleSection || 'Government Jobs',
       };
       setJsonLd(articleSchema);
-    } else {
+    } else if (schemaType !== 'none') {
       setJsonLd({
         '@context': 'https://schema.org',
         '@type': 'WebSite',

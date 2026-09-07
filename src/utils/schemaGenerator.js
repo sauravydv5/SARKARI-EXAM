@@ -13,6 +13,10 @@ function toSchemaDate(value) {
   return Number.isNaN(normalized.getTime()) ? undefined : normalized.toISOString();
 }
 
+function toAbsoluteUrl(value) {
+  return new URL(String(value || '/logo.png'), 'https://sarkarijobhub.website').href;
+}
+
 function toNumber(value) {
   if (typeof value === 'number' && Number.isFinite(value)) return value;
   if (typeof value !== 'string') return undefined;
@@ -195,7 +199,7 @@ export const generateArticleSchema = (article) => {
     '@type': 'Article',
     headline: article.headline,
     description: article.description,
-    image: article.image,
+    image: toAbsoluteUrl(article.image),
     datePublished: article.datePublished,
     dateModified: article.dateModified || article.datePublished,
     author: {
