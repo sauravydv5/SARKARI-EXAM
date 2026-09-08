@@ -66,7 +66,6 @@ const KIND = {
 };
 
 function html(item) {
-  const site = item.official.replace(/^https?:\/\//, '');
   const kind = item.kind;
   if (kind === 'result') {
     return `<p><strong>${item.org}</strong> has published <strong>${item.title}</strong>. Check the official result notice for the result PDF, scorecard and next-stage instructions.</p>`;

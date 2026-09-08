@@ -47,5 +47,11 @@
     "Banking",
     "Online Form"
   ],
+  "faqs": [
+    {"question":"How many apprentices are available in IOB Apprentice Recruitment 2026?","answer":"Indian Overseas Bank has listed 750 apprentice seats across states and union territories, subject to the official vacancy distribution."},
+    {"question":"What qualification is required for IOB Apprentice 2026?","answer":"Graduation from a recognized university is required, along with any local language or other conditions stated in the official notification."},
+    {"question":"What is the selection process for IOB Apprentice?","answer":"The listed process includes an online written test, local language proficiency test, document verification and engagement as an apprentice."},
+    {"question":"Where should candidates apply for IOB Apprentice?","answer":"Start from the official IOB careers page and follow the NAPS, NATS or BEEP instructions mentioned in the recruitment notice."}
+  ],
   "views": 9800
 }

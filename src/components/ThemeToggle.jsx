@@ -1,4 +1,4 @@
-import { useThemeContext } from '../context/ThemeContext';
+import { useThemeContext } from '../context/useThemeContext';
 
 /**
  * Accessible dark/light mode toggle — persists to localStorage.

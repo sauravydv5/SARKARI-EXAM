@@ -2,7 +2,6 @@ import { useEffect, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useSeo from '../hooks/useSeo';
 import { blogArticles } from '../data/blogArticles';
-import { buildReadingTime } from '../utils/contentUtils';
 
 export default function BlogDetailPage() {
   const { slug } = useParams();

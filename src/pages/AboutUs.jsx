@@ -15,6 +15,21 @@ const focusAreas = [
   },
 ];
 
+const readerTools = [
+  {
+    title: 'Compare the essentials',
+    text: 'Use the dates, fee, vacancy, qualification and age fields to decide whether a notice matches your situation before opening the application portal.',
+  },
+  {
+    title: 'Follow the exam journey',
+    text: 'A recruitment page may be followed by an exam notice, admit card, answer key, result and cut-off. Our categories help you find the next stage.',
+  },
+  {
+    title: 'Protect your application',
+    text: 'Keep the original notice, registration number, payment receipt and final acknowledgement. Never share an OTP or payment credential with another person.',
+  },
+];
+
 export default function AboutUs() {
   useSeo({
     title: 'About Us',
@@ -45,6 +60,18 @@ export default function AboutUs() {
               <article key={area.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
                 <h3 className="mb-3 text-lg font-bold text-red-700 dark:text-red-300">{area.title}</h3>
                 <p>{area.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section aria-labelledby="tools-heading">
+          <h2 id="tools-heading" className="mb-5 text-2xl font-bold text-slate-900 dark:text-white">How the site helps</h2>
+          <div className="grid gap-5 md:grid-cols-3">
+            {readerTools.map((tool) => (
+              <article key={tool.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+                <h3 className="mb-3 text-lg font-bold text-red-700 dark:text-red-300">{tool.title}</h3>
+                <p>{tool.text}</p>
               </article>
             ))}
           </div>

@@ -40,5 +40,11 @@
     "e-Aadhaar",
     "Update"
   ],
+  "faqs": [
+    {"question":"Which Aadhaar services are available through MyAadhaar?","answer":"Common services include e-Aadhaar download, PVC card order, appointment booking, demographic update requests and enrolment or update status tracking."},
+    {"question":"Is OTP required for online Aadhaar services?","answer":"Many services use an OTP sent to the registered mobile number. Never disclose that OTP, Aadhaar authentication details or payment information to anyone."},
+    {"question":"Where should Aadhaar services be completed?","answer":"Use the official UIDAI websites myaadhaar.uidai.gov.in and uidai.gov.in, or the official appointment portal linked on this page."},
+    {"question":"Can every Aadhaar detail be updated online?","answer":"Available online updates depend on UIDAI rules and the service. Some changes may require a visit to an Aadhaar Seva Kendra with supporting documents."}
+  ],
   "views": 6500
 }

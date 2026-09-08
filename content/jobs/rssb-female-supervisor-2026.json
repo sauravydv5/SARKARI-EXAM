@@ -48,5 +48,11 @@
     "SarkariResult",
     "SarkariExam"
   ],
+  "faqs": [
+    {"question":"How many RSSB Female Supervisor posts are listed?","answer":"The recruitment listing shows 72 Female Supervisor posts under Advertisement No. 02/2026."},
+    {"question":"What is the purpose of the correction window?","answer":"The correction window allows eligible applicants to edit the fields permitted by RSSB after login. Candidates should review the official correction notice before changing anything."},
+    {"question":"What qualification is required?","answer":"The summary lists graduation, a prescribed computer qualification and a valid RSSB CET Graduation Level 2024 requirement, subject to the official advertisement."},
+    {"question":"Where can the correction form be accessed?","answer":"Use the official RSSB website and Rajasthan SSO portal linked on this page. Never share SSO passwords or OTPs."}
+  ],
   "views": 8700
 }

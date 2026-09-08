@@ -42,5 +42,11 @@
     "6557 Posts",
     "SarkariResult"
   ],
+  "faqs": [
+    {"question":"Which recruitment is highlighted in this deadline reminder?","answer":"The page highlights Railway RRB Technician CEN 02/2026, which lists 6,557 Technician Grade-I and Grade-III posts."},
+    {"question":"What qualification is commonly needed for RRB Technician Grade-III?","answer":"Most Grade-III trades require Matriculation with the prescribed ITI qualification. Grade-I Signal eligibility is different, so check the post-wise CEN rules."},
+    {"question":"Where should the RRB Technician form be submitted?","answer":"Use the official RRB application portal at rrbapply.gov.in and verify the CEN 02/2026 notice before paying the fee."},
+    {"question":"What proof should be kept after applying?","answer":"Keep the completed application, fee receipt, registration number and uploaded-document details for future exam and correction stages."}
+  ],
   "views": 10000
 }

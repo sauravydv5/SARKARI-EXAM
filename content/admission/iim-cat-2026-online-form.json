@@ -42,5 +42,11 @@
     "Admission",
     "Online Form"
   ],
+  "faqs": [
+    {"question":"What is CAT 2026 used for?","answer":"CAT is a computer-based entrance examination used by IIMs and participating business schools for MBA, PGP and related management programme admissions."},
+    {"question":"What is the CAT 2026 academic eligibility?","answer":"The listing states that candidates generally need a bachelor's degree with at least 50% marks, or 45% for SC, ST and PwD candidates, subject to the official CAT rules."},
+    {"question":"How many test cities can be selected?","answer":"The application instructions on this page allow candidates to choose up to five preferred test cities, subject to the official form and availability."},
+    {"question":"Where should CAT registration be completed?","answer":"Register only through the official CAT portal at iimcat.ac.in and save the application number and confirmation page."}
+  ],
   "views": 6100
 }

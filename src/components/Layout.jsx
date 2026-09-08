@@ -306,11 +306,35 @@ export default function Layout() {
 
       <footer className="site-footer" aria-label="Site Footer">
         <div className="footer-top">
-          <div className="container">Sarkari Job Hub · Government Jobs · Results · Admit Cards · Answer Keys · Syllabus</div>
+          <div className="container footer-top-inner">
+            <div>
+              <span className="footer-kicker">Your exam desk</span>
+              <strong>Sarkari Job Hub</strong>
+            </div>
+            <p>Find the notice, understand the next step, and apply from the official source.</p>
+          </div>
         </div>
 
         <div className="footer-main footer-seo">
           <div className="container footer-grid-extended">
+            <section className="footer-intro" aria-label="About Sarkari Job Hub">
+              <img
+                src="/logo-108.webp"
+                alt="Sarkari Job Hub logo"
+                className="footer-logo"
+                width="72"
+                height="72"
+                loading="lazy"
+                decoding="async"
+              />
+              <h2>Government updates, made easier.</h2>
+              <p>Track verified recruitment notices, results, admit cards and exam resources in one practical place.</p>
+              <div className="footer-intro-links">
+                <Link to="/latest-jobs">Browse latest jobs</Link>
+                <Link to="/search">Search all updates</Link>
+              </div>
+            </section>
+
             <section className="col jobs-qualification" aria-label="Jobs by Qualification">
               <h3>Jobs by Qualification</h3>
               <ul>
@@ -378,9 +402,9 @@ export default function Layout() {
             </section>
 
             <section className="col trust-badges" aria-label="Trust Badges">
-              <h3>Information standards</h3>
+              <h3>Before you apply</h3>
               <ul>
-                {['Independent informational website', 'Official source links shown on update pages', 'Corrections and feedback welcome', 'Read our editorial policy'].map((t)=> (
+                {['Check age and eligibility', 'Confirm dates on the notice', 'Use only official application links', 'Keep payment proof and acknowledgement'].map((t)=> (
                   <li key={t} className="badge">✔ {t}</li>
                 ))}
               </ul>
@@ -390,6 +414,19 @@ export default function Layout() {
         </div>
 
         <div className="footer-seo-copy container">
+          <section className="footer-guide" aria-label="Smart application checklist">
+            <div className="footer-guide-heading">
+              <span className="footer-kicker">A better way to apply</span>
+              <h2>Smart application checklist</h2>
+              <p>Four simple checks can prevent most online form mistakes.</p>
+            </div>
+            <ol className="footer-guide-steps">
+              <li><strong>Read the notice</strong><span>Confirm age, qualification, category rules and the deadline.</span></li>
+              <li><strong>Prepare documents</strong><span>Keep photo, signature, ID, certificates and payment details ready.</span></li>
+              <li><strong>Use the official portal</strong><span>Apply only through the authority link listed on the update page.</span></li>
+              <li><strong>Save proof</strong><span>Download the submitted form, fee receipt and registration number.</span></li>
+            </ol>
+          </section>
           <div className="footer-directory" aria-label="Sarkari Job Hub directory">
             <section>
               <h2>Government Job Updates</h2>
@@ -421,17 +458,12 @@ export default function Layout() {
           </div>
           <h2>Find Latest Sarkari Jobs &amp; Exam Updates</h2>
           <p>
-            Sarkari Job Hub brings you the most trusted and up-to-date Sarkari Jobs and government
-            exam information across India. We publish Latest Government Jobs, Admit Card notices,
-            Results, Answer Keys and official Recruitment Notifications for SSC, UPSC, Railway,
-            Bank Jobs and State Government vacancies. Our free job alert keeps you informed about
-            upcoming exams, online form deadlines, and important updates so you never miss an
-            opportunity. Whether you're searching for central government jobs, state government
-            roles, defense, teaching positions, or technical posts, find curated listings and
-            helpful resources including previous year papers, syllabus, cut offs and mock tests.
-            Stay organized with daily notifications, mobile-friendly pages and verified links to
-            official portals. Start searching for Sarkari Jobs 2026, set alerts for your
-            preferred categories, and prepare confidently with our study material and tips.
+            Sarkari Job Hub brings government job and exam information together in a clear,
+            mobile-friendly format. Browse recruitment notices, admit cards, results, answer keys,
+            syllabi and admission updates for central and state-level exams. Each update highlights
+            important dates, eligibility, fees, vacancies, documents and the official source so you
+            can decide your next step quickly. Always verify the final notification on the issuing
+            authority website before paying a fee or submitting an application.
           </p>
         </div>
 

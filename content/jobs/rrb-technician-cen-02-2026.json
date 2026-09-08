@@ -46,5 +46,11 @@
     "SarkariExam",
     "Online Form"
   ],
+  "faqs": [
+    {"question":"How many vacancies are available in RRB Technician CEN 02/2026?","answer":"The notification lists 6,557 Technician Grade-I Signal and Grade-III vacancies across participating RRB zones."},
+    {"question":"What qualification is required for RRB Technician 2026?","answer":"Most Grade-III posts require Matriculation with the prescribed ITI trade. Grade-I Signal posts may require a relevant diploma or degree. Check the post-wise CEN eligibility before applying."},
+    {"question":"What is the selection process for RRB Technician?","answer":"The selection path listed for this recruitment is Computer Based Test, document verification and medical examination."},
+    {"question":"Where should candidates apply for RRB Technician 2026?","answer":"Use the official RRB application portal at rrbapply.gov.in and read CEN 02/2026 before submitting the form."}
+  ],
   "views": 15000
 }

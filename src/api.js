@@ -93,6 +93,8 @@ function normalizePost(raw, sourcePath) {
   const lastDate = raw.importantDates?.lastDate || raw.lastDate;
   const lastDateValue = parseDeadline(lastDate);
   const hasPassedDeadline = Number.isFinite(lastDateValue) && lastDateValue < Date.now();
+  const hasLegacyYear = /(?:^|[^0-9])20(?:20|21|22|23|24|25)(?:[^0-9]|$)/.test(`${sourcePath} ${raw.title || ''}`);
+  const statusNote = raw.statusNote || raw.status || (hasPassedDeadline ? 'Expired' : hasLegacyYear ? 'Archived reference' : '');
 
   return {
     ...raw,
@@ -110,9 +112,9 @@ function normalizePost(raw, sourcePath) {
     tags: raw.tags || [],
     isFeatured: Boolean(raw.isFeatured),
     isNew: Boolean(raw.isNew),
-    statusNote: raw.statusNote || raw.status || '',
+    statusNote,
     hasPassedDeadline,
-    isArchived: Boolean(raw.isArchived) || hasPassedDeadline,
+    isArchived: Boolean(raw.isArchived) || hasPassedDeadline || hasLegacyYear,
     totalVacancies: Number(raw.totalVacancies || raw.vacancy || 0) || 0,
     vacancyDetails: raw.vacancyDetails || raw.vacancy || '',
     qualification: raw.qualification || '',

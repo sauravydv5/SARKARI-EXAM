@@ -46,5 +46,11 @@
     "SarkariExam",
     "Online Form"
   ],
+  "faqs": [
+    {"question":"How many Nursing Officer posts are listed for AIIMS NORCET-11?","answer":"The current listing shows 2,218 Nursing Officer posts across AIIMS and participating institutes. Confirm the final seat matrix in the official notice."},
+    {"question":"What qualification is needed for AIIMS NORCET-11?","answer":"Candidates generally need B.Sc Nursing, Post Basic B.Sc Nursing, or GNM with the prescribed experience and valid Nursing Council registration. Read the notification for the exact route applicable to you."},
+    {"question":"What is the AIIMS NORCET selection process?","answer":"The listed stages are NORCET Preliminary CBT, NORCET Mains CBT, eligibility list, institute allocation and document verification."},
+    {"question":"Where can I apply for NORCET-11?","answer":"Apply and check notices through the official AIIMS examination portal at aiimsexams.ac.in."}
+  ],
   "views": 10200
 }

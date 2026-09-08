@@ -377,7 +377,7 @@ export default function PostDetail() {
               {val(post.organization, 'Government Organization')}
               {post.department ? ` · ${post.department}` : ''}
             </p>
-            {post.image && post.image !== '/uploads/images/placeholder.svg' && (
+            {post.image && post.image !== '/uploads/images/placeholder.svg' ? (
               <img
                 src={post.image}
                 alt={`${pageTitle} official ${cat.label.toLowerCase()} image`}
@@ -386,6 +386,14 @@ export default function PostDetail() {
                 height="360"
                 loading="eager"
               />
+            ) : (
+              <div className={`pd-category-visual pd-category-visual-${post.category}`} aria-label={`${cat.label} update`}>
+                <span className="pd-category-visual-icon" aria-hidden="true">{icon}</span>
+                <span>
+                  <strong>{cat.label}</strong>
+                  <small>Official update guide</small>
+                </span>
+              </div>
             )}
             <p className="pd-summary">
               {val(

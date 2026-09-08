@@ -39,5 +39,11 @@
     "Tier 2",
     "Syllabus"
   ],
+  "faqs": [
+    {"question":"What are the SSC CGL Tier-I subjects?","answer":"Tier-I covers General Intelligence and Reasoning, General Awareness, Quantitative Aptitude and English Comprehension, with 25 questions in each section in the listed pattern."},
+    {"question":"What does SSC CGL Tier-II include?","answer":"Paper-I is compulsory and includes mathematical abilities, reasoning, English, general awareness, computer knowledge and the applicable data-entry module. Paper-II and Paper-III are post-specific."},
+    {"question":"What qualification is needed for SSC CGL?","answer":"A bachelor's degree from a recognized university is generally required, with additional conditions for specific posts such as JSO or AAO."},
+    {"question":"Where can the official syllabus be checked?","answer":"Check the latest scheme and syllabus documents on the official SSC website at ssc.gov.in because the Commission may revise the pattern."}
+  ],
   "views": 7100
 }

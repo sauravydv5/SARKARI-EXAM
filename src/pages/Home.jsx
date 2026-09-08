@@ -143,27 +143,6 @@ export default function Home() {
         <CategoryPanel title="Bihar Special" viewAllTo="/bihar-special" posts={sections?.['bihar-special'] || []} />
       </div>
 
-      <section className="panel">
-        <div className="panel-head">
-          <h2>FAQ</h2>
-        </div>
-        <div className="panel-body">
-          <div className="faq-container">
-            <details>
-              <summary>What is Sarkari Job Hub?</summary>
-              <p>Sarkari Job Hub aggregates government job notifications, results, admit cards, answer keys, syllabus and admission updates in one place.</p>
-            </details>
-            <details>
-              <summary>How often does the homepage update?</summary>
-              <p>The homepage refreshes automatically with the latest content from all categories, including jobs, results, admit cards, answer keys, admissions, syllabus, certificates, and important updates.</p>
-            </details>
-            <details>
-              <summary>Can I see empty categories?</summary>
-              <p>Yes. Every category section is rendered even when there are no updates. Empty categories display “No updates available”.</p>
-            </details>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

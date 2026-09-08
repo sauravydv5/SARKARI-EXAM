@@ -47,5 +47,11 @@
     "Uttar Pradesh",
     "Online Form"
   ],
+  "faqs": [
+    {"question":"How many posts are notified in UPPSC PCS 2026?","answer":"The listing currently shows 500 Combined State and Upper Subordinate Services vacancies, including posts such as Deputy Collector, DSP, BDO and other services."},
+    {"question":"What is the qualification for UPPSC PCS 2026?","answer":"A bachelor's degree in any stream from a recognized university is required, subject to post-specific conditions in the official advertisement."},
+    {"question":"What is the UPPSC PCS selection process?","answer":"The selection process includes Preliminary Examination, Main Examination, Interview and final merit, as prescribed by UPPSC."},
+    {"question":"Where can I apply for UPPSC PCS?","answer":"Complete the application through the official UPPSC portal at uppsc.up.nic.in after reading the applicable advertisement and OTR instructions."}
+  ],
   "views": 12500
 }

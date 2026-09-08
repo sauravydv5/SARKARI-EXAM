@@ -46,5 +46,11 @@
     "SarkariResult",
     "SarkariExam"
   ],
+  "faqs": [
+    {"question":"What has been released for UP TGT/PGT 2022?","answer":"The listing covers the final result and institute allotment or institution-location updates for the UPESSC PGT recruitment under Advertisement 01/2022 and 02/2022."},
+    {"question":"How can candidates check the UP PGT final result?","answer":"Open the official UPESSC result portal, enter the required registration details and download the subject-wise result or allotment information."},
+    {"question":"What should a qualified candidate do next?","answer":"Check the institute allotment instructions, keep original certificates ready and follow the joining or document-verification schedule issued by UPESSC."},
+    {"question":"Is the UP PGT result a final appointment order?","answer":"The result and allotment information are recruitment-stage updates. Candidates must complete the authority's verification and joining requirements before appointment is confirmed."}
+  ],
   "views": 12500
 }

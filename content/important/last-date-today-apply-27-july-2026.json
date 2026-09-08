@@ -42,5 +42,11 @@
     "JNU",
     "Apply Now"
   ],
+  "faqs": [
+    {"question":"Which forms are covered in this last-date update?","answer":"The summary highlights IOB Apprentice, UPPSC PCS and JNU Non-Teaching application windows that were listed as closing on 27 July 2026."},
+    {"question":"Should candidates rely only on this reminder page?","answer":"No. Use the reminder to identify the recruitment, then open its official notification and application portal to confirm the closing time, fee and eligibility."},
+    {"question":"What should be saved after submitting a form?","answer":"Save the registration number, payment receipt, submitted application PDF and any acknowledgement or correction reference."},
+    {"question":"Can one application link be used for all listed recruitments?","answer":"No. Each recruitment has its own authority and application portal. Follow the official link for the specific post you want to apply for."}
+  ],
   "views": 11200
 }

@@ -48,5 +48,11 @@
     "Uttar Pradesh",
     "Online Form"
   ],
+  "faqs": [
+    {"question":"How many UPSSSC Cane Supervisor vacancies are listed?","answer":"The listing shows 1,182 Cane Supervisor posts under Advertisement 13-Exam/2026."},
+    {"question":"What qualification is required for Cane Supervisor?","answer":"The summary lists relevant agriculture, horticulture, forestry or agriculture-technology qualifications, a prescribed CCC certificate and a valid UPSSSC PET 2025 condition."},
+    {"question":"What is the selection process?","answer":"The listed process is a written examination followed by document verification and final merit as per UPSSSC rules."},
+    {"question":"Where should candidates apply?","answer":"Complete the form through upsssc.gov.in after checking the official advertisement, PET condition, fee and correction instructions."}
+  ],
   "views": 7200
 }

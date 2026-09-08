@@ -47,5 +47,11 @@
     "SarkariExam",
     "Online Form"
   ],
+  "faqs": [
+    {"question":"How many Bihar Home Guard Company Commander posts are listed?","answer":"The listing shows 65 Company Commander (General) posts under Advertisement No. 08/2026."},
+    {"question":"What qualification is required for this BPSSC post?","answer":"A bachelor's degree from a recognized university is required, along with the age and other conditions specified by BPSSC."},
+    {"question":"What is the selection process?","answer":"The listed stages are Preliminary Examination, Main Written Examination, Physical Eligibility Test, Document Verification and Medical Examination."},
+    {"question":"Where can candidates apply?","answer":"Apply through the official BPSSC website or the application portal linked in the notification, and keep the final acknowledgement after submission."}
+  ],
   "views": 9800
 }

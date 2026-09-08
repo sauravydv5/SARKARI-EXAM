@@ -42,5 +42,11 @@
     "Mains Result",
     "2026"
   ],
+  "faqs": [
+    {"question":"What result has UPSC released for Engineering Services 2026?","answer":"UPSC has released the written result of the Engineering Services (Main) Examination 2026, listing candidates provisionally shortlisted for the Personality Test."},
+    {"question":"How can candidates check the ESE Mains result?","answer":"Open the official UPSC result PDF, download the roll-number or name-wise list and search for your roll number. Keep the PDF for reference."},
+    {"question":"What should qualified candidates do next?","answer":"Follow UPSC instructions for updating details and uploading proof of the qualifying engineering examination, then monitor the e-Summon and interview schedule."},
+    {"question":"Is the written result a final appointment?","answer":"No. The written result is provisional and qualifying candidates still need to complete the Personality Test, document checks and final merit process."}
+  ],
   "views": 5800
 }

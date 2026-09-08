@@ -38,13 +38,13 @@ function setMeta(selector, attr, value) {
   if (!element) {
     if (selector.startsWith('meta[')) {
       element = document.createElement('meta');
-      const nameMatch = selector.match(/meta\[(name|property)=\"(.+?)\"\]/);
+      const nameMatch = selector.match(/meta\[(name|property)="(.+?)"\]/);
       if (nameMatch) {
         element.setAttribute(nameMatch[1], nameMatch[2]);
       }
     } else if (selector.startsWith('link[')) {
       element = document.createElement('link');
-      const relMatch = selector.match(/link\[(rel)=\"(.+?)\"\]/);
+      const relMatch = selector.match(/link\[(rel)="(.+?)"\]/);
       if (relMatch) {
         element.setAttribute(relMatch[1], relMatch[2]);
       }
@@ -62,23 +62,6 @@ function setJsonLd(data, id = 'seo-jsonld') {
   script.type = 'application/ld+json';
   script.textContent = JSON.stringify(data);
   document.head.appendChild(script);
-}
-
-function addBreadcrumbSchema(breadcrumbs) {
-  const items = breadcrumbs.map((item, index) => ({
-    '@type': 'ListItem',
-    position: index + 1,
-    name: item.label,
-    item: item.url,
-  }));
-  setJsonLd(
-    {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: items,
-    },
-    'breadcrumb-jsonld'
-  );
 }
 
 export default function useSeo({

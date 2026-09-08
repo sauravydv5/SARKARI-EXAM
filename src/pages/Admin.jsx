@@ -1,11 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   CheckCircle2,
   ChevronDown,
   FilterX,
   MoreHorizontal,
-  PlusCircle,
   Search,
   Trash2,
   X,
@@ -22,7 +20,6 @@ export default function Admin() {
   const [sortOrder, setSortOrder] = useState('newest');
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
   const showEditor = false;
 
   useSeo({ title: 'Admin - Dashboard', description: 'Admin dashboard (noindex)', noIndex: true });
@@ -502,7 +499,7 @@ export default function Admin() {
           </div>
           <div className="admin-summary-pill">
             <span>Active</span>
-            <strong>{posts.filter((post) => !Boolean(post.isDeleted || post.isInactive)).length}</strong>
+            <strong>{posts.filter((post) => !(post.isDeleted || post.isInactive)).length}</strong>
           </div>
           <div className="admin-summary-pill">
             <span>Inactive</span>

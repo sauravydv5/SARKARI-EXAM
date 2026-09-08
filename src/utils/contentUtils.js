@@ -197,11 +197,7 @@ export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
   const postName = text(post.postName);
   const qualification = text(post.qualification);
   const ageLimit = text(post.ageLimit);
-  const fee = text(post.applicationFee);
-  const salary = text(post.salary);
-  const selection = text(post.selectionProcess);
   const vacancyDetails = text(post.vacancyDetails);
-  const documents = text(post.documentsRequired);
   const shortDescription = text(post.shortDescription);
   const vacancies =
     Number(post.totalVacancies) > 0 ? `${Number(post.totalVacancies).toLocaleString('en-IN')} posts` : '';
@@ -210,13 +206,7 @@ export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
   const lastDate = text(dates.lastDate);
   const examDate = text(dates.examDate);
   const resultDate = text(dates.resultDate);
-  const admitCardDate = text(dates.admitCardDate);
-  const notificationDate = text(dates.notificationDate);
   const copy = categoryCopy(post.category);
-  const howSteps = String(post.howToApply || '')
-    .split('\n')
-    .map((line) => line.replace(/^\d+\.\s*/, '').trim())
-    .filter(Boolean);
 
   const overview = joinSentences([
     `${title} is an independent summary of a public notice issued by ${org}${department ? ` (${department})` : ''}.`,
