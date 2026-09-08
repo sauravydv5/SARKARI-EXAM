@@ -33,9 +33,9 @@
     "importantLink": "https://cdnbbsr.s3waas.gov.in/s301eee509ee2f68dc6014898c309e86bf/uploads/2026/09/202609041872400707.pdf",
     "examCity": "https://examinationservices.nic.in/AdmitCard/AuthForAdvanceCity/Login?enc=DJ8reokIYhe/x0Hlb6GKa1WP/TikfUVRt32lPwUBK3s=",
     "examCityNotice": "https://cdnbbsr.s3waas.gov.in/s301eee509ee2f68dc6014898c309e86bf/uploads/2026/09/202609011468275818.pdf",
-    "checkResult": "https://examinationservices.nic.in/ResultoService26/Score/Login?apprefno=101052611",
+    "checkResult": "https://ugcnet.nta.ac.in/UgcScoreCard.html",
     "answerKey": "https://examinationservices.nic.in/ExamSys26Part2/Root/CandidateLogin.aspx?enc=Ei4cajBkK1gZSfgr53ImFV/yIzhTZHBze3wooSg9Djgija2T1vzGc16BomrI4u26",
-    "officialWebsite": "https://ugcnet.nta.ac.in",
+    "officialWebsite": "https://ugcnet.nta.ac.in/",
     "officialNotification": "https://cdnbbsr.s3waas.gov.in/s301eee509ee2f68dc6014898c309e86bf/uploads/2026/09/202609041872400707.pdf"
   },
   "tags": [
