@@ -7,16 +7,19 @@ import { chromium } from 'playwright';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
-const prerenderCache = path.join(root, '.prerender-cache');
-const postCacheDirectory = path.join(prerenderCache, 'posts');
-const assetCacheDirectory = path.join(prerenderCache, 'assets');
-const cacheManifestFile = path.join(prerenderCache, 'manifest.json');
-const cacheManifestVersion = 2;
+const contentDirectory = path.join(root, 'content');
+const generatedPostDirectory = path.join(root, 'public', 'post');
+const generatedManifestFile = path.join(generatedPostDirectory, '.manifest.json');
+const manifestVersion = 1;
+
 const sitemap = await fs.readFile(path.join(root, 'public', 'sitemap.xml'), 'utf8');
 const postPaths = [...sitemap.matchAll(/<loc>https:\/\/sarkarijobhub\.website(\/post\/[^<]+)<\/loc>/g)]
   .map((match) => match[1])
   .filter((value, index, values) => values.indexOf(value) === index);
-console.error(`Prerender input loaded: ${postPaths.length} post routes.`);
+
+if (postPaths.some((postPath) => !postPath.startsWith('/post/') || postPath.includes('..'))) {
+  throw new Error('Sitemap contains an invalid post route.');
+}
 
 async function walkJsonFiles(directory) {
   const files = [];
@@ -28,36 +31,52 @@ async function walkJsonFiles(directory) {
   return files;
 }
 
-async function loadPostFingerprints() {
+function fingerprint(raw) {
+  return crypto.createHash('sha256').update(raw.replace(/\r\n?/g, '\n')).digest('hex');
+}
+
+async function loadContentFingerprints() {
   const fingerprints = new Map();
-  const contentDirectory = path.join(root, 'content');
   for (const filePath of await walkJsonFiles(contentDirectory)) {
     if (path.basename(filePath).toLowerCase().includes(' copy.json')) continue;
     const raw = await fs.readFile(filePath, 'utf8');
     const post = JSON.parse(raw);
     const slug = String(post.slug || post.id || path.basename(filePath, '.json')).trim().toLowerCase();
-    if (!slug) continue;
-    const postPath = `/post/${encodeURIComponent(slug)}`;
-    fingerprints.set(postPath, crypto.createHash('sha256').update(raw.replace(/\r\n?/g, '\n')).digest('hex'));
+    if (slug) fingerprints.set(`/post/${encodeURIComponent(slug)}`, fingerprint(raw));
   }
   return fingerprints;
 }
 
-async function readCacheManifest() {
+async function readJson(filePath, fallback) {
   try {
-    return JSON.parse(await fs.readFile(cacheManifestFile, 'utf8'));
-  } catch {
-    return {};
+    return JSON.parse(await fs.readFile(filePath, 'utf8'));
+  } catch (error) {
+    if (error.code === 'ENOENT') return fallback;
+    throw error;
   }
 }
 
-function cacheFileFor(postPath) {
-  return path.join(postCacheDirectory, `${decodeURIComponent(postPath.slice('/post/'.length))}.html`);
+function manifestPosts(manifest) {
+  if (manifest?.posts && typeof manifest.posts === 'object') return manifest.posts;
+  return Object.fromEntries(
+    Object.entries(manifest || {}).filter(([key, value]) => key.startsWith('/post/') && typeof value === 'string')
+  );
 }
 
-async function copyIfPresent(source, destination) {
+function postOutputFor(postPath) {
+  return path.join(generatedPostDirectory, postPath.slice('/post/'.length), 'index.html');
+}
+
+function normalizeAssetReferences(html) {
+  return html.replace(/\/assets\/([^"'<>?]+)/g, (source, assetName) => {
+    const hashedAsset = assetName.match(/^(.+)-[A-Za-z0-9_-]{8,}\.(js|css)$/);
+    return hashedAsset ? `/assets/${hashedAsset[1]}.${hashedAsset[2]}` : source;
+  });
+}
+
+async function fileExists(filePath) {
   try {
-    await fs.copyFile(source, destination);
+    await fs.access(filePath);
     return true;
   } catch (error) {
     if (error.code === 'ENOENT') return false;
@@ -65,36 +84,33 @@ async function copyIfPresent(source, destination) {
   }
 }
 
-async function restoreCachedAssets() {
-  await fs.cp(assetCacheDirectory, path.join(dist, 'assets'), { recursive: true, force: true }).catch((error) => {
-    if (error.code !== 'ENOENT') throw error;
-  });
-}
-
-async function snapshotAssets() {
-  await fs.cp(path.join(dist, 'assets'), assetCacheDirectory, { recursive: true, force: true });
-}
-
-async function removeStalePosts(cacheManifest) {
-  const activePostPaths = new Set(postPaths);
-  for (const cachePath of Object.keys(cacheManifest)) {
-    if (cachePath.startsWith('/post/') && !activePostPaths.has(cachePath)) delete cacheManifest[cachePath];
+async function removeDeletedPosts(existingPosts) {
+  const activePosts = new Set(postPaths);
+  for (const postPath of Object.keys(existingPosts)) {
+    if (!activePosts.has(postPath)) delete existingPosts[postPath];
   }
 
   try {
-    for (const entry of await fs.readdir(postCacheDirectory, { withFileTypes: true })) {
-      if (entry.isFile() && !activePostPaths.has(`/post/${encodeURIComponent(entry.name.replace(/\.html$/i, ''))}`)) {
-        await fs.rm(path.join(postCacheDirectory, entry.name), { force: true });
+    for (const entry of await fs.readdir(generatedPostDirectory, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      const postPath = `/post/${encodeURIComponent(entry.name)}`;
+      if (!activePosts.has(postPath)) {
+        await fs.rm(path.join(generatedPostDirectory, entry.name), { recursive: true, force: true });
       }
     }
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
   }
+}
 
+async function removeDeletedDistPosts() {
+  const activePosts = new Set(postPaths);
   const distPostDirectory = path.join(dist, 'post');
   try {
     for (const entry of await fs.readdir(distPostDirectory, { withFileTypes: true })) {
-      if (entry.isDirectory() && !activePostPaths.has(`/post/${encodeURIComponent(entry.name)}`)) {
+      if (!entry.isDirectory()) continue;
+      const postPath = `/post/${encodeURIComponent(entry.name)}`;
+      if (!activePosts.has(postPath)) {
         await fs.rm(path.join(distPostDirectory, entry.name), { recursive: true, force: true });
       }
     }
@@ -102,50 +118,6 @@ async function removeStalePosts(cacheManifest) {
     if (error.code !== 'ENOENT') throw error;
   }
 }
-
-async function restoreCachedPosts(postFingerprints, cacheManifest) {
-  const postsToRender = [];
-  await fs.mkdir(postCacheDirectory, { recursive: true });
-  await fs.mkdir(path.join(dist, 'post'), { recursive: true });
-  const isLegacyManifest = cacheManifest.version !== cacheManifestVersion;
-  for (const postPath of postPaths) {
-    const output = path.join(dist, postPath.slice(1), 'index.html');
-    const cacheFile = cacheFileFor(postPath);
-    const fingerprint = postFingerprints.get(postPath);
-    const isCurrent = Boolean(fingerprint) && cacheManifest[postPath] === fingerprint;
-    const isLegacyCache = isLegacyManifest && Object.prototype.hasOwnProperty.call(cacheManifest, postPath);
-    let restored = (isCurrent || isLegacyCache) && await copyIfPresent(cacheFile, output);
-    if (restored) cacheManifest[postPath] = fingerprint;
-    if (!restored && cacheManifest[postPath] === undefined) {
-      restored = await copyIfPresent(output, cacheFile);
-      if (restored) cacheManifest[postPath] = fingerprint;
-    }
-    if (restored) console.error(`Reusing cached post: ${postPath}`);
-    else postsToRender.push(postPath);
-  }
-  return postsToRender;
-}
-
-if (postPaths.some((postPath) => !postPath.startsWith('/post/') || postPath.includes('..'))) {
-  throw new Error('Sitemap contains an invalid post route.');
-}
-
-const indexableSectionPaths = ['/', '/latest-jobs', '/results', '/admit-cards', '/answer-keys', '/syllabus', '/admission', '/important', '/certificates'];
-
-const previewCommand = process.execPath;
-const previewArgs = [
-  path.join(root, 'node_modules', 'vite', 'bin', 'vite.js'),
-  'preview',
-  '--host',
-  '127.0.0.1',
-  '--port',
-  '4173',
-];
-const preview = spawn(previewCommand, previewArgs, {
-  cwd: root,
-  stdio: 'ignore',
-  windowsHide: true,
-});
 
 async function waitForPreview() {
   for (let attempt = 0; attempt < 40; attempt += 1) {
@@ -157,37 +129,7 @@ async function waitForPreview() {
     }
     await new Promise((resolve) => setTimeout(resolve, 250));
   }
-  throw new Error('Vite preview server did not start in time.');
-}
-
-async function createRouteSession(browser) {
-  const context = await browser.newContext();
-  const page = await context.newPage();
-  page.setDefaultTimeout(15000);
-  return { context, page };
-}
-
-async function renderSectionRoute(page, sectionPath, output) {
-  const temporaryOutput = `${output}.tmp-${process.pid}`;
-  await page.goto(`http://127.0.0.1:4173${sectionPath}`, { waitUntil: 'domcontentloaded' });
-  await page.locator(sectionPath === '/' ? '.home-grid' : '.page-header').first().waitFor();
-  const html = await page.content();
-  if (!html.includes('<html') || !html.includes('<body')) {
-    throw new Error('Rendered output is not a complete page document.');
-  }
-  await fs.mkdir(path.dirname(output), { recursive: true });
-  await fs.writeFile(temporaryOutput, html, 'utf8');
-  await fs.rename(temporaryOutput, output);
-}
-
-async function renderSectionRouteWithFreshContext(browser, sectionPath, output) {
-  const session = await createRouteSession(browser);
-
-  try {
-    await renderSectionRoute(session.page, sectionPath, output);
-  } finally {
-    await session.context.close();
-  }
+  throw new Error('Vite preview server did not start. Run npm run build first.');
 }
 
 async function renderPostRoute(page, postPath, output) {
@@ -203,77 +145,85 @@ async function renderPostRoute(page, postPath, output) {
     throw new Error('Rendered output is not a complete post document.');
   }
   await fs.mkdir(path.dirname(output), { recursive: true });
-  await fs.writeFile(temporaryOutput, html, 'utf8');
+  await fs.writeFile(temporaryOutput, normalizeAssetReferences(html), 'utf8');
   await fs.rename(temporaryOutput, output);
 }
 
-async function renderPostRouteWithFreshContext(browser, postPath, output) {
-  const session = await createRouteSession(browser);
+async function renderChangedPosts(changedPosts, generatedPosts, contentFingerprints) {
+  if (!changedPosts.length) return;
+  if (!await fileExists(path.join(dist, 'index.html'))) {
+    throw new Error('The Vite build output is missing. Run npm run build before generating post HTML.');
+  }
+
+  const preview = spawn(process.execPath, [
+    path.join(root, 'node_modules', 'vite', 'bin', 'vite.js'),
+    'preview',
+    '--host',
+    '127.0.0.1',
+    '--port',
+    '4173',
+  ], { cwd: root, stdio: 'ignore', windowsHide: true });
+  let browser;
 
   try {
-    await renderPostRoute(session.page, postPath, output);
+    await waitForPreview();
+    browser = await chromium.launch({ headless: true });
+    const failures = [];
+    for (const postPath of changedPosts) {
+      console.log(`Prerendering changed post: ${postPath}`);
+      const context = await browser.newContext();
+      const page = await context.newPage();
+      page.setDefaultTimeout(15000);
+      try {
+        await renderPostRoute(page, postPath, postOutputFor(postPath));
+        const distOutput = path.join(dist, postPath.slice(1), 'index.html');
+        await fs.mkdir(path.dirname(distOutput), { recursive: true });
+        await fs.copyFile(postOutputFor(postPath), distOutput);
+        generatedPosts[postPath] = contentFingerprints.get(postPath);
+      } catch (error) {
+        failures.push(`${postPath}: ${error.message}`);
+      } finally {
+        await context.close();
+      }
+    }
+    if (failures.length) throw new Error(`Failed to prerender ${failures.length} post(s):\n${failures.join('\n')}`);
   } finally {
-    await session.context.close();
+    await browser?.close();
+    preview.kill();
   }
 }
 
-let browser;
+const contentFingerprints = await loadContentFingerprints();
+const generatedManifest = await readJson(generatedManifestFile, { version: manifestVersion, posts: {} });
+const generatedPosts = manifestPosts(generatedManifest);
+const generated = { version: manifestVersion, posts: generatedPosts };
+const previousGeneratedPaths = Object.keys(generatedPosts);
 
-try {
-  const postFingerprints = await loadPostFingerprints();
-  const cacheManifest = await readCacheManifest();
-  await removeStalePosts(cacheManifest);
-  await restoreCachedAssets();
-  const postsToRender = await restoreCachedPosts(postFingerprints, cacheManifest);
-  await waitForPreview();
-  console.error('Preview ready.');
-  const failures = [];
-  const totalRoutes = indexableSectionPaths.length + postsToRender.length;
-  let successfulRoutes = 0;
-  browser = await chromium.launch({ headless: true });
-  console.error(`Browser launched for ${totalRoutes} routes (${postPaths.length - postsToRender.length} cached posts reused).`);
+await removeDeletedPosts(generated.posts);
+await removeDeletedDistPosts();
+await fs.mkdir(generatedPostDirectory, { recursive: true });
 
-  for (const sectionPath of indexableSectionPaths) {
-    console.error(`Prerendering route ${successfulRoutes + failures.length + 1}/${totalRoutes}: ${sectionPath}`);
-    const output = sectionPath === '/' ? path.join(dist, 'index.html') : path.join(dist, sectionPath.slice(1), 'index.html');
-    try {
-      await renderSectionRouteWithFreshContext(browser, sectionPath, output);
-      successfulRoutes += 1;
-    } catch (error) {
-      console.error(`Section failed ${sectionPath}:`, error);
-      failures.push(`${sectionPath}: ${error.message}`);
-    }
+const changedPosts = [];
+let reusedPosts = 0;
+for (const postPath of postPaths) {
+  const output = postOutputFor(postPath);
+  const currentFingerprint = contentFingerprints.get(postPath);
+  const isCurrent = currentFingerprint && generated.posts[postPath] === currentFingerprint && await fileExists(output);
+  if (isCurrent) {
+    reusedPosts += 1;
+    continue;
   }
 
-  for (const postPath of postsToRender) {
-    console.error(`Prerendering route ${successfulRoutes + failures.length + 1}/${totalRoutes}: ${postPath}`);
-    const output = path.join(dist, postPath.slice(1), 'index.html');
-    try {
-      await renderPostRouteWithFreshContext(browser, postPath, output);
-      await fs.mkdir(path.dirname(cacheFileFor(postPath)), { recursive: true });
-      await fs.copyFile(output, cacheFileFor(postPath));
-      cacheManifest[postPath] = postFingerprints.get(postPath);
-      successfulRoutes += 1;
-    } catch (error) {
-      console.error(`Post failed ${postPath}:`, error);
-      failures.push(`${postPath}: ${error.message}`);
-    }
-  }
-
-  console.error(`Total routes: ${totalRoutes}`);
-  console.error(`Successful routes: ${successfulRoutes}`);
-  console.error(`Failed routes: ${failures.length}`);
-
-  if (failures.length) {
-    throw new Error(`Failed to prerender ${failures.length} route(s):\n${failures.join('\n')}`);
-  }
-
-  await fs.mkdir(prerenderCache, { recursive: true });
-  await snapshotAssets();
-  cacheManifest.version = cacheManifestVersion;
-  await fs.writeFile(cacheManifestFile, `${JSON.stringify(cacheManifest, null, 2)}\n`, 'utf8');
-  console.log(`Prerendered ${indexableSectionPaths.length} sections and ${postsToRender.length} changed posts; reused ${postPaths.length - postsToRender.length} cached posts.`);
-} finally {
-  await browser?.close();
-  preview.kill();
+  changedPosts.push(postPath);
 }
+
+const removedPosts = previousGeneratedPaths.filter((postPath) => !postPaths.includes(postPath)).length;
+console.log(`Detected ${reusedPosts} existing generated posts`);
+console.log(`Changed posts: ${changedPosts.length}`);
+console.log(`Generated: ${changedPosts.length}`);
+console.log(`Reused: ${reusedPosts}`);
+console.log(`Removed: ${removedPosts}`);
+
+await renderChangedPosts(changedPosts, generated.posts, contentFingerprints);
+await fs.writeFile(generatedManifestFile, `${JSON.stringify(generated, null, 2)}\n`, 'utf8');
+console.log(`Post generation complete: ${changedPosts.length} generated, ${reusedPosts} reused, ${removedPosts} removed.`);
