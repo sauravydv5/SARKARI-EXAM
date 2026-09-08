@@ -1,0 +1,41 @@
+{
+  "id": "ssc-selection-post-14-exam-city-2026",
+  "slug": "ssc-selection-post-14-exam-city-2026",
+  "title": "SSC Selection Post 14th Exam City 2026",
+  "organization": "Staff Selection Commission (SSC)",
+  "category": "admit-card",
+  "postName": "Selection Post Phase XIV - Matric, Intermediate and Graduate Level",
+  "totalVacancies": 3003,
+  "vacancyDetails": "SSC Selection Post Phase XIV: 3,003 vacancies across Matriculation, Higher Secondary and Graduation level posts",
+  "qualification": "Matriculation, 10+2 Intermediate or Bachelor Degree depending on the notified post",
+  "ageLimit": "18 to 25-30 years, post-wise; age relaxation as per SSC Selection Post rules",
+  "applicationFee": "General / EWS / OBC: Rs. 100; SC / ST / PH and all category female candidates: No fee",
+  "selectionProcess": "Computer Based Examination -> Document Verification / Skill Test as applicable for the post",
+  "documentsRequired": "SSC registration credentials, exam city details, admit card and original valid photo ID",
+  "howToApply": "1. Visit https://ssc.gov.in/login\n2. Log in to the SSC candidate portal\n3. Open Selection Post Phase XIV exam city or admit card link\n4. Download the exam city details and later the admit card\n5. Check the region, exam date, shift and reporting time carefully",
+  "shortDescription": "SSC Selection Post 14th Exam City 2026 for 3,003 Matric, Intermediate and Graduate level posts. The computer-based examination is scheduled from 16 to 26 September 2026.",
+  "content": "<p><strong>Staff Selection Commission (SSC)</strong> has released the <strong>Selection Post Phase XIV Exam City details 2026</strong> for Matriculation, Higher Secondary and Graduation level posts.</p><p>The recruitment covers <strong>3,003 posts</strong> across SSC regions. The computer-based examination is scheduled from <strong>16 September to 26 September 2026</strong>. Candidates should log in to the SSC portal to check their exam city and download the admit card when activated.</p><h3>Exam instructions</h3><ul><li>Check your exam city, date, shift and reporting time on the official portal.</li><li>Carry the printed admit card and original valid photo ID.</li><li>Follow the instructions printed on the admit card and SSC exam notice.</li></ul>",
+  "publishedAt": "2026-09-08T19:05:00.000Z",
+  "lastUpdated": "2026-09-08",
+  "lastVerified": "2026-09-08",
+  "isFeatured": true,
+  "isNew": true,
+  "importantDates": {
+    "notificationDate": "13 Apr 2026",
+    "startDate": "13 Apr 2026",
+    "lastDate": "Application closed; see official notice",
+    "examDate": "16-26 Sep 2026",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before examination"
+  },
+  "links": {
+    "downloadAdmitCard": "https://ssc.gov.in/login",
+    "examCity": "https://ssc.gov.in/login",
+    "examCityNotice": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/important_notice_21082026.pdf",
+    "examNotice": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/important_notice_21082026.pdf",
+    "officialNotification": "https://doc.sarkariresults.org.in/sarkariresult.com_SSC_Selection_Post_Notice_of_RHQ_2026_phase_xiv.pdf",
+    "officialWebsite": "https://ssc.gov.in/"
+  },
+  "tags": ["SSC", "Selection Post XIV", "Phase 14", "Exam City", "Admit Card", "3003 Posts"],
+  "views": 0
+}
