@@ -11,6 +11,7 @@ const prerenderCache = path.join(root, '.prerender-cache');
 const postCacheDirectory = path.join(prerenderCache, 'posts');
 const assetCacheDirectory = path.join(prerenderCache, 'assets');
 const cacheManifestFile = path.join(prerenderCache, 'manifest.json');
+const cacheManifestVersion = 2;
 const sitemap = await fs.readFile(path.join(root, 'public', 'sitemap.xml'), 'utf8');
 const postPaths = [...sitemap.matchAll(/<loc>https:\/\/sarkarijobhub\.website(\/post\/[^<]+)<\/loc>/g)]
   .map((match) => match[1])
@@ -36,7 +37,8 @@ async function loadPostFingerprints() {
     const post = JSON.parse(raw);
     const slug = String(post.slug || post.id || path.basename(filePath, '.json')).trim().toLowerCase();
     if (!slug) continue;
-    fingerprints.set(`/post/${encodeURIComponent(slug)}`, crypto.createHash('sha256').update(raw).digest('hex'));
+    const postPath = `/post/${encodeURIComponent(slug)}`;
+    fingerprints.set(postPath, crypto.createHash('sha256').update(raw.replace(/\r\n?/g, '\n')).digest('hex'));
   }
   return fingerprints;
 }
@@ -73,18 +75,50 @@ async function snapshotAssets() {
   await fs.cp(path.join(dist, 'assets'), assetCacheDirectory, { recursive: true, force: true });
 }
 
+async function removeStalePosts(cacheManifest) {
+  const activePostPaths = new Set(postPaths);
+  for (const cachePath of Object.keys(cacheManifest)) {
+    if (cachePath.startsWith('/post/') && !activePostPaths.has(cachePath)) delete cacheManifest[cachePath];
+  }
+
+  try {
+    for (const entry of await fs.readdir(postCacheDirectory, { withFileTypes: true })) {
+      if (entry.isFile() && !activePostPaths.has(`/post/${encodeURIComponent(entry.name.replace(/\.html$/i, ''))}`)) {
+        await fs.rm(path.join(postCacheDirectory, entry.name), { force: true });
+      }
+    }
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+
+  const distPostDirectory = path.join(dist, 'post');
+  try {
+    for (const entry of await fs.readdir(distPostDirectory, { withFileTypes: true })) {
+      if (entry.isDirectory() && !activePostPaths.has(`/post/${encodeURIComponent(entry.name)}`)) {
+        await fs.rm(path.join(distPostDirectory, entry.name), { recursive: true, force: true });
+      }
+    }
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+}
+
 async function restoreCachedPosts(postFingerprints, cacheManifest) {
   const postsToRender = [];
   await fs.mkdir(postCacheDirectory, { recursive: true });
   await fs.mkdir(path.join(dist, 'post'), { recursive: true });
+  const isLegacyManifest = cacheManifest.version !== cacheManifestVersion;
   for (const postPath of postPaths) {
     const output = path.join(dist, postPath.slice(1), 'index.html');
     const cacheFile = cacheFileFor(postPath);
-    const isCurrent = cacheManifest[postPath] === postFingerprints.get(postPath);
-    let restored = isCurrent && await copyIfPresent(cacheFile, output);
+    const fingerprint = postFingerprints.get(postPath);
+    const isCurrent = Boolean(fingerprint) && cacheManifest[postPath] === fingerprint;
+    const isLegacyCache = isLegacyManifest && Object.prototype.hasOwnProperty.call(cacheManifest, postPath);
+    let restored = (isCurrent || isLegacyCache) && await copyIfPresent(cacheFile, output);
+    if (restored) cacheManifest[postPath] = fingerprint;
     if (!restored && cacheManifest[postPath] === undefined) {
       restored = await copyIfPresent(output, cacheFile);
-      if (restored) cacheManifest[postPath] = postFingerprints.get(postPath);
+      if (restored) cacheManifest[postPath] = fingerprint;
     }
     if (restored) console.error(`Reusing cached post: ${postPath}`);
     else postsToRender.push(postPath);
@@ -188,6 +222,7 @@ let browser;
 try {
   const postFingerprints = await loadPostFingerprints();
   const cacheManifest = await readCacheManifest();
+  await removeStalePosts(cacheManifest);
   await restoreCachedAssets();
   const postsToRender = await restoreCachedPosts(postFingerprints, cacheManifest);
   await waitForPreview();
@@ -235,6 +270,7 @@ try {
 
   await fs.mkdir(prerenderCache, { recursive: true });
   await snapshotAssets();
+  cacheManifest.version = cacheManifestVersion;
   await fs.writeFile(cacheManifestFile, `${JSON.stringify(cacheManifest, null, 2)}\n`, 'utf8');
   console.log(`Prerendered ${indexableSectionPaths.length} sections and ${postsToRender.length} changed posts; reused ${postPaths.length - postsToRender.length} cached posts.`);
 } finally {
