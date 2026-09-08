@@ -20,7 +20,7 @@
   "isNew": true,
   "importantDates": {
     "notificationDate": "08 Sep 2026",
-    "startDate": "08 Sep 2026",
+    "startDate": "08 Sep 2026 - आवेदन शुरू ",
     "lastDate": "29 Sep 2026",
     "feePaymentLastDate": "30 Sep 2026",
     "correctionDate": "As per official notice",
@@ -29,7 +29,7 @@
     "admitCardDate": "Before exam"
   },
   "links": {
-    "applyOnline": "https://ssc.gov.in",
+    "applyOnline": "https://ssc.gov.in/login",
     "importantLink": "https://ssc.gov.in",
     "officialNotification": "https://ssc.gov.in",
     "officialWebsite": "https://ssc.gov.in",
