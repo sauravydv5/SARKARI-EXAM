@@ -1,16 +1,96 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
+const prerenderCache = path.join(root, '.prerender-cache');
+const postCacheDirectory = path.join(prerenderCache, 'posts');
+const assetCacheDirectory = path.join(prerenderCache, 'assets');
+const cacheManifestFile = path.join(prerenderCache, 'manifest.json');
 const sitemap = await fs.readFile(path.join(root, 'public', 'sitemap.xml'), 'utf8');
 const postPaths = [...sitemap.matchAll(/<loc>https:\/\/sarkarijobhub\.website(\/post\/[^<]+)<\/loc>/g)]
   .map((match) => match[1])
   .filter((value, index, values) => values.indexOf(value) === index);
 console.error(`Prerender input loaded: ${postPaths.length} post routes.`);
+
+async function walkJsonFiles(directory) {
+  const files = [];
+  for (const entry of await fs.readdir(directory, { withFileTypes: true })) {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) files.push(...await walkJsonFiles(entryPath));
+    else if (entry.isFile() && entry.name.toLowerCase().endsWith('.json')) files.push(entryPath);
+  }
+  return files;
+}
+
+async function loadPostFingerprints() {
+  const fingerprints = new Map();
+  const contentDirectory = path.join(root, 'content');
+  for (const filePath of await walkJsonFiles(contentDirectory)) {
+    if (path.basename(filePath).toLowerCase().includes(' copy.json')) continue;
+    const raw = await fs.readFile(filePath, 'utf8');
+    const post = JSON.parse(raw);
+    const slug = String(post.slug || post.id || path.basename(filePath, '.json')).trim().toLowerCase();
+    if (!slug) continue;
+    fingerprints.set(`/post/${encodeURIComponent(slug)}`, crypto.createHash('sha256').update(raw).digest('hex'));
+  }
+  return fingerprints;
+}
+
+async function readCacheManifest() {
+  try {
+    return JSON.parse(await fs.readFile(cacheManifestFile, 'utf8'));
+  } catch {
+    return {};
+  }
+}
+
+function cacheFileFor(postPath) {
+  return path.join(postCacheDirectory, `${decodeURIComponent(postPath.slice('/post/'.length))}.html`);
+}
+
+async function copyIfPresent(source, destination) {
+  try {
+    await fs.copyFile(source, destination);
+    return true;
+  } catch (error) {
+    if (error.code === 'ENOENT') return false;
+    throw error;
+  }
+}
+
+async function restoreCachedAssets() {
+  await fs.cp(assetCacheDirectory, path.join(dist, 'assets'), { recursive: true, force: true }).catch((error) => {
+    if (error.code !== 'ENOENT') throw error;
+  });
+}
+
+async function snapshotAssets() {
+  await fs.cp(path.join(dist, 'assets'), assetCacheDirectory, { recursive: true, force: true });
+}
+
+async function restoreCachedPosts(postFingerprints, cacheManifest) {
+  const postsToRender = [];
+  await fs.mkdir(postCacheDirectory, { recursive: true });
+  await fs.mkdir(path.join(dist, 'post'), { recursive: true });
+  for (const postPath of postPaths) {
+    const output = path.join(dist, postPath.slice(1), 'index.html');
+    const cacheFile = cacheFileFor(postPath);
+    const isCurrent = cacheManifest[postPath] === postFingerprints.get(postPath);
+    let restored = isCurrent && await copyIfPresent(cacheFile, output);
+    if (!restored && cacheManifest[postPath] === undefined) {
+      restored = await copyIfPresent(output, cacheFile);
+      if (restored) cacheManifest[postPath] = postFingerprints.get(postPath);
+    }
+    if (restored) console.error(`Reusing cached post: ${postPath}`);
+    else postsToRender.push(postPath);
+  }
+  return postsToRender;
+}
 
 if (postPaths.some((postPath) => !postPath.startsWith('/post/') || postPath.includes('..'))) {
   throw new Error('Sitemap contains an invalid post route.');
@@ -106,13 +186,17 @@ async function renderPostRouteWithFreshContext(browser, postPath, output) {
 let browser;
 
 try {
+  const postFingerprints = await loadPostFingerprints();
+  const cacheManifest = await readCacheManifest();
+  await restoreCachedAssets();
+  const postsToRender = await restoreCachedPosts(postFingerprints, cacheManifest);
   await waitForPreview();
   console.error('Preview ready.');
   const failures = [];
-  const totalRoutes = indexableSectionPaths.length + postPaths.length;
+  const totalRoutes = indexableSectionPaths.length + postsToRender.length;
   let successfulRoutes = 0;
   browser = await chromium.launch({ headless: true });
-  console.error(`Browser launched for ${totalRoutes} routes.`);
+  console.error(`Browser launched for ${totalRoutes} routes (${postPaths.length - postsToRender.length} cached posts reused).`);
 
   for (const sectionPath of indexableSectionPaths) {
     console.error(`Prerendering route ${successfulRoutes + failures.length + 1}/${totalRoutes}: ${sectionPath}`);
@@ -126,11 +210,14 @@ try {
     }
   }
 
-  for (const postPath of postPaths) {
+  for (const postPath of postsToRender) {
     console.error(`Prerendering route ${successfulRoutes + failures.length + 1}/${totalRoutes}: ${postPath}`);
     const output = path.join(dist, postPath.slice(1), 'index.html');
     try {
       await renderPostRouteWithFreshContext(browser, postPath, output);
+      await fs.mkdir(path.dirname(cacheFileFor(postPath)), { recursive: true });
+      await fs.copyFile(output, cacheFileFor(postPath));
+      cacheManifest[postPath] = postFingerprints.get(postPath);
       successfulRoutes += 1;
     } catch (error) {
       console.error(`Post failed ${postPath}:`, error);
@@ -146,7 +233,10 @@ try {
     throw new Error(`Failed to prerender ${failures.length} route(s):\n${failures.join('\n')}`);
   }
 
-  console.log(`Prerendered ${totalRoutes} routes.`);
+  await fs.mkdir(prerenderCache, { recursive: true });
+  await snapshotAssets();
+  await fs.writeFile(cacheManifestFile, `${JSON.stringify(cacheManifest, null, 2)}\n`, 'utf8');
+  console.log(`Prerendered ${indexableSectionPaths.length} sections and ${postsToRender.length} changed posts; reused ${postPaths.length - postsToRender.length} cached posts.`);
 } finally {
   await browser?.close();
   preview.kill();
