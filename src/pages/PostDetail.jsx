@@ -82,6 +82,20 @@ function LinkRow({ label, href, text }) {
   );
 }
 
+function NoticeImageButton({ image, onOpen }) {
+  if (!image) return null;
+  return (
+    <tr>
+      <th>Short Notice</th>
+      <td>
+        <button type="button" className="pd-table-link pd-image-button" onClick={onOpen}>
+          🖼️ View Short Notice
+        </button>
+      </td>
+    </tr>
+  );
+}
+
 function QuickInfo({ post, dates, postType }) {
   if (['recruitment', 'notification', 'admission'].includes(postType)) return null;
 
@@ -159,10 +173,12 @@ export default function PostDetail() {
   const [related, setRelated] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+  const [showNoticeImage, setShowNoticeImage] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
     setLoading(true);
+    setShowNoticeImage(false);
     window.scrollTo(0, 0);
     (async () => {
       try {
@@ -641,6 +657,10 @@ export default function PostDetail() {
               <table className="pd-full-table pd-links-table">
                 <tbody>
                   <LinkRow label={primaryLabel} href={primaryHref} text="Open Official Link" />
+                  <NoticeImageButton
+                    image={post.noticeImage}
+                    onOpen={() => setShowNoticeImage(true)}
+                  />
                   {links.writtenResult && <LinkRow label="Download Written Result" href={links.writtenResult} text="Open Written Result" />}
                   {links.answerKey && <LinkRow label="Download Answer Key" href={links.answerKey} text="Open Answer Key" />}
                   {links.answerKeyNotice && <LinkRow label="Answer Key Notice" href={links.answerKeyNotice} text="Open Notice" />}
@@ -699,6 +719,24 @@ export default function PostDetail() {
               </div>
             )}
           </section>
+
+          {showNoticeImage && post.noticeImage && (
+            <div className="pd-image-modal" role="dialog" aria-modal="true" aria-label="Short notice image">
+              <button
+                type="button"
+                className="pd-image-modal-backdrop"
+                aria-label="Close short notice"
+                onClick={() => setShowNoticeImage(false)}
+              />
+              <div className="pd-image-modal-content">
+                <div className="pd-image-modal-head">
+                  <h2>{post.title}</h2>
+                  <button type="button" className="pd-image-modal-close" onClick={() => setShowNoticeImage(false)} aria-label="Close short notice">×</button>
+                </div>
+                <img src={post.noticeImage} alt={`${post.title} short notice`} />
+              </div>
+            </div>
+          )}
 
           <section className="pd-section">
             <div className="pd-section-head">

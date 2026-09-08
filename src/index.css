@@ -2116,6 +2116,70 @@ img {
   color: #fff !important;
 }
 
+.pd-image-button {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.pd-image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.pd-image-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(15, 23, 42, 0.78);
+  cursor: pointer;
+}
+
+.pd-image-modal-content {
+  position: relative;
+  z-index: 1;
+  width: min(960px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+  padding: 18px;
+  background: var(--card, #fff);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.pd-image-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.pd-image-modal-head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.pd-image-modal-close {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.pd-image-modal-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border, #ddd);
+}
+
 .pd-muted {
   color: #94a3b8;
   font-style: italic;
