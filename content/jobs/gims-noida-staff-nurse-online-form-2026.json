@@ -5,37 +5,66 @@
   "title": "GIMS Noida Staff Nurse Online Form 2026",
   "organization": "Government Institute of Medical Sciences, Greater Noida",
   "postName": "Staff Nurse",
-  "totalVacancies": 0,
-  "vacancyDetails": "Staff Nurse",
-  "qualification": "GNM / B.Sc Nursing with registration as per GIMS notice",
-  "ageLimit": "As published in the official notification",
-  "applicationFee": "As published in the official notification",
-  "selectionProcess": "Online application → Written exam / CBT / PET as notified → Document verification → Final merit",
+  "totalVacancies": 100,
+  "vacancyDetails": "Staff Nurse: 100 posts (UR: 40, OBC: 27, EWS: 10, SC: 21, ST: 2)",
+  "qualification": "B.Sc Nursing / Post B.Sc Nursing Degree OR GNM / Diploma in Nursing with 2 years of experience. Read the notification for complete eligibility.",
+  "ageLimit": "21 to 40 years as on 01/07/2026; age relaxation is applicable as per GIMS Noida Staff Nurse recruitment rules",
+  "applicationFee": "General / OBC / EWS: Rs. 1,298/-; SC / ST / PH: Rs. 944/- (including GST)",
+  "selectionProcess": "Written examination as notified → Document verification → Final merit",
   "documentsRequired": "Photo, signature, educational certificates, category certificate (if any) and valid photo ID",
   "howToApply": "1. Visit https://gims.noida.gov.in\n2. Open the latest advertisement for GIMS Noida Staff Nurse Online Form 2026\n3. Register or log in and fill the application\n4. Upload photo, signature and required documents, then pay the fee if applicable\n5. Submit and print the confirmation page",
-  "shortDescription": "GIMS Noida Staff Nurse Online Form 2026. See the official notice at gims.noida.gov.in.",
-  "content": "<p><strong>Government Institute of Medical Sciences, Greater Noida</strong> has published an update for <strong>Staff Nurse</strong>. Confirm the current eligibility, fee and dates in the linked notice.</p><h3>How to apply</h3><ol><li>Open <strong>gims.noida.gov.in</strong></li><li>Complete registration / OTR if required</li><li>Fill the form, upload documents and pay the fee</li><li>Print the confirmation page</li></ol>",
+  "shortDescription": "GIMS Noida Staff Nurse Online Form 2026 for 100 posts. Apply online from 10/08/2026 to 30/09/2026.",
+  "content": "<p><strong>Government Institute of Medical Sciences (GIMS), Greater Noida</strong> has invited online applications for <strong>100 Staff Nurse posts</strong>. Eligible candidates can apply online from <strong>10/08/2026</strong> to <strong>30/09/2026</strong>.</p><h3>Eligibility</h3><ul><li>B.Sc Nursing or Post B.Sc Nursing Degree, or GNM / Diploma in Nursing with 2 years of experience.</li><li>Age limit: 21 to 40 years as on 01/07/2026. Age relaxation applies as per the recruitment rules.</li></ul><h3>Application fee</h3><p>General / OBC / EWS candidates: <strong>Rs. 1,298/-</strong>; SC / ST / PH candidates: <strong>Rs. 944/-</strong>, including GST. Pay through online or offline fee mode only.</p><h3>How to apply</h3><ol><li>Open the official application link.</li><li>Read the notification and complete the application form.</li><li>Upload the required documents and pay the fee.</li><li>Preview, submit and print the final form.</li></ol>",
   "publishedAt": "2026-08-19T11:11:00.000Z",
-  "lastUpdated": "2026-08-19",
+  "lastUpdated": "2026-09-08",
   "sourceUrl": "https://gims.noida.gov.in",
-  "isFeatured": false,
+  "isFeatured": true,
   "isNew": true,
+  "sortPriority": 1000,
   "importantDates": {
-    "notificationDate": "See official notice",
-    "startDate": "See official notice",
-    "lastDate": "See official notice",
-    "examDate": "See official notice",
-    "resultDate": "See official notice",
-    "admitCardDate": "See official notice"
+    "notificationDate": "10/08/2026",
+    "startDate": "10/08/2026",
+    "lastDate": "30/09/2026 (Date Extended)",
+    "feePaymentLastDate": "30/09/2026",
+    "examDate": "As per Schedule",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before Exam"
   },
   "links": {
-    "applyOnline": "https://gims.noida.gov.in",
-    "officialWebsite": "https://gims.noida.gov.in",
-    "officialNotification": "https://gims.noida.gov.in"
+    "applyOnline": "https://cdn3.digialm.com/EForms/configuredHtml/31586/101679/Index.html",
+    "howToFillForm": "https://youtu.be/klLi4B2MS7A",
+    "officialWebsite": "https://www.gims.ac.in/recruitment.html",
+    "officialNotification": "https://doc.sarkariresults.org.in/GIMS_Staff_Nruse.pdf"
   },
   "tags": [
     "GIMS Noida",
     "Staff Nurse"
+  ],
+  "faqs": [
+    {
+      "question": "How many vacancies are available in GIMS Noida Staff Nurse Recruitment 2026?",
+      "answer": "There are 100 Staff Nurse vacancies: 40 UR, 27 OBC, 10 EWS, 21 SC and 2 ST posts."
+    },
+    {
+      "question": "What is the last date to apply for GIMS Noida Staff Nurse Online Form 2026?",
+      "answer": "The last date to apply online and pay the examination fee is 30/09/2026. The application deadline has been extended."
+    },
+    {
+      "question": "What is the age limit for GIMS Noida Staff Nurse Recruitment 2026?",
+      "answer": "The minimum age is 21 years and the maximum age is 40 years as on 01/07/2026. Age relaxation is available as per the recruitment rules."
+    },
+    {
+      "question": "What is the application fee for GIMS Noida Staff Nurse 2026?",
+      "answer": "General, OBC and EWS candidates pay Rs. 1,298/-, while SC, ST and PH candidates pay Rs. 944/-. The fee includes GST."
+    },
+    {
+      "question": "What is the qualification for GIMS Staff Nurse Recruitment 2026?",
+      "answer": "Candidates need a B.Sc Nursing or Post B.Sc Nursing degree, or GNM / Diploma in Nursing with 2 years of experience. Refer to the notification for complete eligibility."
+    },
+    {
+      "question": "Where can I download the GIMS Noida Staff Nurse notification?",
+      "answer": "Download the notification from the Download Notification link in the Important Links section of this page."
+    }
   ],
   "views": 2033
 }
