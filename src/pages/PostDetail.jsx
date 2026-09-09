@@ -420,10 +420,26 @@ export default function PostDetail() {
                 : isNotification
                   ? 'Notification'
                   : 'Update';
-  const aboutContent = splitPostContent(
-    post.content,
-    isAdmitCard ? ['how to download admit card', 'eligibility', 'application fee', 'age limit'] : []
-  );
+  const contentSkipHeadings = ['important dates'];
+  if (isRecruitment || isAdmission) {
+    contentSkipHeadings.push(
+      'eligibility',
+      'application fee',
+      'age limit',
+      'vacancy',
+      'selection process',
+      'how to fill online form'
+    );
+  }
+  if (isAdmitCard) {
+    contentSkipHeadings.push('how to download admit card', 'eligibility', 'application fee', 'age limit');
+  }
+  if (isResult) contentSkipHeadings.push('result overview', 'how to check result');
+  if (isAnswerKey) contentSkipHeadings.push('how to download answer key');
+  if (isSyllabus) contentSkipHeadings.push('syllabus overview');
+  if (isCertificate) contentSkipHeadings.push('certificate download process');
+
+  const aboutContent = splitPostContent(post.content, contentSkipHeadings);
 
   const factMap = new Map(canonicalFacts.map((fact) => [fact.key, fact.value]));
   const uniqueFactValue = (key, fallback = SOON) => factMap.get(key) || fallback;
