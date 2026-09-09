@@ -9,7 +9,7 @@
     "generate:posts": "npm run generate:sitemap && vite build && node scripts/prerender-posts.mjs",
     "postinstall": "playwright install chromium",
     "prebuild": "npm run generate:sitemap",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender-posts.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },
