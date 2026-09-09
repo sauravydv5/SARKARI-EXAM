@@ -55,6 +55,49 @@ function val(v, fallback = SOON) {
   return s;
 }
 
+function splitPostContent(content, skipHeadings = []) {
+  const sanitized = sanitizeHtml(content);
+  if (!sanitized || typeof DOMParser === 'undefined') {
+    return { introHtml: sanitized, sections: [] };
+  }
+
+  const parsed = new DOMParser().parseFromString(`<div>${sanitized}</div>`, 'text/html');
+  const source = parsed.body.firstElementChild;
+  const intro = [];
+  const sections = [];
+  let currentSection = null;
+  let skippingDates = false;
+
+  Array.from(source?.childNodes || []).forEach((node) => {
+    const isHeading = node.nodeType === 1 && /^(H2|H3|H4)$/.test(node.tagName);
+
+    if (isHeading) {
+      const title = node.textContent.trim();
+      const normalizedTitle = title.toLowerCase();
+      skippingDates = normalizedTitle.includes('important dates')
+        || skipHeadings.some((heading) => normalizedTitle.includes(heading));
+      currentSection = null;
+
+      if (!skippingDates) {
+        currentSection = { title, body: [] };
+        sections.push(currentSection);
+      }
+      return;
+    }
+
+    if (skippingDates) return;
+
+    const html = node.nodeType === 3 ? node.textContent : node.outerHTML;
+    if (currentSection) currentSection.body.push(html);
+    else intro.push(html);
+  });
+
+  return {
+    introHtml: intro.join(''),
+    sections: sections.map((section) => ({ ...section, bodyHtml: section.body.join('') })),
+  };
+}
+
 function TableRow({ label, children, highlight }) {
   if (children === null || children === undefined || (typeof children === 'string' && !children.trim())) return null;
   return (
@@ -360,6 +403,27 @@ export default function PostDetail() {
   const guideIntro = guide.overview;
   const faqItems = guide.faqItems;
   const canonicalFacts = summarizeRecruitmentFacts(post);
+  const aboutLabel = isResult
+    ? 'Result'
+    : isAdmitCard
+      ? 'Admit Card'
+      : isAnswerKey
+        ? 'Answer Key'
+        : isSyllabus
+          ? 'Syllabus'
+          : isCertificate
+            ? 'Certificate'
+            : isAdmission
+              ? 'Admission'
+              : isRecruitment
+                ? 'Job Update'
+                : isNotification
+                  ? 'Notification'
+                  : 'Update';
+  const aboutContent = splitPostContent(
+    post.content,
+    isAdmitCard ? ['how to download admit card', 'eligibility', 'application fee', 'age limit'] : []
+  );
 
   const factMap = new Map(canonicalFacts.map((fact) => [fact.key, fact.value]));
   const uniqueFactValue = (key, fallback = SOON) => factMap.get(key) || fallback;
@@ -573,6 +637,113 @@ export default function PostDetail() {
             </div>
           </section>}
 
+          {isAdmitCard && <>
+            <section className="pd-section">
+              <div className="pd-section-head"><h2>💳 Application Fee</h2></div>
+              <div className="pd-table-wrap">
+                <table className="pd-full-table">
+                  <tbody>
+                    <TableRow label="Fee Details" highlight>
+                      {val(post.applicationFee, 'As per the official admit-card notification')}
+                    </TableRow>
+                    <TableRow label="Payment Mode">Online payment mode as specified in the official notice.</TableRow>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section className="pd-section">
+              <div className="pd-section-head"><h2>⏳ Age Limit</h2></div>
+              <div className="pd-table-wrap">
+                <table className="pd-full-table">
+                  <tbody>
+                    <TableRow label="Age Limit Details" highlight>
+                      {val(post.ageLimit, 'As per the official admit-card notification')}
+                    </TableRow>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section className="pd-section">
+              <div className="pd-section-head"><h2>👥 Eligibility Details</h2></div>
+              <div className="pd-table-wrap">
+                <table className="pd-full-table">
+                  <tbody>
+                    <TableRow label="Educational Qualification" highlight>
+                      {val(post.qualification, 'As per the official admit-card notification')}
+                    </TableRow>
+                    <TableRow label="Other Eligibility Conditions">
+                      Check the official notification for category, document and examination requirements.
+                    </TableRow>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </>}
+
+          {/* Important Links — directly below eligibility */}
+          <section className="pd-section pd-links-section">
+            <div className="pd-section-head">
+              <h2>🔗 Important Links</h2>
+            </div>
+            <div className="pd-table-wrap">
+              <table className="pd-full-table pd-links-table">
+                <tbody>
+                  <LinkRow label={primaryLabel} href={primaryHref} text="Open Official Link" />
+                  <NoticeImageButton image={post.noticeImage} onOpen={() => setShowNoticeImage(true)} />
+                  {links.writtenResult && <LinkRow label="Download Written Result" href={links.writtenResult} text="Open Written Result" />}
+                  {links.answerKey && <LinkRow label="Download Answer Key" href={links.answerKey} text="Open Answer Key" />}
+                  {links.answerKeyNotice && <LinkRow label="Answer Key Notice" href={links.answerKeyNotice} text="Open Notice" />}
+                  {links.finalAnswerKey && <LinkRow label="Download Final Answer Key" href={links.finalAnswerKey} text="Open Final Key" />}
+                  {links.scoreCard && <LinkRow label="Download Score Card / Certificate" href={links.scoreCard} text="Open Score Card" />}
+                  {links.omrSheet && <LinkRow label="Download OMR Sheet" href={links.omrSheet} text="Open OMR Sheet" />}
+                  {links.downloadAdmitCard && <LinkRow label="Download Admit Card" href={links.downloadAdmitCard} text="Open Admit Card" />}
+                  {links.admitCardNotice && <LinkRow label="Admit Card Notice" href={links.admitCardNotice} text="Open Notice" />}
+                  {links.examCity && <LinkRow label="Exam City Details" href={links.examCity} text="Open City Details" />}
+                  {links.examCityNotice && <LinkRow label="Exam City Notice" href={links.examCityNotice} text="Open Notice" />}
+                  {links.correctionForm && <LinkRow label="Correction Form" href={links.correctionForm} text="Open Correction Form" />}
+                  {links.correctionNotice && <LinkRow label="Correction Notice" href={links.correctionNotice} text="Open Notice" />}
+                  {links.disqualifiedList && <LinkRow label="Disqualified List" href={links.disqualifiedList} text="Open List" />}
+                  {links.examSchedule && <LinkRow label="Exam Schedule Notice" href={links.examSchedule} text="Open Schedule" />}
+                  {links.downloadSyllabus && <LinkRow label="Paper I & II Exam Syllabus" href={links.downloadSyllabus} text="Download Syllabus" />}
+                  {links.notificationEnglish && <LinkRow label="Notification (English)" href={links.notificationEnglish} text="Download English PDF" />}
+                  {links.notificationHindi && <LinkRow label="Notification (Hindi)" href={links.notificationHindi} text="Download Hindi PDF" />}
+                  {(links.officialNotification || links.importantLink) && <LinkRow label="Notification" href={links.officialNotification || links.importantLink} text="Download Notification" />}
+                  {links.registration && <LinkRow label="खुद का पंजीकरण" href={links.registration} text="पंजीकरण करें" />}
+                  {links.forgotPassword && <LinkRow label="पासवर्ड भूल गए?" href={links.forgotPassword} text="पासवर्ड सहायता" />}
+                  {links.applicationStatus && <LinkRow label="आवेदन की स्थिति देखें" href={links.applicationStatus} text="स्थिति देखें" />}
+                  {links.certificateDownload && <LinkRow label="सर्टिफिकेट डाउनलोड करें" href={links.certificateDownload} text="डाउनलोड करें" />}
+                  {links.eligibilityCheck && <LinkRow label="अपनी पात्रता जानें" href={links.eligibilityCheck} text="पात्रता जांचें" />}
+                  {links.residenceCertificate && <LinkRow label="आवासीय प्रमाण-पत्र" href={links.residenceCertificate} text="आवेदन करें" />}
+                  {links.casteCertificate && <LinkRow label="जाति प्रमाण-पत्र" href={links.casteCertificate} text="आवेदन करें" />}
+                  {links.incomeCertificate && <LinkRow label="आय प्रमाण-पत्र" href={links.incomeCertificate} text="आवेदन करें" />}
+                  {links.nclStateCertificate && <LinkRow label="नॉन क्रीमी लेयर प्रमाण-पत्र (बिहार)" href={links.nclStateCertificate} text="आवेदन करें" />}
+                  {links.nclCentralCertificate && <LinkRow label="नॉन क्रीमी लेयर प्रमाण-पत्र (केंद्र)" href={links.nclCentralCertificate} text="आवेदन करें" />}
+                  {links.ewsCertificate && <LinkRow label="EWS आय और संपत्ति प्रमाण-पत्र" href={links.ewsCertificate} text="आवेदन करें" />}
+                  {links.nclFormPdf && <LinkRow label="NCL Form VIII PDF" href={links.nclFormPdf} text="PDF डाउनलोड करें" />}
+                  {links.formXIPdf && <LinkRow label="Form XI PDF" href={links.formXIPdf} text="PDF डाउनलोड करें" />}
+                  {Array.isArray(links.serviceLinks) && links.serviceLinks.map((service) => (
+                    <LinkRow key={`${service.label}-${service.href}`} label={service.label} href={service.href} text={service.text} />
+                  ))}
+                  {links.brochure && <LinkRow label="Download Brochure" href={links.brochure} text="Open Brochure" />}
+                  {links.officialWebsite && <LinkRow label="Official Website" href={links.officialWebsite} text="Visit Website" />}
+                </tbody>
+              </table>
+            </div>
+            {(primaryHref || (isRecruitment || isAdmission || isNotification)) && (
+              <div className="pd-big-cta-wrap">
+                {primaryHref ? (
+                  <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="pd-big-cta">
+                    {primaryLabel} ↗
+                  </a>
+                ) : (
+                  <div className="pd-big-cta" style={{ pointerEvents: 'none', opacity: 0.9 }}>{primaryLabel}</div>
+                )}
+              </div>
+            )}
+          </section>
+
           {/* Documents */}
           {(isRecruitment || isAdmission || isAdmitCard || isAnswerKey || isCertificate) && <section className="pd-section">
             <div className="pd-section-head">
@@ -648,78 +819,6 @@ export default function PostDetail() {
           </section>
           : null}
 
-          {/* Important Links — classic table */}
-          <section className="pd-section pd-links-section">
-            <div className="pd-section-head">
-              <h2>🔗 Important Links</h2>
-            </div>
-            <div className="pd-table-wrap">
-              <table className="pd-full-table pd-links-table">
-                <tbody>
-                  <LinkRow label={primaryLabel} href={primaryHref} text="Open Official Link" />
-                  <NoticeImageButton
-                    image={post.noticeImage}
-                    onOpen={() => setShowNoticeImage(true)}
-                  />
-                  {links.writtenResult && <LinkRow label="Download Written Result" href={links.writtenResult} text="Open Written Result" />}
-                  {links.answerKey && <LinkRow label="Download Answer Key" href={links.answerKey} text="Open Answer Key" />}
-                  {links.answerKeyNotice && <LinkRow label="Answer Key Notice" href={links.answerKeyNotice} text="Open Notice" />}
-                  {links.finalAnswerKey && <LinkRow label="Download Final Answer Key" href={links.finalAnswerKey} text="Open Final Key" />}
-                  {links.scoreCard && <LinkRow label="Download Score Card / Certificate" href={links.scoreCard} text="Open Score Card" />}
-                  {links.omrSheet && <LinkRow label="Download OMR Sheet" href={links.omrSheet} text="Open OMR Sheet" />}
-                  {links.downloadAdmitCard && <LinkRow label="Download Admit Card" href={links.downloadAdmitCard} text="Open Admit Card" />}
-                  {links.admitCardNotice && <LinkRow label="Admit Card Notice" href={links.admitCardNotice} text="Open Notice" />}
-                  {links.examCity && <LinkRow label="Exam City Details" href={links.examCity} text="Open City Details" />}
-                  {links.examCityNotice && <LinkRow label="Exam City Notice" href={links.examCityNotice} text="Open Notice" />}
-                  {links.correctionForm && <LinkRow label="Correction Form" href={links.correctionForm} text="Open Correction Form" />}
-                  {links.correctionNotice && <LinkRow label="Correction Notice" href={links.correctionNotice} text="Open Notice" />}
-                  {links.disqualifiedList && <LinkRow label="Disqualified List" href={links.disqualifiedList} text="Open List" />}
-                  {links.examSchedule && <LinkRow label="Exam Schedule Notice" href={links.examSchedule} text="Open Schedule" />}
-                  {links.downloadSyllabus && <LinkRow label="Paper I & II Exam Syllabus" href={links.downloadSyllabus} text="Download Syllabus" />}
-                  {links.notificationEnglish && <LinkRow label="Notification (English)" href={links.notificationEnglish} text="Download English PDF" />}
-                  {links.notificationHindi && <LinkRow label="Notification (Hindi)" href={links.notificationHindi} text="Download Hindi PDF" />}
-                  {(links.officialNotification || links.importantLink) && <LinkRow label="Notification" href={links.officialNotification || links.importantLink} text="Download Notification" />}
-                  {links.registration && <LinkRow label="खुद का पंजीकरण" href={links.registration} text="पंजीकरण करें" />}
-                  {links.forgotPassword && <LinkRow label="पासवर्ड भूल गए?" href={links.forgotPassword} text="पासवर्ड सहायता" />}
-                  {links.applicationStatus && <LinkRow label="आवेदन की स्थिति देखें" href={links.applicationStatus} text="स्थिति देखें" />}
-                  {links.certificateDownload && <LinkRow label="सर्टिफिकेट डाउनलोड करें" href={links.certificateDownload} text="डाउनलोड करें" />}
-                  {links.eligibilityCheck && <LinkRow label="अपनी पात्रता जानें" href={links.eligibilityCheck} text="पात्रता जांचें" />}
-                  {links.residenceCertificate && <LinkRow label="आवासीय प्रमाण-पत्र" href={links.residenceCertificate} text="आवेदन करें" />}
-                  {links.casteCertificate && <LinkRow label="जाति प्रमाण-पत्र" href={links.casteCertificate} text="आवेदन करें" />}
-                  {links.incomeCertificate && <LinkRow label="आय प्रमाण-पत्र" href={links.incomeCertificate} text="आवेदन करें" />}
-                  {links.nclStateCertificate && <LinkRow label="नॉन क्रीमी लेयर प्रमाण-पत्र (बिहार)" href={links.nclStateCertificate} text="आवेदन करें" />}
-                  {links.nclCentralCertificate && <LinkRow label="नॉन क्रीमी लेयर प्रमाण-पत्र (केंद्र)" href={links.nclCentralCertificate} text="आवेदन करें" />}
-                  {links.ewsCertificate && <LinkRow label="EWS आय और संपत्ति प्रमाण-पत्र" href={links.ewsCertificate} text="आवेदन करें" />}
-                  {links.nclFormPdf && <LinkRow label="NCL Form VIII PDF" href={links.nclFormPdf} text="PDF डाउनलोड करें" />}
-                  {links.formXIPdf && <LinkRow label="Form XI PDF" href={links.formXIPdf} text="PDF डाउनलोड करें" />}
-                  {Array.isArray(links.serviceLinks) && links.serviceLinks.map((service) => (
-                    <LinkRow key={`${service.label}-${service.href}`} label={service.label} href={service.href} text={service.text} />
-                  ))}
-                  {links.brochure && <LinkRow label="Download Brochure" href={links.brochure} text="Open Brochure" />}
-                  {links.officialWebsite && <LinkRow label="Official Website" href={links.officialWebsite} text="Visit Website" />}
-                </tbody>
-              </table>
-            </div>
-            {(primaryHref || (isRecruitment || isAdmission || isNotification)) && (
-              <div className="pd-big-cta-wrap">
-                {primaryHref ? (
-                  <a
-                    href={primaryHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="pd-big-cta"
-                  >
-                    {primaryLabel} ↗
-                  </a>
-                ) : (
-                  <div className="pd-big-cta" style={{ pointerEvents: 'none', opacity: 0.9 }}>
-                    {primaryLabel}
-                  </div>
-                )}
-              </div>
-            )}
-          </section>
-
           {showNoticeImage && post.noticeImage && (
             <div className="pd-image-modal" role="dialog" aria-modal="true" aria-label="Short notice image">
               <button
@@ -738,13 +837,13 @@ export default function PostDetail() {
             </div>
           )}
 
-          <section className="pd-section">
+          <section className="pd-section pd-about-section" aria-labelledby="about-content">
             <div className="pd-section-head">
-              <h2>📖 About This {isResult ? 'Result' : isAdmitCard ? 'Admit Card' : isAnswerKey ? 'Answer Key' : isSyllabus ? 'Syllabus' : isCertificate ? 'Certificate' : 'Update'}</h2>
+              <h2 id="about-content">📖 About This {aboutLabel}</h2>
             </div>
             <div className="pd-content content-html">
-              {post.content ? (
-                <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }} />
+              {aboutContent.introHtml ? (
+                <div dangerouslySetInnerHTML={{ __html: aboutContent.introHtml }} />
               ) : (
                 <p>
                   {val(post.shortDescription)} Full details are given in the tables above. Always
@@ -753,6 +852,15 @@ export default function PostDetail() {
               )}
             </div>
           </section>
+
+          {aboutContent.sections.map((section) => (
+            <section className="pd-section pd-content-detail-section" key={section.title}>
+              <div className="pd-section-head">
+                <h2>{section.title}</h2>
+              </div>
+              <div className="pd-content content-html" dangerouslySetInnerHTML={{ __html: section.bodyHtml }} />
+            </section>
+          ))}
 
           {faqItems.length > 0 && (
             <section className="pd-section">
@@ -773,60 +881,6 @@ export default function PostDetail() {
 
         {/* Sidebar */}
         <aside className="pd-sidebar">
-          <div className="pd-side-card pd-side-actions">
-            <div className="pd-side-title">Quick Actions</div>
-            {primaryHref ? (
-              <a
-                href={primaryHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pd-cta"
-              >
-                <span className="pd-cta-label">{primaryLabel}</span>
-                <span className="pd-cta-sub">Official portal ↗</span>
-              </a>
-            ) : (
-              <div className="pd-cta" style={{ cursor: 'default', opacity: 0.9, pointerEvents: 'none' }}>
-                <span className="pd-cta-label">{primaryLabel}</span>
-                <span className="pd-cta-sub">Official portal</span>
-              </div>
-            )}
-            <div className="pd-side-links">
-              {primaryHref && (
-                <a href={primaryHref} target="_blank" rel="noopener noreferrer">
-                  🚀 {primaryLabel}
-                </a>
-              )}
-              {links.writtenResult && <a href={links.writtenResult} target="_blank" rel="noopener noreferrer">📄 Written Result</a>}
-              {links.answerKey && <a href={links.answerKey} target="_blank" rel="noopener noreferrer">🔑 Answer Key</a>}
-              {links.downloadAdmitCard && <a href={links.downloadAdmitCard} target="_blank" rel="noopener noreferrer">🎫 Admit Card</a>}
-              {links.examCity && <a href={links.examCity} target="_blank" rel="noopener noreferrer">📍 Exam City</a>}
-              {links.examSchedule && <a href={links.examSchedule} target="_blank" rel="noopener noreferrer">📅 Exam Schedule</a>}
-              {links.downloadSyllabus && <a href={links.downloadSyllabus} target="_blank" rel="noopener noreferrer">📘 Paper I &amp; II Syllabus</a>}
-              {links.finalAnswerKey && <a href={links.finalAnswerKey} target="_blank" rel="noopener noreferrer">✅ Final Answer Key</a>}
-              {links.notificationEnglish && (
-                <a href={links.notificationEnglish} target="_blank" rel="noopener noreferrer">
-                  📄 Notification (English)
-                </a>
-              )}
-              {links.notificationHindi && (
-                <a href={links.notificationHindi} target="_blank" rel="noopener noreferrer">
-                  📄 Notification (Hindi)
-                </a>
-              )}
-              {(links.officialNotification || links.importantLink) && (
-                <a href={links.officialNotification || links.importantLink} target="_blank" rel="noopener noreferrer">
-                  📄 Notification
-                </a>
-              )}
-              {links.officialWebsite && (
-                <a href={links.officialWebsite} target="_blank" rel="noopener noreferrer">
-                  🌐 Official Website
-                </a>
-              )}
-            </div>
-          </div>
-
           <div className="pd-side-card">
             <div className="pd-side-title">Browse Categories</div>
             <div className="pd-side-cats">

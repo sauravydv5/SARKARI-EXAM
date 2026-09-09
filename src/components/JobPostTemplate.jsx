@@ -102,8 +102,8 @@ export default function JobPostTemplate({
         {organization && <p className="mt-3 text-red-50">Published by {organization}</p>}
       </header>
 
-      <section aria-labelledby="short-overview" className="mb-8 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8">
-        <h2 id="short-overview" className="mb-3 text-2xl font-bold text-slate-900 dark:text-white">1. Short Overview</h2>
+      <section aria-labelledby="about-this-update" className="mb-8 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8">
+        <h2 id="about-this-update" className="mb-3 text-2xl font-bold text-slate-900 dark:text-white">1. About This Update</h2>
         <p className="leading-8">{valueOrFallback(shortOverview, 'Read the official notice for the latest details about this update.')}</p>
       </section>
 
