@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { api } from '../api';
+import { SITE_LAST_UPDATED_AT } from '../generated/siteMeta';
 
 const ADMIN_SECRET = import.meta.env.VITE_ADMIN_SECRET || '1111';
 const CURRENT_YEAR = new Date().getFullYear();
@@ -130,13 +131,14 @@ export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [featuredPosts, setFeaturedPosts] = useState([]);
   const navigate = useNavigate();
-  const today = new Date().toLocaleDateString('en-IN', {
+  const lastUpdatedDate = new Date(SITE_LAST_UPDATED_AT || Date.now());
+  const today = lastUpdatedDate.toLocaleDateString('en-IN', {
     weekday: 'short',
     day: '2-digit',
     month: 'short',
     year: 'numeric',
   });
-  const currentTime = new Date().toLocaleTimeString('en-IN', {
+  const currentTime = lastUpdatedDate.toLocaleTimeString('en-IN', {
     hour: '2-digit',
     minute: '2-digit',
   });
