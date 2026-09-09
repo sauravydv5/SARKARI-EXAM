@@ -131,10 +131,15 @@ export default function Layout() {
   const [featuredPosts, setFeaturedPosts] = useState([]);
   const navigate = useNavigate();
   const today = new Date().toLocaleDateString('en-IN', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
+    weekday: 'short',
+    day: '2-digit',
+    month: 'short',
     year: 'numeric',
+  });
+  const currentTime = new Date().toLocaleTimeString('en-IN', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
   });
 
   useEffect(() => {
@@ -164,7 +169,7 @@ export default function Layout() {
     <div className="app-shell">
       <div className="top-bar">
         <div className="container top-bar-inner">
-          <span className="top-bar-date">📅 {today}</span>
+          <span className="top-bar-date">📅 Last Update: {today}, {currentTime}</span>
           <div className="top-bar-right">
             <span className="top-bar-tagline">
               🔔 Daily exam updates — <Link to="/latest-jobs">SSC | Railway | Bank | UPSC →</Link>

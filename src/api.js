@@ -92,7 +92,15 @@ function normalizePost(raw, sourcePath) {
   const publishedAt = raw.publishedAt || raw.applyStart || raw.lastDate || new Date().toISOString();
   const lastDate = raw.importantDates?.lastDate || raw.lastDate;
   const lastDateValue = parseDeadline(lastDate);
-  const hasPassedDeadline = Number.isFinite(lastDateValue) && lastDateValue < Date.now();
+  const tracksApplicationDeadline = category === 'latest-job';
+  const activityDate = Math.max(
+    ...[publishedAt, raw.updatedAt, raw.lastUpdated]
+      .map((value) => new Date(value || 0).getTime())
+      .filter(Number.isFinite),
+    0,
+  );
+  const hasPassedDeadline = tracksApplicationDeadline && Number.isFinite(lastDateValue) &&
+    lastDateValue < Date.now() && activityDate < lastDateValue;
   const hasLegacyYear = /(?:^|[^0-9])20(?:20|21|22|23|24|25)(?:[^0-9]|$)/.test(`${sourcePath} ${raw.title || ''}`);
   const statusNote = raw.statusNote || raw.status || (hasPassedDeadline ? 'Expired' : hasLegacyYear ? 'Archived reference' : '');
 
@@ -267,11 +275,17 @@ function hasUpcomingMilestone(post) {
 
 function sortPosts(posts) {
   return [...posts].sort((a, b) => {
+    const activityDate = (post) => Math.max(
+      ...[post.lastUpdated, post.updatedAt, post.publishedAt]
+        .map((value) => new Date(value || 0).getTime())
+        .filter(Number.isFinite),
+      0,
+    );
+    const activityValue = activityDate(b) - activityDate(a);
+    if (activityValue !== 0) return activityValue;
     const priorityValue = Number(b.sortPriority || 0) - Number(a.sortPriority || 0);
     if (priorityValue !== 0) return priorityValue;
-    const newValue = Number(Boolean(b.isNew) || isRecentPost(b)) - Number(Boolean(a.isNew) || isRecentPost(a));
-    if (newValue !== 0) return newValue;
-    return new Date(b.lastUpdated || b.updatedAt || b.publishedAt || 0).getTime() - new Date(a.lastUpdated || a.updatedAt || a.publishedAt || 0).getTime();
+    return Number(Boolean(b.isNew) || isRecentPost(b)) - Number(Boolean(a.isNew) || isRecentPost(a));
   });
 }
 
@@ -355,6 +369,19 @@ export function formatDate(d) {
   if (!d) return '';
   try {
     return new Date(d).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+  } catch {
+    return String(d);
+  }
+}
+
+export function formatDateTime(d) {
+  if (!d) return '';
+  try {
+    const value = String(d);
+    const date = new Date(d);
+    const formattedDate = date.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+    if (!/[T ]\d{2}:\d{2}/.test(value)) return formattedDate;
+    return `${formattedDate}, ${date.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}`;
   } catch {
     return String(d);
   }

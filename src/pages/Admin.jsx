@@ -75,9 +75,13 @@ export default function Admin() {
     const nextValue = field === 'publishedAt' || field === 'lastUpdated'
       ? (value ? `${value}T00:00:00.000Z` : '')
       : value;
-    await api.updatePostMeta(slug, { [field]: nextValue });
+    const changes = {
+      [field]: nextValue,
+      ...(field === 'lastUpdated' ? {} : { lastUpdated: new Date().toISOString() }),
+    };
+    await api.updatePostMeta(slug, changes);
     setPosts((prev) => prev.map((item) => (
-      (item.slug || item.id) === slug ? { ...item, [field]: nextValue } : item
+      (item.slug || item.id) === slug ? { ...item, ...changes } : item
     )));
     setMessage(`${post.title} ${field === 'category' ? 'category' : field === 'publishedAt' ? 'published date' : 'last updated date'} updated.`);
   }
