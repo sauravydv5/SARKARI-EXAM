@@ -113,7 +113,7 @@ export default function useSeo({
           logo: { '@type': 'ImageObject', url: `${siteUrl}/logo.png` },
         },
         datePublished: schemaData?.datePublished || new Date().toISOString(),
-        dateModified: schemaData?.dateModified || new Date().toISOString(),
+        dateModified: schemaData?.dateModified,
         mainEntityOfPage: {
           '@type': 'WebPage',
           '@id': pageUrl,

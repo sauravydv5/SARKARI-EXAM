@@ -296,8 +296,8 @@ export default function PostDetail() {
       headline: pageTitle,
       image: post?.image || '/logo.png',
       articleSection: cat.label || 'Government Jobs',
-      datePublished: post?.publishedAt || new Date().toISOString(),
-      dateModified: post?.updatedAt || post?.publishedAt || new Date().toISOString(),
+      datePublished: post?.publishedAt,
+      dateModified: post?.lastUpdated || post?.updatedAt || post?.publishedAt,
       author: { '@type': 'Organization', name: 'Sarkari Job Hub Editorial Team' },
       publisher: {
         '@type': 'Organization',

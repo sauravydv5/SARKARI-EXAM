@@ -89,7 +89,7 @@ function normalizePost(raw, sourcePath) {
   const folder = sourcePath.split('/').slice(-2, -1)[0] || '';
   const category = raw.category || CATEGORY_FOLDERS[folder] || 'latest-job';
   const postType = normalizePostType(raw.postType, category, raw.title);
-  const publishedAt = raw.publishedAt || raw.applyStart || raw.lastDate || new Date().toISOString();
+  const publishedAt = raw.publishedAt || raw.updatedAt || raw.lastUpdated || raw.applyStart || raw.lastDate || '';
   const lastDate = raw.importantDates?.lastDate || raw.lastDate;
   const lastDateValue = parseDeadline(lastDate);
   const tracksApplicationDeadline = category === 'latest-job';
