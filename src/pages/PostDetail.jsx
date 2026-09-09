@@ -405,7 +405,6 @@ export default function PostDetail() {
   const canonicalFacts = summarizeRecruitmentFacts(post);
 
   const importantLinkRows = [
-    primaryHref ? { key: 'primary', label: primaryLabel, href: primaryHref, text: 'Open Official Link' } : null,
     links.writtenResult ? { key: 'writtenResult', label: 'Download Written Result', href: links.writtenResult, text: 'Open Written Result' } : null,
     links.answerKey ? { key: 'answerKey', label: 'Download Answer Key', href: links.answerKey, text: 'Open Answer Key' } : null,
     links.answerKeyNotice ? { key: 'answerKeyNotice', label: 'Answer Key Notice', href: links.answerKeyNotice, text: 'Open Notice' } : null,
@@ -448,14 +447,7 @@ export default function PostDetail() {
     return arr.findIndex((item) => `${normalizeLinkKey(item.label)}|${normalizeLinkKey(item.href)}` === key) === index;
   });
 
-  const primaryDuplicateUrl = primaryHref ? normalizeLinkKey(primaryHref) : '';
-  const filteredImportantLinkRows = dedupedImportantLinkRows.filter((row) => {
-    if (!primaryDuplicateUrl) return true;
-    if (normalizeLinkKey(row.href) === primaryDuplicateUrl && row.label === primaryLabel) {
-      return false;
-    }
-    return true;
-  });
+  const filteredImportantLinkRows = dedupedImportantLinkRows;
 
   const aboutLabel = isResult
     ? 'Result'
