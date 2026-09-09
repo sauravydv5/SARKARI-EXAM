@@ -405,6 +405,7 @@ export default function PostDetail() {
   const canonicalFacts = summarizeRecruitmentFacts(post);
 
   const importantLinkRows = [
+    links.applyOnline ? { key: 'applyOnline', label: 'Apply Online', href: links.applyOnline, text: 'Apply Now' } : null,
     links.writtenResult ? { key: 'writtenResult', label: 'Download Written Result', href: links.writtenResult, text: 'Open Written Result' } : null,
     links.answerKey ? { key: 'answerKey', label: 'Download Answer Key', href: links.answerKey, text: 'Open Answer Key' } : null,
     links.answerKeyNotice ? { key: 'answerKeyNotice', label: 'Answer Key Notice', href: links.answerKeyNotice, text: 'Open Notice' } : null,
@@ -551,6 +552,17 @@ export default function PostDetail() {
               {post.sourceUrl && <span className="pd-chip">Source: Official Website</span>}
               <span className="pd-chip">📖 Read time: {Math.max(3, Math.ceil((post.content?.split(/\s+/).length || 600) / 180))} min</span>
             </div>
+            {isRecruitment && (
+              <div className="pd-hero-apply-wrap">
+                {primaryHref ? (
+                  <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="pd-hero-apply">
+                    Apply Online ↗
+                  </a>
+                ) : (
+                  <span className="pd-hero-apply pd-hero-apply-disabled">{primaryLabel}</span>
+                )}
+              </div>
+            )}
           </header>
 
           {/* Quick info strip — always 5 cards with values */}
