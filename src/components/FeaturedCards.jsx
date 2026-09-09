@@ -90,9 +90,12 @@ export default function FeaturedCards({ limit = 8, title = '' }) {
   return (
     <section className="w-full" aria-label={title}>
       <div className="featured-live-wrap">
-        <button type="button" className="featured-live-button" aria-label="Live updates">
-          LIVE
-        </button>
+        <div className="featured-live-box" role="status" aria-label="Live updates">
+          <span className="featured-live-button" aria-hidden="true">
+            <span className="featured-live-dot" />
+          </span>
+          <span className="featured-live-label">LIVE</span>
+        </div>
       </div>
       <div className="mb-4 flex items-end justify-between gap-3">
         <div>

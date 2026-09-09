@@ -3746,21 +3746,44 @@ table.data-table tr:last-child td {
   margin-bottom: 12px;
 }
 
-.featured-live-button {
-  min-width: 88px;
-  min-height: 36px;
-  padding: 8px 20px;
-  border: 0;
-  border-radius: 6px;
-  color: #fff;
-  background: #dc2626;
-  box-shadow: 0 5px 14px rgba(185, 28, 28, 0.24);
-  font-size: 0.8rem;
+.featured-live-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 5px 14px 5px 9px;
+  border: 1px solid rgba(220, 38, 38, 0.28);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: 0 4px 14px rgba(185, 28, 28, 0.12);
+}
+
+.featured-live-label {
+  color: #b91c1c;
+  font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   line-height: 1;
-  cursor: default;
+}
+
+.featured-live-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12), 0 4px 10px rgba(185, 28, 28, 0.28);
   animation: featured-live-blink 1.2s ease-in-out infinite;
+}
+
+.featured-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
 }
 
 @keyframes featured-live-blink {
