@@ -479,7 +479,7 @@ export default function PostDetail() {
                 : isNotification
                   ? 'Notification'
                   : 'Update';
-  const contentSkipHeadings = ['important dates'];
+  const contentSkipHeadings = ['important dates', 'important links'];
   if (isRecruitment || isAdmission) {
     contentSkipHeadings.push(
       'eligibility',
@@ -493,7 +493,17 @@ export default function PostDetail() {
   if (isAdmitCard) {
     contentSkipHeadings.push('how to download admit card', 'eligibility', 'application fee', 'age limit');
   }
-  if (isResult) contentSkipHeadings.push('result overview', 'how to check result');
+  if (isResult) {
+    contentSkipHeadings.push(
+      'result overview',
+      'how to check result',
+      'application fee',
+      'age limit',
+      'vacancy details',
+      'vacancy',
+      'eligibility'
+    );
+  }
   if (isAnswerKey) contentSkipHeadings.push('how to download answer key');
   if (isSyllabus) contentSkipHeadings.push('syllabus overview');
   if (isCertificate) contentSkipHeadings.push('certificate download process');
