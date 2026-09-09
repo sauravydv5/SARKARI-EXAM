@@ -398,6 +398,17 @@ export default function PostDetail() {
     ? `[Link will be Activate ${dates.startDate || formatDate(post?.publishedAt)}]`
     : '[Link will be Activate soon]';
   const primaryLabel = primaryHref ? primaryAction[1] : activationText;
+  const heroPrimaryActionLabel = isResult
+    ? 'Check Result'
+    : isAdmitCard
+      ? 'Download Admit Card'
+      : isAnswerKey
+        ? 'Download Answer Key'
+        : isSyllabus
+          ? 'Download Syllabus'
+          : isCertificate
+            ? 'Download Certificate'
+            : 'Apply Online';
 
   const guide = buildPostGuide(post, cat.label);
   const guideIntro = guide.overview;
@@ -405,6 +416,7 @@ export default function PostDetail() {
   const canonicalFacts = summarizeRecruitmentFacts(post);
 
   const importantLinkRows = [
+    isResult && links.checkResult ? { key: 'checkResult', label: 'Check Result', href: links.checkResult, text: 'Check Result' } : null,
     links.applyOnline ? { key: 'applyOnline', label: 'Apply Online', href: links.applyOnline, text: 'Apply Now' } : null,
     links.writtenResult ? { key: 'writtenResult', label: 'Download Written Result', href: links.writtenResult, text: 'Open Written Result' } : null,
     links.answerKey ? { key: 'answerKey', label: 'Download Answer Key', href: links.answerKey, text: 'Open Answer Key' } : null,
@@ -552,11 +564,11 @@ export default function PostDetail() {
               {post.sourceUrl && <span className="pd-chip">Source: Official Website</span>}
               <span className="pd-chip">📖 Read time: {Math.max(3, Math.ceil((post.content?.split(/\s+/).length || 600) / 180))} min</span>
             </div>
-            {isRecruitment && (
+            {(isRecruitment || isResult || isAdmitCard || isAnswerKey || isSyllabus || isCertificate || isAdmission) && (
               <div className="pd-hero-apply-wrap">
                 {primaryHref ? (
                   <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="pd-hero-apply">
-                    Apply Online ↗
+                    {heroPrimaryActionLabel} ↗
                   </a>
                 ) : (
                   <span className="pd-hero-apply pd-hero-apply-disabled">{primaryLabel}</span>
