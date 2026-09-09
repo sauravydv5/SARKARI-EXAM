@@ -403,6 +403,60 @@ export default function PostDetail() {
   const guideIntro = guide.overview;
   const faqItems = guide.faqItems;
   const canonicalFacts = summarizeRecruitmentFacts(post);
+
+  const importantLinkRows = [
+    primaryHref ? { key: 'primary', label: primaryLabel, href: primaryHref, text: 'Open Official Link' } : null,
+    links.writtenResult ? { key: 'writtenResult', label: 'Download Written Result', href: links.writtenResult, text: 'Open Written Result' } : null,
+    links.answerKey ? { key: 'answerKey', label: 'Download Answer Key', href: links.answerKey, text: 'Open Answer Key' } : null,
+    links.answerKeyNotice ? { key: 'answerKeyNotice', label: 'Answer Key Notice', href: links.answerKeyNotice, text: 'Open Notice' } : null,
+    links.finalAnswerKey ? { key: 'finalAnswerKey', label: 'Download Final Answer Key', href: links.finalAnswerKey, text: 'Open Final Key' } : null,
+    links.scoreCard ? { key: 'scoreCard', label: 'Download Score Card / Certificate', href: links.scoreCard, text: 'Open Score Card' } : null,
+    links.omrSheet ? { key: 'omrSheet', label: 'Download OMR Sheet', href: links.omrSheet, text: 'Open OMR Sheet' } : null,
+    links.downloadAdmitCard ? { key: 'downloadAdmitCard', label: 'Download Admit Card', href: links.downloadAdmitCard, text: 'Open Admit Card' } : null,
+    links.admitCardNotice ? { key: 'admitCardNotice', label: 'Admit Card Notice', href: links.admitCardNotice, text: 'Open Notice' } : null,
+    links.examCity ? { key: 'examCity', label: 'Exam City Details', href: links.examCity, text: 'Open City Details' } : null,
+    links.examCityNotice ? { key: 'examCityNotice', label: 'Exam City Notice', href: links.examCityNotice, text: 'Open Notice' } : null,
+    links.correctionForm ? { key: 'correctionForm', label: 'Correction Form', href: links.correctionForm, text: 'Open Correction Form' } : null,
+    links.correctionNotice ? { key: 'correctionNotice', label: 'Correction Notice', href: links.correctionNotice, text: 'Open Notice' } : null,
+    links.disqualifiedList ? { key: 'disqualifiedList', label: 'Disqualified List', href: links.disqualifiedList, text: 'Open List' } : null,
+    links.examSchedule ? { key: 'examSchedule', label: 'Exam Schedule Notice', href: links.examSchedule, text: 'Open Schedule' } : null,
+    links.downloadSyllabus ? { key: 'downloadSyllabus', label: 'Paper I & II Exam Syllabus', href: links.downloadSyllabus, text: 'Download Syllabus' } : null,
+    links.notificationEnglish ? { key: 'notificationEnglish', label: 'Notification (English)', href: links.notificationEnglish, text: 'Download English PDF' } : null,
+    links.notificationHindi ? { key: 'notificationHindi', label: 'Notification (Hindi)', href: links.notificationHindi, text: 'Download Hindi PDF' } : null,
+    (links.officialNotification || links.importantLink) ? { key: 'notification', label: 'Notification', href: links.officialNotification || links.importantLink, text: 'Download Notification' } : null,
+    links.registration ? { key: 'registration', label: 'खुद का पंजीकरण', href: links.registration, text: 'पंजीकरण करें' } : null,
+    links.forgotPassword ? { key: 'forgotPassword', label: 'पासवर्ड भूल गए?', href: links.forgotPassword, text: 'पासवर्ड सहायता' } : null,
+    links.applicationStatus ? { key: 'applicationStatus', label: 'आवेदन की स्थिति देखें', href: links.applicationStatus, text: 'स्थिति देखें' } : null,
+    links.certificateDownload ? { key: 'certificateDownload', label: 'सर्टिफिकेट डाउनलोड करें', href: links.certificateDownload, text: 'डाउनलोड करें' } : null,
+    links.eligibilityCheck ? { key: 'eligibilityCheck', label: 'अपनी पात्रता जानें', href: links.eligibilityCheck, text: 'पात्रता जांचें' } : null,
+    links.residenceCertificate ? { key: 'residenceCertificate', label: 'आवासीय प्रमाण-पत्र', href: links.residenceCertificate, text: 'आवेदन करें' } : null,
+    links.casteCertificate ? { key: 'casteCertificate', label: 'जाति प्रमाण-पत्र', href: links.casteCertificate, text: 'आवेदन करें' } : null,
+    links.incomeCertificate ? { key: 'incomeCertificate', label: 'आय प्रमाण-पत्र', href: links.incomeCertificate, text: 'आवेदन करें' } : null,
+    links.nclStateCertificate ? { key: 'nclStateCertificate', label: 'नॉन क्रीमी लेयर प्रमाण-पत्र (बिहार)', href: links.nclStateCertificate, text: 'आवेदन करें' } : null,
+    links.nclCentralCertificate ? { key: 'nclCentralCertificate', label: 'नॉन क्रीमी लेयर प्रमाण-पत्र (केंद्र)', href: links.nclCentralCertificate, text: 'आवेदन करें' } : null,
+    links.ewsCertificate ? { key: 'ewsCertificate', label: 'EWS आय और संपत्ति प्रमाण-पत्र', href: links.ewsCertificate, text: 'आवेदन करें' } : null,
+    links.nclFormPdf ? { key: 'nclFormPdf', label: 'NCL Form VIII PDF', href: links.nclFormPdf, text: 'PDF डाउनलोड करें' } : null,
+    links.formXIPdf ? { key: 'formXIPdf', label: 'Form XI PDF', href: links.formXIPdf, text: 'PDF डाउनलोड करें' } : null,
+    ...(Array.isArray(links.serviceLinks) ? links.serviceLinks.map((service) => ({ key: `${service.label}-${service.href}`, label: service.label, href: service.href, text: service.text })) : []),
+    links.brochure ? { key: 'brochure', label: 'Download Brochure', href: links.brochure, text: 'Open Brochure' } : null,
+    links.officialWebsite ? { key: 'officialWebsite', label: 'Official Website', href: links.officialWebsite, text: 'Visit Website' } : null,
+  ].filter(Boolean);
+
+  const normalizeLinkKey = (value) => String(value || '').trim().toLowerCase();
+  const dedupedImportantLinkRows = importantLinkRows.filter((row, index, arr) => {
+    const key = `${normalizeLinkKey(row.label)}|${normalizeLinkKey(row.href)}`;
+    return arr.findIndex((item) => `${normalizeLinkKey(item.label)}|${normalizeLinkKey(item.href)}` === key) === index;
+  });
+
+  const primaryDuplicateUrl = primaryHref ? normalizeLinkKey(primaryHref) : '';
+  const filteredImportantLinkRows = dedupedImportantLinkRows.filter((row) => {
+    if (!primaryDuplicateUrl) return true;
+    if (normalizeLinkKey(row.href) === primaryDuplicateUrl && row.label === primaryLabel) {
+      return false;
+    }
+    return true;
+  });
+
   const aboutLabel = isResult
     ? 'Result'
     : isAdmitCard
@@ -706,44 +760,10 @@ export default function PostDetail() {
             <div className="pd-table-wrap">
               <table className="pd-full-table pd-links-table">
                 <tbody>
-                  <LinkRow label={primaryLabel} href={primaryHref} text="Open Official Link" />
                   <NoticeImageButton image={post.noticeImage} onOpen={() => setShowNoticeImage(true)} />
-                  {links.writtenResult && <LinkRow label="Download Written Result" href={links.writtenResult} text="Open Written Result" />}
-                  {links.answerKey && <LinkRow label="Download Answer Key" href={links.answerKey} text="Open Answer Key" />}
-                  {links.answerKeyNotice && <LinkRow label="Answer Key Notice" href={links.answerKeyNotice} text="Open Notice" />}
-                  {links.finalAnswerKey && <LinkRow label="Download Final Answer Key" href={links.finalAnswerKey} text="Open Final Key" />}
-                  {links.scoreCard && <LinkRow label="Download Score Card / Certificate" href={links.scoreCard} text="Open Score Card" />}
-                  {links.omrSheet && <LinkRow label="Download OMR Sheet" href={links.omrSheet} text="Open OMR Sheet" />}
-                  {links.downloadAdmitCard && <LinkRow label="Download Admit Card" href={links.downloadAdmitCard} text="Open Admit Card" />}
-                  {links.admitCardNotice && <LinkRow label="Admit Card Notice" href={links.admitCardNotice} text="Open Notice" />}
-                  {links.examCity && <LinkRow label="Exam City Details" href={links.examCity} text="Open City Details" />}
-                  {links.examCityNotice && <LinkRow label="Exam City Notice" href={links.examCityNotice} text="Open Notice" />}
-                  {links.correctionForm && <LinkRow label="Correction Form" href={links.correctionForm} text="Open Correction Form" />}
-                  {links.correctionNotice && <LinkRow label="Correction Notice" href={links.correctionNotice} text="Open Notice" />}
-                  {links.disqualifiedList && <LinkRow label="Disqualified List" href={links.disqualifiedList} text="Open List" />}
-                  {links.examSchedule && <LinkRow label="Exam Schedule Notice" href={links.examSchedule} text="Open Schedule" />}
-                  {links.downloadSyllabus && <LinkRow label="Paper I & II Exam Syllabus" href={links.downloadSyllabus} text="Download Syllabus" />}
-                  {links.notificationEnglish && <LinkRow label="Notification (English)" href={links.notificationEnglish} text="Download English PDF" />}
-                  {links.notificationHindi && <LinkRow label="Notification (Hindi)" href={links.notificationHindi} text="Download Hindi PDF" />}
-                  {(links.officialNotification || links.importantLink) && <LinkRow label="Notification" href={links.officialNotification || links.importantLink} text="Download Notification" />}
-                  {links.registration && <LinkRow label="खुद का पंजीकरण" href={links.registration} text="पंजीकरण करें" />}
-                  {links.forgotPassword && <LinkRow label="पासवर्ड भूल गए?" href={links.forgotPassword} text="पासवर्ड सहायता" />}
-                  {links.applicationStatus && <LinkRow label="आवेदन की स्थिति देखें" href={links.applicationStatus} text="स्थिति देखें" />}
-                  {links.certificateDownload && <LinkRow label="सर्टिफिकेट डाउनलोड करें" href={links.certificateDownload} text="डाउनलोड करें" />}
-                  {links.eligibilityCheck && <LinkRow label="अपनी पात्रता जानें" href={links.eligibilityCheck} text="पात्रता जांचें" />}
-                  {links.residenceCertificate && <LinkRow label="आवासीय प्रमाण-पत्र" href={links.residenceCertificate} text="आवेदन करें" />}
-                  {links.casteCertificate && <LinkRow label="जाति प्रमाण-पत्र" href={links.casteCertificate} text="आवेदन करें" />}
-                  {links.incomeCertificate && <LinkRow label="आय प्रमाण-पत्र" href={links.incomeCertificate} text="आवेदन करें" />}
-                  {links.nclStateCertificate && <LinkRow label="नॉन क्रीमी लेयर प्रमाण-पत्र (बिहार)" href={links.nclStateCertificate} text="आवेदन करें" />}
-                  {links.nclCentralCertificate && <LinkRow label="नॉन क्रीमी लेयर प्रमाण-पत्र (केंद्र)" href={links.nclCentralCertificate} text="आवेदन करें" />}
-                  {links.ewsCertificate && <LinkRow label="EWS आय और संपत्ति प्रमाण-पत्र" href={links.ewsCertificate} text="आवेदन करें" />}
-                  {links.nclFormPdf && <LinkRow label="NCL Form VIII PDF" href={links.nclFormPdf} text="PDF डाउनलोड करें" />}
-                  {links.formXIPdf && <LinkRow label="Form XI PDF" href={links.formXIPdf} text="PDF डाउनलोड करें" />}
-                  {Array.isArray(links.serviceLinks) && links.serviceLinks.map((service) => (
-                    <LinkRow key={`${service.label}-${service.href}`} label={service.label} href={service.href} text={service.text} />
+                  {filteredImportantLinkRows.map((row) => (
+                    <LinkRow key={row.key} label={row.label} href={row.href} text={row.text} />
                   ))}
-                  {links.brochure && <LinkRow label="Download Brochure" href={links.brochure} text="Open Brochure" />}
-                  {links.officialWebsite && <LinkRow label="Official Website" href={links.officialWebsite} text="Visit Website" />}
                 </tbody>
               </table>
             </div>

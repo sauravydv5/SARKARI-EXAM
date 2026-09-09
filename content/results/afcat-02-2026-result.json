@@ -1,0 +1,48 @@
+{
+  "id": "afcat-02-2026-result",
+  "slug": "afcat-02-2026-result",
+  "category": "result",
+  "title": "AFCAT 02/2026 Result – Out",
+  "organization": "Indian Air Force",
+  "postName": "Air Force Common Admission Test (AFCAT) 02/2026 – Flying Branch / Ground Duty Courses",
+  "totalVacancies": 142,
+  "vacancyDetails": "AFCAT 02/2026 result for Flying Branch, Ground Duty Technical, Ground Duty Non-Technical and NCC Special Entry candidates",
+  "qualification": "Graduation / engineering degree / as per branch-wise AFCAT 02/2026 eligibility",
+  "ageLimit": "As per AFCAT 02/2026 official age criteria for flying and ground duty branches",
+  "applicationFee": "₹550 + 18% GST as per AFCAT fee structure",
+  "selectionProcess": "Written Exam → AFSB Interview → Document Verification → Medical Examination",
+  "documentsRequired": "Enrollment number, registration number, roll number or date of birth to check result; printout of result PDF for future use",
+  "howToApply": "1. Visit https://afcat.cdac.in\n2. Open the AFCAT 02/2026 result login page\n3. Enter registration/enrollment number and date of birth\n4. View and download the result PDF\n5. Save the PDF and keep a printout for future reference",
+  "shortDescription": "Indian Air Force has released AFCAT 02/2026 Result. Candidates can download the result from the official AFCAT portal using registration or enrollment details.",
+  "content": "<p><strong>Indian Air Force (Bhartiya Vayu Sena)</strong> has released the <strong>AFCAT 02/2026 Result</strong> on the official website after the examination held on <strong>08 August 2026</strong>.</p><p>Eligible candidates can now log in to the AFCAT portal using their Enrollment Number, Registration Number, or Date of Birth and download the result PDF. The result is important for all flying and ground duty entries under AFCAT 02/2026.</p><p>Applicants are advised to check all details carefully and keep a saved copy of the result for further selection stages.</p>",
+  "publishedAt": "2026-09-09T12:38:00.000Z",
+  "isFeatured": true,
+  "isNew": true,
+  "importantDates": {
+    "notificationDate": "As per official notification",
+    "startDate": "20 May 2026",
+    "lastDate": "21 June 2026",
+    "examDate": "08 August 2026",
+    "resultDate": "09 September 2026",
+    "admitCardDate": "05 August 2026",
+    "answerKeyDate": "11 August 2026"
+  },
+  "links": {
+    "checkResult": "https://cdn.digialm.com/EForms/configuredHtml/1258/100343/login.html",
+    "officialWebsite": "https://afcat.edcil.co.in/",
+    "officialNotification": "https://afcat.edcil.co.in/assets/images/news/AFCAT_02_2026/Notification%20for%20AFCAT%20Cycle%2002-2026.pdf",
+    "answerKey": "https://www.digialm.com/EForms/configuredHtml/1258/100343/login.html",
+    "admitCard": "https://cdn.digialm.com/EForms/configuredHtml/1258/100343/login.html"
+  },
+  "tags": [
+    "AFCAT",
+    "Indian Air Force",
+    "Result",
+    "Flying Branch",
+    "Ground Duty",
+    "Air Force"
+  ],
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "views": 2140
+}
