@@ -2,41 +2,65 @@
   "id": "bihar-stet-online-form-2026",
   "slug": "bihar-stet-online-form-2026",
   "category": "latest-job",
-  "title": "Bihar STET Online Form 2026 – Start",
-  "organization": "Bihar School Examination Board",
-  "postName": "Bihar State Teacher Eligibility Test (STET)",
+  "title": "Bihar Secondary Teacher Eligibility Test BSEB STET 2026 Apply Online",
+  "organization": "Bihar School Examination Board (BSEB)",
+  "postName": "Bihar Secondary Teacher Eligibility Test 2026 – Paper I and Paper II",
   "totalVacancies": 0,
-  "vacancyDetails": "Bihar State Teacher Eligibility Test (STET)",
-  "qualification": "Graduation / B.Ed / D.El.Ed as per STET paper (I or II)",
-  "ageLimit": "As published in the official notification",
-  "applicationFee": "As published in the official notification",
-  "selectionProcess": "Online application → Written exam / CBT / PET as notified → Document verification → Final merit",
-  "documentsRequired": "Photo, signature, educational certificates, category certificate (if any) and valid photo ID",
-  "howToApply": "1. Visit https://www.bsebstet.com\n2. Open the latest advertisement for Bihar STET Online Form 2026 – Start\n3. Register or log in and fill the application\n4. Upload photo, signature and required documents, then pay the fee if applicable\n5. Submit and print the confirmation page",
-  "shortDescription": "Bihar STET Online Form 2026 – Start. See the official notice at www.bsebstet.com.",
-  "content": "<p><strong>Bihar School Examination Board</strong> has published an update for <strong>Bihar State Teacher Eligibility Test (STET)</strong>. Confirm the current eligibility, fee and dates in the linked notice.</p><h3>How to apply</h3><ol><li>Open <strong>www.bsebstet.com</strong></li><li>Complete registration / OTR if required</li><li>Fill the form, upload documents and pay the fee</li><li>Print the confirmation page</li></ol>",
-  "publishedAt": "2026-08-19T11:15:00.000Z",
-  "lastUpdated": "2026-08-19",
-  "sourceUrl": "https://www.bsebstet.com",
-  "isFeatured": false,
+  "vacancyDetails": "Teacher eligibility examination for Bihar secondary and higher secondary teaching eligibility; no fixed vacancy count is applicable.",
+  "qualification": "Paper I: related bachelor's degree with 50% marks and B.Ed, or related master's degree with B.Ed, or qualifying 45% degree with B.Ed under NCTE norms, or 4-year BA B.Ed / B.Sc B.Ed. Paper II: related master's degree with 50% marks and B.Ed / BA B.Ed / B.Sc B.Ed, or qualifying 45% master's degree with B.Ed, or 55% master's degree with 3-year B.Ed M.Ed. Check subject-wise notification details.",
+  "ageLimit": "As on 01 August 2026: minimum 18 years; maximum 37 years for male candidates and 42 years for female candidates. Relaxation applies under Bihar BSEB STET rules.",
+  "applicationFee": "Single paper: General / BC / EWS Rs. 960; SC / ST / PH Rs. 760. Both papers: General / BC / EWS Rs. 1,440; SC / ST / PH Rs. 1,140. Pay online by debit card, credit card or net banking.",
+  "selectionProcess": "Online application -> Paper I / Paper II written examination -> Result and teacher eligibility certificate process",
+  "documentsRequired": "Recent photograph, signature, Class 10 marksheet and certificate, Class 12 certificate and marksheet, bachelor's and master's certificates and marksheets, B.Ed certificate, category certificate and domicile certificate where applicable.",
+  "howToApply": "1. Visit https://stetregistration.cbrt.co.in/\n2. Register or log in for Bihar STET 2026\n3. Select Paper I, Paper II or both papers\n4. Enter personal, educational and subject details\n5. Upload photograph, signature and required certificates\n6. Pay the applicable examination fee online\n7. Submit the form before 15 September 2026 and print the confirmation page",
+  "shortDescription": "BSEB Bihar Secondary Teacher Eligibility Test STET 2026 online form is active from 17 August to 15 September 2026. Apply for Paper I, Paper II or both papers through the official portal.",
+  "content": "<p><strong>Bihar School Examination Board (BSEB)</strong> has released the notification for the <strong>Secondary Teacher Eligibility Test (STET) 2026</strong>. Candidates enrolled for the examination can apply online from <strong>17 August 2026</strong> to <strong>15 September 2026</strong>.</p><h3>Bihar STET 2026 Papers</h3><ul><li><strong>Paper I:</strong> Secondary level teacher eligibility.</li><li><strong>Paper II:</strong> Senior secondary level teacher eligibility.</li><li>Candidates may apply for a single paper or both papers after checking subject-wise eligibility.</li></ul><h3>Important Information</h3><p>The Paper I and Paper II examination dates will be announced as per the BSEB schedule. Candidates should read the official advertisement for subject-wise eligibility, syllabus, fee rules and examination instructions before submitting the form.</p><h3>Documents Required</h3><ul><li>Recent photograph with a light background</li><li>Signature scan copy</li><li>Class 10 certificate and marksheet for date of birth</li><li>Class 12, bachelor's, master's and B.Ed certificates and marksheets</li><li>Category and domicile certificates where applicable</li></ul><p>After final submission, download and keep a printed copy of the application confirmation for future use.</p>",
+  "publishedAt": "2026-09-02T05:52:00.000Z",
+  "lastUpdated": "2026-09-02",
+  "sortPriority": 50,
+  "sourceUrl": "https://biharboardonline.com/",
+  "isFeatured": true,
   "isNew": true,
   "importantDates": {
-    "notificationDate": "See official notice",
-    "startDate": "See official notice",
-    "lastDate": "See official notice",
-    "examDate": "See official notice",
-    "resultDate": "See official notice",
-    "admitCardDate": "See official notice"
+    "notificationDate": "02 Sep 2026",
+    "startDate": "17 Aug 2026",
+    "lastDate": "15 Sep 2026",
+    "examDate": "Paper I / Paper II: As per schedule",
+    "resultDate": "Notified soon",
+    "admitCardDate": "Before examination"
   },
   "links": {
-    "applyOnline": "https://www.bsebstet.com",
-    "officialWebsite": "https://www.bsebstet.com",
-    "officialNotification": "https://www.bsebstet.com"
+    "applyOnline": "https://stetregistration.cbrt.co.in/",
+    "officialNotification": "https://doc.sarkariresults.org.in/STET%202026%20Advt.pdf",
+    "applicationForm": "https://doc.sarkariresults.org.in/STET%20Application%20Form%202026.pdf",
+    "howToFillVideoHindi1": "https://youtu.be/9ppsIFslEtg",
+    "howToFillVideoHindi2": "https://youtu.be/AyU1Ni0v0wI",
+    "officialWebsite": "https://biharboardonline.com/",
+    "sarkariResultTools": "https://sarkariresultportal.com/"
   },
   "tags": [
     "Bihar",
     "STET",
-    "BSEB"
+    "BSEB",
+    "Teacher Eligibility Test",
+    "Paper I",
+    "Paper II",
+    "Online Form"
+  ],
+  "importantInstructions": "Read the complete BSEB STET 2026 notification before applying. Verify subject-wise qualification, paper selection, fee and examination schedule on the official portal.",
+  "faqs": [
+    {
+      "question": "What is the last date for Bihar STET 2026?",
+      "answer": "Candidates can apply online and pay the examination fee up to 15 September 2026."
+    },
+    {
+      "question": "Can candidates apply for both Bihar STET papers?",
+      "answer": "Yes. Eligible candidates can apply for Paper I, Paper II or both papers after checking the subject-wise notification."
+    },
+    {
+      "question": "Where can candidates apply for Bihar STET 2026?",
+      "answer": "Apply through the official registration portal at stetregistration.cbrt.co.in."
+    }
   ],
   "views": 1965
 }

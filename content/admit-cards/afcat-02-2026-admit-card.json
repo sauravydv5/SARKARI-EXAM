@@ -22,13 +22,13 @@
   "content": "<p>The <strong>Indian Air Force</strong> has released the <strong>AFCAT 02/2026 Admit Card</strong> for candidates who registered for the Air Force Common Admission Test.</p><p>Download the e-admit card only from the official AFCAT portal and check exam city, date, shift and reporting time carefully.</p>",
   "publishedAt": "2026-08-10T11:20:00.000Z",
   "importantDates": {
-    "notificationDate": "As per AFCAT 02/2026",
-    "startDate": "As per notification",
-    "lastDate": "As per notification",
-    "examDate": "As per AFCAT schedule",
-    "resultDate": "To be announced",
-    "admitCardDate": "Out – 2026"
-  },
+  "notificationDate": "20 May 2026",
+  "startDate": "20 May 2026",
+  "lastDate": "21 June 2026",
+  "examDate": "08 August 2026",
+  "resultDate": "09 September 2026",
+  "admitCardDate": "05 August 2026 at 11:00 AM"
+},
   "links": {
     "downloadAdmitCard": "https://afcat.cdac.in",
     "officialWebsite": "https://afcat.cdac.in"

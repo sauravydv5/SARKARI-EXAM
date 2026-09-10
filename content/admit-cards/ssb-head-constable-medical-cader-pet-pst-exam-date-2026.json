@@ -7,37 +7,41 @@
   "id": "ssb-head-constable-medical-cader-pet-pst-exam-date-2026",
   "slug": "ssb-head-constable-medical-cader-pet-pst-exam-date-2026",
   "category": "admit-card",
-  "title": "SSB Head Constable (Medical Cader) PET / PST Admit Card 2026",
+  "title": "SSB Head Constable (Medical Cadre) PET / PST Exam Date 2026",
   "organization": "Sashastra Seema Bal",
-  "postName": "Head Constable (Medical Cadre) – PET / PST",
+  "postName": "Constable to Head Constable (Medical Cadre)",
   "totalVacancies": 0,
-  "vacancyDetails": "PET/PST exam date for SSB Head Constable Medical Cadre",
-  "qualification": "As per SSB Medical Cadre HC notification",
-  "ageLimit": "As per SSB",
-  "applicationFee": "As per SSB",
-  "selectionProcess": "PET / PST → skill / written as applicable → Medical → DV",
-  "documentsRequired": "Admit card and photo ID",
-  "howToApply": "1. Visit https://ssbrectt.gov.in\n2. Open HC Medical Cadre PET/PST notice\n3. Note exam date\n4. Download call letter when available",
-  "shortDescription": "SSB Head Constable (Medical Cadre) PET/PST Exam Date 2026 announced.",
-  "content": "<p><strong>SSB</strong> has notified <strong>PET / PST Exam Date 2026</strong> for <strong>Head Constable (Medical Cadre)</strong>.</p>",
+  "vacancyDetails": "SSB recruitment for Constable to Head Constable (Medical Cadre), as per the official 2026 recruitment notice.",
+  "qualification": "As per the official SSB Constable to Head Constable (Medical Cadre) recruitment notification.",
+  "ageLimit": "As per the official SSB recruitment notification.",
+  "applicationFee": "As per the official SSB recruitment notification.",
+  "selectionProcess": "PET / PST → Written / Skill Test as applicable → Medical Examination → Document Verification → Final Selection",
+  "documentsRequired": "SSB admit card/call letter, valid original photo ID and other documents specified in the official notice.",
+  "howToApply": "1. Visit https://recruitment.ssb.gov.in\n2. Open the Admit Card / Notification section\n3. Select the relevant Medical Cadre recruitment notice\n4. Download the admit card/call letter when officially released\n5. Check the allotted date, venue and reporting time\n6. Appear with the required documents",
+  "shortDescription": "SSB Constable to Head Constable (Medical Cadre) recruitment 2026 notification is available. PET/PST exam date and admit card release date are not officially announced yet.",
+  "content": "<p><strong>Sashastra Seema Bal (SSB)</strong> published the official recruitment notice for <strong>Constable to Head Constable (Medical Cadre)</strong> on <strong>21 March 2026</strong>.</p><p>The official SSB recruitment portal currently does not show a separate PET/PST exam-date notice or admit-card release notice for this Medical Cadre recruitment. Therefore, the PET/PST date should not be marked as announced until SSB publishes an official notice.</p><p>Candidates should regularly check the official SSB recruitment portal for the PET/PST schedule and admit card/call letter.</p>",
   "publishedAt": "2026-08-10T11:45:00.000Z",
   "importantDates": {
-    "notificationDate": "As per SSB",
-    "startDate": "As per notification",
-    "lastDate": "As per notification",
-    "examDate": "PET/PST – Date Out",
+    "notificationDate": "21 March 2026",
+    "startDate": "As per official recruitment notice",
+    "lastDate": "As per official recruitment notice",
+    "examDate": "Not officially announced",
     "resultDate": "To be announced",
-    "admitCardDate": "Before PET/PST"
+    "admitCardDate": "Not officially announced"
   },
   "links": {
-    "downloadAdmitCard": "https://ssbrectt.gov.in",
-    "officialWebsite": "https://ssbrectt.gov.in"
+    "downloadAdmitCard": "https://recruitment.ssb.gov.in",
+    "officialWebsite": "https://recruitment.ssb.gov.in"
   },
   "tags": [
     "SSB",
     "Head Constable",
     "Medical Cadre",
+    "Constable",
     "PET",
-    "PST"
+    "PST",
+    "Admit Card",
+    "Exam Date",
+    "SSB Recruitment 2026"
   ]
 }

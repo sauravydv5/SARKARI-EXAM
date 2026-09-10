@@ -9,35 +9,39 @@
   "category": "admit-card",
   "title": "SSB Constable Tradesman PET / PST Admit Card 2026",
   "organization": "Sashastra Seema Bal",
-  "postName": "Constable (Tradesman) – PET / PST",
+  "postName": "Constable (Non-GD/Tradesman) – PET / PST",
   "totalVacancies": 0,
-  "vacancyDetails": "PET/PST schedule for SSB Constable Tradesman posts",
-  "qualification": "As per SSB Constable Tradesman notification",
-  "ageLimit": "As per SSB",
-  "applicationFee": "As per SSB",
-  "selectionProcess": "PET / PST → Trade Test → Medical → DV",
-  "documentsRequired": "Call letter, photo ID",
-  "howToApply": "1. Visit https://ssbrectt.gov.in\n2. Open Constable Tradesman PET/PST notice\n3. Check dates and centre instructions\n4. Download admit card when link is live",
-  "shortDescription": "SSB Constable Tradesman PET/PST Exam Date 2026 out at ssbrectt.gov.in.",
-  "content": "<p><strong>SSB</strong> has announced the <strong>Constable (Tradesman) PET / PST Exam Date 2026</strong>.</p>",
+  "vacancyDetails": "SSB Constable (Non-GD/Tradesman) recruitment under Advertisement No. 524/RC/SSB/Combined Advt./CT-to-SI(Non-GD)/2025.",
+  "qualification": "As per the respective SSB Constable (Non-GD) recruitment advertisement.",
+  "ageLimit": "As per the official SSB recruitment advertisement.",
+  "applicationFee": "As per the official SSB recruitment advertisement.",
+  "selectionProcess": "PET / PST → Trade Test / Written Examination as applicable → Documentation / Medical → Final Selection",
+  "documentsRequired": "SSB PET/PST e-Admit Card, valid original photo ID and other documents specified in the call letter.",
+  "howToApply": "1. Visit https://recruitment.ssb.gov.in\n2. Open the Admit Card section\n3. Select the Constable to Sub-Inspector (Non-GD)-2025 PET/PST link\n4. Download the e-Admit Card using the required credentials\n5. Check the allotted date, venue and reporting time\n6. Appear at the centre with the admit card and required documents",
+  "shortDescription": "SSB Constable Tradesman PET/PST Admit Card 2026 is available. PET/PST for the relevant Constable (Non-GD) posts is scheduled from 08 August 2026 to 13 October 2026.",
+  "content": "<p><strong>Sashastra Seema Bal (SSB)</strong> has released the <strong>e-Admit Card for Constable to Sub-Inspector (Non-GD)-2025 PET and PST</strong>.</p><p>The official SSB Admit Card portal lists several Constable (Non-GD) Tradesman posts, including Constable Carpenter, Waiter, Driver, Gardner, Cobbler, Veterinary, Washerman, Barber, Water Carrier, Nursing Orderly and Tailor. The physical stage is scheduled from <strong>08 August 2026 to 13 October 2026</strong>.</p><p>Candidates should download their individual e-Admit Card from the official SSB recruitment portal and follow the date, venue, reporting time and instructions printed on the call letter.</p>",
   "publishedAt": "2026-08-10T11:50:00.000Z",
   "importantDates": {
-    "notificationDate": "As per SSB",
-    "startDate": "As per notification",
-    "lastDate": "As per notification",
-    "examDate": "PET/PST – Date Out",
+    "notificationDate": "21 March 2026",
+    "startDate": "21 March 2026",
+    "lastDate": "04 May 2026",
+    "examDate": "08 August 2026 to 13 October 2026",
     "resultDate": "To be announced",
-    "admitCardDate": "Before PET/PST"
+    "admitCardDate": "07 August 2026"
   },
   "links": {
-    "downloadAdmitCard": "https://ssbrectt.gov.in",
-    "officialWebsite": "https://ssbrectt.gov.in"
+    "downloadAdmitCard": "https://recruitment.ssb.gov.in/AdmitCardUrl",
+    "officialWebsite": "https://recruitment.ssb.gov.in"
   },
   "tags": [
     "SSB",
     "Constable",
     "Tradesman",
+    "Non GD",
     "PET",
-    "PST"
+    "PST",
+    "Admit Card",
+    "Exam Date",
+    "SSB Recruitment 2026"
   ]
 }

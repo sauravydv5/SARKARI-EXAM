@@ -9,34 +9,40 @@
   "category": "admit-card",
   "title": "SSC Delhi Police Driver PE & MT Date 2026",
   "organization": "Staff Selection Commission / Delhi Police",
-  "postName": "Constable (Driver) – PE & MT Schedule",
-  "totalVacancies": 0,
-  "vacancyDetails": "PE & MT date notice for Delhi Police Driver posts",
-  "qualification": "As per Delhi Police Driver notification; valid driving licence",
-  "ageLimit": "As per notification",
-  "applicationFee": "As per SSC",
-  "selectionProcess": "CBT → PE & MT → Trade / Driving Test → DV / Medical",
-  "documentsRequired": "PE&MT admit card, photo ID, driving licence",
-  "howToApply": "1. Visit https://ssc.gov.in\n2. Open Delhi Police Driver PE & MT notice\n3. Check date and venue\n4. Download admit card when link opens",
-  "shortDescription": "SSC Delhi Police Driver PE & MT Date 2026 out. Check official notice on ssc.gov.in.",
-  "content": "<p>The <strong>PE &amp; MT schedule</strong> for <strong>Delhi Police Driver</strong> posts has been released under SSC recruitment.</p><p>Candidates must appear with valid documents and follow the official reporting instructions.</p>",
+  "postName": "Constable (Driver) Male in Delhi Police Examination 2025 – PE&MT / DV / Trade Test",
+  "totalVacancies": 660,
+  "vacancyDetails": "660 revised vacancies for Constable (Driver) Male in Delhi Police Examination 2025.",
+  "qualification": "10+2 (Senior Secondary) pass and valid Heavy Motor Driving Licence as prescribed in the official SSC notification.",
+  "ageLimit": "21 to 30 years as prescribed in the official examination notification, with applicable relaxations.",
+  "applicationFee": "₹100; women candidates and candidates belonging to SC, ST and eligible Ex-Servicemen categories are exempted as per SSC rules.",
+  "selectionProcess": "Computer Based Examination → PE&MT / Document Verification → Trade Test → Final Selection",
+  "documentsRequired": "PE&MT/DV admission certificate, valid original photo ID, original educational/eligibility documents and valid driving licence as required by Delhi Police.",
+  "howToApply": "1. Visit https://delhipolice.gov.in/recruitments\n2. Open the recruitment notice for Constable (Driver) in Delhi Police Examination 2025\n3. Check the latest revised PE&MT schedule\n4. Download the PE&MT/DV admission certificate when available\n5. Verify venue, date and reporting time\n6. Appear with the required original documents",
+  "shortDescription": "SSC Delhi Police Driver PE&MT 2026 revised schedule has been released by Delhi Police. Candidates should check the latest PE&MT schedule and admission certificate on delhipolice.gov.in.",
+  "content": "<p><strong>Staff Selection Commission (SSC)</strong> conducted the Computer Based Examination for <strong>Constable (Driver) Male in Delhi Police Examination 2025</strong> on <strong>16 and 17 December 2025</strong>. Candidates qualifying the CBE were shortlisted for PE&MT / Document Verification / Trade Test.</p><p>The SSC result notice dated <strong>29 April 2026</strong> states that the PE&MT/DV will be conducted by Delhi Police and that its schedule and admission certificates will be communicated by Delhi Police.</p><p>Delhi Police subsequently issued notices regarding the PE&MT schedule, postponements and a <strong>revised schedule dated 03 September 2026</strong>. Candidates should follow the latest Delhi Police recruitment notice because earlier PE&MT dates were revised/postponed.</p>",
   "publishedAt": "2026-08-10T10:30:00.000Z",
   "importantDates": {
-    "notificationDate": "As per SSC",
-    "startDate": "As per notification",
-    "lastDate": "As per notification",
-    "examDate": "PE & MT dates – Out",
-    "resultDate": "To be announced",
-    "admitCardDate": "Before PE & MT"
+    "notificationDate": "24 September 2025",
+    "startDate": "24 September 2025",
+    "lastDate": "15 October 2025",
+    "examDate": "PE&MT – Revised schedule issued on 03 September 2026",
+    "resultDate": "29 April 2026 (CBE result)",
+    "admitCardDate": "PE&MT/DV admission certificate issued by Delhi Police as per schedule"
   },
   "links": {
-    "downloadAdmitCard": "https://ssc.gov.in",
-    "officialWebsite": "https://ssc.gov.in"
+    "downloadAdmitCard": "https://delhipolice.gov.in/recruitments",
+    "officialWebsite": "https://ssc.gov.in",
+    "delhiPoliceRecruitment": "https://delhipolice.gov.in/recruitments"
   },
   "tags": [
     "SSC",
     "Delhi Police",
     "Driver",
-    "PE MT"
+    "Constable Driver",
+    "PEMT",
+    "PE MT",
+    "Document Verification",
+    "Trade Test",
+    "Admit Card"
   ]
 }

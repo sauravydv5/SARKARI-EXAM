@@ -9,25 +9,25 @@
   "category": "admit-card",
   "title": "MPPSC Assistant Professor Admit Card 2026",
   "organization": "Madhya Pradesh Public Service Commission",
-  "postName": "Assistant Professor – Admit Card",
-  "totalVacancies": 0,
-  "vacancyDetails": "Admit card for MPPSC Assistant Professor examination",
-  "qualification": "As per MPPSC Assistant Professor subject-wise eligibility",
-  "ageLimit": "As per MPPSC rules",
-  "applicationFee": "As per MPPSC",
-  "selectionProcess": "Written Exam / Interview as per notification",
-  "documentsRequired": "Application number; printed admit card and photo ID",
-  "howToApply": "1. Visit https://mppsc.mp.gov.in\n2. Open Admit Card link for Assistant Professor\n3. Login and download hall ticket\n4. Print for exam day",
-  "shortDescription": "MPPSC Assistant Professor Admit Card 2026 available at mppsc.mp.gov.in.",
-  "content": "<p><strong>MPPSC</strong> has released the <strong>Assistant Professor Admit Card 2026</strong>.</p><p>Download only from the official website and verify subject, centre and reporting time.</p>",
+  "postName": "Assistant Professor – Higher Education Department",
+  "totalVacancies": 949,
+  "vacancyDetails": "949 Assistant Professor posts across multiple subjects and phases under the MPPSC Assistant Professor recruitment cycle.",
+  "qualification": "As per subject-wise MPPSC Assistant Professor recruitment notification.",
+  "ageLimit": "As per MPPSC recruitment notification and applicable Madhya Pradesh government rules.",
+  "applicationFee": "General / Other State: ₹500; MP reserved category candidates: ₹250, plus applicable portal charges.",
+  "selectionProcess": "Written/OMR Examination → Interview / Document Verification as applicable → Final Selection",
+  "documentsRequired": "Registration/Enrollment Number or Date of Birth for downloading the admit card; printed admit card and valid original photo ID for the examination.",
+  "howToApply": "1. Visit https://mppsc.mp.gov.in\n2. Open the Admit Card section\n3. Select the relevant Assistant Professor examination\n4. Login using the required registration/enrollment details and date of birth\n5. Download and print the admit card\n6. Verify examination date, centre, shift and reporting instructions",
+  "shortDescription": "MPPSC Assistant Professor Admit Card 2026 has been released for the relevant examination phases. Candidates can download the hall ticket from mppsc.mp.gov.in.",
+  "content": "<p><strong>Madhya Pradesh Public Service Commission (MPPSC)</strong> has released the <strong>Assistant Professor Admit Card 2026</strong> for the relevant subject-wise examination phases.</p><p>The MPPSC Assistant Professor recruitment is being conducted in multiple phases. The official examination schedule includes examinations on <strong>12 July 2026</strong>, <strong>2 August 2026</strong> and <strong>30 August 2026</strong>.</p><p>Candidates should download their admit card only through the official MPPSC website and carefully verify their name, roll number, examination centre, date, shift and reporting time before appearing for the examination.</p>",
   "publishedAt": "2026-08-10T10:15:00.000Z",
   "importantDates": {
-    "notificationDate": "As per MPPSC",
-    "startDate": "As per notification",
-    "lastDate": "As per notification",
-    "examDate": "As scheduled",
-    "resultDate": "To be announced",
-    "admitCardDate": "Out – 2026"
+    "notificationDate": "30 December 2025",
+    "startDate": "27 February 2026 (subject-wise schedule)",
+    "lastDate": "26 March 2026 to 16 May 2026 (subject-wise schedule)",
+    "examDate": "12 July 2026, 2 August 2026 and 30 August 2026",
+    "resultDate": "To be announced / subject-wise",
+    "admitCardDate": "02 July 2026 (Phase 1); 26 July 2026 (Phase 2); 20 August 2026 (Phase 3)"
   },
   "links": {
     "downloadAdmitCard": "https://mppsc.mp.gov.in",
@@ -36,6 +36,9 @@
   "tags": [
     "MPPSC",
     "Assistant Professor",
-    "Admit Card"
+    "Admit Card",
+    "MPPSC Assistant Professor 2026",
+    "Madhya Pradesh",
+    "Higher Education Department"
   ]
 }

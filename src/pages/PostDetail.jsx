@@ -26,6 +26,33 @@ const CATEGORY_ICONS = {
 };
 
 const SOON = '';
+const RECENT_POSTS_KEY = 'sarkari-job-hub-recent-posts';
+const SAVED_POSTS_KEY = 'sarkari-job-hub-saved-posts';
+
+function rememberRecentPost(post) {
+  if (!post?.slug && !post?.id) return;
+  try {
+    const existing = JSON.parse(window.localStorage.getItem(RECENT_POSTS_KEY) || '[]');
+    const entry = {
+      slug: post.slug || post.id,
+      title: post.title || 'Untitled update',
+      category: post.category || 'important',
+    };
+    const next = [entry, ...existing.filter((item) => item.slug !== entry.slug)].slice(0, 4);
+    window.localStorage.setItem(RECENT_POSTS_KEY, JSON.stringify(next));
+  } catch {
+    // Local storage can be unavailable in private browsing or locked-down browsers.
+  }
+}
+
+function isSavedPost(post) {
+  try {
+    const saved = JSON.parse(window.localStorage.getItem(SAVED_POSTS_KEY) || '[]');
+    return Array.isArray(saved) && saved.some((item) => item.slug === (post.slug || post.id));
+  } catch {
+    return false;
+  }
+}
 
 function val(v, fallback = SOON) {
   if (v === 0) return '0';
@@ -237,6 +264,7 @@ export default function PostDetail() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [showNoticeImage, setShowNoticeImage] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -248,6 +276,8 @@ export default function PostDetail() {
         const res = await api.getPost(slug);
         if (cancelled) return;
         setPost(res.data);
+        rememberRecentPost(res.data);
+        setIsSaved(isSavedPost(res.data));
         setRelated(res.related || []);
         setError('');
       } catch (err) {
@@ -345,6 +375,21 @@ export default function PostDetail() {
     script.type = 'application/ld+json';
     script.textContent = JSON.stringify(data);
     document.head.appendChild(script);
+  }
+
+  function toggleSavedPost() {
+    if (!post) return;
+    try {
+      const saved = JSON.parse(window.localStorage.getItem(SAVED_POSTS_KEY) || '[]');
+      const slug = post.slug || post.id;
+      const next = isSaved
+        ? saved.filter((item) => item.slug !== slug)
+        : [{ slug, title: post.title, category: post.category || 'important' }, ...saved].slice(0, 20);
+      window.localStorage.setItem(SAVED_POSTS_KEY, JSON.stringify(next));
+      setIsSaved(!isSaved);
+    } catch {
+      setIsSaved(false);
+    }
   }
 
   useEffect(() => {
@@ -620,6 +665,9 @@ export default function PostDetail() {
                 ) : (
                   <span className="pd-hero-apply pd-hero-apply-disabled">{primaryLabel}</span>
                 )}
+                <button type="button" className={`pd-save-button${isSaved ? ' is-saved' : ''}`} onClick={toggleSavedPost}>
+                  {isSaved ? '★ Saved' : '☆ Save for later'}
+                </button>
               </div>
             )}
           </header>
