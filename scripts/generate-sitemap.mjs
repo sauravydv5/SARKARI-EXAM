@@ -142,6 +142,7 @@ function urlEntry(urlPath, lastmod) {
 
 const entries = new Map();
 const postsBySlug = new Map();
+const preserveCategories = new Set(['result', 'admit-card', 'answer-key', 'syllabus', 'admission', 'important', 'certificate', 'bihar-special']);
 const today = new Date().toISOString().slice(0, 10);
 
 for (const [urlPath] of staticPages) {
@@ -166,7 +167,7 @@ for (const filePath of walkJsonFiles(contentDirectory)) {
   const isCertificate = post.category === 'certificate';
   if (!isCertificate && (!Number.isFinite(publicationDate) || publicationDate < contentCutoffDate)) continue;
   if (hasLowQualityContent(post)) continue;
-  if (hasPassedDeadline(post) && !hasUpcomingMilestone(post)) continue;
+  if (!preserveCategories.has(post.category) && hasPassedDeadline(post) && !hasUpcomingMilestone(post)) continue;
 
   const slug = postSlug(post, filePath);
   if (!slug) continue;
