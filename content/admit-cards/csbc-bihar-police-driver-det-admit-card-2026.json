@@ -2,42 +2,63 @@
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "isFeatured": true,
-  "isNew": true,
+  "isNew": false,
   "views": 2821,
+
   "id": "csbc-bihar-police-driver-det-admit-card-2026",
   "slug": "csbc-bihar-police-driver-det-admit-card-2026",
   "category": "admit-card",
   "title": "CSBC Bihar Police Driver DET Admit Card 2026",
   "organization": "Central Selection Board of Constable, Bihar",
-  "postName": "Police Driver – Driver Eligibility Test (DET) Admit Card",
-  "totalVacancies": 0,
-  "vacancyDetails": "Admit card for Bihar Police Driver DET",
-  "qualification": "As per CSBC Driver notification; valid driving licence as required",
-  "ageLimit": "As per CSBC Bihar Police Driver rules",
-  "applicationFee": "As per CSBC",
-  "selectionProcess": "Written / as notified → DET → Physical / DV stages",
-  "documentsRequired": "Registration number, DOB; printed admit card, photo ID, driving licence for DET",
-  "howToApply": "1. Visit https://csbc.bihar.gov.in\n2. Open Driver DET Admit Card link\n3. Login with registration credentials\n4. Download and print admit card",
-  "shortDescription": "CSBC Bihar Police Driver DET Admit Card 2026. Download from csbc.bihar.gov.in.",
-  "content": "<p><strong>CSBC Bihar</strong> has released the <strong>Police Driver DET Admit Card 2026</strong>.</p><p>Candidates must download the hall ticket and appear for the Driver Eligibility Test with original licence and photo ID as instructed.</p>",
+  "postName": "Driver Constable – Driving Efficiency Test (DET)",
+
+  "totalVacancies": 4361,
+  "vacancyDetails": "Driver Constable in Bihar Police and Bihar Special Armed Police – 4,361 posts (Advt. No. 02/2025)",
+
+  "qualification": "Intermediate (10+2) or equivalent qualification with a valid driving licence as prescribed in the official notification",
+
+  "ageLimit": "As prescribed in CSBC Advt. No. 02/2025, with applicable relaxation for reserved categories",
+
+  "applicationFee": "As prescribed in CSBC Advt. No. 02/2025",
+
+  "selectionProcess": "Written Examination → Physical Efficiency Test (PET) → Driving Efficiency Test (DET) → Document Verification → Final Selection",
+
+  "documentsRequired": "DET e-Admit Card, valid photo ID and valid Heavy Motor Vehicle (HMV) driving licence as applicable",
+
+  "howToApply": "The application process has already closed. Candidates who qualified for the DET should visit the official CSBC website, download the DET e-Admit Card and check their allotted DET date and venue.",
+
+  "shortDescription": "CSBC Bihar Police Driver DET Admit Card 2026 has been released. Candidates selected for the Driving Efficiency Test can download their e-Admit Card from the official CSBC website.",
+
+  "content": "<p><strong>Central Selection Board of Constable (CSBC), Bihar</strong> has released the <strong>Driving Efficiency Test (DET) e-Admit Card</strong> for Driver Constable recruitment under <strong>Advt. No. 02/2025</strong>.</p><p>The recruitment is for <strong>4,361 Driver Constable posts</strong> in Bihar Police and Bihar Special Armed Police. Candidates shortlisted for the DET should download their e-Admit Card from the official CSBC website and follow the date, venue and instructions mentioned in it.</p>",
+
   "publishedAt": "2026-08-10T12:00:00.000Z",
+
   "importantDates": {
-    "notificationDate": "As per CSBC",
-    "startDate": "As per notification",
-    "lastDate": "As per notification",
-    "examDate": "DET as scheduled",
-    "resultDate": "To be announced",
-    "admitCardDate": "Out – 2026"
+    "notificationDate": "17 July 2025",
+    "startDate": "20 July 2025",
+    "lastDate": "20 August 2025",
+    "writtenExamDate": "10 December 2025",
+    "petDate": "From 12 March 2026",
+    "detAdmitCardDate": "08 August 2026",
+    "detScheduleNoticeDate": "28 August 2026",
+    "detExamDate": "As per individual DET schedule",
+    "revisedHMVDetNoticeDate": "05 September 2026",
+    "resultDate": "To be announced"
   },
+
   "links": {
     "downloadAdmitCard": "https://csbc.bihar.gov.in",
     "officialWebsite": "https://csbc.bihar.gov.in"
   },
+
   "tags": [
     "CSBC",
     "Bihar Police",
-    "Driver",
+    "Driver Constable",
     "DET",
+    "Driving Efficiency Test",
     "Admit Card"
-  ]
+  ],
+
+  "lastUpdated": "2026-09-10"
 }

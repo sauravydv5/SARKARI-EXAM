@@ -300,8 +300,23 @@ function hasUpcomingMilestone(post) {
     });
 }
 
+function isUpdatedInLastThreeDays(post) {
+  const activity = Math.max(
+    ...[post.lastUpdated, post.updatedAt, post.publishedAt]
+      .map((value) => new Date(value || 0).getTime())
+      .filter(Number.isFinite),
+    0,
+  );
+  if (!activity) return false;
+  return Date.now() - activity < 1000 * 60 * 60 * 24 * 3;
+}
+
 function sortPosts(posts) {
   return [...posts].sort((a, b) => {
+    const aRecent = isUpdatedInLastThreeDays(a) ? 1 : 0;
+    const bRecent = isUpdatedInLastThreeDays(b) ? 1 : 0;
+    if (aRecent !== bRecent) return bRecent - aRecent;
+
     const activityDate = (post) => Math.max(
       ...[post.lastUpdated, post.updatedAt, post.publishedAt]
         .map((value) => new Date(value || 0).getTime())

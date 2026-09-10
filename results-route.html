@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="preload" as="image" href="/logo-108.webp" imagesrcset="/logo-54.webp 54w, /logo-108.webp 108w" imagesizes="(max-width: 480px) 54px, 60px" type="image/webp" fetchpriority="high" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#dc2626" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Sarkari Job Hub",
+        "url": "https://sarkarijobhub.website",
+        "logo": "https://sarkarijobhub.website/logo.png",
+        "description": "Independent informational portal for government recruitment and exam updates in India.",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer Service",
+          "email": "sauravkumar91937@gmail.com"
+        }
+      }
+    </script>
+    <meta name="description" content="Independent government job and exam information portal with structured updates and links to official sources." />
+    <meta name="keywords" content="sarkari job, sarkari naukri, govt jobs, government jobs, latest jobs, SSC jobs, Railway jobs, Bank jobs, UPSC jobs, admit card, answer key, syllabus, admission, job alert, 2026" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="language" content="English" />
+    <meta name="geo.country" content="IN" />
+    <meta name="geo.region" content="IN" />
+    <meta name="ICBM" content="20.5937,78.9629" />
+    <meta name="author" content="Sarkari Job Hub" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sarkari Job Hub 2026 — #1 Latest Sarkari Jobs, Results & Admit Cards Portal" />
+    <meta property="og:description" content="Sarkari Job Hub - Get latest Sarkari jobs, government exam results, admit cards, answer keys, syllabus and admission alerts for SSC, Railway, Bank, UPSC in India." />
+    <meta property="og:url" content="https://sarkarijobhub.website/" />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="og:image:width" content="200" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:site_name" content="Sarkari Job Hub" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sarkari Job Hub 2026 — Latest Sarkari Jobs, Results & Admit Cards" />
+    <meta name="twitter:description" content="Get latest govt jobs, exam results, admit cards, answer keys for SSC, Railway, Bank, UPSC on Sarkari Job Hub." />
+    <meta name="twitter:image" content="/logo.png" />
+    <meta name="twitter:site" content="@sarkarijobhub" />
+    <link rel="canonical" href="https://sarkarijobhub.website/" />
+    <link rel="alternate" hreflang="en-IN" href="https://sarkarijobhub.website/" />
+    <link rel="alternate" hreflang="en" href="https://sarkarijobhub.website/" />
+    <script>
+      (function () {
+        var origin = 'https://sarkarijobhub.website';
+        var routeUrl = origin + (window.location.pathname || '/');
+        var canonical = document.querySelector('link[rel="canonical"]');
+        var ogUrl = document.querySelector('meta[property="og:url"]');
+        var hreflangIn = document.querySelector('link[hreflang="en-IN"]');
+        var hreflangEn = document.querySelector('link[hreflang="en"]');
+        if (canonical) canonical.setAttribute('href', routeUrl);
+        if (ogUrl) ogUrl.setAttribute('content', routeUrl);
+        if (hreflangIn) hreflangIn.setAttribute('href', routeUrl);
+        if (hreflangEn) hreflangEn.setAttribute('href', routeUrl);
+      }());
+    </script>
+    <title>Sarkari Job Hub 2026 — Latest Sarkari Jobs, Results & Admit Cards</title>
+    <!-- Load AdSense after the first render so the ad network is not on the critical path. -->
+    <script>
+      (function () {
+        function loadAdsense() {
+          if (document.querySelector('script[data-adsense-loader]')) return;
+          var script = document.createElement('script');
+          script.async = true;
+          script.crossOrigin = 'anonymous';
+          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5984910720229186';
+          script.dataset.adsenseLoader = 'true';
+          document.head.appendChild(script);
+        }
+        function scheduleAdsense() {
+          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') return;
+          var events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
+          events.forEach(function (eventName) {
+            window.addEventListener(eventName, loadAdsense, { once: true, passive: true });
+          });
+          window.setTimeout(loadAdsense, 10000);
+        }
+        if (document.readyState === 'complete') {
+          scheduleAdsense();
+        } else {
+          window.addEventListener('load', scheduleAdsense, { once: true });
+        }
+      }());
+    </script>
+    <!-- Prevent theme flash before React hydrates (production-ready) -->
+    <script>
+      (function () {
+        try {
+          var key = 'sr-theme';
+          var t = localStorage.getItem(key);
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+          document.documentElement.style.colorScheme = t;
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', t === 'dark' ? '#0b1220' : '#dc2626');
+        } catch (e) {}
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime.js">
+    <link rel="stylesheet" crossorigin href="/assets/index.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

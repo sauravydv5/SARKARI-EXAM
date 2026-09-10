@@ -4,39 +4,60 @@
   "title": "Delhi High Court Higher Judicial Service HJS Admit Card 2026",
   "organization": "High Court of Delhi",
   "category": "admit-card",
-  "postName": "Delhi Higher Judicial Service (HJS) Examination",
-  "totalVacancies": 0,
-  "vacancyDetails": "Admit card for Delhi Higher Judicial Service examination stages as notified",
-  "qualification": "Advocate with prescribed years of practice as per Delhi HJS rules",
-  "ageLimit": "As per Delhi Higher Judicial Service Rules",
-  "applicationFee": "As per Delhi High Court HJS notification",
-  "selectionProcess": "Preliminary → Mains → Viva-Voce as per HJS scheme",
-  "documentsRequired": "Application credentials; printed admit card; photo ID; advocate documents if required",
-  "howToApply": "1. Visit https://delhihighcourt.nic.in\n2. Open Recruitment / HJS Admit Card link\n3. Login with registered credentials\n4. Download and print admit card\n5. Appear as per exam schedule on hall ticket",
-  "shortDescription": "Delhi High Court Higher Judicial Service (HJS) Admit Card 2026 – download from delhihighcourt.nic.in when the official link is active.",
-  "content": "<p>The <strong>High Court of Delhi</strong> conducts recruitment for the <strong>Higher Judicial Service (HJS)</strong>. Admit cards for written / further stages are published only on the official website.</p><p>Candidates must download the hall ticket from <strong>delhihighcourt.nic.in</strong>, verify personal details, and carry a valid photo ID along with the printed admit card on the examination day.</p>",
+  "postName": "Delhi Higher Judicial Service (HJS) Examination 2026",
+
+  "totalVacancies": 27,
+  "vacancyDetails": "27 vacancies - 24 existing and 3 anticipated. Category-wise: General 17, SC 5, ST 5",
+
+  "qualification": "Candidate must be a citizen of India. An Advocate must have continuously practised for at least 7 years as on 15 July 2026. Judicial Officers and persons who have been or are in judicial service must meet the prescribed 7-year combined experience requirement.",
+
+  "ageLimit": "35 to 45 years as on 15 July 2026",
+
+  "applicationFee": "₹2,000 for General category candidates and ₹500 for SC/ST/PwD candidates",
+
+  "selectionProcess": "Preliminary Examination (Objective) → Mains Examination (Written) → Viva-Voce",
+
+  "documentsRequired": "Admit card, valid photo ID and documents/certificates required for eligibility and subsequent verification",
+
+  "howToApply": "The application process has closed. Candidates who applied should visit the official Delhi High Court website for HJS examination notices, results and Mains examination updates.",
+
+  "shortDescription": "Delhi High Court HJS Examination 2026 is being conducted in three stages. The Preliminary Examination was held on 26 July 2026, while the Mains Written Examination has been rescheduled to 10 and 11 October 2026.",
+
+  "content": "<p><strong>High Court of Delhi</strong> is conducting the <strong>Delhi Higher Judicial Service Examination 2026</strong> for 27 vacancies.</p><p>The Preliminary Examination was held on <strong>26 July 2026</strong>. Candidates shortlisted for the Mains Written Examination should note that the Mains examination originally scheduled for 12 and 13 September 2026 has been postponed to <strong>10 and 11 October 2026</strong>.</p><p>Candidates should check the official Delhi High Court website for the latest admit card and examination instructions.</p>",
+
   "publishedAt": "2026-07-18T00:00:00.000Z",
+
   "isFeatured": false,
-  "isNew": true,
+  "isNew": false,
+
   "importantDates": {
-    "notificationDate": "As per HJS advt",
-    "startDate": "As per advt",
-    "lastDate": "As per advt",
-    "examDate": "As per schedule",
+    "notificationDate": "01 July 2026",
+    "startDate": "01 July 2026",
+    "lastDate": "15 July 2026",
+    "preliminaryExamDate": "26 July 2026",
+    "preliminaryResultDate": "Result released",
+    "mainsOriginalDate": "12 September 2026 and 13 September 2026",
+    "mainsRevisedDate": "10 October 2026 and 11 October 2026",
     "resultDate": "To be announced",
-    "admitCardDate": "Before exam"
+    "admitCardDate": "Mains admit card - to be announced"
   },
+
   "links": {
     "downloadAdmitCard": "https://delhihighcourt.nic.in",
     "officialWebsite": "https://delhihighcourt.nic.in"
   },
+
   "tags": [
     "Delhi High Court",
     "HJS",
     "Higher Judicial Service",
-    "Admit Card"
+    "HJS Admit Card",
+    "HJS Exam Date",
+    "Mains Exam"
   ],
+
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
-  "views": 980
+  "views": 980,
+  "lastUpdated": "2026-09-10"
 }

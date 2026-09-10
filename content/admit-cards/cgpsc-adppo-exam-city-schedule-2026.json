@@ -19,13 +19,17 @@
   "isFeatured": true,
   "isNew": true,
   "importantDates": {
-    "notificationDate": "As per CGPSC Advt.",
-    "startDate": "As per notification",
-    "lastDate": "As per notification",
-    "examDate": "As per schedule 2026",
-    "resultDate": "To be announced",
-    "admitCardDate": "After exam city – as notified"
-  },
+  "notificationDate": "17 June 2026",
+  "startDate": "22 June 2026",
+  "lastDate": "21 July 2026",
+  "freeCorrectionStartDate": "22 July 2026",
+  "freeCorrectionLastDate": "24 July 2026",
+  "paidCorrectionStartDate": "25 July 2026",
+  "paidCorrectionLastDate": "26 July 2026",
+  "examDate": "20 September 2026",
+  "resultDate": "To be announced",
+  "admitCardDate": "To be announced"
+},
   "links": {
     "downloadAdmitCard": "https://psc.cg.gov.in",
     "officialWebsite": "https://psc.cg.gov.in"
