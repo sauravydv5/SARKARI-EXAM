@@ -125,6 +125,16 @@ function LinkRow({ label, href, text }) {
   );
 }
 
+function OfficialValue({ value, href }) {
+  const displayValue = val(value);
+  if (displayValue) return displayValue;
+  return href ? (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="pd-table-link">
+      Verify exact value in official notification ↗
+    </a>
+  ) : 'Not stated in the available record';
+}
+
 function NoticeImageButton({ image, onOpen }) {
   if (!image) return null;
   return (
@@ -188,7 +198,7 @@ function summarizeRecruitmentFacts(post) {
   return dedupeFacts(values);
 }
 
-function DateTable({ dates }) {
+function DateTable({ dates, href }) {
   const tier2Date = dates.tier2Date || dates.tierII || dates['tier-2'];
   const rows = [
     ['Notification / Advt. Date', dates.notificationDate],
@@ -207,7 +217,7 @@ function DateTable({ dates }) {
     ['Result Declared', dates.resultDate],
   ].filter(([, value]) => value !== null && value !== undefined && String(value).trim());
   if (!rows.length) return null;
-  return <div className="pd-table-wrap"><table className="pd-full-table"><tbody>{rows.map(([label, value]) => <TableRow key={label} label={label}>{value}</TableRow>)}</tbody></table></div>;
+  return <div className="pd-table-wrap"><table className="pd-full-table"><tbody>{rows.map(([label, value]) => <TableRow key={label} label={label}><OfficialValue value={value} href={href} /></TableRow>)}</tbody></table></div>;
 }
 
 export default function PostDetail() {
@@ -514,7 +524,7 @@ export default function PostDetail() {
   const uniqueFactValue = (key, fallback = SOON) => factMap.get(key) || fallback;
 
   return (
-    <div className="pd-page">
+    <div className={`pd-page pd-template-${postType}`}>
       <nav className="pd-breadcrumb" aria-label="Breadcrumb">
         <Link to="/">Home</Link>
         <span className="pd-bc-sep">/</span>
@@ -595,7 +605,7 @@ export default function PostDetail() {
               <div className="pd-section-head">
                 <h2>📅 Important Dates</h2>
               </div>
-              <DateTable dates={dates} />
+              <DateTable dates={dates} href={links.officialNotification || links.officialWebsite} />
             </section>
           )}
 
@@ -733,50 +743,40 @@ export default function PostDetail() {
             </div>
           </section>}
 
-          {isAdmitCard && <>
-            <section className="pd-section">
-              <div className="pd-section-head"><h2>💳 Application Fee</h2></div>
+          {isAdmitCard && <section className="pd-section pd-type-details">
+              <div className="pd-section-head"><h2>🎫 Admit Card Details</h2></div>
               <div className="pd-table-wrap">
                 <table className="pd-full-table">
                   <tbody>
-                    <TableRow label="Fee Details" highlight>
-                      {val(post.applicationFee, 'As per the official admit-card notification')}
-                    </TableRow>
-                    <TableRow label="Payment Mode">Online payment mode as specified in the official notice.</TableRow>
+                    <TableRow label="Exam / Post" highlight>{val(post.postName || post.title)}</TableRow>
+                    <TableRow label="Admit Card / City Slip Date"><OfficialValue value={dates.admitCardDate} href={links.admitCardNotice || links.officialNotification || links.officialWebsite} /></TableRow>
+                    <TableRow label="Exam Date"><OfficialValue value={dates.examDate} href={links.examSchedule || links.officialNotification || links.officialWebsite} /></TableRow>
+                    <TableRow label="Authority">{val(post.organization)}</TableRow>
+                    <TableRow label="Candidate Instructions"><OfficialValue value={post.documentsRequired} href={links.admitCardNotice || links.officialNotification || links.officialWebsite} /></TableRow>
                   </tbody>
                 </table>
               </div>
-            </section>
+          </section>}
 
-            <section className="pd-section">
-              <div className="pd-section-head"><h2>⏳ Age Limit</h2></div>
-              <div className="pd-table-wrap">
-                <table className="pd-full-table">
-                  <tbody>
-                    <TableRow label="Age Limit Details" highlight>
-                      {val(post.ageLimit, 'As per the official admit-card notification')}
-                    </TableRow>
-                  </tbody>
-                </table>
-              </div>
-            </section>
-
-            <section className="pd-section">
-              <div className="pd-section-head"><h2>👥 Eligibility Details</h2></div>
-              <div className="pd-table-wrap">
-                <table className="pd-full-table">
-                  <tbody>
-                    <TableRow label="Educational Qualification" highlight>
-                      {val(post.qualification, 'As per the official admit-card notification')}
-                    </TableRow>
-                    <TableRow label="Other Eligibility Conditions">
-                      Check the official notification for category, document and examination requirements.
-                    </TableRow>
-                  </tbody>
-                </table>
-              </div>
-            </section>
-          </>}
+          {isSyllabus && <section className="pd-section pd-type-details">
+            <div className="pd-section-head"><h2>📘 Verified Syllabus Details</h2></div>
+            <div className="pd-table-wrap">
+              <table className="pd-full-table">
+                <tbody>
+                  <TableRow label="Exam / Post" highlight>{val(post.postName || post.title)}</TableRow>
+                  <TableRow label="Exam Pattern"><OfficialValue value={post.examPattern} href={links.downloadSyllabus || links.officialNotification || links.officialWebsite} /></TableRow>
+                  <TableRow label="Total Questions"><OfficialValue value={post.totalQuestions} href={links.downloadSyllabus || links.officialNotification || links.officialWebsite} /></TableRow>
+                  <TableRow label="Total Marks"><OfficialValue value={post.totalMarks} href={links.downloadSyllabus || links.officialNotification || links.officialWebsite} /></TableRow>
+                  <TableRow label="Duration"><OfficialValue value={post.duration} href={links.downloadSyllabus || links.officialNotification || links.officialWebsite} /></TableRow>
+                  <TableRow label="Official Source">
+                    <a href={links.downloadSyllabus || links.officialNotification || links.officialWebsite} target="_blank" rel="noopener noreferrer" className="pd-table-link">
+                      Open official syllabus notification ↗
+                    </a>
+                  </TableRow>
+                </tbody>
+              </table>
+            </div>
+          </section>}
 
           {/* Important Links — directly below eligibility */}
           <section className="pd-section pd-links-section">
