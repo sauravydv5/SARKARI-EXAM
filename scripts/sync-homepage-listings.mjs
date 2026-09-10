@@ -200,17 +200,9 @@ const NEW_POSTS = [
 
   // Admission
   { folder: 'admission', kind: 'admission', category: 'admission', slug: 'up-deled-2026-online-counselling', title: 'UP DELEd 2026 Online Counselling', org: 'Exam Regulatory Authority, Uttar Pradesh', postName: 'Diploma in Elementary Education – online counselling', official: 'https://updeled.gov.in', qualification: 'As per UP DELEd 2026 counselling brochure', tags: ['UP DELEd', 'Counselling', 'Admission'] },
-  { folder: 'admission', kind: 'admission', category: 'admission', slug: 'bihar-bseb-deled-2026-caf', title: 'Bihar BSEB DElEd 2026 Common Application Form', org: 'Bihar School Examination Board', postName: 'DElEd Common Application Form 2026', official: 'https://www.bsebodisha.ac.in'.replace('bsebodisha.ac.in', 'secondary.biharboardonline.com'), officialFix: true, tags: ['Bihar', 'BSEB', 'DElEd', 'Admission'] },
   { folder: 'admission', kind: 'admission', category: 'admission', slug: 'neet-ug-2026-online-counselling', title: 'NEET UG 2026 Online Counselling', org: 'Medical Counselling Committee / National Medical Commission', postName: 'NEET UG All India / state counselling', official: 'https://mcc.nic.in', qualification: 'NEET UG qualified as per MCC / state brochure', tags: ['NEET UG', 'MCC', 'Counselling'] },
   { folder: 'admission', kind: 'admission', category: 'admission', slug: 'up-polytechnic-jeecup-online-counseling-2025', title: 'UP Polytechnic JEECUP Online Counseling 2025', org: 'Joint Entrance Examination Council, Uttar Pradesh', postName: 'JEECUP Polytechnic counselling', official: 'https://jeecup.admissions.nic.in', qualification: 'As per JEECUP counselling brochure (10th / 12th / ITI streams)', tags: ['JEECUP', 'Polytechnic', 'UP', 'Counselling'] },
 ];
-
-// Fix the accidental BSEB URL
-const deled = NEW_POSTS.find((p) => p.slug === 'bihar-bseb-deled-2026-caf');
-if (deled) {
-  deled.official = 'https://www.biharboardonline.bihar.gov.in';
-  delete deled.officialFix;
-}
 
 let created = 0;
 let skipped = 0;

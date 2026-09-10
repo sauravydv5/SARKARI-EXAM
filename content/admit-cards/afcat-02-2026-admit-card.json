@@ -12,26 +12,27 @@
   "postName": "Air Force Common Admission Test (AFCAT) 02/2026",
   "totalVacancies": 0,
   "vacancyDetails": "AFCAT 02/2026 for Flying Branch and Ground Duty (Technical/Non-Technical) courses",
-  "qualification": "Graduation / as per AFCAT 02/2026 notification for applied branch",
-  "ageLimit": "As per AFCAT branch-wise age criteria",
-  "applicationFee": "As per AFCAT online fee",
+  "qualification": "Graduation / engineering degree as per branch-wise AFCAT 02/2026 eligibility",
+  "ageLimit": "",
+  "applicationFee": "₹550 + 18% GST as per AFCAT fee structure",
   "selectionProcess": "AFCAT Online Exam → AFSB Interview → Medical",
   "documentsRequired": "Email ID / password for AFCAT login; printed admit card and photo ID for exam",
-  "howToApply": "1. Visit https://afcat.cdac.in\n2. Login with registered email and password\n3. Download AFCAT 02/2026 admit card\n4. Print and verify centre, date and photo\n5. Carry admit card + photo ID to exam",
-  "shortDescription": "AFCAT 02/2026 Admit Card available. Download hall ticket from afcat.cdac.in.",
-  "content": "<p>The <strong>Indian Air Force</strong> has released the <strong>AFCAT 02/2026 Admit Card</strong> for candidates who registered for the Air Force Common Admission Test.</p><p>Download the e-admit card only from the official AFCAT portal and check exam city, date, shift and reporting time carefully.</p>",
+  "howToApply": "1. Visit https://afcat.edcil.co.in/\n2. Login with the registered email and password\n3. Download the AFCAT 02/2026 admit card\n4. Print and verify the centre, date, shift and photograph\n5. Carry the admit card and a valid photo ID to the exam",
+  "shortDescription": "AFCAT 02/2026 Admit Card was released on 05 August 2026 for the examination scheduled on 08 August 2026. Download it from the official AFCAT portal.",
+  "content": "<p>The <strong>Indian Air Force</strong> released the <strong>AFCAT 02/2026 Admit Card</strong> on <strong>05 August 2026</strong>. The AFCAT 02/2026 examination was scheduled for <strong>08 August 2026</strong>.</p><p>Use the official AFCAT portal to download the hall ticket and verify the exam centre, shift, reporting time and photograph.</p>",
   "publishedAt": "2026-08-10T11:20:00.000Z",
   "importantDates": {
-    "notificationDate": "As per AFCAT 02/2026",
-    "startDate": "As per notification",
-    "lastDate": "As per notification",
-    "examDate": "As per AFCAT schedule",
-    "resultDate": "To be announced",
-    "admitCardDate": "Out – 2026"
+    "notificationDate": "",
+    "startDate": "20/05/2026",
+    "lastDate": "21/06/2026",
+    "examDate": "08/08/2026",
+    "resultDate": "09/09/2026",
+    "admitCardDate": "05/08/2026"
   },
   "links": {
-    "downloadAdmitCard": "https://afcat.cdac.in",
-    "officialWebsite": "https://afcat.cdac.in"
+    "downloadAdmitCard": "https://afcat.edcil.co.in/",
+    "officialWebsite": "https://afcat.edcil.co.in/",
+    "officialNotification": "https://afcat.edcil.co.in/assets/images/news/AFCAT_02_2026/Notification%20for%20AFCAT%20Cycle%2002-2026.pdf"
   },
   "tags": [
     "AFCAT",

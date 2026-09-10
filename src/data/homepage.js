@@ -122,7 +122,6 @@ export const HOMEPAGE_SECTIONS = {
     'bihar-stet-online-form-2026',
     'iit-gate-2027-online-form',
     'up-deled-2026-online-counselling',
-    'bihar-bseb-deled-2026-caf',
     'neet-ug-2026-online-counselling',
     'sav-bihar-class-6-online-form-2027-28',
     'clat-admission-online-form-2026',

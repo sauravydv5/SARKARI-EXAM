@@ -18,14 +18,15 @@
   "publishedAt": "2026-07-18T00:00:00.000Z",
   "isFeatured": true,
   "isNew": true,
-  "importantDates": {
-    "notificationDate": "2026",
-    "startDate": "As per 72nd advt",
-    "lastDate": "As per advt",
-    "examDate": "Postponed (was 26 Jul 2026)",
-    "resultDate": "To be announced",
-    "admitCardDate": "Will re-issue after new date"
-  },
+ "importantDates": {
+  "notificationDate": "05 May 2026",
+  "startDate": "07 May 2026",
+  "lastDate": "31 May 2026",
+  "examDate": "25 October 2026",
+  "oldExamDate": "26 July 2026",
+  "resultDate": "To be announced",
+  "admitCardDate": "To be announced"
+},
   "links": {
     "checkResult": "https://www.bpsc.bih.nic.in",
     "officialWebsite": "https://www.bpsc.bih.nic.in",

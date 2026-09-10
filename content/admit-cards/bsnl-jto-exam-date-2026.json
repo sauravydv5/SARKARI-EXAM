@@ -22,12 +22,15 @@
   "content": "<p><strong>BSNL</strong> has announced the <strong>Junior Telecom Officer (JTO) Exam Date 2026</strong>.</p><p>Candidates should read the official notice for exam schedule and prepare for admit card download closer to the exam.</p>",
   "publishedAt": "2026-08-10T11:06:00.000Z",
   "importantDates": {
-    "notificationDate": "As per BSNL",
-    "startDate": "As per notification",
-    "lastDate": "As per notification",
-    "examDate": "Out – see official notice",
-    "resultDate": "To be announced",
-    "admitCardDate": "Before exam"
+    "notificationDate": "26 May 2026",
+    "startDate": "04 June 2026",
+    "lastDate": "03 July 2026",
+    "correctionStartDate": "04 July 2026",
+    "correctionLastDate": "11 July 2026",
+    "examCityDate": "12 August 2026",
+    "admitCardDate": "19 August 2026",
+    "examDate": "23 August 2026",
+    "resultDate": "To be announced"
   },
   "links": {
     "downloadAdmitCard": "https://www.bsnl.co.in",
