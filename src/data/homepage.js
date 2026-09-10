@@ -3,7 +3,6 @@ export const HOMEPAGE_SECTIONS = {
   result: [
     'rpsc-sub-jailor-result-2024',
     'bihar-police-prohibition-constable-result-2026',
-    'bihar-police-csbc-constable-operator-result-2026',
     'bihar-police-csbc-constable-gd-result-2026',
     'kvs-nvs-teaching-non-teaching-tier-ii-result-2026',
     'upsssc-vdo-2023-supplementary-result',
