@@ -94,6 +94,7 @@ export function isStaleLowValuePost(post = {}) {
 const GENERIC_PLACEHOLDER_VALUES = [
   '—',
   '-',
+  'see details',
   'n/a',
   'na',
   'soon',
@@ -241,10 +242,10 @@ export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
     nextStep: copy.nextStep,
     actionLabel: copy.action,
     timeline: [
-      { label: 'Apply / start', value: startDate || 'Not listed on this summary' },
-      { label: 'Last date', value: lastDate || 'Not listed on this summary' },
-      { label: 'Exam', value: examDate || 'Not listed on this summary' },
-      { label: 'Result', value: resultDate || 'Not listed on this summary' },
-    ],
+      startDate ? { label: 'Apply / start', value: startDate } : null,
+      lastDate ? { label: 'Last date', value: lastDate } : null,
+      examDate ? { label: 'Exam', value: examDate } : null,
+      resultDate ? { label: 'Result', value: resultDate } : null,
+    ].filter(Boolean),
   };
 }

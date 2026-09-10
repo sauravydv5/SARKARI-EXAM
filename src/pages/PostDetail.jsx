@@ -35,6 +35,9 @@ function val(v, fallback = SOON) {
 
   const normalized = s.toLowerCase().replace(/\s+/g, ' ');
   const genericPlaceholders = [
+    'see details',
+    'as published in the official notification',
+    'as published in official notification',
     'see official notice',
     'see official notification',
     'check official notice',
@@ -55,6 +58,12 @@ function val(v, fallback = SOON) {
   return s;
 }
 
+function hasUsefulContent(value) {
+  const plain = String(value || '').replace(/<[^>]*>/g, ' ').replace(/&nbsp;/gi, ' ').replace(/\s+/g, ' ').trim();
+  if (!plain) return false;
+  return !/^(introduction|recruitment overview|about department|preparation tips|career advice|read the full notification carefully|check eligibility, fee, dates and instructions|always confirm on the official website before applying)\.?$/i.test(plain);
+}
+
 function splitPostContent(content, skipHeadings = []) {
   const sanitized = sanitizeHtml(content);
   if (!sanitized || typeof DOMParser === 'undefined') {
@@ -69,6 +78,7 @@ function splitPostContent(content, skipHeadings = []) {
   let skippingDates = false;
 
   Array.from(source?.childNodes || []).forEach((node) => {
+    if (node.nodeType === 1 && !hasUsefulContent(node.textContent)) return;
     const isHeading = node.nodeType === 1 && /^(H2|H3|H4)$/.test(node.tagName);
 
     if (isHeading) {
@@ -267,6 +277,16 @@ export default function PostDetail() {
   const isCertificate = postType === 'certificate';
   const isAdmission = postType === 'admission';
   const isNotification = postType === 'notification';
+  const hasImportantDates = Object.values(dates).some((value) => Boolean(val(value)));
+  const hasRecruitmentFacts = Boolean(
+    post?.totalVacancies > 0
+      || val(post?.vacancyDetails)
+      || val(post?.qualification)
+      || val(post?.applicationFee)
+      || val(post?.selectionProcess)
+      || val(post?.ageLimit)
+      || val(post?.salary)
+  );
   const pageTitle = post?.title || 'Sarkari Job Hub';
   const keywordList = [
     cat.label,
@@ -519,6 +539,13 @@ export default function PostDetail() {
   if (isCertificate) contentSkipHeadings.push('certificate download process');
 
   const aboutContent = splitPostContent(post.content, contentSkipHeadings);
+  const usefulAboutIntro = hasUsefulContent(aboutContent.introHtml);
+  const usefulAboutSections = aboutContent.sections.filter((section) => {
+    const heading = String(section.title || '').trim();
+    const body = String(section.bodyHtml || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    if (/^(introduction|recruitment overview|about department|preparation tips|career advice)$/i.test(heading)) return false;
+    return hasUsefulContent(body);
+  });
 
   const factMap = new Map(canonicalFacts.map((fact) => [fact.key, fact.value]));
   const uniqueFactValue = (key, fallback = SOON) => factMap.get(key) || fallback;
@@ -600,7 +627,7 @@ export default function PostDetail() {
           {/* Quick info strip — always 5 cards with values */}
           <QuickInfo post={post} dates={dates} postType={postType} />
 
-          {(isRecruitment || isAdmission || isNotification || isResult || isAdmitCard || isAnswerKey) && (
+          {hasImportantDates && (isRecruitment || isAdmission || isNotification || isResult || isAdmitCard || isAnswerKey) && (
             <section className="pd-section pd-dates-priority">
               <div className="pd-section-head">
                 <h2>📅 Important Dates</h2>
@@ -609,7 +636,7 @@ export default function PostDetail() {
             </section>
           )}
 
-          {isResult && (
+          {isResult && (hasUsefulContent(post.shortDescription) || val(post.statusNote || post.status) || val(dates.resultDate) || val(dates.examDate)) && (
             <section className="pd-section">
               <div className="pd-section-head"><h2>📊 Result Overview</h2></div>
               <div className="pd-content">
@@ -623,20 +650,6 @@ export default function PostDetail() {
             </section>
           )}
 
-          {(isRecruitment || isAdmission || isNotification) && <section className="pd-section pd-intro-compact">
-            <div className="pd-section-head">
-              <h2>🧭 Introduction</h2>
-            </div>
-            <div className="pd-content">
-              <p>
-                {val(
-                  post.shortDescription,
-                  `${post.title} is a recruitment update issued by ${val(post.organization, 'the recruiting authority')}. Read the official notice for the latest dates, eligibility rules and link activation details before applying.`
-                )}
-              </p>
-            </div>
-          </section>}
-
           {(isResult || isAdmitCard || isAnswerKey || isSyllabus || isCertificate) && (
             <section className="pd-section">
               <div className="pd-section-head"><h2>{isResult ? '✅ How to Check Result' : isAdmitCard ? '🎫 How to Download Admit Card' : isAnswerKey ? '🔑 How to Download Answer Key' : isSyllabus ? '📘 Syllabus Overview' : '📜 Certificate Download Process'}</h2></div>
@@ -648,7 +661,7 @@ export default function PostDetail() {
           )}
 
           {/* ===== FULL INFO TABLE ===== */}
-          {(isRecruitment || isAdmission || isNotification) && <section className="pd-section">
+          {(isRecruitment || isAdmission || isNotification) && hasRecruitmentFacts && <section className="pd-section">
             <div className="pd-section-head">
               <h2>📋 {post.title} – Complete Information</h2>
             </div>
@@ -683,7 +696,7 @@ export default function PostDetail() {
           </section>}
 
           {/* Application Fee */}
-          {(isRecruitment || isAdmission) && <section className="pd-section">
+          {(isRecruitment || isAdmission) && val(post.applicationFee) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>💳 Application Fee</h2>
             </div>
@@ -702,7 +715,7 @@ export default function PostDetail() {
           </section>}
 
           {/* Age Limit */}
-          {isRecruitment && <section className="pd-section">
+          {isRecruitment && val(post.ageLimit) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>⏳ Age Limit</h2>
             </div>
@@ -712,17 +725,13 @@ export default function PostDetail() {
                   <TableRow label="Age Limit Details" highlight>
                     {uniqueFactValue('ageLimit', val(post.ageLimit))}
                   </TableRow>
-                  <TableRow label="Age Relaxation">
-                    Extra age relaxation for SC / ST / OBC / PwBD / Ex-Servicemen as per Government
-                    rules (see official notification).
-                  </TableRow>
                 </tbody>
               </table>
             </div>
           </section>}
 
           {/* Vacancy + Eligibility */}
-          {(isRecruitment || isAdmission) && <section className="pd-section">
+          {(isRecruitment || isAdmission) && (post.totalVacancies > 0 || val(post.vacancyDetails) || val(post.qualification) || val(post.selectionProcess)) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>👥 Vacancy &amp; Eligibility Details</h2>
             </div>
@@ -730,7 +739,7 @@ export default function PostDetail() {
               <table className="pd-full-table">
                 <tbody>
                   <TableRow label="Total Post" highlight>
-                    {uniqueFactValue('totalVacancy', post.totalVacancies > 0 ? `${post.totalVacancies.toLocaleString('en-IN')} Posts` : val(post.vacancyDetails, 'As per notification'))}
+                    {uniqueFactValue('totalVacancy', post.totalVacancies > 0 ? `${post.totalVacancies.toLocaleString('en-IN')} Posts` : val(post.vacancyDetails))}
                   </TableRow>
                   <TableRow label="Vacancy Information">{val(post.vacancyDetails)}</TableRow>
                   <TableRow label="Educational Qualification" highlight>
@@ -822,64 +831,25 @@ export default function PostDetail() {
           }
 
           {/* How to apply */}
-          {isRecruitment || isAdmission ? <section className="pd-section">
+          {(isRecruitment || isAdmission) && howSteps.length > 0 && <section className="pd-section">
             <div className="pd-section-head">
               <h2>✅ How to Fill Online Form</h2>
             </div>
-            {howSteps.length > 0 ? (
-              <ol className="pd-steps">
-                {howSteps.map((step, i) => {
-                  const text = step.replace(/^\d+\.\s*/, '');
-                  return (
-                    <li key={i}>
-                      <span className="pd-step-num">{i + 1}</span>
-                      <div>
-                        <strong>{text}</strong>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ol>
-            ) : (
-              <ol className="pd-steps">
-                <li>
-                  <span className="pd-step-num">1</span>
-                  <div>
-                    <strong>Read the full notification carefully</strong>
-                    <p>Check eligibility, fee, dates and instructions.</p>
-                  </div>
-                </li>
-                <li>
-                  <span className="pd-step-num">2</span>
-                  <div>
-                    <strong>Click Apply Online / official link</strong>
-                    <p>Use the Important Links section below.</p>
-                  </div>
-                </li>
-                <li>
-                  <span className="pd-step-num">3</span>
-                  <div>
-                    <strong>Fill form, upload documents, pay fee</strong>
-                    <p>Submit and print the confirmation page.</p>
-                  </div>
-                </li>
-              </ol>
-            )}
+            <ol className="pd-steps">
+              {howSteps.map((step, i) => {
+                const text = step.replace(/^\d+\.\s*/, '');
+                return (
+                  <li key={i}>
+                    <span className="pd-step-num">{i + 1}</span>
+                    <div>
+                      <strong>{text}</strong>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
           </section>
-          : null}
-          {isResult ? <section className="pd-section">
-            <div className="pd-section-head">
-              <h2>🧭 What After Result?</h2>
-            </div>
-            <div className="pd-content">
-              <ul className="guide-list">
-                <li>Download and keep the result or scorecard PDF for the next stage.</li>
-                <li>Read the authority's notice for cut-off, merit-list and document-verification instructions.</li>
-                <li>Use the related updates below to find the next admit card, answer key or recruitment notice when available.</li>
-              </ul>
-            </div>
-          </section>
-          : null}
+          }
 
           {showNoticeImage && post.noticeImage && (
             <div className="pd-image-modal" role="dialog" aria-modal="true" aria-label="Short notice image">
@@ -899,23 +869,19 @@ export default function PostDetail() {
             </div>
           )}
 
-          <section className="pd-section pd-about-section" aria-labelledby="about-content">
+          {(usefulAboutIntro || usefulAboutSections.length > 0) && <section className="pd-section pd-about-section" aria-labelledby="about-content">
             <div className="pd-section-head">
               <h2 id="about-content">📖 About This {aboutLabel}</h2>
             </div>
             <div className="pd-content content-html">
-              {aboutContent.introHtml ? (
+              {usefulAboutIntro ? (
                 <div dangerouslySetInnerHTML={{ __html: aboutContent.introHtml }} />
-              ) : (
-                <p>
-                  {val(post.shortDescription)} Full details are given in the tables above. Always
-                  confirm on the official website before applying.
-                </p>
-              )}
+              ) : null}
             </div>
           </section>
+          }
 
-          {aboutContent.sections.map((section) => (
+          {usefulAboutSections.map((section) => (
             <section className="pd-section pd-content-detail-section" key={section.title}>
               <div className="pd-section-head">
                 <h2>{section.title}</h2>
