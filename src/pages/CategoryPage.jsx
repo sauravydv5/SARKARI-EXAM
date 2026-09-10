@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { api, categoryMeta } from '../api';
+import { api, categoryMeta, TAXONOMIES } from '../api';
 import PostListItem from '../components/PostListItem';
 import useSeo from '../hooks/useSeo';
 
-export default function CategoryPage({ category, title, description }) {
-  const meta = categoryMeta(category);
+export default function CategoryPage({ category, taxonomy, title, description }) {
+  const meta = category ? categoryMeta(category) : TAXONOMIES[taxonomy] || { label: taxonomy, path: `/${taxonomy}` };
   const pageTitle = title || meta.label;
   const [searchParams] = useSearchParams();
   const [posts, setPosts] = useState([]);
@@ -24,6 +24,7 @@ export default function CategoryPage({ category, title, description }) {
       try {
         const res = await api.listPosts({
           category,
+          taxonomy,
           page,
           limit: 20,
           search: query || undefined,
@@ -41,7 +42,7 @@ export default function CategoryPage({ category, title, description }) {
     return () => {
       cancelled = true;
     };
-  }, [category, page, query]);
+  }, [category, taxonomy, page, query]);
 
   const categoryKeywords = [
     pageTitle,
@@ -119,6 +120,11 @@ export default function CategoryPage({ category, title, description }) {
             <Link to="/latest-jobs" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>Latest Jobs</Link>
             <Link to="/results" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>Results</Link>
             <Link to="/admit-cards" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>Admit Cards</Link>
+            <Link to="/ssc-jobs" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>SSC Jobs</Link>
+            <Link to="/railway-jobs" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>Railway Jobs</Link>
+            <Link to="/bank-jobs" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>Bank Jobs</Link>
+            <Link to="/up-jobs" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>UP Jobs</Link>
+            <Link to="/bihar-jobs" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>Bihar Jobs</Link>
             <Link to="/blog" className="home-compact-card" style={{ minHeight: '38px', padding: '8px 10px' }}>Blogs</Link>
           </div>
         </div>

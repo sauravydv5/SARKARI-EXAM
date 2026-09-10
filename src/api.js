@@ -38,6 +38,17 @@ const CATEGORY_FOLDERS = {
   'bihar-special': 'bihar-special',
 };
 
+export const TAXONOMIES = {
+  'ssc-jobs': { label: 'SSC Jobs', path: '/ssc-jobs', terms: ['ssc', 'staff selection commission'] },
+  'ssc-cgl': { label: 'SSC CGL', path: '/ssc-cgl', terms: ['ssc cgl', 'combined graduate level'] },
+  'ssc-chsl': { label: 'SSC CHSL', path: '/ssc-chsl', terms: ['ssc chsl', 'combined higher secondary'] },
+  'ssc-gd': { label: 'SSC GD', path: '/ssc-gd', terms: ['ssc gd', 'general duty constable'] },
+  'railway-jobs': { label: 'Railway Jobs', path: '/railway-jobs', terms: ['railway', 'rrb', 'rail coach factory', 'integral coach factory'] },
+  'bihar-jobs': { label: 'Bihar Jobs', path: '/bihar-jobs', terms: ['bihar', 'bpsc', 'bssc', 'bihar police', 'csbc', 'bpssc'] },
+  'up-jobs': { label: 'UP Jobs', path: '/up-jobs', terms: ['uttar pradesh', 'upsssc', 'uppsc', 'uppbpb', 'up police', 'up board'] },
+  'bank-jobs': { label: 'Bank Jobs', path: '/bank-jobs', terms: ['bank', 'ibps', 'sbi', 'rbi', 'nabard'] },
+};
+
 function toSlug(value) {
   return String(value || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
@@ -90,11 +101,12 @@ function normalizePost(raw, sourcePath) {
   const category = raw.category || CATEGORY_FOLDERS[folder] || 'latest-job';
   const postType = normalizePostType(raw.postType, category, raw.title);
   const publishedAt = raw.publishedAt || raw.updatedAt || raw.lastUpdated || raw.applyStart || raw.lastDate || '';
+  const lastUpdated = raw.lastUpdated || raw.updatedAt || publishedAt;
   const lastDate = raw.importantDates?.lastDate || raw.lastDate;
   const lastDateValue = parseDeadline(lastDate);
   const tracksApplicationDeadline = category === 'latest-job';
   const activityDate = Math.max(
-    ...[publishedAt, raw.updatedAt, raw.lastUpdated]
+    ...[publishedAt, lastUpdated]
       .map((value) => new Date(value || 0).getTime())
       .filter(Number.isFinite),
     0,
@@ -115,6 +127,7 @@ function normalizePost(raw, sourcePath) {
     title: raw.title || 'Untitled Update',
     organization: raw.organization || 'Government Organization',
     publishedAt,
+    lastUpdated,
     importantDates: raw.importantDates || {},
     links: raw.links || {},
     tags: raw.tags || [],
@@ -137,6 +150,20 @@ function normalizePost(raw, sourcePath) {
     pdf: normalizeAsset(raw.pdf),
     views: Number(raw.views || 0) || 0,
   };
+}
+
+function taxonomyText(post) {
+  return [post.slug, post.title, post.organization, post.postName, post.department, ...(post.tags || [])]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+}
+
+function matchesTaxonomy(post, taxonomy) {
+  const definition = TAXONOMIES[taxonomy];
+  if (!definition) return true;
+  const text = taxonomyText(post);
+  return definition.terms.some((term) => text.includes(term));
 }
 
 let POSTS = [];
@@ -331,6 +358,10 @@ function getPostsByCategory(category) {
   return applySectionNewBadgeLimit(getVisiblePosts().filter((post) => post.category === (category || 'latest-job')));
 }
 
+function getPostsByTaxonomy(taxonomy) {
+  return applySectionNewBadgeLimit(getVisiblePosts().filter((post) => matchesTaxonomy(post, taxonomy)));
+}
+
 function getPostsWithSearch(items, search) {
   const term = (search || '').trim().toLowerCase();
   if (!term) return items;
@@ -412,8 +443,10 @@ export const api = {
   },
   listPosts: async (params = {}) => {
     const category = params.category;
-    await (category ? loadCategory(category) : loadPosts());
-    const items = sortPosts(getPostsWithSearch(category ? getPostsByCategory(category) : getVisiblePosts(), params.search || ''));
+    const taxonomy = params.taxonomy;
+    await loadPosts();
+    const baseItems = taxonomy ? getPostsByTaxonomy(taxonomy) : category ? getPostsByCategory(category) : getVisiblePosts();
+    const items = sortPosts(getPostsWithSearch(baseItems, params.search || ''));
     const paged = buildPagination(items, params.page || 1, params.limit || 20);
     return { data: paged.items, pagination: { page: paged.page, pages: paged.pages, total: paged.total } };
   },
@@ -425,7 +458,12 @@ export const api = {
       return itemSlug === slug && !storage.deleted.has(itemSlug);
     });
     if (!post) return { data: null, related: [] };
-    return { data: post, related: getPostsByCategory(post.category).filter((item) => item.slug !== post.slug).slice(0, 4) };
+    const related = Object.keys(TAXONOMIES)
+      .filter((taxonomy) => matchesTaxonomy(post, taxonomy))
+      .flatMap((taxonomy) => getPostsByTaxonomy(taxonomy))
+      .filter((item, index, items) => item.slug !== post.slug && items.findIndex((candidate) => candidate.slug === item.slug) === index);
+    const fallback = getPostsByCategory(post.category).filter((item) => item.slug !== post.slug);
+    return { data: post, related: [...related, ...fallback].filter((item, index, items) => items.findIndex((candidate) => candidate.slug === item.slug) === index).slice(0, 4) };
   },
   login: () => Promise.resolve({ token: 'static-token', user: { email: 'admin@sarkariresult.local' } }),
   me: () => Promise.resolve({ user: { email: 'admin@sarkariresult.local' } }),

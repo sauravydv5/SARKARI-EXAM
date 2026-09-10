@@ -86,9 +86,9 @@ function html(item) {
   return `<p><strong>${item.org}</strong> provides the official service or notice for <strong>${item.title}</strong>.</p><p>Use the government portal linked below for application, download, correction or verification. Keep Aadhaar and registered mobile ready.</p>`;
 }
 
-function build(item, index) {
+function build(item) {
   const meta = KIND[item.kind];
-  const published = new Date(Date.UTC(2026, 7, 19, 12, 0, 0) - index * 60 * 1000).toISOString();
+  const now = new Date().toISOString();
   const actionKey = meta.action;
   return {
     id: item.slug,
@@ -107,8 +107,8 @@ function build(item, index) {
     howToApply: meta.steps(item.title, item.official),
     shortDescription: `${item.title}. See the official notice at ${item.official.replace(/^https?:\/\//, '')}.`,
     content: html(item),
-    publishedAt: published,
-    lastUpdated: '2026-08-19',
+    publishedAt: now,
+    lastUpdated: now,
     sourceUrl: item.official,
     isFeatured: index < 8,
     isNew: true,
@@ -215,7 +215,7 @@ if (deled) {
 
 let created = 0;
 let skipped = 0;
-NEW_POSTS.forEach((item, index) => {
+NEW_POSTS.forEach((item) => {
   const file = path.join(root, item.folder, `${item.slug}.json`);
   if (fs.existsSync(file)) {
     skipped += 1;
@@ -233,7 +233,7 @@ for (const [relative, title] of TITLE_UPDATES) {
   const json = JSON.parse(fs.readFileSync(file, 'utf8'));
   if (json.title === title) continue;
   json.title = title;
-  json.lastUpdated = json.lastUpdated || '2026-08-19';
+  json.lastUpdated = new Date().toISOString();
   json.isNew = true;
   fs.writeFileSync(file, `${JSON.stringify(json, null, 2)}\n`);
   updated += 1;

@@ -25,6 +25,14 @@ const categories = [
   ['/important', 'weekly', '0.7'],
   ['/certificates', 'monthly', '0.7'],
   ['/bihar-special', 'daily', '0.8'],
+  ['/ssc-jobs', 'daily', '0.8'],
+  ['/ssc-cgl', 'weekly', '0.7'],
+  ['/ssc-chsl', 'weekly', '0.7'],
+  ['/ssc-gd', 'weekly', '0.7'],
+  ['/railway-jobs', 'daily', '0.8'],
+  ['/bihar-jobs', 'daily', '0.8'],
+  ['/up-jobs', 'daily', '0.8'],
+  ['/bank-jobs', 'daily', '0.8'],
 ];
 
 const staticPages = [

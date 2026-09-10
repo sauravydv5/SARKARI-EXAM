@@ -746,9 +746,18 @@ img {
   flex-wrap: nowrap;
   gap: 0;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: thin;
+}
+
+.main-nav ul::-webkit-scrollbar {
+  display: none;
+}
+
+.main-nav ul {
+  scrollbar-width: none;
 }
 
 .main-nav .main-nav-link {

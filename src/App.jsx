@@ -114,6 +114,14 @@ export default function App() {
                 />
               }
             />
+            <Route path="ssc-jobs" element={<CategoryPage taxonomy="ssc-jobs" title="SSC Jobs" description="SSC recruitment, admit cards, results, answer keys and syllabus updates." />} />
+            <Route path="ssc-cgl" element={<CategoryPage taxonomy="ssc-cgl" title="SSC CGL" description="SSC CGL online forms, admit cards, results and preparation updates." />} />
+            <Route path="ssc-chsl" element={<CategoryPage taxonomy="ssc-chsl" title="SSC CHSL" description="SSC CHSL online forms, admit cards, results and answer keys." />} />
+            <Route path="ssc-gd" element={<CategoryPage taxonomy="ssc-gd" title="SSC GD" description="SSC GD Constable recruitment, exam and result updates." />} />
+            <Route path="railway-jobs" element={<CategoryPage taxonomy="railway-jobs" title="Railway Jobs" description="Railway and RRB recruitment, exam, admit card and result updates." />} />
+            <Route path="bihar-jobs" element={<CategoryPage taxonomy="bihar-jobs" title="Bihar Jobs" description="Bihar government jobs, exams, results and official notices." />} />
+            <Route path="up-jobs" element={<CategoryPage taxonomy="up-jobs" title="UP Jobs" description="Uttar Pradesh government jobs, exams, results and official notices." />} />
+            <Route path="bank-jobs" element={<CategoryPage taxonomy="bank-jobs" title="Bank Jobs" description="Banking recruitment, IBPS, SBI, RBI and related exam updates." />} />
             <Route path="search" element={<SearchPage />} />
             <Route path="faq" element={<FAQPage />} />
             <Route path="about-us" element={<AboutUs />} />

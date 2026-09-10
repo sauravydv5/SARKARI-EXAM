@@ -12,10 +12,11 @@
   "applicationFee": "As per application fee rules",
   "selectionProcess": "As per official notification stages",
   "documentsRequired": "Download official syllabus PDF from portal",
-  "howToApply": "1. Visit https://www.upessc.up.gov.in\n2. Open Syllabus / Notification PDF\n3. Download UPESSC UP TGT, UP PGT Syllabus 2026\n4. Note exam pattern and marking scheme\n5. Prepare topic-wise as per official units",
+  "howToApply": "1. Visit https://upsessc.up.gov.in\n2. Open Syllabus / Notification PDF\n3. Download UPESSC UP TGT, UP PGT Syllabus 2026\n4. Note exam pattern and marking scheme\n5. Prepare topic-wise as per official units",
   "shortDescription": "UPESSC UP TGT and PGT Syllabus 2026 – subject-wise teaching exam pattern.",
-  "content": "<p><strong>UPESSC</strong> conducts TGT and PGT examinations with subject-specific papers plus teaching aptitude as per notification.</p><h3>Broad structure</h3><ul><li><strong>TGT:</strong> Concerned subject (graduation level) + General Studies / Teaching methodology as notified</li><li><strong>PGT:</strong> Concerned subject (postgraduate level) + related teaching components</li></ul><p>Refer official subject-wise syllabus PDFs on <strong>upessc.up.gov.in</strong>.</p>",
+  "content": "<p><strong>UPESSC</strong> conducts TGT and PGT examinations with subject-specific papers plus teaching aptitude as per notification.</p><h3>Broad structure</h3><ul><li><strong>TGT:</strong> Concerned subject (graduation level) + General Studies / Teaching methodology as notified</li><li><strong>PGT:</strong> Concerned subject (postgraduate level) + related teaching components</li></ul><p>Refer official subject-wise syllabus PDFs on <strong>upsessc.up.gov.in</strong>.</p>",
   "publishedAt": "2026-08-08T15:30:00.000Z",
+  "lastUpdated": "2026-09-10T05:40:55.2355352Z",
   "isFeatured": true,
   "isNew": true,
   "importantDates": {
@@ -27,8 +28,8 @@
     "admitCardDate": "Before exam"
   },
   "links": {
-    "officialWebsite": "https://www.upessc.up.gov.in",
-    "officialNotification": "https://www.upessc.up.gov.in"
+    "officialWebsite": "https://upsessc.up.gov.in",
+    "officialNotification": "https://upsessc.up.gov.in"
   },
   "tags": [
     "UPESSC",
