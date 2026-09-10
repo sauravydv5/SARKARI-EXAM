@@ -12,17 +12,6 @@
       "maybe": null
     },
     {
-      "i": 1,
-      "wanted": "Bihar Police CSBC Constable Operator Result 2026 – Out",
-      "match": {
-        "title": "UP Police Constable Result 2026",
-        "file": "content\\results\\up-police-constable-result-2026.json",
-        "category": "result",
-        "score": 1
-      },
-      "maybe": null
-    },
-    {
       "i": 2,
       "wanted": "Bihar Police CSBC Constable GD Result 2026 – Out",
       "match": {
