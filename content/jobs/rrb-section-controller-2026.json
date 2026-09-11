@@ -1,41 +1,49 @@
 {
-  "category": "latest-job",
+  "category": "admit-card",
   "image": "/uploads/images/placeholder.svg",
   "pdf": "/uploads/pdfs/placeholder.pdf",
   "isFeatured": true,
   "isNew": true,
   "id": "rrb-section-controller-2026",
   "slug": "rrb-section-controller-2026",
-  "title": "Railway RRB Section Controller Online Form 2026",
+  "title": "RRB Section Controller Exam Date 2026 – Out",
   "organization": "Railway Recruitment Board",
   "postName": "Section Controller",
-  "totalVacancies": 0,
-  "vacancyDetails": "Section Controller posts in Indian Railways as per latest RRB CEN for traffic / control cadre",
-  "qualification": "Graduation / as specified in RRB Section Controller notification",
-  "ageLimit": "As per RRB CEN for Section Controller",
-  "applicationFee": "As per RRB application fee rules",
-  "selectionProcess": "CBT → Psycho / further stages if any → Document Verification → Medical",
+  "totalVacancies": 119,
+  "vacancyDetails": "Section Controller posts in Indian Railways as per RRB CEN 03/2026 vacancy distribution.",
+  "qualification": "Candidates must be a Graduate in any discipline from a recognized university.",
+  "ageLimit": "Minimum Age : 20 Years, Maximum Age : 33 Years as on 01 July 2026. Age relaxation is available as per RRB rules.",
+  "applicationFee": "General / OBC / EWS : ₹500/-, SC / ST / EBC / All Category female : ₹250/-. UR / OBC / EWS fee refund ₹400/-; SC / ST / PH & Female refund ₹250/- after CBT-I. Pay through debit card, credit card, internet banking, IMPS, cash card or mobile wallet.",
+  "selectionProcess": "CBT → CBAT → Document Verification → Medical Examination",
   "documentsRequired": "Educational certificates, photo ID, passport photos, signature, category certificate if applicable",
   "howToApply": "1. Visit https://www.rrbapply.gov.in\n2. Open Section Controller CEN apply online\n3. Register and fill preferences for RRBs\n4. Upload documents and pay fee\n5. Submit before last date",
-  "shortDescription": "Railway RRB Section Controller Online Form 2026 – apply on rrbapply.gov.in for control cadre posts.",
-  "content": "<p><strong>Railway Recruitment Boards</strong> recruit <strong>Section Controllers</strong> for train control operations on Indian Railways.</p><p>Eligible graduates should apply through <strong>rrbapply.gov.in</strong> when the CEN is active, complete CBT and medical standards as notified.</p>",
-  "publishedAt": "2026-07-20T00:00:00.000Z",
+  "shortDescription": "RRB Section Controller Exam Date 2026 is announced. The examination is scheduled on 12-13 October 2026 and the application last date was 14 August 2026.",
+  "content": "<p><strong>Railway Recruitment Board (RRB)</strong> has released the exam date notice for the recruitment of the <strong>Section Controller Examination 2026</strong> under <strong>CEN 03/2026</strong>.</p><p>The exam is scheduled for <strong>12 – 13 October 2026</strong>. The application form was accepted from <strong>15 July 2026</strong> to <strong>14 August 2026</strong> and fee payment continued till <strong>16 August 2026</strong>. Candidates must check their exam date and city details through the official RRB portal using registration number or date of birth.</p><h3>Important Dates</h3><ul><li>Online Apply Start Date: 15 July 2026</li><li>Online Apply Last Date: 14 August 2026 (23:59 PM)</li><li>Last Date For Fee Payment: 16 August 2026</li><li>Correction Date: 17 – 26 August 2026</li><li>Exam Date: 12 – 13 October 2026</li><li>Admit Card: Before Exam</li><li>Result Date: Will Be Updated Here Soon</li></ul><p>The application fee is ₹500 for General / OBC / EWS candidates and ₹250 for SC / ST / EBC / female candidates. The examination process includes CBT, CBAT, document verification and medical examination.</p>",
+  "publishedAt": "2026-09-11T00:00:00.000Z",
   "importantDates": {
     "notificationDate": "2026",
-    "startDate": "As per CEN",
-    "lastDate": "As per CEN",
-    "examDate": "As scheduled",
+    "startDate": "15/07/2026",
+    "lastDate": "14/08/2026",
+    "feePaymentLastDate": "16/08/2026",
+    "correctionDate": "17/08/2026 - 26/08/2026",
+    "examDate": "12/10/2026 - 13/10/2026",
     "resultDate": "To be announced",
-    "admitCardDate": "Before CBT"
+    "admitCardDate": "Before Exam"
   },
   "links": {
     "applyOnline": "https://www.rrbapply.gov.in",
-    "officialWebsite": "https://www.rrbcdg.gov.in"
+    "officialWebsite": "https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,7,1281",
+    "officialNotification": "https://rrb.indianrailways.gov.in/-/image/1784023647659FINAL_CEN_03_2026_SECTION_CONTROLLER.pdf/examsDocuments",
+    "examDateNotice": "https://rrb.indianrailways.gov.in/-/image/1789113322014Section_Controller_CBT_Tentitive_Notice_CEN_03_2026.pdf/examsDocuments",
+    "shortNotice": "http://sarkariresult.com.cm/wp-content/uploads/2026/06/rrb-section-controller.webp"
   },
   "tags": [
     "RRB",
     "Section Controller",
-    "Railway"
+    "Railway",
+    "CEN 03/2026",
+    "Exam Date",
+    "Government Job"
   ],
   "views": 2230
 }
