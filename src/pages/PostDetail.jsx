@@ -66,6 +66,10 @@ function val(v, fallback = SOON) {
   const normalized = s.toLowerCase().replace(/\s+/g, ' ');
   const genericPlaceholders = [
     'see details',
+    'see official notice',
+    'see official notification',
+    'check official notice',
+    'check official notification',
     '',
     '',
     '',
@@ -76,6 +80,9 @@ function val(v, fallback = SOON) {
     '',
     '',
     'as per notification',
+    'as published in official notification',
+    'as published in the official notification',
+    'as mentioned in the official notification',
     '',
     'as per official notice',
     'official notice',
@@ -91,6 +98,8 @@ function val(v, fallback = SOON) {
 function hasUsefulContent(value) {
   const plain = String(value || '').replace(/<[^>]*>/g, ' ').replace(/&nbsp;/gi, ' ').replace(/\s+/g, ' ').trim();
   if (!plain) return false;
+  if (/\brecruiting department behind\b|\bdepartment behind\b/i.test(plain)) return false;
+  if (/\b(?:see|check) official not(?:ice|ification)\b|\bas (?:published|mentioned) in (?:the )?official notification\b/i.test(plain)) return false;
   return !/^(introduction|recruitment overview|about department|preparation tips|career advice|read the full notification carefully|check eligibility, fee, dates and instructions|always confirm on the official website before applying)\.?$/i.test(plain);
 }
 
@@ -178,12 +187,7 @@ function LinkRow({ label, href, text }) {
 
 function OfficialValue({ value, href }) {
   const displayValue = val(value);
-  if (displayValue) return displayValue;
-  return href ? (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="pd-table-link">
-      Verify exact value in official notification ↗
-    </a>
-  ) : 'Not stated in the available record';
+  return displayValue || null;
 }
 
 function NoticeImageButton({ image, onOpen }) {
@@ -238,7 +242,7 @@ function renderCanonicalFactValue(label, value, fallback = SOON) {
 function summarizeRecruitmentFacts(post) {
   const values = [
     { key: 'organization', value: renderCanonicalFactValue('Authority', post.organization) },
-    { key: 'totalVacancy', value: post.totalVacancies > 0 ? `${post.totalVacancies.toLocaleString('en-IN')} Posts` : renderCanonicalFactValue('Total vacancy', post.vacancyDetails, '') },
+    { key: 'totalVacancy', value: post.totalVacancies > 0 ? `${post.totalVacancies.toLocaleString('en-IN')} Posts` : '' },
     { key: 'qualification', value: renderCanonicalFactValue('Qualification', post.qualification, '') },
     { key: 'ageLimit', value: renderCanonicalFactValue('Age limit', post.ageLimit, '') },
     { key: 'applicationFee', value: renderCanonicalFactValue('Application fee', post.applicationFee, '') },
@@ -461,7 +465,7 @@ export default function PostDetail() {
 
   const vacanciesText = post.totalVacancies > 0
     ? `${post.totalVacancies.toLocaleString('en-IN')} Posts`
-    : post.vacancyDetails;
+    : 'Not shown';
 
   const howSteps = (post.howToApply || '')
     .split('\n')
@@ -782,7 +786,7 @@ export default function PostDetail() {
                   </TableRow>
                   <TableRow label="Department">{val(post.department, '—')}</TableRow>
                   <TableRow label="Total Vacancy / Posts" highlight>
-                    {uniqueFactValue('totalVacancy', vacanciesText)}
+                    {vacanciesText}
                   </TableRow>
                   <TableRow label="Vacancy Details">{val(post.vacancyDetails)}</TableRow>
                   <TableRow label="Qualification / Eligibility" highlight>
@@ -845,7 +849,7 @@ export default function PostDetail() {
               <table className="pd-full-table">
                 <tbody>
                   <TableRow label="Total Post" highlight>
-                    {uniqueFactValue('totalVacancy', post.totalVacancies > 0 ? `${post.totalVacancies.toLocaleString('en-IN')} Posts` : val(post.vacancyDetails))}
+                    {post.totalVacancies > 0 ? `${post.totalVacancies.toLocaleString('en-IN')} Posts` : 'Not shown'}
                   </TableRow>
                   <TableRow label="Vacancy Information">{val(post.vacancyDetails)}</TableRow>
                   <TableRow label="Educational Qualification" highlight>

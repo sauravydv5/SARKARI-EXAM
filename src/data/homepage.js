@@ -29,7 +29,7 @@ export const HOMEPAGE_SECTIONS = {
   ],
   'admit-card': [
     'nta-aiapget-admit-card-2026',
-    'nbems-group-a-b-c-exam-city-details-2026',
+    'nbems-group-a-b-c-various-post-admit-card-2026',
     'railway-rrb-group-d-admit-card-2026',
     'up-home-guard-pet-date-notice-2026',
     'ibps-po-mt-xvi-pre-admit-card-2026',
