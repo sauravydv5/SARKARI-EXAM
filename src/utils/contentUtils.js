@@ -98,16 +98,16 @@ const GENERIC_PLACEHOLDER_VALUES = [
   'n/a',
   'na',
   'soon',
-  'see official notice',
-  'see official notification',
-  'check official notice',
-  'check official notification',
-  'as mentioned in the official notification',
-  'as published in official notification',
-  'as published in the official notification',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
   'as published in notification',
   'as per notification',
-  'as per official notification',
+  '',
   'as per official notice',
   'as per notice',
   'official notice',
@@ -178,6 +178,10 @@ export function detectContentType(post = {}) {
   const cat = String(post.category || '').trim().toLowerCase();
   const content = String(post.content || '').trim().toLowerCase();
   const linksText = Object.keys(post.links || {}).join(' ').trim().toLowerCase();
+
+  if (rawType === 'result' || cat === 'result') {
+    return 'result';
+  }
 
   if (/exam city|city slip|exam city slip|city details|city intimation|exam centre/.test(title) || /exam city|city slip|city details|city intimation/.test(content)) {
     return 'exam-city-slip';

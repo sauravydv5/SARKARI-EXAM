@@ -94,42 +94,6 @@ function normalizeAsset(value) {
   return /\/placeholder\.(svg|pdf)$/i.test(asset) ? '' : asset;
 }
 
-function normalizeSourceField(value) {
-  if (value === null || value === undefined) return '';
-  const text = String(value).trim();
-  if (!text) return '';
-  const normalized = text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-
-  const placeholders = [
-    'see details',
-    'see official notice',
-    'see official notification',
-    'check official notice',
-    'check official notification',
-    'as mentioned in the official notification',
-    'as published in official notification',
-    'as published in the official notification',
-    'as published in notification',
-    'as per notification',
-    'as per official notification',
-    'as per official notice',
-    'as per notice',
-    'official notice',
-    'official notification',
-    'to be announced',
-    'result to be announced',
-    'before exam',
-    'notified soon',
-    'will be notified later',
-  ];
-
-  return placeholders.includes(normalized) ? '' : text;
-}
-
 function normalizePost(raw, sourcePath) {
   if (!raw || typeof raw !== 'object') return null;
   const sourceName = sourcePath.split('/').pop()?.replace(/\.json$/i, '') || 'post';
@@ -173,15 +137,15 @@ function normalizePost(raw, sourcePath) {
     hasPassedDeadline,
     isArchived: Boolean(raw.isArchived) || hasPassedDeadline || hasLegacyYear,
     totalVacancies: Number(raw.totalVacancies || raw.vacancy || 0) || 0,
-    vacancyDetails: normalizeSourceField(raw.vacancyDetails || raw.vacancy),
-    qualification: normalizeSourceField(raw.qualification),
-    ageLimit: normalizeSourceField(raw.ageLimit),
-    applicationFee: normalizeSourceField(raw.applicationFee),
-    selectionProcess: normalizeSourceField(raw.selectionProcess),
-    documentsRequired: normalizeSourceField(raw.documentsRequired),
-    howToApply: normalizeSourceField(raw.howToApply),
-    shortDescription: normalizeSourceField(raw.shortDescription || raw.description),
-    content: normalizeSourceField(raw.content),
+    vacancyDetails: raw.vacancyDetails || raw.vacancy || '',
+    qualification: raw.qualification || '',
+    ageLimit: raw.ageLimit || '',
+    applicationFee: raw.applicationFee || '',
+    selectionProcess: raw.selectionProcess || '',
+    documentsRequired: raw.documentsRequired || '',
+    howToApply: raw.howToApply || '',
+    shortDescription: raw.shortDescription || raw.description || '',
+    content: raw.content || '',
     image: normalizeAsset(raw.image),
     pdf: normalizeAsset(raw.pdf),
     views: Number(raw.views || 0) || 0,
@@ -406,58 +370,6 @@ function applySectionNewBadgeLimit(items) {
   });
 }
 
-function titleKey(value) {
-  return String(value || '').trim().toLowerCase();
-}
-
-function buildInternalJourney(post, posts = getVisiblePosts()) {
-  if (!post) return [];
-
-  const sourceOrganization = titleKey(post.organization);
-  const sourcePostName = titleKey(post.postName || post.title || '');
-  const all = Array.isArray(posts) ? posts : [];
-  const sameOrg = all.filter((candidate) => {
-    if (!candidate || candidate.slug === post.slug) return false;
-    const org = titleKey(candidate.organization);
-    const title = titleKey(candidate.postName || candidate.title || '');
-    const orgMatch = org === sourceOrganization || org.includes(sourceOrganization) || sourceOrganization.includes(org);
-    const postMatch = !sourcePostName || title.includes(sourcePostName) || sourcePostName.includes(title);
-    return orgMatch && postMatch;
-  });
-
-  const categoryPath = {
-    'latest-job': '/latest-jobs',
-    result: '/results',
-    'admit-card': '/admit-cards',
-    'answer-key': '/answer-keys',
-    syllabus: '/syllabus',
-    admission: '/admission',
-    certificate: '/certificates',
-  };
-
-  const candidateMap = {
-    recruitment: sameOrg.find((candidate) => candidate.category === 'latest-job'),
-    syllabus: sameOrg.find((candidate) => candidate.category === 'syllabus'),
-    examPattern: sameOrg.find((candidate) => candidate.category === 'syllabus' && /exam pattern|pattern/i.test(candidate.title || '')),
-    previousPapers: sameOrg.find((candidate) => candidate.category === 'syllabus' && /previous year|paper|practice/i.test(candidate.title || '')),
-    result: sameOrg.find((candidate) => candidate.category === 'result'),
-    admitCard: sameOrg.find((candidate) => candidate.category === 'admit-card'),
-  };
-
-  const journey = [
-    { label: 'Recruitment', href: candidateMap.recruitment ? `/post/${candidateMap.recruitment.slug}` : categoryPath['latest-job'], body: 'Recruitment & apply link overview', score: 1 },
-    { label: 'Syllabus', href: candidateMap.syllabus ? `/post/${candidateMap.syllabus.slug}` : categoryPath.syllabus, body: 'Exam syllabus and subjects', score: 2 },
-    { label: 'Exam Pattern', href: candidateMap.examPattern ? `/post/${candidateMap.examPattern.slug}` : categoryPath.syllabus, body: 'Exam structure and paper pattern', score: 3 },
-    { label: 'Previous Year Papers', href: candidateMap.previousPapers ? `/post/${candidateMap.previousPapers.slug}` : categoryPath.syllabus, body: 'Previous paper sets and practice links', score: 4 },
-    { label: 'Result', href: candidateMap.result ? `/post/${candidateMap.result.slug}` : categoryPath.result, body: 'Result and scorecard updates', score: 5 },
-  ];
-
-  return journey.filter((entry) => {
-    if (entry.href.startsWith('/post/')) return true;
-    return true;
-  }).sort((a, b) => a.score - b.score);
-}
-
 function getPostsByCategory(category) {
   return applySectionNewBadgeLimit(getVisiblePosts().filter((post) => post.category === (category || 'latest-job')));
 }
@@ -561,15 +473,13 @@ export const api = {
       const itemSlug = item.slug || item.id;
       return itemSlug === slug && !storage.deleted.has(itemSlug);
     });
-    if (!post) return { data: null, related: [], journey: [] };
+    if (!post) return { data: null, related: [] };
     const related = Object.keys(TAXONOMIES)
       .filter((taxonomy) => matchesTaxonomy(post, taxonomy))
       .flatMap((taxonomy) => getPostsByTaxonomy(taxonomy))
       .filter((item, index, items) => item.slug !== post.slug && items.findIndex((candidate) => candidate.slug === item.slug) === index);
     const fallback = getPostsByCategory(post.category).filter((item) => item.slug !== post.slug);
-    const relatedPosts = [...related, ...fallback].filter((item, index, items) => items.findIndex((candidate) => candidate.slug === item.slug) === index).slice(0, 4);
-    const journey = buildInternalJourney(post, getVisiblePosts());
-    return { data: post, related: relatedPosts, journey };
+    return { data: post, related: [...related, ...fallback].filter((item, index, items) => items.findIndex((candidate) => candidate.slug === item.slug) === index).slice(0, 4) };
   },
   login: () => Promise.resolve({ token: 'static-token', user: { email: 'admin@sarkariresult.local' } }),
   me: () => Promise.resolve({ user: { email: 'admin@sarkariresult.local' } }),

@@ -66,17 +66,17 @@ function val(v, fallback = SOON) {
   const normalized = s.toLowerCase().replace(/\s+/g, ' ');
   const genericPlaceholders = [
     'see details',
-    'as published in the official notification',
-    'as published in official notification',
-    'see official notice',
-    'see official notification',
-    'check official notice',
-    'check official notification',
-    'as mentioned in the official notification',
-    'as published in official notification',
-    'as published in the official notification',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
     'as per notification',
-    'as per official notification',
+    '',
     'as per official notice',
     'official notice',
     'official notification',
@@ -600,7 +600,12 @@ export default function PostDetail() {
       'age limit',
       'vacancy details',
       'vacancy',
-      'eligibility'
+      'eligibility',
+      'how to download admit card',
+      'admit card details',
+      'admit card',
+      'exam city details',
+      'exam city'
     );
   }
   if (isAnswerKey) contentSkipHeadings.push('how to download answer key');

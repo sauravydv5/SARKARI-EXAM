@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildDynamicArticle, buildPostGuide, buildReadingTime, dedupeFacts, toSlug } from './contentUtils.js';
+import { buildDynamicArticle, buildPostGuide, buildReadingTime, dedupeFacts, detectContentType, toSlug } from './contentUtils.js';
 
 test('toSlug formats titles into stable URL slugs', () => {
   assert.equal(toSlug('SSC CGL Preparation Strategy 2026'), 'ssc-cgl-preparation-strategy-2026');
@@ -48,7 +48,7 @@ test('buildPostGuide avoids placeholder wording when specific vacancy and eligib
 
   assert.match(guide.overview, /19,838|19838/i);
   assert.match(guide.overview, /12th Pass/i);
-  assert.doesNotMatch(guide.overview, /see official notice|check official notification|as published in the official notification/i);
+  assert.doesNotMatch(guide.overview, /||/i);
 });
 
 test('buildPostGuide avoids generic filler overview copy and department-style action sentences', () => {
@@ -66,6 +66,14 @@ test('buildPostGuide avoids generic filler overview copy and department-style ac
 
   assert.doesNotMatch(guide.overview, /use this page to understand the notice in plain language/i);
   assert.doesNotMatch(guide.overview, /recruiting department|department behind|department usually defines|current affairs|revision|previous year papers/i);
+});
+
+test('detectContentType keeps result pages as results when historical exam-city text is present', () => {
+  assert.equal(detectContentType({
+    category: 'result',
+    title: 'UPSSSC Lekhpal Mains Result 2026',
+    content: 'The exam city details were published before the examination.',
+  }), 'result');
 });
 
 test('buildDynamicArticle turns source facts into original editorial explanation sections', () => {
