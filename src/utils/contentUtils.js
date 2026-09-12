@@ -318,7 +318,6 @@ export function buildDynamicArticle(post = {}, context = {}) {
   } else if (type === 'syllabus') {
     add('Exam Pattern', text(post.examPattern));
     add('Syllabus', text(post.syllabus || post.syllabusDetails));
-    if (links.downloadSyllabus || links.officialNotification || links.officialWebsite) add('Download', 'Download the syllabus or exam-pattern document from the official links below.');
   } else if (type === 'recruitment') {
     add('Vacancy', vacancyDetails || totalVacancies);
     const dateText = [dates.startDate ? `Start date: ${dates.startDate}` : '', lastDate ? `Last date: ${lastDate}` : '', examDate ? `Exam date: ${examDate}` : ''].filter(Boolean).join('\n');

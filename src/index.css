@@ -476,6 +476,106 @@ img {
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
+/* Branded footer trust panel. */
+.footer-brand-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(280px, 1.4fr) auto;
+  gap: 24px;
+  align-items: center;
+  margin-top: 26px;
+  margin-bottom: 8px;
+  padding: 24px 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 5px solid #ef4444;
+  border-radius: 12px;
+  background: linear-gradient(110deg, #991b1b 0%, #be123c 42%, #1e3a8a 100%);
+  box-shadow: 0 16px 30px rgba(2, 6, 23, 0.24);
+}
+
+.footer-brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+}
+
+.footer-brand-mark img {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.footer-brand-panel .footer-kicker {
+  color: #fecdd3;
+}
+
+.footer-brand-panel h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  line-height: 1.25;
+}
+
+.footer-brand-panel > p {
+  margin: 0;
+  color: #ffe4e6;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.footer-brand-links {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.footer-brand-links a {
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer-brand-links a:hover {
+  color: #fde68a;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 800px) {
+  .footer-brand-panel {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 18px;
+    padding: 21px;
+  }
+
+  .footer-brand-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-items: start;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer-brand-panel {
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 18px;
+  }
+
+  .footer-brand-links {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+}
+
 .top-bar-inner {
   display: flex;
   justify-content: space-between;

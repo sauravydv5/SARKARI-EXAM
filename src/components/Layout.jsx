@@ -319,10 +319,26 @@ export default function Layout() {
         <div className="footer-top">
           <div className="container footer-top-inner">
             <div>
-              <span className="footer-kicker">Your exam desk</span>
+              <span className="footer-kicker">Independent exam information</span>
               <strong>Sarkari Job Hub</strong>
             </div>
-            <p>Find the notice, understand the next step, and apply from the official source.</p>
+            <p>Find the update, understand the next step, and use the authority link.</p>
+          </div>
+        </div>
+
+        <div className="footer-brand-panel container">
+          <div className="footer-brand-mark">
+            <img src="/logo-108.webp" alt="Sarkari Job Hub" width="64" height="64" loading="lazy" decoding="async" />
+            <div>
+              <span className="footer-kicker">Sarkari Job Hub</span>
+              <h2>Jobs, results and exam updates in one place.</h2>
+            </div>
+          </div>
+          <p>We are an independent informational portal. We organize public updates and link to the official authority source; we are not a government department or recruiting board.</p>
+          <div className="footer-brand-links">
+            <Link to="/about-us">About our editorial process</Link>
+            <Link to="/contact">Report a correction</Link>
+            <Link to="/disclaimer">Read disclaimer</Link>
           </div>
         </div>
 

@@ -578,6 +578,8 @@ export default function PostDetail() {
   });
 
   const filteredImportantLinkRows = dedupedImportantLinkRows;
+  const primaryLinkAlreadyListed = primaryHref && filteredImportantLinkRows.some((row) => row.href === primaryHref);
+  const showBigCta = !primaryLinkAlreadyListed && (primaryHref || isRecruitment || isAdmission || isNotification);
 
   const aboutLabel = isResult
     ? 'Result'
@@ -642,7 +644,9 @@ export default function PostDetail() {
     countSpecificContentLines(aboutContent.introHtml),
     ...usefulAboutSections.map((section) => countSpecificContentLines(section.bodyHtml)),
   ].reduce((total, count) => total + count, 0);
-  const showAboutSection = aboutLineCount >= 2;
+  const hasAdditionalAboutSection = usefulAboutSections.length > 0;
+  const showAboutSection = aboutLineCount >= 2
+    && (!isCertificate && !isSyllabus || hasAdditionalAboutSection);
 
   const factMap = new Map(canonicalFacts.map((fact) => [fact.key, fact.value]));
   const uniqueFactValue = (key, fallback = SOON) => factMap.get(key) || fallback;
@@ -781,11 +785,11 @@ export default function PostDetail() {
             </section>
           )}
 
-          {!usesDynamicCategorySections && (dynamicType === 'result' || dynamicType === 'admit-card' || dynamicType === 'answer-key' || dynamicType === 'syllabus' || dynamicType === 'certificate') ? (
+          {!usesDynamicCategorySections && (dynamicType === 'result' || dynamicType === 'admit-card' || dynamicType === 'answer-key' || dynamicType === 'syllabus' || (dynamicType === 'certificate' && howSteps.length > 0)) ? (
             <section className="pd-section">
               <div className="pd-section-head"><h2>{dynamicType === 'result' ? '✅ How to Check Result' : dynamicType === 'admit-card' ? '🎫 How to Download Admit Card' : dynamicType === 'answer-key' ? '🔑 How to Download Answer Key' : dynamicType === 'syllabus' ? '📘 Syllabus Overview' : '📜 Certificate Download Process'}</h2></div>
               <div className="pd-content">
-                <p>{dynamicType === 'result' ? 'Open the official result notice or scorecard link, sign in with the required credentials, and verify your roll number before saving the result.' : dynamicType === 'admit-card' ? 'Use the official admit-card or exam-city link and check the reporting time, centre details and required identity proof.' : dynamicType === 'answer-key' ? 'Download the official answer key or response sheet, compare the question-paper series and note the objection deadline.' : dynamicType === 'syllabus' ? 'Use the official syllabus and exam-pattern information to plan subjects, marks and preparation topics.' : 'Open the official service portal, confirm the required credentials and download the certificate only after checking the displayed details.'}</p>
+                {dynamicType !== 'certificate' && <p>{dynamicType === 'result' ? 'Open the official result notice or scorecard link, sign in with the required credentials, and verify your roll number before saving the result.' : dynamicType === 'admit-card' ? 'Use the official admit-card or exam-city link and check the reporting time, centre details and required identity proof.' : 'Download the official answer key or response sheet, compare the question-paper series and note the objection deadline.'}</p>}
                 {howSteps.length > 0 && <ol className="pd-steps">{howSteps.map((step, i) => <li key={i}><span className="pd-step-num">{i + 1}</span><div><strong>{step.replace(/^\d+\.\s*/, '')}</strong></div></li>)}</ol>}
               </div>
             </section>
@@ -898,7 +902,7 @@ export default function PostDetail() {
                 </tbody>
               </table>
             </div>
-            {(primaryHref || (isRecruitment || isAdmission || isNotification)) && (
+            {showBigCta && (
               <div className="pd-big-cta-wrap">
                 {primaryHref ? (
                   <a href={primaryHref} target="_blank" rel="noopener noreferrer" className="pd-big-cta">
