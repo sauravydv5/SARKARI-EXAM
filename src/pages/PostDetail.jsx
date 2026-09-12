@@ -578,7 +578,7 @@ export default function PostDetail() {
   });
 
   const filteredImportantLinkRows = dedupedImportantLinkRows;
-  const primaryLinkAlreadyListed = primaryHref && filteredImportantLinkRows.some((row) => row.href === primaryHref);
+  const primaryLinkAlreadyListed = primaryHref && filteredImportantLinkRows.some((row) => normalizeLinkKey(row.href).replace(/\/$/, '') === normalizeLinkKey(primaryHref).replace(/\/$/, ''));
   const showBigCta = !primaryLinkAlreadyListed && (primaryHref || isRecruitment || isAdmission || isNotification);
 
   const aboutLabel = isResult
