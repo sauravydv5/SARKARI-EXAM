@@ -114,7 +114,6 @@ test('buildDynamicArticle keeps sections that are specific to the article type',
   }, {});
 
   assert.ok(article.sections.some((section) => section.heading === 'Result Status'));
-  assert.ok(article.sections.some((section) => section.heading === 'Important Links'));
   assert.doesNotMatch(article.sections.map((section) => section.heading).join(' '), /Preparation Tips|About Department|Complete Information/i);
 });
 
@@ -134,7 +133,6 @@ test('buildDynamicArticle orders admit-card sections by candidate workflow and s
     'Download Process',
     'Documents',
     'Instructions',
-    'Official Links',
   ]);
 });
 

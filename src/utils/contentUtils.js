@@ -296,9 +296,6 @@ export function buildDynamicArticle(post = {}, context = {}) {
     const cityLink = links.examCity || links.examCityNotice || links.officialNotification || links.officialWebsite;
     add('How to Check Exam City', cityLink ? `Open the official city-slip page and verify the centre detail and city code before travelling.` : 'Use the authority portal to check the city slip when the link is available.');
     add('Exam City Instructions', text(post.documentsRequired || post.statusNote));
-    if (links.examCity || links.examCityNotice || links.officialNotification || links.officialWebsite) {
-      add('Important Links', [links.examCity, links.examCityNotice, links.officialNotification, links.officialWebsite].filter(Boolean).map((href) => href).join('\n'));
-    }
   } else if (type === 'admit-card') {
     add('Status', text(post.statusNote || post.status));
     add('Exam Date', examDate);
@@ -306,26 +303,22 @@ export function buildDynamicArticle(post = {}, context = {}) {
     add('Reporting / Centre', text(post.reportingTime || post.examCentre || post.examCenter));
     add('Documents', documentsRequired);
     add('Instructions', text(post.instructions || post.statusNote));
-    if (links.downloadAdmitCard || links.admitCardNotice || links.examCity || links.officialNotification || links.officialWebsite) add('Official Links', 'Use the official links below for the admit card and notice.');
   } else if (type === 'result') {
     add('Result Status', text(post.statusNote || post.status));
     add('Result Date', resultDate);
     if (links.checkResult || links.result || links.officialWebsite) add('How to Check Result', 'Open the result link, enter the required details, and verify the roll number or scorecard before saving it.');
     add('Marks / Scorecard', text(post.marks || post.scorecardDetails) || (links.scoreCard ? 'Download the scorecard from the official links below.' : ''));
     add('Cut-off / Next Stage', text(post.cutoffDetails || selectionProcess));
-    if (links.checkResult || links.officialNotification || links.officialWebsite) add('Important Links', [links.checkResult, links.officialNotification, links.officialWebsite].filter(Boolean).join('\n'));
   } else if (type === 'answer-key') {
     add('Status', text(post.statusNote || post.status));
     add('Release Date', text(dates.answerKeyDate || dates.finalAnswerKeyDate));
     add('Objection', text(post.objectionDetails || dates.objectionLastDate));
     if (links.answerKey || links.finalAnswerKey || links.answerKeyNotice) add('How to Download', 'Open the official answer-key link and download the question-wise response sheet.');
     if (links.objection || post.objectionProcess) add('How to Raise Objection', text(post.objectionProcess, 'Use the official objection link and submit the response within the notified window.'));
-    if (links.answerKey || links.finalAnswerKey || links.officialNotification || links.officialWebsite) add('Important Links', [links.answerKey, links.finalAnswerKey, links.officialNotification, links.officialWebsite].filter(Boolean).join('\n'));
   } else if (type === 'syllabus') {
     add('Exam Pattern', text(post.examPattern));
     add('Syllabus', text(post.syllabus || post.syllabusDetails));
     if (links.downloadSyllabus || links.officialNotification || links.officialWebsite) add('Download', 'Download the syllabus or exam-pattern document from the official links below.');
-    if (links.downloadSyllabus || links.officialNotification || links.officialWebsite) add('Official Links', 'Use the official syllabus source listed below.');
   } else if (type === 'recruitment') {
     add('Vacancy', vacancyDetails || totalVacancies);
     const dateText = [dates.startDate ? `Start date: ${dates.startDate}` : '', lastDate ? `Last date: ${lastDate}` : '', examDate ? `Exam date: ${examDate}` : ''].filter(Boolean).join('\n');

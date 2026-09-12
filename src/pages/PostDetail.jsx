@@ -526,7 +526,7 @@ export default function PostDetail() {
   const dynamicType = detectContentType(post);
   const dynamicIntent = inferUserIntent(post, dynamicType);
   const dynamicArticle = buildDynamicArticle(post, { categoryLabel: cat.label });
-  const usesDynamicCategorySections = ['exam-city-slip', 'admit-card', 'result', 'answer-key', 'syllabus', 'recruitment'].includes(dynamicType);
+  const usesDynamicCategorySections = ['exam-city-slip', 'admit-card', 'result', 'answer-key', 'syllabus'].includes(dynamicType);
 
   const sourceTitle = String(post?.title || 'Official Notification').trim();
   const orgName = String(post?.organization || 'Recruiting Authority').trim();

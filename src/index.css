@@ -4528,7 +4528,162 @@ table.data-table tr:last-child td {
   color: var(--text);
 }
 
-[data-theme='dark'] .pd-stat-label,
+/* Non-job detail pages use a calmer status-dashboard treatment. */
+.pd-page:not(.pd-template-recruitment) {
+  max-width: 1240px;
+  background: #f4f7fb;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-layout {
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 26px;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-hero {
+  border: 0;
+  border-top: 5px solid #2563eb;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(30, 64, 175, 0.1);
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-hero-top {
+  background: #eff6ff;
+  border-bottom: 1px solid #dbeafe;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-cat-badge {
+  color: #1d4ed8;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-title {
+  max-width: 960px;
+  font-weight: 800;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-summary {
+  max-width: 900px;
+  color: #475569;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-section,
+.pd-page:not(.pd-template-recruitment) .pd-side-card {
+  border: 1px solid #dbe4f0;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(30, 64, 175, 0.07);
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-section-head {
+  padding: 14px 18px;
+  background: #1e40af;
+  border-bottom: 0;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-section-head h2 {
+  font-size: 1.02rem;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-content {
+  padding: 20px 21px;
+  background: #fff;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-full-table th {
+  background: #f1f5f9;
+  color: #1e3a8a;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-full-table td {
+  background: #fff;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-links-section {
+  border-top: 4px solid #dc2626;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-links-section .pd-section-head {
+  background: #172554;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-links-table tr {
+  transition: background 0.16s ease;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-links-table tr:hover {
+  background: #eff6ff;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-side-title {
+  background: #172554;
+  border-bottom: 3px solid #2563eb;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-side-cat,
+.pd-page:not(.pd-template-recruitment) .pd-side-links a {
+  border-color: #e2e8f0;
+}
+
+.pd-page.pd-template-admit_card .pd-hero,
+.pd-page.pd-template-exam-city-slip .pd-hero {
+  border-top-color: #059669;
+}
+
+.pd-page.pd-template-admit_card .pd-section-head,
+.pd-page.pd-template-exam-city-slip .pd-section-head {
+  background: #047857;
+}
+
+.pd-page.pd-template-answer_key .pd-hero {
+  border-top-color: #7c3aed;
+}
+
+.pd-page.pd-template-answer_key .pd-section-head {
+  background: #6d28d9;
+}
+
+.pd-page.pd-template-syllabus .pd-hero {
+  border-top-color: #d97706;
+}
+
+.pd-page.pd-template-syllabus .pd-section-head {
+  background: #b45309;
+}
+
+.pd-page.pd-template-admission .pd-hero {
+  border-top-color: #0891b2;
+}
+
+.pd-page.pd-template-admission .pd-section-head {
+  background: #0e7490;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) {
+  background: #0b1220;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-hero,
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-content,
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-full-table td {
+  background: #111827;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-hero-top {
+  background: #172554;
+  border-color: #1e40af;
+}
+
+@media (max-width: 760px) {
+  .pd-page:not(.pd-template-recruitment) .pd-layout {
+    gap: 16px;
+  }
+
+  .pd-page:not(.pd-template-recruitment) .pd-hero {
+    border-radius: 10px;
+  }
+
+  .pd-page:not(.pd-template-recruitment) .pd-content {
+    padding: 16px;
+  }
+}
 [data-theme='dark'] .pd-content,
 [data-theme='dark'] .pd-full-table th,
 [data-theme='dark'] .pd-full-table td {
@@ -5196,4 +5351,92 @@ table.data-table tr:last-child td {
 [data-theme='dark'] .pd-full-table td,
 [data-theme='dark'] .pd-full-table tr:nth-child(even) td {
   background: var(--card);
+}
+
+/* Dark-mode contrast for non-job detail pages. Keep category colors visible. */
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) {
+  background: #0b1220;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-hero,
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-content,
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-full-table td {
+  background: #111827 !important;
+  color: #dbeafe !important;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-hero-top {
+  background: #172554 !important;
+  border-color: #2563eb !important;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-cat-badge {
+  color: #bfdbfe !important;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-title,
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-section-head h2,
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-full-table td,
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-full-table th {
+  color: #f8fafc !important;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-section-head {
+  background: #1e3a8a !important;
+  border-bottom-color: #60a5fa !important;
+}
+
+[data-theme='dark'] .pd-page.pd-template-admit_card .pd-section-head,
+[data-theme='dark'] .pd-page.pd-template-exam-city-slip .pd-section-head {
+  background: #065f46 !important;
+  border-bottom-color: #34d399 !important;
+}
+
+[data-theme='dark'] .pd-page.pd-template-answer_key .pd-section-head {
+  background: #581c87 !important;
+  border-bottom-color: #c084fc !important;
+}
+
+[data-theme='dark'] .pd-page.pd-template-syllabus .pd-section-head {
+  background: #78350f !important;
+  border-bottom-color: #fbbf24 !important;
+}
+
+[data-theme='dark'] .pd-page.pd-template-admission .pd-section-head {
+  background: #155e75 !important;
+  border-bottom-color: #22d3ee !important;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-full-table th {
+  background: #1e293b !important;
+  color: #bfdbfe !important;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-table-link,
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) a {
+  color: #93c5fd;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-stat {
+  background: #111827 !important;
+  border-color: #334155 !important;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-stat-label {
+  display: block;
+  background: transparent !important;
+  color: #93c5fd !important;
+}
+
+[data-theme='dark'] .pd-page:not(.pd-template-recruitment) .pd-stat-value {
+  color: #f8fafc !important;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-stat > div {
+  min-width: 0;
+}
+
+.pd-page:not(.pd-template-recruitment) .pd-stat-value {
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
