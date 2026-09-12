@@ -17,6 +17,10 @@ export default function PrivacyPolicy() {
       </header>
 
       <article className="space-y-8 rounded-xl border border-slate-200 bg-white p-6 text-base leading-8 text-slate-700 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 sm:p-9">
+        <section className="rounded-xl border-l-4 border-red-600 bg-slate-50 p-5 dark:bg-slate-800">
+          <h2 className="mb-2 text-2xl font-bold text-slate-900 dark:text-white">How Sarkari Job Hub uses information</h2>
+          <p>Sarkari Job Hub is an information portal that organizes official recruitment notices, admit cards, results, answer keys, syllabus and admission updates. We use page analytics, contact information and public source metadata only to improve navigation, editorial quality, and user support. We do not ask users to share passwords, payment details, Aadhaar, or OTP information through the website.</p>
+        </section>
         <section aria-labelledby="scope-heading">
           <h2 id="scope-heading" className="mb-3 text-2xl font-bold text-slate-900 dark:text-white">1. Scope of this policy</h2>
           <p>Sarkari Job Hub is an informational website that publishes government job, result, admit-card, answer-key, syllabus, admission, and examination guidance. This policy applies to information collected through our pages, contact forms, analytics tools, and advertising services. By browsing the site, you acknowledge the practices described here. This policy does not control the privacy practices of government portals or any external website reached through one of our links.</p>

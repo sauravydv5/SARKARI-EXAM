@@ -10,6 +10,7 @@ const AboutUs = lazy(() => import('./pages/AboutUs'));
 const ContactUs = lazy(() => import('./pages/ContactUs'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const Disclaimer = lazy(() => import('./pages/Disclaimer'));
+const EditorialTeam = lazy(() => import('./pages/EditorialTeam'));
 const FAQPage = lazy(() => import('./pages/FAQPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogDetailPage = lazy(() => import('./pages/BlogDetailPage'));
@@ -128,6 +129,7 @@ export default function App() {
             <Route path="contact" element={<ContactUs />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="disclaimer" element={<Disclaimer />} />
+            <Route path="editorial-team" element={<EditorialTeam />} />
             <Route path="blog" element={<BlogPage />} />
             <Route path="blog/:slug" element={<BlogDetailPage />} />
             <Route path=":slug" element={<PolicyPage />} />

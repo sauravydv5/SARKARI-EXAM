@@ -4,8 +4,11 @@ import { api, categoryMeta, formatDate } from '../api';
 import { sanitizeHtml } from '../utils/sanitize';
 import useSeo from '../hooks/useSeo';
 import {
+  buildDynamicArticle,
   buildPostGuide,
   dedupeFacts,
+  detectContentType,
+  inferUserIntent,
   isStaleLowValuePost,
 } from '../utils/contentUtils';
 import {
@@ -146,13 +149,24 @@ function TableRow({ label, children, highlight }) {
 }
 
 function LinkRow({ label, href, text }) {
+  const safeText = String(text || '').trim();
+  const fallbackText = (() => {
+    const base = String(label || '').trim();
+    if (!base) return 'Open official source';
+    if (/official notification|notification/i.test(base)) return 'Download Official Notification PDF';
+    if (/official website|website/i.test(base)) return 'Visit Official Website';
+    if (/apply online|application portal|apply/i.test(base)) return 'Apply Online';
+    if (/admit card|download admit|exam city|download score|answer key|result|syllabus|certificate/i.test(base)) return `Open ${base}`;
+    return `Open ${base}`;
+  })();
+
   return (
     <tr>
       <th>{label}</th>
       <td>
         {href ? (
           <a href={href} target="_blank" rel="noopener noreferrer" className="pd-table-link">
-            {text || 'Click Here'}
+            {safeText || fallbackText}
           </a>
         ) : (
           <span className="pd-muted">{SOON}</span>
@@ -261,6 +275,7 @@ export default function PostDetail() {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
   const [related, setRelated] = useState([]);
+  const [journey, setJourney] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [showNoticeImage, setShowNoticeImage] = useState(false);
@@ -279,6 +294,7 @@ export default function PostDetail() {
         rememberRecentPost(res.data);
         setIsSaved(isSavedPost(res.data));
         setRelated(res.related || []);
+        setJourney(res.journey || []);
         setError('');
       } catch (err) {
         if (!cancelled) {
@@ -490,43 +506,51 @@ export default function PostDetail() {
   const faqItems = guide.faqItems;
   const canonicalFacts = summarizeRecruitmentFacts(post);
 
+  const dynamicType = detectContentType(post);
+  const dynamicIntent = inferUserIntent(post, dynamicType);
+  const dynamicArticle = buildDynamicArticle(post, { categoryLabel: cat.label });
+
+  const sourceTitle = String(post?.title || 'Official Notification').trim();
+  const orgName = String(post?.organization || 'Recruiting Authority').trim();
+  const sourcePost = String(post?.postName || post?.title || 'this Notice').trim();
+
   const importantLinkRows = [
-    isResult && links.checkResult ? { key: 'checkResult', label: 'Check Result', href: links.checkResult, text: 'Check Result' } : null,
-    links.applyOnline ? { key: 'applyOnline', label: 'Apply Online', href: links.applyOnline, text: 'Apply Now' } : null,
-    links.writtenResult ? { key: 'writtenResult', label: 'Download Written Result', href: links.writtenResult, text: 'Open Written Result' } : null,
-    links.answerKey ? { key: 'answerKey', label: 'Download Answer Key', href: links.answerKey, text: 'Open Answer Key' } : null,
-    links.answerKeyNotice ? { key: 'answerKeyNotice', label: 'Answer Key Notice', href: links.answerKeyNotice, text: 'Open Notice' } : null,
-    links.finalAnswerKey ? { key: 'finalAnswerKey', label: 'Download Final Answer Key', href: links.finalAnswerKey, text: 'Open Final Key' } : null,
-    links.scoreCard ? { key: 'scoreCard', label: 'Download Score Card / Certificate', href: links.scoreCard, text: 'Open Score Card' } : null,
-    links.omrSheet ? { key: 'omrSheet', label: 'Download OMR Sheet', href: links.omrSheet, text: 'Open OMR Sheet' } : null,
-    links.downloadAdmitCard ? { key: 'downloadAdmitCard', label: 'Download Admit Card', href: links.downloadAdmitCard, text: 'Open Admit Card' } : null,
-    links.admitCardNotice ? { key: 'admitCardNotice', label: 'Admit Card Notice', href: links.admitCardNotice, text: 'Open Notice' } : null,
-    links.examCity ? { key: 'examCity', label: 'Exam City Details', href: links.examCity, text: 'Open City Details' } : null,
-    links.examCityNotice ? { key: 'examCityNotice', label: 'Exam City Notice', href: links.examCityNotice, text: 'Open Notice' } : null,
-    links.correctionForm ? { key: 'correctionForm', label: 'Correction Form', href: links.correctionForm, text: 'Open Correction Form' } : null,
-    links.correctionNotice ? { key: 'correctionNotice', label: 'Correction Notice', href: links.correctionNotice, text: 'Open Notice' } : null,
-    links.disqualifiedList ? { key: 'disqualifiedList', label: 'Disqualified List', href: links.disqualifiedList, text: 'Open List' } : null,
-    links.examSchedule ? { key: 'examSchedule', label: 'Exam Schedule Notice', href: links.examSchedule, text: 'Open Schedule' } : null,
-    links.downloadSyllabus ? { key: 'downloadSyllabus', label: 'Paper I & II Exam Syllabus', href: links.downloadSyllabus, text: 'Download Syllabus' } : null,
-    links.notificationEnglish ? { key: 'notificationEnglish', label: 'Notification (English)', href: links.notificationEnglish, text: 'Download English PDF' } : null,
-    links.notificationHindi ? { key: 'notificationHindi', label: 'Notification (Hindi)', href: links.notificationHindi, text: 'Download Hindi PDF' } : null,
-    (links.officialNotification || links.importantLink) ? { key: 'notification', label: 'Notification', href: links.officialNotification || links.importantLink, text: 'Download Notification' } : null,
-    links.registration ? { key: 'registration', label: 'खुद का पंजीकरण', href: links.registration, text: 'पंजीकरण करें' } : null,
-    links.forgotPassword ? { key: 'forgotPassword', label: 'पासवर्ड भूल गए?', href: links.forgotPassword, text: 'पासवर्ड सहायता' } : null,
-    links.applicationStatus ? { key: 'applicationStatus', label: 'आवेदन की स्थिति देखें', href: links.applicationStatus, text: 'स्थिति देखें' } : null,
-    links.certificateDownload ? { key: 'certificateDownload', label: 'सर्टिफिकेट डाउनलोड करें', href: links.certificateDownload, text: 'डाउनलोड करें' } : null,
-    links.eligibilityCheck ? { key: 'eligibilityCheck', label: 'अपनी पात्रता जानें', href: links.eligibilityCheck, text: 'पात्रता जांचें' } : null,
-    links.residenceCertificate ? { key: 'residenceCertificate', label: 'आवासीय प्रमाण-पत्र', href: links.residenceCertificate, text: 'आवेदन करें' } : null,
-    links.casteCertificate ? { key: 'casteCertificate', label: 'जाति प्रमाण-पत्र', href: links.casteCertificate, text: 'आवेदन करें' } : null,
-    links.incomeCertificate ? { key: 'incomeCertificate', label: 'आय प्रमाण-पत्र', href: links.incomeCertificate, text: 'आवेदन करें' } : null,
-    links.nclStateCertificate ? { key: 'nclStateCertificate', label: 'नॉन क्रीमी लेयर प्रमाण-पत्र (बिहार)', href: links.nclStateCertificate, text: 'आवेदन करें' } : null,
-    links.nclCentralCertificate ? { key: 'nclCentralCertificate', label: 'नॉन क्रीमी लेयर प्रमाण-पत्र (केंद्र)', href: links.nclCentralCertificate, text: 'आवेदन करें' } : null,
-    links.ewsCertificate ? { key: 'ewsCertificate', label: 'EWS आय और संपत्ति प्रमाण-पत्र', href: links.ewsCertificate, text: 'आवेदन करें' } : null,
-    links.nclFormPdf ? { key: 'nclFormPdf', label: 'NCL Form VIII PDF', href: links.nclFormPdf, text: 'PDF डाउनलोड करें' } : null,
-    links.formXIPdf ? { key: 'formXIPdf', label: 'Form XI PDF', href: links.formXIPdf, text: 'PDF डाउनलोड करें' } : null,
-    ...(Array.isArray(links.serviceLinks) ? links.serviceLinks.map((service) => ({ key: `${service.label}-${service.href}`, label: service.label, href: service.href, text: service.text })) : []),
-    links.brochure ? { key: 'brochure', label: 'Download Brochure', href: links.brochure, text: 'Open Brochure' } : null,
-    links.officialWebsite ? { key: 'officialWebsite', label: 'Official Website', href: links.officialWebsite, text: 'Visit Website' } : null,
+    isResult && links.checkResult ? { key: 'checkResult', label: 'Check Result', href: links.checkResult, text: `Check ${sourceTitle} Result` } : null,
+    links.applyOnline ? { key: 'applyOnline', label: 'Apply Online', href: links.applyOnline, text: `Apply Online for ${sourcePost}` } : null,
+    links.writtenResult ? { key: 'writtenResult', label: 'Download Written Result', href: links.writtenResult, text: `Download ${sourceTitle} Written Result` } : null,
+    links.answerKey ? { key: 'answerKey', label: 'Download Answer Key', href: links.answerKey, text: `Download ${sourceTitle} Answer Key` } : null,
+    links.answerKeyNotice ? { key: 'answerKeyNotice', label: 'Answer Key Notice', href: links.answerKeyNotice, text: `Download ${sourceTitle} Answer Key Notice` } : null,
+    links.finalAnswerKey ? { key: 'finalAnswerKey', label: 'Download Final Answer Key', href: links.finalAnswerKey, text: `Download ${sourceTitle} Final Answer Key` } : null,
+    links.scoreCard ? { key: 'scoreCard', label: 'Download Score Card / Certificate', href: links.scoreCard, text: `Download ${sourceTitle} Score Card` } : null,
+    links.omrSheet ? { key: 'omrSheet', label: 'Download OMR Sheet', href: links.omrSheet, text: `Download ${sourceTitle} OMR Sheet` } : null,
+    links.downloadAdmitCard ? { key: 'downloadAdmitCard', label: 'Admit Card', href: links.downloadAdmitCard, text: `Download ${sourceTitle} Admit Card` } : null,
+    links.admitCardNotice ? { key: 'admitCardNotice', label: 'Admit Card Notice', href: links.admitCardNotice, text: `Download ${sourceTitle} Admit Card Notice` } : null,
+    links.examCity ? { key: 'examCity', label: 'Exam City Details', href: links.examCity, text: `Download ${sourceTitle} Exam City Details` } : null,
+    links.examCityNotice ? { key: 'examCityNotice', label: 'Exam City Notice', href: links.examCityNotice, text: `Download ${sourceTitle} Exam City Notice` } : null,
+    links.correctionForm ? { key: 'correctionForm', label: 'Correction Form', href: links.correctionForm, text: `Open ${sourceTitle} Correction Form` } : null,
+    links.correctionNotice ? { key: 'correctionNotice', label: 'Correction Notice', href: links.correctionNotice, text: `Download ${sourceTitle} Correction Notice` } : null,
+    links.disqualifiedList ? { key: 'disqualifiedList', label: 'Disqualified List', href: links.disqualifiedList, text: `Open ${sourceTitle} Disqualified List` } : null,
+    links.examSchedule ? { key: 'examSchedule', label: 'Exam Schedule Notice', href: links.examSchedule, text: `Download ${sourceTitle} Exam Schedule` } : null,
+    links.downloadSyllabus ? { key: 'downloadSyllabus', label: 'Paper I & II Exam Syllabus', href: links.downloadSyllabus, text: `Download ${sourceTitle} Syllabus PDF` } : null,
+    links.notificationEnglish ? { key: 'notificationEnglish', label: 'Notification (English)', href: links.notificationEnglish, text: `Download ${sourceTitle} Notification PDF (English)` } : null,
+    links.notificationHindi ? { key: 'notificationHindi', label: 'Notification (Hindi)', href: links.notificationHindi, text: `Download ${sourceTitle} Notification PDF (Hindi)` } : null,
+    (links.officialNotification || links.importantLink) ? { key: 'notification', label: 'Official Notification', href: links.officialNotification || links.importantLink, text: `Download ${sourceTitle} Official Notification PDF` } : null,
+    links.registration ? { key: 'registration', label: 'Registration', href: links.registration, text: `Register for ${sourcePost}` } : null,
+    links.forgotPassword ? { key: 'forgotPassword', label: 'Forgot Password', href: links.forgotPassword, text: 'Reset password support' } : null,
+    links.applicationStatus ? { key: 'applicationStatus', label: 'Application Status', href: links.applicationStatus, text: `Check ${sourcePost} Application Status` } : null,
+    links.certificateDownload ? { key: 'certificateDownload', label: 'Certificate Download', href: links.certificateDownload, text: `Download ${sourceTitle} Certificate` } : null,
+    links.eligibilityCheck ? { key: 'eligibilityCheck', label: 'Eligibility Check', href: links.eligibilityCheck, text: `Check Eligibility for ${sourcePost}` } : null,
+    links.residenceCertificate ? { key: 'residenceCertificate', label: 'Residence Certificate', href: links.residenceCertificate, text: 'Apply for Residence Certificate' } : null,
+    links.casteCertificate ? { key: 'casteCertificate', label: 'Caste Certificate', href: links.casteCertificate, text: 'Apply for Caste Certificate' } : null,
+    links.incomeCertificate ? { key: 'incomeCertificate', label: 'Income Certificate', href: links.incomeCertificate, text: 'Apply for Income Certificate' } : null,
+    links.nclStateCertificate ? { key: 'nclStateCertificate', label: 'NCL State Certificate', href: links.nclStateCertificate, text: 'Apply for NCL State Certificate' } : null,
+    links.nclCentralCertificate ? { key: 'nclCentralCertificate', label: 'NCL Central Certificate', href: links.nclCentralCertificate, text: 'Apply for NCL Central Certificate' } : null,
+    links.ewsCertificate ? { key: 'ewsCertificate', label: 'EWS Certificate', href: links.ewsCertificate, text: 'Apply for EWS Certificate' } : null,
+    links.nclFormPdf ? { key: 'nclFormPdf', label: 'NCL Form VIII PDF', href: links.nclFormPdf, text: 'Download NCL Form VIII PDF' } : null,
+    links.formXIPdf ? { key: 'formXIPdf', label: 'Form XI PDF', href: links.formXIPdf, text: 'Download Form XI PDF' } : null,
+    ...(Array.isArray(links.serviceLinks) ? links.serviceLinks.map((service) => ({ key: `${service.label}-${service.href}`, label: service.label, href: service.href, text: service.text || `Open ${service.label}` })) : []),
+    links.brochure ? { key: 'brochure', label: 'Download Brochure', href: links.brochure, text: `Download ${sourceTitle} Brochure` } : null,
+    links.officialWebsite ? { key: 'officialWebsite', label: 'Official Website', href: links.officialWebsite, text: `Visit ${orgName} Official Website` } : null,
   ].filter(Boolean);
 
   const normalizeLinkKey = (value) => String(value || '').trim().toLowerCase();
@@ -651,7 +675,12 @@ export default function PostDetail() {
             <div className="pd-meta-chips">
               <span className="pd-chip">📅 Published {formatDate(post.publishedAt)}</span>
               <span className="pd-chip">🕒 Updated {formatDate(post.lastUpdated || post.updatedAt || post.publishedAt)}</span>
-              <span className="pd-chip">✍️ Author: Sarkari Job Hub Editorial Team</span>
+              <span className="pd-chip">✍️ Written by: Sarkari Job Hub Editorial Team</span>
+              <span className="pd-chip">
+                <a href="/editorial-team" className="underline decoration-red-700 underline-offset-4 hover:text-red-700">
+                  Editorial Process & Verification
+                </a>
+              </span>
               {post.lastVerified && <span className="pd-chip">✓ Verified {formatDate(post.lastVerified)}</span>}
               {post.sourceUrl && <span className="pd-chip">Source: Official Website</span>}
               <span className="pd-chip">📖 Read time: {Math.max(3, Math.ceil((post.content?.split(/\s+/).length || 600) / 180))} min</span>
@@ -675,16 +704,24 @@ export default function PostDetail() {
           {/* Quick info strip — always 5 cards with values */}
           <QuickInfo post={post} dates={dates} postType={postType} />
 
-          {hasImportantDates && (isRecruitment || isAdmission || isNotification || isResult || isAdmitCard || isAnswerKey) && (
-            <section className="pd-section pd-dates-priority">
-              <div className="pd-section-head">
-                <h2>📅 Important Dates</h2>
+          {dynamicType === 'exam-city-slip' && (
+            <section className="pd-section">
+              <div className="pd-section-head"><h2>🧭 Exam City Details</h2></div>
+              <div className="pd-content">
+                <p>{val(post.shortDescription, `${post.title} — exam city information from ${val(post.organization)}.`)}</p>
+                <ul className="guide-list">
+                  <li><strong>Exam / Post:</strong> {val(post.postName || post.title)}</li>
+                  <li><strong>Advertisement Number:</strong> {val(post.advertisementNumber || post.advtNo || post.notificationNumber)}</li>
+                  <li><strong>Exam City Slip Release Date:</strong> {val(dates.examCityDate || dates.admitCardDate)}</li>
+                  <li><strong>Exam Date:</strong> {val(dates.examDate)}</li>
+                  <li><strong>Authority:</strong> {val(post.organization)}</li>
+                  <li><strong>Official Status:</strong> {val(post.statusNote || post.status)}</li>
+                </ul>
               </div>
-              <DateTable dates={dates} href={links.officialNotification || links.officialWebsite} />
             </section>
           )}
 
-          {isResult && (hasUsefulContent(post.shortDescription) || val(post.statusNote || post.status) || val(dates.resultDate) || val(dates.examDate)) && (
+          {dynamicType === 'result' && (
             <section className="pd-section">
               <div className="pd-section-head"><h2>📊 Result Overview</h2></div>
               <div className="pd-content">
@@ -698,15 +735,31 @@ export default function PostDetail() {
             </section>
           )}
 
-          {(isResult || isAdmitCard || isAnswerKey || isSyllabus || isCertificate) && (
+          {dynamicType === 'admit-card' && (
             <section className="pd-section">
-              <div className="pd-section-head"><h2>{isResult ? '✅ How to Check Result' : isAdmitCard ? '🎫 How to Download Admit Card' : isAnswerKey ? '🔑 How to Download Answer Key' : isSyllabus ? '📘 Syllabus Overview' : '📜 Certificate Download Process'}</h2></div>
+              <div className="pd-section-head"><h2>🎫 Admit Card Details</h2></div>
               <div className="pd-content">
-                <p>{isResult ? 'Open the official result notice or scorecard link, sign in with the required credentials, and verify your roll number before saving the result.' : isAdmitCard ? 'Use the official admit-card or exam-city link and check the reporting time, centre details and required identity proof.' : isAnswerKey ? 'Download the official answer key or response sheet, compare the question-paper series and note the objection deadline.' : isSyllabus ? 'Use the official syllabus and exam-pattern information to plan subjects, marks and preparation topics.' : isCertificate ? 'Open the official service portal, confirm the required credentials and download the certificate only after checking the displayed details.' : guideIntro}</p>
-                {howSteps.length > 0 && <ol className="pd-steps">{howSteps.map((step, i) => <li key={i}><span className="pd-step-num">{i + 1}</span><div><strong>{step.replace(/^\d+\.\s*/, '')}</strong></div></li>)}</ol>}
+                <p>{val(post.shortDescription, `${post.title} — official admit card update from ${val(post.organization)}.`)}</p>
+                <ul className="guide-list">
+                  <li><strong>Exam / Post:</strong> {val(post.postName || post.title)}</li>
+                  <li><strong>Admit Card / City Slip Date:</strong> {val(dates.admitCardDate || dates.examCityDate)}</li>
+                  <li><strong>Exam Date:</strong> {val(dates.examDate)}</li>
+                  <li><strong>Authority:</strong> {val(post.organization)}</li>
+                  <li><strong>Status:</strong> {val(post.statusNote || post.status)}</li>
+                </ul>
               </div>
             </section>
           )}
+
+          {dynamicType === 'result' || dynamicType === 'admit-card' || dynamicType === 'answer-key' || dynamicType === 'syllabus' || dynamicType === 'certificate' ? (
+            <section className="pd-section">
+              <div className="pd-section-head"><h2>{dynamicType === 'result' ? '✅ How to Check Result' : dynamicType === 'admit-card' ? '🎫 How to Download Admit Card' : dynamicType === 'answer-key' ? '🔑 How to Download Answer Key' : dynamicType === 'syllabus' ? '📘 Syllabus Overview' : '📜 Certificate Download Process'}</h2></div>
+              <div className="pd-content">
+                <p>{dynamicType === 'result' ? 'Open the official result notice or scorecard link, sign in with the required credentials, and verify your roll number before saving the result.' : dynamicType === 'admit-card' ? 'Use the official admit-card or exam-city link and check the reporting time, centre details and required identity proof.' : dynamicType === 'answer-key' ? 'Download the official answer key or response sheet, compare the question-paper series and note the objection deadline.' : dynamicType === 'syllabus' ? 'Use the official syllabus and exam-pattern information to plan subjects, marks and preparation topics.' : 'Open the official service portal, confirm the required credentials and download the certificate only after checking the displayed details.'}</p>
+                {howSteps.length > 0 && <ol className="pd-steps">{howSteps.map((step, i) => <li key={i}><span className="pd-step-num">{i + 1}</span><div><strong>{step.replace(/^\d+\.\s*/, '')}</strong></div></li>)}</ol>}
+              </div>
+            </section>
+          ) : null}
 
           {/* ===== FULL INFO TABLE ===== */}
           {(isRecruitment || isAdmission || isNotification) && hasRecruitmentFacts && <section className="pd-section">
@@ -800,16 +853,15 @@ export default function PostDetail() {
             </div>
           </section>}
 
-          {isAdmitCard && <section className="pd-section pd-type-details">
+          {dynamicType === 'admit-card' && <section className="pd-section pd-type-details">
               <div className="pd-section-head"><h2>🎫 Admit Card Details</h2></div>
               <div className="pd-table-wrap">
                 <table className="pd-full-table">
                   <tbody>
                     <TableRow label="Exam / Post" highlight>{val(post.postName || post.title)}</TableRow>
-                    <TableRow label="Admit Card / City Slip Date"><OfficialValue value={dates.admitCardDate} href={links.admitCardNotice || links.officialNotification || links.officialWebsite} /></TableRow>
+                    <TableRow label="Admit Card / City Slip Date"><OfficialValue value={dates.admitCardDate || dates.examCityDate} href={links.admitCardNotice || links.examCityNotice || links.officialNotification || links.officialWebsite} /></TableRow>
                     <TableRow label="Exam Date"><OfficialValue value={dates.examDate} href={links.examSchedule || links.officialNotification || links.officialWebsite} /></TableRow>
                     <TableRow label="Authority">{val(post.organization)}</TableRow>
-                    <TableRow label="Candidate Instructions"><OfficialValue value={post.documentsRequired} href={links.admitCardNotice || links.officialNotification || links.officialWebsite} /></TableRow>
                   </tbody>
                 </table>
               </div>
@@ -863,23 +915,18 @@ export default function PostDetail() {
             )}
           </section>
 
-          {/* Documents */}
-          {(isRecruitment || isAdmission || isAdmitCard || isAnswerKey || isCertificate) && <section className="pd-section">
+          {dynamicType === 'admit-card' && docList.length > 0 && <section className="pd-section">
             <div className="pd-section-head">
               <h2>📁 Documents Required</h2>
             </div>
-            {docList.length > 0 ? (
-              <ul className="pd-doc-list">
-                {docList.map((d) => (
-                  <li key={d}>{d}</li>
-                ))}
-              </ul>
-            ) : null}
-          </section>
-          }
+            <ul className="pd-doc-list">
+              {docList.map((d) => (
+                <li key={d}>{d}</li>
+              ))}
+            </ul>
+          </section>}
 
-          {/* How to apply */}
-          {(isRecruitment || isAdmission) && howSteps.length > 0 && <section className="pd-section">
+          {(dynamicType === 'recruitment' || dynamicType === 'admission') && howSteps.length > 0 && <section className="pd-section">
             <div className="pd-section-head">
               <h2>✅ How to Fill Online Form</h2>
             </div>
@@ -896,8 +943,7 @@ export default function PostDetail() {
                 );
               })}
             </ol>
-          </section>
-          }
+          </section>}
 
           {showNoticeImage && post.noticeImage && (
             <div className="pd-image-modal" role="dialog" aria-modal="true" aria-label="Short notice image">
@@ -917,7 +963,7 @@ export default function PostDetail() {
             </div>
           )}
 
-          {(usefulAboutIntro || usefulAboutSections.length > 0) && <section className="pd-section pd-about-section" aria-labelledby="about-content">
+          {(usefulAboutIntro || usefulAboutSections.length > 0) && dynamicType !== 'exam-city-slip' && <section className="pd-section pd-about-section" aria-labelledby="about-content">
             <div className="pd-section-head">
               <h2 id="about-content">📖 About This {aboutLabel}</h2>
             </div>
@@ -929,7 +975,7 @@ export default function PostDetail() {
           </section>
           }
 
-          {usefulAboutSections.map((section) => (
+          {usefulAboutSections.length > 0 && dynamicType !== 'exam-city-slip' && usefulAboutSections.map((section) => (
             <section className="pd-section pd-content-detail-section" key={section.title}>
               <div className="pd-section-head">
                 <h2>{section.title}</h2>
@@ -938,7 +984,7 @@ export default function PostDetail() {
             </section>
           ))}
 
-          {faqItems.length > 0 && (
+          {dynamicType !== 'exam-city-slip' && faqItems.length > 0 && (
             <section className="pd-section">
               <div className="pd-section-head">
                 <h2>❓ Frequently Asked Questions</h2>
@@ -973,6 +1019,22 @@ export default function PostDetail() {
               )}
             </div>
           </div>
+
+          {journey.length > 0 && (
+            <div className="pd-side-card">
+              <div className="pd-side-title">Useful Internal Journey</div>
+              <ul className="pd-related">
+                {journey.map((item) => (
+                  <li key={item.label}>
+                    <Link to={item.href.startsWith('/post/') ? item.href : item.href}>
+                      <strong>{item.label}</strong>
+                      <span>{item.body}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {related.length > 0 && (
             <div className="pd-side-card">

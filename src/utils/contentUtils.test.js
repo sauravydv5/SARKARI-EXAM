@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildPostGuide, buildReadingTime, dedupeFacts, toSlug } from './contentUtils.js';
+import { buildDynamicArticle, buildPostGuide, buildReadingTime, dedupeFacts, toSlug } from './contentUtils.js';
 
 test('toSlug formats titles into stable URL slugs', () => {
   assert.equal(toSlug('SSC CGL Preparation Strategy 2026'), 'ssc-cgl-preparation-strategy-2026');
@@ -49,6 +49,81 @@ test('buildPostGuide avoids placeholder wording when specific vacancy and eligib
   assert.match(guide.overview, /19,838|19838/i);
   assert.match(guide.overview, /12th Pass/i);
   assert.doesNotMatch(guide.overview, /see official notice|check official notification|as published in the official notification/i);
+});
+
+test('buildPostGuide avoids generic filler overview copy and department-style action sentences', () => {
+  const guide = buildPostGuide({
+    title: 'UPSSSC Excise Constable Exam City 2026',
+    organization: 'UPSSSC',
+    department: 'Uttar Pradesh Subordinate Service Selection Commission',
+    postName: 'Excise Constable',
+    shortDescription: 'Exam city details have been published for the written examination.',
+    importantDates: {
+      examCityDate: '22 September 2026',
+      examDate: '10 October 2026',
+    },
+  }, 'Admit Card');
+
+  assert.doesNotMatch(guide.overview, /use this page to understand the notice in plain language/i);
+  assert.doesNotMatch(guide.overview, /recruiting department|department behind|department usually defines|current affairs|revision|previous year papers/i);
+});
+
+test('buildDynamicArticle turns source facts into original editorial explanation sections', () => {
+  const article = buildDynamicArticle({
+    title: 'UPSC EPFO APFC Online Form 2026',
+    postName: 'APFC / EPFO',
+    organization: 'UPSC',
+    postType: 'recruitment',
+    qualification: 'Graduation',
+    ageLimit: '18 to 30 years',
+    totalVacancies: 324,
+    selectionProcess: 'Written exam and interview',
+    documentsRequired: 'Photo, signature and graduation certificate',
+    importantDates: {
+      lastDate: '12 September 2026',
+      examDate: '20 October 2026',
+      resultDate: 'December 2026',
+    },
+    shortDescription: 'Recruitment for APFC / EPFO posts through UPSC.',
+    links: {
+      officialNotification: 'https://example.com/notice',
+      officialWebsite: 'https://example.com',
+    },
+  }, {});
+
+  assert.equal(article.type, 'recruitment');
+  assert.ok(article.sections.some((section) => section.heading === 'What changed in this recruitment?'));
+  assert.ok(article.sections.some((section) => section.heading === 'Who should apply?'));
+  assert.ok(article.sections.some((section) => section.heading === 'Important mistake to avoid'));
+  assert.ok(article.sections.some((section) => section.heading === 'What happens next?'));
+
+  const whoApply = article.sections.find((section) => section.heading === 'Who should apply?');
+  assert.match(whoApply.body, /Graduation/);
+  assert.match(whoApply.body, /18 to 30 years/);
+});
+
+test('buildDynamicArticle turns expired recruitment source facts into a closed-application editorial section with internal next-stage advice', () => {
+  const article = buildDynamicArticle({
+    title: 'UPSC EPFO APFC Online Form 2026',
+    postName: 'APFC / EPFO',
+    organization: 'UPSC',
+    postType: 'recruitment',
+    statusNote: 'Closed',
+    importantDates: {
+      lastDate: '15 September 2026',
+      examDate: '20 October 2026',
+      resultDate: 'December 2026',
+    },
+    links: {
+      officialNotification: 'https://example.com/notice',
+      officialWebsite: 'https://example.com',
+    },
+  }, {});
+
+  assert.ok(article.sections.some((section) => section.heading === 'Application Status: Closed'));
+  const closed = article.sections.find((section) => section.heading === 'Application Status: Closed');
+  assert.match(closed.body, /Last date: 15 September 2026/i);
+  assert.match(closed.body, /admit card\/result/i);
 });
 
 test('dedupeFacts suppresses duplicate recruitment facts across sections while keeping unique entries', () => {

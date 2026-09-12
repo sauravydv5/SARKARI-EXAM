@@ -17,6 +17,10 @@ export default function Disclaimer() {
       </header>
 
       <article className="space-y-8 text-base leading-8 text-slate-700 dark:text-slate-300">
+        <section className="rounded-xl border-l-4 border-amber-600 bg-amber-50 p-6 shadow-sm dark:bg-amber-950/40">
+          <h2 className="mb-2 text-2xl font-bold text-amber-950 dark:text-amber-100">Sarkari Job Hub is not an official authority</h2>
+          <p>Sarkari Job Hub is an independent information and guidance website. It does not manage admissions, accept forms, issue admit cards, process payments, or publish final selection orders. The official authority remains the final source for application, fee, eligibility, correction, admit card, answer key, result and appointment decisions.</p>
+        </section>
         <section aria-labelledby="independent-heading" className="rounded-xl border-l-4 border-red-600 bg-white p-6 shadow-sm dark:bg-slate-900 sm:p-8">
           <h2 id="independent-heading" className="mb-3 text-2xl font-bold text-slate-900 dark:text-white">1. Independent website</h2>
           <p>Sarkari Job Hub is an independent informational website. It is <strong>not an official government website</strong>, government department, recruitment board, examination authority, university, bank, or public-sector employer. We are not affiliated with, sponsored by, or authorized to speak on behalf of the Staff Selection Commission, Union Public Service Commission, Railway Recruitment Boards, state commissions, ministries, universities, or any other authority mentioned in our content.</p>

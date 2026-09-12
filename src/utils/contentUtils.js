@@ -105,22 +105,38 @@ const GENERIC_PLACEHOLDER_VALUES = [
   'as mentioned in the official notification',
   'as published in official notification',
   'as published in the official notification',
+  'as published in notification',
   'as per notification',
   'as per official notification',
   'as per official notice',
+  'as per notice',
   'official notice',
   'official notification',
+  'result to be announced',
   'result: to be announced',
   'to be announced',
+  'before exam',
+  'notified soon',
+  'will be notified later',
+  'to be released later',
+  'to be updated soon',
 ];
+
+function normalizeGenericText(value = '') {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 
 function hasValue(value) {
   if (value === 0) return true;
   if (value === null || value === undefined) return false;
   const text = String(value).trim();
   if (!text) return false;
-  const lowered = text.toLowerCase().replace(/\s+/g, ' ');
-  return !GENERIC_PLACEHOLDER_VALUES.includes(lowered);
+  const lowered = normalizeGenericText(text);
+  return !GENERIC_PLACEHOLDER_VALUES.some((placeholder) => normalizeGenericText(placeholder) === lowered);
 }
 
 function text(value, fallback = '') {
@@ -134,61 +150,257 @@ function joinSentences(parts) {
     .join(' ');
 }
 
-function categoryCopy(category) {
-  switch (category) {
-    case 'result':
-      return {
-        action: 'check the result or merit list',
-        document: 'scorecard, merit list, or next-stage call letter',
-        nextStep: 'note the document-verification, physical test, or counselling date if the notice mentions a further stage',
-      };
-    case 'admit-card':
-      return {
-        action: 'download the admit card or exam-city details',
-        document: 'admit card, city intimation slip, or interview letter',
-        nextStep: 'print a clear copy, match the exam city and shift, and keep a photo ID that matches the application',
-      };
-    case 'answer-key':
-      return {
-        action: 'open the answer key or objection window',
-        document: 'provisional or final answer key',
-        nextStep: 'compare responses with the official key and use the objection window only if the notice still allows it',
-      };
-    case 'syllabus':
-      return {
-        action: 'map the syllabus against your study plan',
-        document: 'syllabus and exam-pattern notice',
-        nextStep: 'list the papers, marks, and qualifying stages before buying extra study material',
-      };
-    case 'admission':
-      return {
-        action: 'complete counselling, choice filling, or the admission form',
-        document: 'admission form, allotment letter, or counselling notice',
-        nextStep: 'keep academic certificates, photographs, and fee receipts ready for the reporting date',
-      };
-    case 'certificate':
-      return {
-        action: 'download or verify the e-certificate',
-        document: 'e-certificate or result-verification letter',
-        nextStep: 'save a PDF copy and confirm the roll number, name spelling, and issue year before using it in an application',
-      };
-    case 'important':
-      return {
-        action: 'complete the service, registration, or document request',
-        document: 'service form, exam calendar, or certificate request',
-        nextStep: 'use only the government portal named in the notice and keep the acknowledgement number',
-      };
-    default:
-      return {
-        action: 'decide whether to apply and gather the required documents',
-        document: 'online application and official notification',
-        nextStep: 'compare eligibility, fee, and last date with the official notification before submitting a form',
-      };
-  }
-}
-
 function buildFallbackFaqs() {
   return [];
+}
+
+export function isPostExpired(post = {}) {
+  const status = String(post.statusNote || post.status || '').trim().toLowerCase();
+  if (/closed|expired|over|withdrawn|cancelled/.test(status)) return true;
+
+  const dates = post.importantDates || {};
+  const rawLastDate = String(dates.lastDate || '').trim();
+  if (!rawLastDate) return false;
+
+  const parsed = Date.parse(rawLastDate);
+  if (!Number.isNaN(parsed)) {
+    const last = new Date(parsed);
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    return last < today;
+  }
+  return false;
+}
+
+export function detectContentType(post = {}) {
+  const title = String(post.title || post.postName || '').trim().toLowerCase();
+  const rawType = String(post.postType || '').trim().toLowerCase();
+  const cat = String(post.category || '').trim().toLowerCase();
+  const content = String(post.content || '').trim().toLowerCase();
+  const linksText = Object.keys(post.links || {}).join(' ').trim().toLowerCase();
+
+  if (/exam city|city slip|exam city slip|city details|city intimation|exam centre/.test(title) || /exam city|city slip|city details|city intimation/.test(content)) {
+    return 'exam-city-slip';
+  }
+
+  if (rawType === 'admit_card' || cat === 'admit-card' || /admit card|hall ticket/.test(title) || /admit card|hall ticket/.test(content)) {
+    return 'admit-card';
+  }
+
+  if (rawType === 'result' || cat === 'result' || /result|merit list|scorecard/.test(title) || /result|merit list|scorecard/.test(content)) {
+    return 'result';
+  }
+
+  if (rawType === 'answer_key' || cat === 'answer-key' || /answer key|objection/.test(title) || /answer key|objection/.test(content)) {
+    return 'answer-key';
+  }
+
+  if (rawType === 'syllabus' || cat === 'syllabus' || /syllabus|exam pattern/.test(title)) {
+    return 'syllabus';
+  }
+
+  if (rawType === 'certificate' || cat === 'certificate' || /certificate|e-certificate/.test(title) || /certificate|e-certificate/.test(content)) {
+    return 'certificate';
+  }
+
+  if (rawType === 'admission' || cat === 'admission' || /admission|counselling|seat allotment|allotment/.test(title)) {
+    return 'admission';
+  }
+
+  if (rawType === 'notification' || cat === 'latest-job' || cat === 'important' || /notification|recruitment|vacancy|online form/.test(title)) {
+    return 'recruitment';
+  }
+
+  if (/exam date|exam schedule/.test(title) || /exam date|schedule/.test(content)) {
+    return 'exam-date';
+  }
+
+  if (/correction|form correction/.test(title) || /correction/.test(content)) {
+    return 'correction';
+  }
+
+  if (/cut off|cutoff|cut-off/.test(title) || /cut off|cutoff/.test(content)) {
+    return 'cut-off';
+  }
+
+  return 'other';
+}
+
+export function inferUserIntent(post = {}, type = 'other') {
+  const title = String(post.title || '').trim();
+  const short = String(post.shortDescription || '').trim();
+  if (type === 'exam-city-slip') return 'Explain the exam-city slip status and the city-check process with official links.';
+  if (type === 'admit-card') return 'Explain who can download the admit card and what to verify before the exam.';
+  if (type === 'result') return 'Explain the result status, official link, and next official action.';
+  if (type === 'answer-key') return 'Explain the answer-key release and objection window, if any.';
+  if (type === 'syllabus') return 'Explain the syllabus and exam pattern where the source provides it.';
+  if (type === 'admission') return 'Explain the admission, counselling, or reporting step when data is specific.';
+  if (type === 'recruitment') return 'Explain the recruitment notice, vacancy, qualification, and dates when data is specific.';
+  if (type === 'exam-date') return 'Explain the exam date or schedule release without inventing an exact earlier date.';
+  if (type === 'correction') return 'Explain the correction process and correction window correctly.';
+  if (type === 'cut-off') return 'Explain the cutoff or qualifying reference correctly.';
+  if (type === 'certificate') return 'Explain the certificate, e-certificate, or verification notice.';
+  return title || short ? 'Explain the official update factually and omit generic filler.' : 'Explain the official update factually.';
+}
+
+export function buildDynamicArticle(post = {}, context = {}) {
+  const type = detectContentType(post);
+  const intent = inferUserIntent(post, type);
+  const dates = post.importantDates || {};
+  const links = post.links || {};
+  const org = String(post.organization || '').trim();
+  const postName = String(post.postName || post.title || '').trim();
+  const qualification = text(post.qualification);
+  const ageLimit = text(post.ageLimit);
+  const vacancyDetails = text(post.vacancyDetails);
+  const totalVacancies = Number(post.totalVacancies) > 0 ? `${Number(post.totalVacancies).toLocaleString('en-IN')} posts` : '';
+  const selectionProcess = text(post.selectionProcess);
+  const documentsRequired = text(post.documentsRequired);
+  const startDate = text(dates.startDate);
+  const lastDate = text(dates.lastDate);
+  const examDate = text(dates.examDate);
+  const answerKeyDate = text(dates.answerKeyDate || dates.finalAnswerKeyDate);
+  const resultDate = text(dates.resultDate);
+  const finalDate = text(dates.finalDate);
+  const sectionMap = [];
+
+  const add = (heading, body) => {
+    if (!String(body || '').trim()) return;
+    sectionMap.push({ heading, body });
+  };
+
+  const rows = [];
+
+  const changeText = [
+    postName ? `This article is for ${postName}.` : '',
+    org ? `The official source is ${org}.` : '',
+    vacancyDetails ? `Vacancy details mention ${vacancyDetails}.` : totalVacancies ? `The listed vacancy count is ${totalVacancies}.` : '',
+    qualification ? `Qualification shown in the source is ${qualification}.` : '',
+    ageLimit ? `Age reference shown is ${ageLimit}.` : '',
+    selectionProcess ? `Selection process noted is ${selectionProcess}.` : '',
+    lastDate ? `Last date shown is ${lastDate}.` : '',
+    examDate ? `Exam date shown is ${examDate}.` : '',
+    answerKeyDate ? `Answer key date shown is ${answerKeyDate}.` : '',
+    resultDate ? `Result date shown is ${resultDate}.` : '',
+    finalDate ? `Final date shown is ${finalDate}.` : '',
+    documentsRequired ? `Document format or proof area indicated is ${documentsRequired}.` : '',
+  ].filter(Boolean);
+
+  const introChange = changeText.length ? `What changed in this recruitment? ${changeText.join(' ')}` : 'What changed in this recruitment? The article uses the latest official source values published in the notice.';
+  add('What changed in this recruitment?', introChange);
+
+  const applyText = [
+    qualification ? `Graduation or equivalent qualification is the baseline source value: ${qualification}.` : '',
+    ageLimit ? `Age details noted in the source are ${ageLimit}.` : '',
+    vacancyDetails ? `Vacancy details mention ${vacancyDetails}.` : totalVacancies ? `The recruitment has ${totalVacancies}.` : '',
+    selectionProcess ? `The stated selection path is ${selectionProcess}.` : '',
+  ].filter(Boolean);
+
+  add('Who should apply?', applyText.length ? `Who should apply? ${applyText.join(' ')} Review the official notice before submitting the form.` : 'Who should apply? Compare the listed qualification, age and selection process in the official source before applying.');
+
+  const avoidText = documentsRequired ? `Important mistake to avoid: before submitting the application, check the submitted document format and proof details such as ${documentsRequired}.` : 'Important mistake to avoid: before submitting the form, check the official document format, uploaded image/signature size and registration details.';
+  add('Important mistake to avoid', avoidText);
+
+  const nextText = [
+    'What happens next? Admit card → exam → answer key → result → next stage.',
+    lastDate ? `The last date in source is ${lastDate}.` : '',
+    examDate ? `Exam date in source is ${examDate}.` : '',
+    answerKeyDate ? `Answer key or objection date in source is ${answerKeyDate}.` : '',
+    resultDate ? `Result timeline in source is ${resultDate}.` : '',
+  ].filter(Boolean);
+  add('What happens next?', nextText.join(' '));
+
+  if (isPostExpired(post)) {
+    const talk = [
+      'Application Status: Closed',
+      lastDate ? `Last date: ${lastDate}` : '',
+      'Candidates who already applied can check their admit card/result here.',
+      Array.isArray(links.serviceLinks) && links.serviceLinks.length ? `Related official pages are available through the service link list.` : '',
+    ].filter(Boolean);
+    add('Application Status: Closed', talk.join('\n'));
+  }
+
+  if (type === 'exam-city-slip') {
+    rows.push(['Exam / Post', post.postName || post.title]);
+    rows.push(['Advertisement Number', post.advertisementNumber || post.advtNo || post.notificationNumber || '']);
+    rows.push(['Exam City Slip Release Date', dates.examCityDate || dates.admitCardDate || '']);
+    rows.push(['Exam Date', dates.examDate || '']);
+    rows.push(['Authority', org]);
+    rows.push(['Official Status', post.statusNote || post.status || '']);
+    add('Exam City Details', rows.map(([label, value]) => value ? `${label}: ${value}` : '').filter(Boolean).join('\n'));
+    const cityLink = links.examCity || links.examCityNotice || links.officialNotification || links.officialWebsite;
+    add('How to Check Exam City', cityLink ? `Open the official city-slip page and verify the centre detail, city code and reporting instructions before travelling. Official link: ${cityLink}` : 'Open the official city-slip notice and verify the centre, city code and reporting instructions.');
+    add('What Candidates Should Know', 'Confirm the exam city slip, exam centre, reporting time, admit-card status, and the authority instructions before the exam day.');
+    if (links.examCity || links.examCityNotice || links.officialNotification || links.officialWebsite) {
+      add('Important Links', [links.examCity, links.examCityNotice, links.officialNotification, links.officialWebsite].filter(Boolean).map((href) => href).join('\n'));
+    }
+  } else if (type === 'admit-card') {
+    rows.push(['Exam / Post', post.postName || post.title]);
+    rows.push(['Admit Card / City Slip Date', dates.admitCardDate || dates.examCityDate || '']);
+    rows.push(['Exam Date', dates.examDate || '']);
+    rows.push(['Authority', org]);
+    rows.push(['Status', post.statusNote || post.status || '']);
+    add('Admit Card Details', rows.map(([label, value]) => value ? `${label}: ${value}` : '').filter(Boolean).join('\n'));
+    if (links.downloadAdmitCard || links.admitCardNotice || links.examCity || links.officialNotification || links.officialWebsite) {
+      add('How to Download', 'Use the official admit-card or city-slip link, enter the required login or registration details, and download the PDF from the official portal.');
+    }
+    if (post.documentsRequired) add('Documents Required', post.documentsRequired);
+    if (Array.isArray(post.faqs) && post.faqs.length) add('FAQ', post.faqs.map((faq) => `${faq.question} — ${faq.answer}`).join('\n'));
+  } else if (type === 'result') {
+    rows.push(['Exam / Post', post.postName || post.title]);
+    rows.push(['Result Status', post.statusNote || post.status || '']);
+    rows.push(['Result Date', dates.resultDate || '']);
+    rows.push(['Exam Date', dates.examDate || '']);
+    rows.push(['Authority', org]);
+    add('Result Overview', rows.map(([label, value]) => value ? `${label}: ${value}` : '').filter(Boolean).join('\n'));
+    if (links.checkResult || links.officialNotification || links.officialWebsite) add('Important Links', [links.checkResult, links.officialNotification, links.officialWebsite].filter(Boolean).join('\n'));
+  } else if (type === 'answer-key') {
+    rows.push(['Exam / Post', post.postName || post.title]);
+    rows.push(['Answer Key Status', post.statusNote || post.status || '']);
+    rows.push(['Answer Key Date', dates.answerKeyDate || dates.finalAnswerKeyDate || '']);
+    rows.push(['Exam Date', dates.examDate || '']);
+    rows.push(['Authority', org]);
+    add('Answer Key Details', rows.map(([label, value]) => value ? `${label}: ${value}` : '').filter(Boolean).join('\n'));
+    if (links.answerKey || links.finalAnswerKey || links.officialNotification || links.officialWebsite) add('Important Links', [links.answerKey, links.finalAnswerKey, links.officialNotification, links.officialWebsite].filter(Boolean).join('\n'));
+  } else if (type === 'syllabus') {
+    rows.push(['Exam / Post', post.postName || post.title]);
+    rows.push(['Exam Pattern', post.examPattern || '']);
+    rows.push(['Total Questions', post.totalQuestions || '']);
+    rows.push(['Total Marks', post.totalMarks || '']);
+    rows.push(['Duration', post.duration || '']);
+    add('Syllabus Overview', rows.map(([label, value]) => value ? `${label}: ${value}` : '').filter(Boolean).join('\n'));
+  } else if (type === 'admission') {
+    rows.push(['Exam / Post', post.postName || post.title]);
+    rows.push(['Admission / Counselling Status', post.statusNote || post.status || '']);
+    rows.push(['Authority', org]);
+    add('Admission / Counselling Details', rows.map(([label, value]) => value ? `${label}: ${value}` : '').filter(Boolean).join('\n'));
+  } else if (type === 'correction') {
+    rows.push(['Exam / Post', post.postName || post.title]);
+    rows.push(['Correction Window', post.statusNote || post.status || '']);
+    rows.push(['Authority', org]);
+    add('Correction Notice', rows.map(([label, value]) => value ? `${label}: ${value}` : '').filter(Boolean).join('\n'));
+  } else if (type === 'exam-date') {
+    rows.push(['Exam / Post', post.postName || post.title]);
+    rows.push(['Exam Date', dates.examDate || '']);
+    rows.push(['Authority', org]);
+    add('Exam Date Details', rows.map(([label, value]) => value ? `${label}: ${value}` : '').filter(Boolean).join('\n'));
+  } else if (type === 'cut-off') {
+    rows.push(['Exam / Post', post.postName || post.title]);
+    rows.push(['Cut Off Reference', post.cutoffDetails || post.shortDescription || '']);
+    rows.push(['Authority', org]);
+    add('Cut Off Details', rows.map(([label, value]) => value ? `${label}: ${value}` : '').filter(Boolean).join('\n'));
+  } else {
+    add('Official Update', post.shortDescription || post.content || '');
+  }
+
+  return {
+    type,
+    intent,
+    title: String(post.title || '').trim(),
+    intro: String(post.shortDescription || post.content || '').trim(),
+    sections: sectionMap,
+    faqItems: Array.isArray(post.faqs) ? post.faqs.filter((faq) => faq?.question && faq?.answer).slice(0, 5) : [],
+  };
 }
 
 export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
@@ -207,20 +419,20 @@ export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
   const lastDate = text(dates.lastDate);
   const examDate = text(dates.examDate);
   const resultDate = text(dates.resultDate);
-  const copy = categoryCopy(post.category);
 
-  const overview = joinSentences([
-    `${title} is an independent summary of a public notice issued by ${org}${department ? ` (${department})` : ''}.`,
-    postName ? `The named post or examination is ${postName}.` : '',
-    vacancies ? `The vacancy figure currently listed on this page is ${vacancies}.` : vacancyDetails ? `Vacancy information currently listed: ${vacancyDetails}.` : '',
-    qualification ? `The educational requirement shown here is ${qualification}.` : '',
-    ageLimit ? `The age condition shown here is ${ageLimit}.` : '',
-    lastDate ? `The last date currently listed is ${lastDate}.` : startDate ? `The application window currently listed begins on ${startDate}.` : '',
-    examDate ? `The examination date currently listed is ${examDate}.` : '',
-    resultDate ? `The result date currently listed is ${resultDate}.` : '',
+  const overviewParts = [
+    org ? `${title} is published by ${org}${department ? `, ${department}` : ''}.` : `${title}.`,
+    postName ? `Post / exam: ${postName}.` : '',
+    vacancies ? `Vacancy listed: ${vacancies}.` : vacancyDetails ? `Vacancy details: ${vacancyDetails}.` : '',
+    qualification ? `Educational Qualification: ${qualification}.` : '',
+    ageLimit ? `Age Limit: ${ageLimit}.` : '',
+    lastDate ? `Last date listed: ${lastDate}.` : startDate ? `Application start date listed: ${startDate}.` : '',
+    examDate ? `Exam date listed: ${examDate}.` : '',
+    resultDate ? `Result date listed: ${resultDate}.` : '',
     shortDescription && shortDescription !== title ? shortDescription : '',
-    `Use this page to understand the notice in plain language, then ${copy.action} only on the official portal.`,
-  ]);
+  ];
+
+  const overview = joinSentences(overviewParts.filter(Boolean));
 
   const sections = [];
 
@@ -239,8 +451,8 @@ export function buildPostGuide(post = {}, categoryLabel = 'Government Jobs') {
     sections,
     faqItems,
     keyPoints,
-    nextStep: copy.nextStep,
-    actionLabel: copy.action,
+    nextStep: '',
+    actionLabel: '',
     timeline: [
       startDate ? { label: 'Apply / start', value: startDate } : null,
       lastDate ? { label: 'Last date', value: lastDate } : null,

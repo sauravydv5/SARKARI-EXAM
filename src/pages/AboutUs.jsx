@@ -30,6 +30,25 @@ const readerTools = [
   },
 ];
 
+const trustQuestions = [
+  {
+    q: 'Sarkari Job Hub kya hai?',
+    a: 'Sarkari Job Hub ek independent public information portal hai jahan government job, result, admit card, answer key, syllabus, exam date, admission aur recruitment updates ko simple, searchable aur source-aware format me organized kiya jata hai.',
+  },
+  {
+    q: 'Kaun content publish karta hai?',
+    a: 'Website ka content Sarkari Job Hub editorial team aur contributor process ke through ek clear editorial workflow me prepare hota hai. Hum official notice, official portal, recruitment board aur public source material ko collect karke explain karte hain.',
+  },
+  {
+    q: 'Information ka source kya hai?',
+    a: 'Primary source official recruitment notification, board/commission website, university, ministry, state authority, official PDF notice, corrigendum, admit card portal aur result page hota hai.',
+  },
+  {
+    q: 'Official authority se information verify kaise karte ho?',
+    a: 'Hum source title, organization name, notice link, official PDF, application page, dates, vacancy, qualification, selection process aur fee details ko compare kar ke verify karte hain. Agar detail incomplete ya final notice me change ho, page update ya archived kar diya jata hai.',
+  },
+];
+
 export default function AboutUs() {
   useSeo({
     title: 'About Us',
@@ -53,6 +72,26 @@ export default function AboutUs() {
           <p className="mt-4">We collect and organize information from official sources, explain the important parts in plain language, and direct readers back to the relevant official portal before they take action. The goal is not simply to publish more alerts. It is to help a candidate understand what an update means, what they need to check, and what should happen next.</p>
         </section>
 
+        <section aria-labelledby="what-is-heading" className="rounded-xl border-l-4 border-red-600 bg-slate-50 p-6 dark:bg-slate-800 sm:p-8">
+          <h2 id="what-is-heading" className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">Sarkari Job Hub kya hai?</h2>
+          <p>Sarkari Job Hub ek independent Sarkari job, government exam, result, admit card, answer key, syllabus, admission aur official-notice information portal hai. Hum exam information ko structured format me present karte hain taaki candidates ko date, vacancy, qualification, age limit, fee, selection process aur official link ek hi page me samajh aaye.</p>
+        </section>
+
+        <section aria-labelledby="content-heading" className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8">
+          <h2 id="content-heading" className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">Kaun content publish karta hai?</h2>
+          <p>Content Sarkari Job Hub editorial team by editorial workflow create karta hai. Hum policy, practice, official verification, date labels aur structured article format ko maintain karte hain. Hum official authority ko replace nahi karte; hum us official notice ko clear, readable aur usable format me explain karte hain.</p>
+        </section>
+
+        <section aria-labelledby="source-heading" className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8">
+          <h2 id="source-heading" className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">Information ka source kya hai?</h2>
+          <p>Hum primary source ko priority dete hain: official notification PDF, recruiting commission/board website, government department notice, corrigendum, admit-card page, answer-key page, result page, application portal aur authorized service page. Agar source available ho, page usi official authority ke link ke liye redirect karta hai.</p>
+        </section>
+
+        <section aria-labelledby="verify-heading" className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-8">
+          <h2 id="verify-heading" className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">Official authority se information verify kaise karte ho?</h2>
+          <p>Hum page me organization name, post title, notices, important dates, eligibility, application fee, documents, links aur authority portal ko cross-check karte hain. Agar koi detail draft ya provisional hai, hum clearly mark karte hain. Post update, correction, result, admit card, answer key aur closed-application pages ko official link ke sath same category me link karte hain.</p>
+        </section>
+
         <section aria-labelledby="coverage-heading">
           <h2 id="coverage-heading" className="mb-5 text-2xl font-bold text-slate-900 dark:text-white">What we cover</h2>
           <div className="grid gap-5 md:grid-cols-3">
@@ -72,6 +111,18 @@ export default function AboutUs() {
               <article key={tool.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
                 <h3 className="mb-3 text-lg font-bold text-red-700 dark:text-red-300">{tool.title}</h3>
                 <p>{tool.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section aria-labelledby="trust-question-heading">
+          <h2 id="trust-question-heading" className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">Source clarity and verification model</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {trustQuestions.map((item) => (
+              <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900" key={item.q}>
+                <h3 className="mb-2 text-lg font-bold text-red-700 dark:text-red-300">{item.q}</h3>
+                <p>{item.a}</p>
               </article>
             ))}
           </div>
