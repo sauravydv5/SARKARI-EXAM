@@ -48,7 +48,7 @@ test('buildPostGuide avoids placeholder wording when specific vacancy and eligib
 
   assert.match(guide.overview, /19,838|19838/i);
   assert.match(guide.overview, /12th Pass/i);
-  assert.doesNotMatch(guide.overview, /||/i);
+  assert.doesNotMatch(guide.overview, /\|\|/i);
 });
 
 test('buildPostGuide avoids generic filler overview copy and department-style action sentences', () => {
@@ -68,6 +68,19 @@ test('buildPostGuide avoids generic filler overview copy and department-style ac
   assert.doesNotMatch(guide.overview, /recruiting department|department behind|department usually defines|current affairs|revision|previous year papers/i);
 });
 
+test('buildPostGuide omits notice placeholders as unavailable data', () => {
+  const guide = buildPostGuide({
+    title: 'Example Result 2026',
+    organization: 'Example Authority',
+    totalVacancies: 'See official notice',
+    qualification: 'Check official notification',
+    ageLimit: 'As published in the official notification',
+    shortDescription: 'Result update with confirmed result date.',
+  }, 'Results');
+
+  assert.doesNotMatch(guide.overview, /see official notice|check official notification|as published in the official notification/i);
+});
+
 test('detectContentType keeps result pages as results when historical exam-city text is present', () => {
   assert.equal(detectContentType({
     category: 'result',
@@ -76,38 +89,53 @@ test('detectContentType keeps result pages as results when historical exam-city 
   }), 'result');
 });
 
-test('buildDynamicArticle turns source facts into original editorial explanation sections', () => {
+test('buildDynamicArticle does not add generic template sections without a type-specific source block', () => {
   const article = buildDynamicArticle({
     title: 'UPSC EPFO APFC Online Form 2026',
     postName: 'APFC / EPFO',
     organization: 'UPSC',
     postType: 'recruitment',
-    qualification: 'Graduation',
-    ageLimit: '18 to 30 years',
-    totalVacancies: 324,
-    selectionProcess: 'Written exam and interview',
-    documentsRequired: 'Photo, signature and graduation certificate',
-    importantDates: {
-      lastDate: '12 September 2026',
-      examDate: '20 October 2026',
-      resultDate: 'December 2026',
-    },
-    shortDescription: 'Recruitment for APFC / EPFO posts through UPSC.',
-    links: {
-      officialNotification: 'https://example.com/notice',
-      officialWebsite: 'https://example.com',
-    },
+    shortDescription: 'Recruitment update for APFC / EPFO posts through UPSC.',
   }, {});
 
   assert.equal(article.type, 'recruitment');
-  assert.ok(article.sections.some((section) => section.heading === 'What changed in this recruitment?'));
-  assert.ok(article.sections.some((section) => section.heading === 'Who should apply?'));
-  assert.ok(article.sections.some((section) => section.heading === 'Important mistake to avoid'));
-  assert.ok(article.sections.some((section) => section.heading === 'What happens next?'));
+  assert.doesNotMatch(article.sections.map((section) => section.heading).join(' '), /Preparation Tips|Recruitment Overview|About Department|Generic Eligibility|Generic Selection Process|Generic Documents|Generic FAQ|Complete Information|Who should apply|Important mistake to avoid|What happens next/i);
+});
 
-  const whoApply = article.sections.find((section) => section.heading === 'Who should apply?');
-  assert.match(whoApply.body, /Graduation/);
-  assert.match(whoApply.body, /18 to 30 years/);
+test('buildDynamicArticle keeps sections that are specific to the article type', () => {
+  const article = buildDynamicArticle({
+    title: 'UPSSSC Lekhpal Mains Result 2026',
+    category: 'result',
+    postName: 'Lekhpal',
+    organization: 'UPSSSC',
+    statusNote: 'Released',
+    importantDates: { resultDate: '11 September 2026' },
+    links: { checkResult: 'https://example.com/result' },
+  }, {});
+
+  assert.ok(article.sections.some((section) => section.heading === 'Result Status'));
+  assert.ok(article.sections.some((section) => section.heading === 'Important Links'));
+  assert.doesNotMatch(article.sections.map((section) => section.heading).join(' '), /Preparation Tips|About Department|Complete Information/i);
+});
+
+test('buildDynamicArticle orders admit-card sections by candidate workflow and skips unavailable sections', () => {
+  const article = buildDynamicArticle({
+    title: 'Example Admit Card 2026',
+    category: 'admit-card',
+    statusNote: 'Released',
+    importantDates: { examDate: '20 September 2026', admitCardDate: '15 September 2026' },
+    documentsRequired: 'Printed admit card and photo ID',
+    links: { downloadAdmitCard: 'https://example.com/admit-card', officialWebsite: 'https://example.com' },
+  }, {});
+
+  assert.deepEqual(article.sections.map((section) => section.heading), [
+    'Status',
+    'Exam Date',
+    'Download Process',
+    'Documents',
+    'Instructions',
+    'Official Links',
+  ]);
 });
 
 test('buildDynamicArticle turns expired recruitment source facts into a closed-application editorial section with internal next-stage advice', () => {
@@ -132,6 +160,23 @@ test('buildDynamicArticle turns expired recruitment source facts into a closed-a
   const closed = article.sections.find((section) => section.heading === 'Application Status: Closed');
   assert.match(closed.body, /Last date: 15 September 2026/i);
   assert.match(closed.body, /admit card\/result/i);
+});
+
+test('buildPostGuide renders only up to five valid source FAQs', () => {
+  const guide = buildPostGuide({
+    title: 'Example Update',
+    faqs: [
+      { question: 'Q1', answer: 'A1' },
+      { question: 'Q2', answer: 'A2' },
+      { question: 'Q3', answer: 'A3' },
+      { question: 'Q4', answer: 'A4' },
+      { question: 'Q5', answer: 'A5' },
+      { question: 'Q6', answer: 'A6' },
+      { question: '', answer: 'invalid' },
+    ],
+  });
+
+  assert.deepEqual(guide.faqItems.map((faq) => faq.question), ['Q1', 'Q2', 'Q3', 'Q4', 'Q5']);
 });
 
 test('dedupeFacts suppresses duplicate recruitment facts across sections while keeping unique entries', () => {

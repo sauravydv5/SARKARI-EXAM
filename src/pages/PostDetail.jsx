@@ -91,6 +91,7 @@ function val(v, fallback = SOON) {
     'to be announced',
   ];
 
+  if (/^(?:n\/a|na)\b|^to be announced\b|^as per notification\b|^see official not(?:ice|ification)\b|^check official not(?:ice|ification)\b/i.test(normalized)) return fallback;
   if (genericPlaceholders.includes(normalized)) return fallback;
   return s;
 }
@@ -101,6 +102,20 @@ function hasUsefulContent(value) {
   if (/\brecruiting department behind\b|\bdepartment behind\b/i.test(plain)) return false;
   if (/\b(?:see|check) official not(?:ice|ification)\b|\bas (?:published|mentioned) in (?:the )?official notification\b/i.test(plain)) return false;
   return !/^(introduction|recruitment overview|about department|preparation tips|career advice|read the full notification carefully|check eligibility, fee, dates and instructions|always confirm on the official website before applying)\.?$/i.test(plain);
+}
+
+function countSpecificContentLines(value) {
+  const plain = String(value || '')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!hasUsefulContent(plain)) return 0;
+  return plain
+    .split(/(?<=[.!?])\s+/)
+    .map((line) => line.trim())
+    .filter((line) => line.length >= 20)
+    .length;
 }
 
 function splitPostContent(content, skipHeadings = []) {
@@ -190,6 +205,17 @@ function OfficialValue({ value, href }) {
   return displayValue || null;
 }
 
+function DynamicArticleSections({ sections }) {
+  return sections.map((section) => (
+    <section className="pd-section" key={section.heading}>
+      <div className="pd-section-head"><h2>{section.heading}</h2></div>
+      <div className="pd-content">
+        {String(section.body).split('\n').filter(Boolean).map((line) => <p key={line}>{line}</p>)}
+      </div>
+    </section>
+  ));
+}
+
 function NoticeImageButton({ image, onOpen }) {
   if (!image) return null;
   return (
@@ -219,7 +245,7 @@ function QuickInfo({ post, dates, postType }) {
             ? [['Certificate', post.postName || post.title], ['Status', post.statusNote || post.status], ['Authority', post.organization]]
             : [['Total Posts', post.totalVacancies > 0 ? post.totalVacancies.toLocaleString('en-IN') : null], ['Authority', post.organization]];
 
-  const available = values.filter(([, value]) => value !== null && value !== undefined && String(value).trim());
+  const available = values.map(([label, value]) => [label, val(value)]).filter(([, value]) => value);
   if (!available.length) return null;
   return (
     <div className="pd-stats pd-stats-full">
@@ -328,15 +354,6 @@ export default function PostDetail() {
   const isAdmission = postType === 'admission';
   const isNotification = postType === 'notification';
   const hasImportantDates = Object.values(dates).some((value) => Boolean(val(value)));
-  const hasRecruitmentFacts = Boolean(
-    post?.totalVacancies > 0
-      || val(post?.vacancyDetails)
-      || val(post?.qualification)
-      || val(post?.applicationFee)
-      || val(post?.selectionProcess)
-      || val(post?.ageLimit)
-      || val(post?.salary)
-  );
   const pageTitle = post?.title || 'Sarkari Job Hub';
   const keywordList = [
     cat.label,
@@ -463,10 +480,6 @@ export default function PostDetail() {
     );
   }
 
-  const vacanciesText = post.totalVacancies > 0
-    ? `${post.totalVacancies.toLocaleString('en-IN')} Posts`
-    : 'Not shown';
-
   const howSteps = (post.howToApply || '')
     .split('\n')
     .map((s) => s.trim())
@@ -513,6 +526,7 @@ export default function PostDetail() {
   const dynamicType = detectContentType(post);
   const dynamicIntent = inferUserIntent(post, dynamicType);
   const dynamicArticle = buildDynamicArticle(post, { categoryLabel: cat.label });
+  const usesDynamicCategorySections = ['exam-city-slip', 'admit-card', 'result', 'answer-key', 'syllabus', 'recruitment'].includes(dynamicType);
 
   const sourceTitle = String(post?.title || 'Official Notification').trim();
   const orgName = String(post?.organization || 'Recruiting Authority').trim();
@@ -624,6 +638,11 @@ export default function PostDetail() {
     if (/^(introduction|recruitment overview|about department|preparation tips|career advice)$/i.test(heading)) return false;
     return hasUsefulContent(body);
   });
+  const aboutLineCount = [
+    countSpecificContentLines(aboutContent.introHtml),
+    ...usefulAboutSections.map((section) => countSpecificContentLines(section.bodyHtml)),
+  ].reduce((total, count) => total + count, 0);
+  const showAboutSection = aboutLineCount >= 2;
 
   const factMap = new Map(canonicalFacts.map((fact) => [fact.key, fact.value]));
   const uniqueFactValue = (key, fallback = SOON) => factMap.get(key) || fallback;
@@ -713,7 +732,9 @@ export default function PostDetail() {
           {/* Quick info strip — always 5 cards with values */}
           <QuickInfo post={post} dates={dates} postType={postType} />
 
-          {dynamicType === 'exam-city-slip' && (
+          {usesDynamicCategorySections && <DynamicArticleSections sections={dynamicArticle.sections} />}
+
+          {!usesDynamicCategorySections && dynamicType === 'exam-city-slip' && (
             <section className="pd-section">
               <div className="pd-section-head"><h2>🧭 Exam City Details</h2></div>
               <div className="pd-content">
@@ -730,7 +751,7 @@ export default function PostDetail() {
             </section>
           )}
 
-          {dynamicType === 'result' && (
+          {!usesDynamicCategorySections && dynamicType === 'result' && (
             <section className="pd-section">
               <div className="pd-section-head"><h2>📊 Result Overview</h2></div>
               <div className="pd-content">
@@ -744,7 +765,7 @@ export default function PostDetail() {
             </section>
           )}
 
-          {dynamicType === 'admit-card' && (
+          {!usesDynamicCategorySections && dynamicType === 'admit-card' && (
             <section className="pd-section">
               <div className="pd-section-head"><h2>🎫 Admit Card Details</h2></div>
               <div className="pd-content">
@@ -760,7 +781,7 @@ export default function PostDetail() {
             </section>
           )}
 
-          {dynamicType === 'result' || dynamicType === 'admit-card' || dynamicType === 'answer-key' || dynamicType === 'syllabus' || dynamicType === 'certificate' ? (
+          {!usesDynamicCategorySections && (dynamicType === 'result' || dynamicType === 'admit-card' || dynamicType === 'answer-key' || dynamicType === 'syllabus' || dynamicType === 'certificate') ? (
             <section className="pd-section">
               <div className="pd-section-head"><h2>{dynamicType === 'result' ? '✅ How to Check Result' : dynamicType === 'admit-card' ? '🎫 How to Download Admit Card' : dynamicType === 'answer-key' ? '🔑 How to Download Answer Key' : dynamicType === 'syllabus' ? '📘 Syllabus Overview' : '📜 Certificate Download Process'}</h2></div>
               <div className="pd-content">
@@ -771,42 +792,8 @@ export default function PostDetail() {
           ) : null}
 
           {/* ===== FULL INFO TABLE ===== */}
-          {(isRecruitment || isAdmission || isNotification) && hasRecruitmentFacts && <section className="pd-section">
-            <div className="pd-section-head">
-              <h2>📋 {post.title} – Complete Information</h2>
-            </div>
-            <div className="pd-table-wrap">
-              <table className="pd-full-table">
-                <tbody>
-                  <TableRow label="Name of Post / Exam">{val(post.postName || post.title)}</TableRow>
-                  <TableRow label="Post Date / Published">{formatDate(post.publishedAt)}</TableRow>
-                  <TableRow label="Category / Section">{cat.label}</TableRow>
-                  <TableRow label="Recruitment Board / Authority">
-                    {val(post.organization)}
-                  </TableRow>
-                  <TableRow label="Department">{val(post.department, '—')}</TableRow>
-                  <TableRow label="Total Vacancy / Posts" highlight>
-                    {vacanciesText}
-                  </TableRow>
-                  <TableRow label="Vacancy Details">{val(post.vacancyDetails)}</TableRow>
-                  <TableRow label="Qualification / Eligibility" highlight>
-                    {uniqueFactValue('qualification', val(post.qualification))}
-                  </TableRow>
-                  <TableRow label="Age Limit">{uniqueFactValue('ageLimit', val(post.ageLimit))}</TableRow>
-                  <TableRow label="Application Fee" highlight>
-                    {uniqueFactValue('applicationFee', val(post.applicationFee))}
-                  </TableRow>
-                  <TableRow label="Pay Scale / Salary">{val(post.salary)}</TableRow>
-                  <TableRow label="Selection Process">{uniqueFactValue('selectionProcess', val(post.selectionProcess))}</TableRow>
-                  <TableRow label="Application Begin Date">{val(dates.startDate)}</TableRow>
-                  <TableRow label="Reference Link">{primaryHref ? 'Official portal link available in Important Links section' : 'Official link will be active as per notice'}</TableRow>
-                </tbody>
-              </table>
-            </div>
-          </section>}
-
           {/* Application Fee */}
-          {(isRecruitment || isAdmission) && val(post.applicationFee) && <section className="pd-section">
+          {!usesDynamicCategorySections && (isRecruitment || isAdmission) && val(post.applicationFee) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>💳 Application Fee</h2>
             </div>
@@ -825,7 +812,7 @@ export default function PostDetail() {
           </section>}
 
           {/* Age Limit */}
-          {isRecruitment && val(post.ageLimit) && <section className="pd-section">
+          {!usesDynamicCategorySections && isRecruitment && val(post.ageLimit) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>⏳ Age Limit</h2>
             </div>
@@ -841,7 +828,7 @@ export default function PostDetail() {
           </section>}
 
           {/* Vacancy + Eligibility */}
-          {(isRecruitment || isAdmission) && (post.totalVacancies > 0 || val(post.vacancyDetails) || val(post.qualification) || val(post.selectionProcess)) && <section className="pd-section">
+          {!usesDynamicCategorySections && (isRecruitment || isAdmission) && (post.totalVacancies > 0 || val(post.vacancyDetails) || val(post.qualification) || val(post.selectionProcess)) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>👥 Vacancy &amp; Eligibility Details</h2>
             </div>
@@ -849,7 +836,7 @@ export default function PostDetail() {
               <table className="pd-full-table">
                 <tbody>
                   <TableRow label="Total Post" highlight>
-                    {post.totalVacancies > 0 ? `${post.totalVacancies.toLocaleString('en-IN')} Posts` : 'Not shown'}
+                    {post.totalVacancies > 0 ? `${post.totalVacancies.toLocaleString('en-IN')} Posts` : null}
                   </TableRow>
                   <TableRow label="Vacancy Information">{val(post.vacancyDetails)}</TableRow>
                   <TableRow label="Educational Qualification" highlight>
@@ -862,7 +849,7 @@ export default function PostDetail() {
             </div>
           </section>}
 
-          {dynamicType === 'admit-card' && <section className="pd-section pd-type-details">
+          {!usesDynamicCategorySections && dynamicType === 'admit-card' && <section className="pd-section pd-type-details">
               <div className="pd-section-head"><h2>🎫 Admit Card Details</h2></div>
               <div className="pd-table-wrap">
                 <table className="pd-full-table">
@@ -876,7 +863,7 @@ export default function PostDetail() {
               </div>
           </section>}
 
-          {isSyllabus && <section className="pd-section pd-type-details">
+          {!usesDynamicCategorySections && isSyllabus && <section className="pd-section pd-type-details">
             <div className="pd-section-head"><h2>📘 Verified Syllabus Details</h2></div>
             <div className="pd-table-wrap">
               <table className="pd-full-table">
@@ -924,7 +911,7 @@ export default function PostDetail() {
             )}
           </section>
 
-          {dynamicType === 'admit-card' && docList.length > 0 && <section className="pd-section">
+          {!usesDynamicCategorySections && dynamicType === 'admit-card' && docList.length > 0 && <section className="pd-section">
             <div className="pd-section-head">
               <h2>📁 Documents Required</h2>
             </div>
@@ -935,7 +922,7 @@ export default function PostDetail() {
             </ul>
           </section>}
 
-          {(dynamicType === 'recruitment' || dynamicType === 'admission') && howSteps.length > 0 && <section className="pd-section">
+          {!usesDynamicCategorySections && (dynamicType === 'recruitment' || dynamicType === 'admission') && howSteps.length > 0 && <section className="pd-section">
             <div className="pd-section-head">
               <h2>✅ How to Fill Online Form</h2>
             </div>
@@ -972,7 +959,7 @@ export default function PostDetail() {
             </div>
           )}
 
-          {(usefulAboutIntro || usefulAboutSections.length > 0) && dynamicType !== 'exam-city-slip' && <section className="pd-section pd-about-section" aria-labelledby="about-content">
+          {showAboutSection && dynamicType !== 'exam-city-slip' && <section className="pd-section pd-about-section" aria-labelledby="about-content">
             <div className="pd-section-head">
               <h2 id="about-content">📖 About This {aboutLabel}</h2>
             </div>
@@ -984,7 +971,7 @@ export default function PostDetail() {
           </section>
           }
 
-          {usefulAboutSections.length > 0 && dynamicType !== 'exam-city-slip' && usefulAboutSections.map((section) => (
+          {showAboutSection && usefulAboutSections.length > 0 && dynamicType !== 'exam-city-slip' && usefulAboutSections.map((section) => (
             <section className="pd-section pd-content-detail-section" key={section.title}>
               <div className="pd-section-head">
                 <h2>{section.title}</h2>

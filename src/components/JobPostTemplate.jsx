@@ -92,7 +92,11 @@ export default function JobPostTemplate({
   const cutoffRows = Array.isArray(previousYearCutoff)
     ? previousYearCutoff.map((row) => [row.year, row.category, valueOrFallback(row.cutoff ?? row.marks)])
     : [];
-  const faqItems = Array.isArray(faqs) ? faqs : [];
+  const faqItems = Array.isArray(faqs)
+    ? faqs
+      .filter((faq) => faq && String(faq.question || '').trim() && String(faq.answer || '').trim())
+      .slice(0, 5)
+    : [];
 
   return (
     <article className="mx-auto max-w-5xl px-4 py-8 text-slate-800 dark:text-slate-200 sm:px-6 lg:px-8">
@@ -175,7 +179,7 @@ export default function JobPostTemplate({
         </section>
       )}
 
-      <section aria-labelledby="faqs" className="mb-8">
+      {faqItems.length > 0 && <section aria-labelledby="faqs" className="mb-8">
         <h2 id="faqs" className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">8. FAQs</h2>
         <div className="space-y-3">
           {faqItems.map((faq, index) => (
@@ -187,7 +191,7 @@ export default function JobPostTemplate({
             </details>
           ))}
         </div>
-      </section>
+      </section>}
 
       {officialLink && (
         <section aria-labelledby="official-link" className="rounded-xl bg-slate-900 p-6 text-center dark:bg-slate-800 sm:p-8">
