@@ -2,7 +2,7 @@
   "id": "upsc-nda-ii-exam-schedule-2026",
   "slug": "upsc-nda-ii-exam-schedule-2026",
   "category": "admit-card",
-  "title": "UPSC NDA II Admit Card 2026 – Out",
+  "title": "UPSC NDA & NDA II Recruitment 2026 Exam Admit Card 394 Post",
   "organization": "Union Public Service Commission",
   "postName": "National Defence Academy and Naval Academy Examination (II), 2026",
   "totalVacancies": 394,
@@ -13,35 +13,39 @@
   "selectionProcess": "Written Examination → SSB Interview → Document Verification → Medical Examination.",
   "documentsRequired": "Registration number, password or date of birth, photo ID and printed admit card",
   "howToApply": "1. Visit https://upsconline.nic.in/\n2. Open the NDA and NA Examination (II), 2026 admit card link\n3. Sign in through the candidate portal\n4. Download the admit card and check exam date, timing and instructions\n5. Carry the printed admit card and valid photo ID to the exam centre",
-  "shortDescription": "UPSC NDA II Admit Card 2026 is available from 03 September 2026. The National Defence Academy and Naval Academy II Examination is scheduled for 13 September 2026.",
+  "shortDescription": "UPSC NDA and NDA II Recruitment 2026 admit card is available from 03 September 2026 for 394 posts. The written examination is scheduled for 13 September 2026.",
   "statusNote": "Admit Card released on 03 September 2026",
-  "content": "<p><strong>Union Public Service Commission (UPSC)</strong> has released the <strong>National Defence Academy and Naval Academy Examination (II), 2026 Admit Card</strong>.</p><p>The admit card is available from <strong>03 September 2026</strong> and the written examination is scheduled for <strong>13 September 2026</strong>. Download it through the official UPSC Online candidate portal and verify the centre, reporting time and instructions.</p><h3>Vacancy details</h3><ul><li>Army: <strong>208</strong></li><li>Navy: <strong>42</strong></li><li>Air Force: <strong>120</strong></li><li>Naval Academy: <strong>24</strong></li><li>Total: <strong>394 posts</strong></li></ul>",
-  "publishedAt": "2026-09-04T00:00:00.000Z",
-  "lastUpdated": "2026-09-04",
-  "lastVerified": "2026-09-04",
+  "content": "<p><strong>Union Public Service Commission (UPSC)</strong> has released the <strong>National Defence Academy and Naval Academy Examination (II), 2026 Admit Card</strong> for <strong>394 posts</strong>.</p><p>The application window was open from <strong>20 May 2026 to 11 June 2026</strong>. The admit card is available from <strong>03 September 2026</strong> and the written examination will be held on <strong>13 September 2026</strong>. Download it through the official UPSC Online candidate portal and verify the centre, reporting time and instructions.</p><h3>Eligibility and fee</h3><ul><li>Army Wing: 10+2 passed or appearing from a recognized board</li><li>Air Force and Naval Wings: 10+2 passed or appearing with Physics and Mathematics</li><li>General / OBC / EWS fee: Rs. 100</li><li>SC / ST fee: Nil</li></ul><h3>Vacancy details</h3><ul><li>Army: <strong>208</strong></li><li>Navy: <strong>42</strong></li><li>Air Force: <strong>120</strong></li><li>Naval Academy: <strong>24</strong></li><li>Total: <strong>394 posts</strong></li></ul><p>Candidates should complete UPSC One Time Registration where required and carry the printed admit card and valid photo ID to the examination centre.</p>",
+  "publishedAt": "2026-09-03T18:55:00.000Z",
+  "lastUpdated": "2026-09-03",
+  "lastVerified": "2026-09-03",
   "sourceUrl": "https://www.upsc.gov.in/sites/default/files/TimeTable-NDA-%20NA-Exam-II-2026-Engl-120826.pdf",
   "isFeatured": false,
   "isNew": true,
   "importantDates": {
-    "notificationDate": "20 May 2026",
-    "startDate": "20 May 2026",
-    "lastDate": "11 Jun 2026",
-    "feePaymentLastDate": "11 Jun 2026",
-    "examDate": "13 Sep 2026",
+    "notificationDate": "20/05/2026",
+    "startDate": "20/05/2026",
+    "lastDate": "11/06/2026",
+    "feePaymentLastDate": "11/06/2026",
+    "examDate": "13/09/2026",
     "resultDate": "To be announced",
-    "admitCardDate": "03 Sep 2026 – Available"
+    "admitCardDate": "03/09/2026 – Available"
   },
   "links": {
     "downloadAdmitCard": "https://upsconline.nic.in/candidate/realms/candidate-portal/protocol/openid-connect/auth?client_id=account&redirect_uri=https%3A%2F%2Fupsconline.nic.in%2Fcandidate%2Frealms%2Fcandidate-portal%2Faccount%2Flogin-redirect&response_type=code&scope=openid",
     "examSchedule": "https://www.upsc.gov.in/sites/default/files/TimeTable-NDA-%20NA-Exam-II-2026-Engl-120826.pdf",
-    "applyOnline": "https://upsconline.nic.in/",
+    "applyOnline": "https://upsconline.nic.in/upsc/OTRP/index.php",
+    "otrRegistration": "https://www.sarkariresult.com/upsc/upsc-otr-registration/",
     "officialWebsite": "https://upsc.gov.in/",
-    "officialNotification": "https://upsc.gov.in/sites/default/files/Notif-NDA-II-2026-Engl-200526.pdf"
+    "officialNotification": "https://upsc.gov.in/sites/default/files/Notif-NDA-II-2026-Engl-200526.pdf",
+    "sarkariResultTools": "https://sarkariresult.tools/"
   },
   "tags": [
     "UPSC",
     "NDA",
-    "Exam Schedule"
+    "Exam Schedule",
+    "Admit Card",
+    "394 Posts"
   ],
   "views": 1761
 }
