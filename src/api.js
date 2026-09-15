@@ -314,13 +314,6 @@ function isUpdatedInLastThreeDays(post) {
 
 function sortPosts(posts) {
   return [...posts].sort((a, b) => {
-    const priorityValue = Number(b.sortPriority || 0) - Number(a.sortPriority || 0);
-    if (priorityValue !== 0) return priorityValue;
-
-    const aRecent = isUpdatedInLastThreeDays(a) ? 1 : 0;
-    const bRecent = isUpdatedInLastThreeDays(b) ? 1 : 0;
-    if (aRecent !== bRecent) return bRecent - aRecent;
-
     const activityDate = (post) => Math.max(
       ...[post.lastUpdated, post.updatedAt, post.publishedAt]
         .map((value) => new Date(value || 0).getTime())
@@ -329,6 +322,14 @@ function sortPosts(posts) {
     );
     const activityValue = activityDate(b) - activityDate(a);
     if (activityValue !== 0) return activityValue;
+
+    const priorityValue = Number(b.sortPriority || 0) - Number(a.sortPriority || 0);
+    if (priorityValue !== 0) return priorityValue;
+
+    const aRecent = isUpdatedInLastThreeDays(a) ? 1 : 0;
+    const bRecent = isUpdatedInLastThreeDays(b) ? 1 : 0;
+    if (aRecent !== bRecent) return bRecent - aRecent;
+
     return Number(Boolean(b.isNew) || isRecentPost(b)) - Number(Boolean(a.isNew) || isRecentPost(a));
   });
 }
