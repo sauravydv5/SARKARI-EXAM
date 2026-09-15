@@ -1,0 +1,47 @@
+{
+  "category": "latest-job",
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "sortPriority": 100,
+  "id": "up-primary-teacher-recruitment-2026",
+  "slug": "up-primary-teacher-recruitment-2026",
+  "title": "UP Primary Teacher Recruitment 2026 Notification",
+  "organization": "Uttar Pradesh Basic Education Board / UP Education Department",
+  "postName": "Primary Teacher",
+  "totalVacancies": 0,
+  "vacancyDetails": "UP Primary Teacher recruitment notification 2026 released by the official authority; details to be read from the official PDF notice.",
+  "qualification": "As per the official UP Primary Teacher recruitment notification 2026. Candidates should read the complete PDF for subject-wise eligibility and academic requirements.",
+  "ageLimit": "As per the official UP Primary Teacher recruitment rules for 2026.",
+  "applicationFee": "As per the official UP Primary Teacher recruitment notification 2026.",
+  "selectionProcess": "Online application → written exam / selection process → document verification → final result as per official notification",
+  "documentsRequired": "Educational certificates, photo, signature, ID proof, category certificate if applicable, and other required documents as mentioned in the official notification",
+  "howToApply": "1. Open the official recruitment portal or application link mentioned in the notice\n2. Register and complete the online form\n3. Upload required documents and pay fee, if applicable\n4. Submit the form and keep a printout for future reference",
+  "shortDescription": "UP Primary Teacher Recruitment 2026 notification PDF has been released. Candidates should check the official PDF for the latest dates, eligibility and application details.",
+  "content": "<p><strong>Uttar Pradesh Primary Teacher Recruitment 2026</strong> notification has been released in PDF form.</p><p>Candidates should carefully read the official document for the exact recruitment details, vacancy count, eligibility, syllabus, exam scheme, fee and application timeline.</p><p>Use the official UP recruitment portal and the official notification PDF for the latest updates before applying.</p>",
+  "publishedAt": "2026-09-15T00:00:00.000Z",
+  "lastUpdated": "2026-09-15",
+  "sourceUrl": "https://doc.sarkariresults.org.in/SarkariResult.Com_UP_Primary_teacher_Notification_2026.pdf",
+  "importantDates": {
+    "notificationDate": "15/09/2026",
+    "startDate": "To be notified",
+    "lastDate": "To be notified",
+    "examDate": "As per schedule",
+    "resultDate": "To be announced",
+    "admitCardDate": "Before exam"
+  },
+  "links": {
+    "officialNotification": "https://doc.sarkariresults.org.in/SarkariResult.Com_UP_Primary_teacher_Notification_2026.pdf",
+    "officialWebsite": "https://upbasiceduboard.gov.in/",
+    "applyOnline": "https://example.com"
+  },
+  "tags": [
+    "UP Primary Teacher",
+    "UP Teacher Recruitment",
+    "Primary Teacher 2026",
+    "Uttar Pradesh",
+    "Notification"
+  ],
+  "views": 0
+}
