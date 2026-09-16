@@ -89,6 +89,14 @@ test('detectContentType keeps result pages as results when historical exam-city 
   }), 'result');
 });
 
+test('detectContentType keeps Latest Jobs pages as recruitment when notices mention admit cards', () => {
+  assert.equal(detectContentType({
+    category: 'latest-job',
+    title: 'RUHS Medical Officer Recruitment 2026',
+    content: 'The admit card will be available before the examination.',
+  }), 'recruitment');
+});
+
 test('buildDynamicArticle does not add generic template sections without a type-specific source block', () => {
   const article = buildDynamicArticle({
     title: 'UPSC EPFO APFC Online Form 2026',

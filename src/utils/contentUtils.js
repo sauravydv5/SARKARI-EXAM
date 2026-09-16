@@ -187,6 +187,12 @@ export function detectContentType(post = {}) {
     return 'result';
   }
 
+  // Recruitment pages commonly mention admit-card dates in their notice body.
+  // Keep the category contract ahead of keyword detection for Latest Jobs.
+  if (cat === 'latest-job' && (!rawType || rawType === 'recruitment' || rawType === 'notification')) {
+    return 'recruitment';
+  }
+
   if (/exam city|city slip|exam city slip|city details|city intimation|exam centre/.test(title) || /exam city|city slip|city details|city intimation/.test(content)) {
     return 'exam-city-slip';
   }
