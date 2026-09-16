@@ -100,8 +100,8 @@ function normalizePost(raw, sourcePath) {
   const folder = sourcePath.split('/').slice(-2, -1)[0] || '';
   const category = raw.category || CATEGORY_FOLDERS[folder] || 'latest-job';
   const postType = normalizePostType(raw.postType, category, raw.title);
-  const publishedAt = raw.publishedAt || raw.updatedAt || raw.lastUpdated || raw.applyStart || raw.lastDate || '';
-  const lastUpdated = raw.lastUpdated || raw.updatedAt || publishedAt;
+  const publishedAt = raw.publishedAt || raw.postedAt || raw.addedAt || raw.createdAt || raw.updatedAt || raw.lastUpdated || raw.applyStart || raw.lastDate || '';
+  const lastUpdated = raw.lastUpdated || raw.updatedAt || raw.addedAt || raw.createdAt || publishedAt;
   const lastDate = raw.importantDates?.lastDate || raw.lastDate;
   const lastDateValue = parseDeadline(lastDate);
   const tracksApplicationDeadline = category === 'latest-job';
@@ -315,7 +315,7 @@ function isUpdatedInLastThreeDays(post) {
 function sortPosts(posts) {
   return [...posts].sort((a, b) => {
     const activityDate = (post) => Math.max(
-      ...[post.lastUpdated, post.updatedAt, post.publishedAt]
+      ...[post.lastUpdated, post.updatedAt, post.publishedAt, post.postedAt, post.addedAt, post.createdAt]
         .map((value) => new Date(value || 0).getTime())
         .filter(Number.isFinite),
       0,
