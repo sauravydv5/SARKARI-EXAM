@@ -365,7 +365,13 @@ function applySectionNewBadgeLimit(items) {
   const sorted = sortPosts(items);
   let visibleCount = 0;
   return sorted.map((post) => {
-    const isRecent = post.publishedAt && Date.now() - new Date(post.publishedAt).getTime() < 1000 * 60 * 60 * 24 * 14;
+    const activityDate = Math.max(
+      ...[post.lastUpdated, post.updatedAt, post.publishedAt, post.postedAt, post.addedAt, post.createdAt]
+        .map((value) => new Date(value || 0).getTime())
+        .filter(Number.isFinite),
+      0,
+    );
+    const isRecent = activityDate > 0 && Date.now() - activityDate < 1000 * 60 * 60 * 24 * 14;
     const shouldShowBadge = visibleCount < 4 && (Boolean(post.isNew) || (!post.hasExplicitNewOverride && isRecent));
     if (shouldShowBadge) visibleCount += 1;
     return { ...post, showNewBadge: shouldShowBadge };

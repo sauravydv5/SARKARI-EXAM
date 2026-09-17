@@ -47,11 +47,31 @@ function formatDaysLeft(deadline) {
   return days <= 0 ? 'Ends today' : `${days} day${days === 1 ? '' : 's'} left`;
 }
 
+function getSafeDate(value) {
+  if (!value) return null;
+  const stringValue = String(value).trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(stringValue)) {
+    const parsed = new Date(`${stringValue}T12:00:00`);
+    return Number.isFinite(parsed.getTime()) ? parsed : null;
+  }
+  const parsed = new Date(stringValue);
+  return Number.isFinite(parsed.getTime()) ? parsed : null;
+}
+
+function getLocalDateKey(value) {
+  const date = getSafeDate(value);
+  if (!date) return null;
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
 function countTodayPosts(posts) {
-  const today = new Date().toISOString().slice(0, 10);
+  const todayKey = getLocalDateKey(new Date());
   return (posts || []).filter((post) => {
     const activityDate = post.lastUpdated || post.updatedAt || post.publishedAt;
-    return String(activityDate || '').slice(0, 10) === today;
+    return activityDate && getLocalDateKey(activityDate) === todayKey;
   }).length;
 }
 
