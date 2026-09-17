@@ -174,6 +174,7 @@ function TableRow({ label, children, highlight }) {
 
 function LinkRow({ label, href, text }) {
   const safeText = String(text || '').trim();
+  const isDateLike = /^(\d{1,2}[/-]\d{1,2}[/-]\d{2,4}|\d{4}[/-]\d{1,2}[/-]\d{1,2}|[A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4})$/i.test(safeText);
   const fallbackText = (() => {
     const base = String(label || '').trim();
     if (!base) return 'Open official source';
@@ -188,13 +189,16 @@ function LinkRow({ label, href, text }) {
     <tr>
       <th>{label}</th>
       <td>
-        {href ? (
-          <a href={href} target="_blank" rel="noopener noreferrer" className="pd-table-link">
-            {safeText || fallbackText}
-          </a>
-        ) : (
-          <span className="pd-muted">{SOON}</span>
-        )}
+        <div className="pd-link-actions">
+          {safeText && isDateLike ? <span className="pd-muted">{safeText}</span> : null}
+          {href ? (
+            <a href={href} target="_blank" rel="noopener noreferrer" className="pd-table-link">
+              {safeText && isDateLike ? 'Download' : safeText || fallbackText}
+            </a>
+          ) : (
+            <span className="pd-muted">{SOON}</span>
+          )}
+        </div>
       </td>
     </tr>
   );

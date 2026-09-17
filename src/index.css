@@ -2588,6 +2588,27 @@ img {
   transition: transform 0.12s, box-shadow 0.12s;
 }
 
+.pd-link-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.pd-link-actions .pd-muted {
+  min-width: 82px;
+  font-size: 0.82rem;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.pd-link-actions .pd-table-link {
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
 .pd-table-link:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 16px rgba(220, 38, 38, 0.35);
@@ -2752,6 +2773,15 @@ img {
     padding-top: 2px;
     padding-bottom: 12px;
     border-bottom: 1px solid #e2e8f0;
+  }
+
+  .pd-link-actions {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .pd-link-actions .pd-table-link {
+    max-width: 100%;
   }
 
   .pd-full-table tr:last-child td {
