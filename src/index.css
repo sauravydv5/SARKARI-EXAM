@@ -2689,6 +2689,24 @@ img {
   width: 40%;
 }
 
+.pd-links-table td {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.pd-links-table .pd-link-actions {
+  min-width: 0;
+  width: 100%;
+}
+
+.pd-links-table .pd-link-actions .pd-table-link {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  text-align: left;
+}
+
 .pd-big-cta-wrap {
   padding: 16px 18px 20px;
   text-align: center;
