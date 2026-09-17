@@ -94,6 +94,30 @@ function normalizeAsset(value) {
   return /\/placeholder\.(svg|pdf)$/i.test(asset) ? '' : asset;
 }
 
+function isVideoLink(value) {
+  return /(?:youtube\.com|youtu\.be|youtube-nocookie\.com|vimeo\.com|tinyurl\.com)\//i.test(String(value || ''));
+}
+
+function removeVideoLinks(links) {
+  if (!links || typeof links !== 'object') return {};
+  return Object.fromEntries(Object.entries(links).filter(([key, value]) => {
+    if (/video|youtube|watch/i.test(key)) return false;
+    if (typeof value === 'string') return !isVideoLink(value);
+    if (Array.isArray(value)) return true;
+    return true;
+  }).map(([key, value]) => [
+    key,
+    Array.isArray(value) ? value.filter((item) => !/video|watch/i.test(`${item?.label || ''} ${item?.text || ''}`) && !isVideoLink(item?.href || item?.url)) : value,
+  ]));
+}
+
+function removeVideoAnchors(content) {
+  const videoHref = '(?:youtube\\.com|youtu\\.be|youtube-nocookie\\.com|vimeo\\.com|tinyurl\\.com)';
+  return String(content || '')
+    .replace(new RegExp(`<p\\b[^>]*>.*?<a\\b[^>]*href=["'][^"']*${videoHref}[^"']*["'][^>]*>.*?<\\/a>.*?<\\/p>`, 'gis'), '')
+    .replace(new RegExp(`<a\\b[^>]*href=["'][^"']*${videoHref}[^"']*["'][^>]*>.*?<\\/a>`, 'gis'), '');
+}
+
 function normalizePost(raw, sourcePath) {
   if (!raw || typeof raw !== 'object') return null;
   const sourceName = sourcePath.split('/').pop()?.replace(/\.json$/i, '') || 'post';
@@ -130,7 +154,7 @@ function normalizePost(raw, sourcePath) {
     publishedAt,
     lastUpdated,
     importantDates: raw.importantDates || {},
-    links: raw.links || {},
+    links: removeVideoLinks(raw.links),
     tags: raw.tags || [],
     isFeatured: Boolean(raw.isFeatured),
     isNew: Boolean(raw.isNew),
@@ -146,7 +170,7 @@ function normalizePost(raw, sourcePath) {
     documentsRequired: raw.documentsRequired || '',
     howToApply: raw.howToApply || '',
     shortDescription: raw.shortDescription || raw.description || '',
-    content: raw.content || '',
+    content: removeVideoAnchors(raw.content),
     image: normalizeAsset(raw.image),
     pdf: normalizeAsset(raw.pdf),
     views: Number(raw.views || 0) || 0,
