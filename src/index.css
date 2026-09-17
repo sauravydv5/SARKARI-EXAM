@@ -4674,12 +4674,13 @@ table.data-table tr:last-child td {
 
 .pd-page:not(.pd-template-recruitment) .pd-section-head {
   padding: 14px 18px;
-  background: #1e40af;
+  background: linear-gradient(90deg, #1f3d7a 0%, #1b4d91 100%);
   border-bottom: 0;
 }
 
 .pd-page:not(.pd-template-recruitment) .pd-section-head h2 {
   font-size: 1.02rem;
+  color: #eaf2ff;
 }
 
 .pd-page:not(.pd-template-recruitment) .pd-content {
@@ -4701,7 +4702,7 @@ table.data-table tr:last-child td {
 }
 
 .pd-page:not(.pd-template-recruitment) .pd-links-section .pd-section-head {
-  background: #172554;
+  background: linear-gradient(90deg, #1a315e 0%, #173c73 100%);
 }
 
 .pd-page:not(.pd-template-recruitment) .pd-links-table tr {
@@ -4713,8 +4714,8 @@ table.data-table tr:last-child td {
 }
 
 .pd-page:not(.pd-template-recruitment) .pd-side-title {
-  background: #172554;
-  border-bottom: 3px solid #2563eb;
+  background: linear-gradient(90deg, #1a315e 0%, #173c73 100%);
+  border-bottom: 3px solid #4f7ae8;
 }
 
 .pd-page:not(.pd-template-recruitment) .pd-side-cat,
