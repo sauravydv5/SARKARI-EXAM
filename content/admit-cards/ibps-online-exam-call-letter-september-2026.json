@@ -1,0 +1,46 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 0,
+  "id": "ibps-online-exam-call-letter-september-2026",
+  "slug": "ibps-online-exam-call-letter-september-2026",
+  "category": "admit-card",
+  "title": "IBPS Online Exam Call Letter / Admit Card September 2026",
+  "organization": "Institute of Banking Personnel Selection (IBPS)",
+  "postName": "IBPS Online Examination Call Letter",
+  "totalVacancies": 0,
+  "vacancyDetails": "Exam-specific details are available on the official IBPS call-letter login portal.",
+  "qualification": "As per the concerned IBPS recruitment notification.",
+  "ageLimit": "As per the concerned IBPS recruitment notification.",
+  "selectionProcess": "Online Examination followed by the remaining stages prescribed in the concerned IBPS notification.",
+  "documentsRequired": "Registration or application credentials, downloaded call letter and valid original photo ID.",
+  "howToApply": "1. Open the official IBPS admit-card login link.\n2. Enter the required registration number, password or date of birth.\n3. Submit the details and download the call letter.\n4. Check exam date, shift, reporting time and centre.\n5. Print the admit card and carry valid photo ID to the examination centre.",
+  "shortDescription": "IBPS online exam call letter / admit card login link for September 2026. Download the exam call letter from the official IBPS portal using your credentials.",
+  "content": "<p><strong>Institute of Banking Personnel Selection (IBPS)</strong> has provided the online exam call-letter login link for the concerned September 2026 examination.</p><p>Eligible candidates should log in with their registration credentials, download the admit card and verify the examination date, shift, reporting time and centre details.</p><h2>Important Dates</h2><ul><li>Admit Card Available: <strong>September 2026</strong></li><li>Examination Date: <strong>As mentioned on the downloaded call letter</strong></li></ul><h2>Important Instructions</h2><ul><li>Carry a printed admit card and valid original photo ID.</li><li>Reach the examination centre before the reporting time.</li><li>Follow all instructions printed on the call letter.</li></ul>",
+  "publishedAt": "2026-09-18T00:00:00.000Z",
+  "lastUpdated": "2026-09-18",
+  "sourceUrl": "https://ibps.in/",
+  "importantDates": {
+    "notificationDate": "As per notification",
+    "startDate": "As per notification",
+    "lastDate": "As per notification",
+    "examDate": "As mentioned on admit card",
+    "admitCardDate": "September 2026",
+    "resultDate": "To be announced"
+  },
+  "links": {
+    "downloadAdmitCard": "https://ibpsreg.ibps.in/iobjul26/oecla_sep26/login.php?appid=701b1184ca7aeafef7a981ebb9c51110",
+    "officialWebsite": "https://ibps.in/"
+  },
+  "tags": [
+    "IBPS",
+    "Admit Card",
+    "Call Letter",
+    "Online Exam",
+    "September 2026",
+    "Banking"
+  ],
+  "importantInstructions": "Download the call letter only from the official IBPS login link and verify all examination details before appearing."
+}
