@@ -1,0 +1,58 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 0,
+  "id": "up-scholarship-2026-27-online-form",
+  "slug": "up-scholarship-2026-27-online-form",
+  "category": "admission",
+  "title": "UP Scholarship 2026-2027 Apply Online for Pre Matric, Post Matric, Dashmottar Courses",
+  "organization": "Social Welfare Department, Uttar Pradesh",
+  "postName": "UP Pre-Matric / Post-Matric / Dashmottar Scholarship 2026-27",
+  "totalVacancies": 0,
+  "vacancyDetails": "Scholarship applications for Pre-Matric, Post-Matric, undergraduate, postgraduate, certificate, diploma and other eligible courses in Uttar Pradesh.",
+  "qualification": "Students enrolled in eligible schools, colleges, institutions or universities. Post-Matric 11 and 12 require the previous class qualification; Dashmottar covers UG, PG, certificate and diploma courses.",
+  "ageLimit": "As per the applicable scholarship scheme.",
+  "applicationFee": "No application fee for eligible candidates.",
+  "selectionProcess": "Online application → Institute verification → District / department verification → Scholarship disbursement",
+  "documentsRequired": "Previous qualifying marksheet, caste certificate, income certificate, bank passbook, fee receipt, enrollment number, Aadhaar and recent photograph.",
+  "howToApply": "1. Visit the UP Scholarship portal.\n2. Complete OTR or registration as required.\n3. Select Fresh or Renewal and choose the applicable course scheme.\n4. Fill the form, upload documents and submit it.\n5. Submit the printed form to the concerned school or college and track verification.",
+  "shortDescription": "UP Scholarship 2026-27 online form for Pre-Matric, Post-Matric and Dashmottar UG, PG, Diploma and Certificate courses. Apply through the official scholarship portal.",
+  "content": "<p><strong>Social Welfare Department, Uttar Pradesh</strong> has released the <strong>UP Scholarship 2026-27</strong> online application update for Pre-Matric, Post-Matric and Dashmottar courses.</p><p>Eligible fresh and renewal candidates can apply through the official portal. Candidates from other states studying in eligible Uttar Pradesh institutions may also apply as per scheme rules.</p><h2>Important Dates</h2><ul><li>Application Begin: <strong>22/07/2026</strong></li><li>Renewal Candidate Last Date: <strong>15/10/2026</strong></li><li>Fresh Candidate Last Date: <strong>31/10/2026</strong></li><li>Hard Copy Submission: <strong>As per Schedule</strong></li><li>Correction: <strong>As per Schedule</strong></li></ul><h2>Eligible Courses</h2><ul><li>Pre-Matric Classes</li><li>Post-Matric Classes 11 and 12</li><li>Dashmottar Undergraduate and Postgraduate courses</li><li>Certificate and Diploma courses</li></ul>",
+  "publishedAt": "2026-09-18T09:25:00.000Z",
+  "lastUpdated": "2026-09-18",
+  "sourceUrl": "https://scholarship.up.gov.in/",
+  "importantDates": {
+    "notificationDate": "22/07/2026",
+    "startDate": "22/07/2026",
+    "lastDate": "31/10/2026",
+    "examDate": "N/A",
+    "resultDate": "After verification",
+    "admitCardDate": "N/A"
+  },
+  "links": {
+    "applyOnline": "https://scholarship.up.gov.in/Popup.aspx",
+    "registration": "https://scholarship.up.gov.in/RegistrationNew.aspx",
+    "applicationStatus": "https://scholarship.up.gov.in/LoginStudentPost.aspx",
+    "officialNotification": "https://scholarship.up.gov.in/pdfs/92-2026-1940-26-3-2026-1513982%20Mail.pdf",
+    "officialWebsite": "https://scholarship.up.gov.in/",
+    "serviceLinks": [
+      { "label": "Fresh Candidate Login - Intermediate", "href": "https://scholarship.up.gov.in/LoginStudentPostInter.aspx", "text": "Login Fresh Intermediate" },
+      { "label": "Fresh Candidate Login - Other Than Intermediate", "href": "https://scholarship.up.gov.in/LoginStudentPost.aspx", "text": "Login Fresh Other Courses" },
+      { "label": "Renewal Candidate Login - Intermediate", "href": "https://scholarship.up.gov.in/LoginStudentPostRenewInter.aspx", "text": "Login Renewal Intermediate" },
+      { "label": "Renewal Candidate Login - Other Than Intermediate", "href": "https://scholarship.up.gov.in/LoginStudentPostRenew.aspx", "text": "Login Renewal Other Courses" },
+      { "label": "Download Notification - Other Than Intermediate", "href": "https://scholarship.up.gov.in/pdfs/91-2026-1941-26-3-2026-1741061%20Mail.pdf", "text": "Download Notification" }
+    ]
+  },
+  "tags": [
+    "UP Scholarship",
+    "Pre Matric",
+    "Post Matric",
+    "Dashmottar",
+    "UG",
+    "PG",
+    "2026-27"
+  ],
+  "importantInstructions": "Aadhaar and required verification documents are important for the UP Scholarship application. Complete institute verification within the prescribed schedule."
+}

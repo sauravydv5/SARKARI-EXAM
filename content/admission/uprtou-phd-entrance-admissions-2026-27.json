@@ -1,0 +1,50 @@
+{
+  "image": "/uploads/images/placeholder.svg",
+  "pdf": "/uploads/pdfs/placeholder.pdf",
+  "isFeatured": true,
+  "isNew": true,
+  "views": 0,
+  "id": "uprtou-phd-entrance-admissions-2026-27",
+  "slug": "uprtou-phd-entrance-admissions-2026-27",
+  "category": "admission",
+  "title": "UPRTOU Ph.D Entrance Exam Admissions 2026-27 Apply Online Form",
+  "organization": "Uttar Pradesh Rajarshi Tandon Open University (UPRTOU)",
+  "postName": "UPRTOU Prayagraj Ph.D Entrance Exam 2026-27",
+  "totalVacancies": 0,
+  "vacancyDetails": "Ph.D admission seats are available across the programmes and subjects listed in the official information brochure.",
+  "qualification": "Two-year Master's after a three-year Bachelor's degree or one-year Master's after a four-year Bachelor's degree with minimum 55% marks. A four-year Bachelor's degree requires 75% marks. M.Phil. candidates require minimum 55% marks; category relaxations apply as notified.",
+  "ageLimit": "No age limit.",
+  "applicationFee": "General / OBC / EWS: 2000/-. SC / ST: 1000/-. Entrance-exempt candidates: General / OBC / EWS 1000/- and SC / ST 500/-. Late fee applies as per notification.",
+  "selectionProcess": "Online application → Ph.D entrance examination or exemption screening → Admission process as per UPRTOU rules",
+  "documentsRequired": "Academic certificates, marksheets, identity proof, photograph, signature, category certificate and exemption documents where applicable.",
+  "howToApply": "1. Read the Ph.D. information brochure.\n2. Visit the UPRTOU Ph.D. application portal.\n3. Register and complete the application form.\n4. Upload documents and pay the applicable fee.\n5. Submit the form and keep the confirmation page.",
+  "shortDescription": "UPRTOU Prayagraj Ph.D Entrance Exam Admissions 2026-27. Apply online from 15 September 2026 to 14 October 2026.",
+  "content": "<p><strong>Uttar Pradesh Rajarshi Tandon Open University (UPRTOU)</strong> has released the notification for <strong>Ph.D Entrance Exam Admissions 2026-27</strong>.</p><p>Eligible candidates can apply online from <strong>15/09/2026 to 14/10/2026</strong>. Read the information brochure for programme-wise eligibility, seats, exemption rules and admission instructions.</p><h2>Important Dates</h2><ul><li>Application Begin: <strong>15/09/2026</strong></li><li>Last Date for Apply Online: <strong>14/10/2026</strong></li><li>Fee Payment Last Date: <strong>14/10/2026</strong></li><li>Late Fee Window: <strong>15 to 21 October 2026</strong></li><li>Correction Window: <strong>22 to 27 October 2026</strong></li><li>Admit Card: <strong>30/10/2026</strong></li><li>Entrance Exam: <strong>05/11/2026</strong></li><li>Result: <strong>07/11/2026</strong></li></ul>",
+  "publishedAt": "2026-09-18T10:17:00.000Z",
+  "lastUpdated": "2026-09-18",
+  "sourceUrl": "https://uprtou.ac.in/",
+  "importantDates": {
+    "notificationDate": "15/09/2026",
+    "startDate": "15/09/2026",
+    "lastDate": "14/10/2026",
+    "feePaymentLastDate": "14/10/2026",
+    "correctionLastDate": "27/10/2026",
+    "examDate": "05/11/2026",
+    "admitCardDate": "30/10/2026",
+    "resultDate": "07/11/2026"
+  },
+  "links": {
+    "applyOnline": "https://uprtouphd.co.in/api/phdentrance/",
+    "officialNotification": "https://uprtouphd.co.in/api/phdentrance/phd_Info_brochure_2026-27.pdf",
+    "officialWebsite": "https://uprtou.ac.in/"
+  },
+  "tags": [
+    "UPRTOU",
+    "PhD Admission",
+    "Entrance Exam",
+    "Doctor of Philosophy",
+    "Prayagraj",
+    "2026-27"
+  ],
+  "importantInstructions": "Read the official UPRTOU Ph.D. information brochure before applying and verify programme-wise eligibility and fee details."
+}
