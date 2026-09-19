@@ -13,9 +13,9 @@
   "selectionProcess": "Phase I exam → Phase II / mains exam → Result / merit list → final selection as per UPPSC process",
   "documentsRequired": "Roll number, registration details, result login or download link and supporting educational or category documents for verification stages.",
   "howToApply": "1. Visit the official UPPSC portal\n2. Open the result or mains result section\n3. Select the relevant subject or result link\n4. Download the PDF and check the roll numbers and merit status\n5. Save the result copy for future stages",
-  "shortDescription": "UPPSC LT Grade Assistant Teacher Mains Result 2026 has been released for multiple subjects. Candidates can download the subject-wise result PDFs from the official UPPSC portal.",
-  "content": "<p><strong>Uttar Pradesh Public Service Commission (UPPSC)</strong> has released the <strong>Assistant Teacher LT Grade Recruitment 2025 Mains Result 2026</strong> for various subjects.</p><p>Candidates who appeared in the LT Grade mains examination can download subject-wise result PDFs from the official UPPSC result portal and check their roll number status.</p><h3>Important dates</h3><ul><li>Application begin: <strong>28/07/2025</strong></li><li>Last date to apply: <strong>28/08/2025</strong></li><li>Fee payment last date: <strong>28/08/2025</strong></li><li>Correction last date: <strong>04/09/2025</strong></li><li>Phase I exam: <strong>06-07 & 21 December 2025</strong></li><li>Phase II / mains exam: <strong>17-25 January 2026</strong></li><li>Computer subject exam date: <strong>05/04/2026</strong></li><li>Mains result available: <strong>18/09/2026</strong></li></ul><p>Result links are available for Science, Commerce, Agriculture / Horticulture, Music, Arts, Urdu, English, Biology, Sanskrit, Home Science, Hindi, Maths, Social Science, Physical Education and Computer subject.</p>",
-  "publishedAt": "2026-09-18T18:50:00.000Z",
+  "shortDescription": "UPPSC LT Grade Assistant Teacher Mains Result 2026 has been released for multiple subjects. Candidates can download the subject-wise result PDFs and check the document-verification schedule.",
+  "content": "<p><strong>Uttar Pradesh Public Service Commission (UPPSC)</strong> has released the <strong>Assistant Teacher LT Grade Recruitment 2025 Mains Result 2026</strong> for various subjects.</p><p>Candidates who appeared in the LT Grade mains examination can download subject-wise result PDFs and check the latest document-verification schedule dated <strong>19/09/2026</strong>.</p><h3>Important dates</h3><ul><li>Application begin: <strong>28/07/2025</strong></li><li>Last date to apply: <strong>28/08/2025</strong></li><li>Fee payment last date: <strong>28/08/2025</strong></li><li>Correction last date: <strong>04/09/2025</strong></li><li>Phase I exam: <strong>06-07 & 21 December 2025</strong></li><li>Phase II / mains exam: <strong>17-25 January 2026</strong></li><li>Computer subject exam date: <strong>05/04/2026</strong></li><li>Mains result available: <strong>18/09/2026</strong></li><li>Document verification schedule: <strong>19/09/2026</strong></li></ul><p>Result links are available for Science, Commerce, Agriculture / Horticulture, Music, Arts, Urdu, English, Biology, Sanskrit, Home Science, Hindi, Maths, Social Science, Physical Education and Computer subject.</p>",
+  "publishedAt": "2026-09-19T20:30:00.000Z",
   "isFeatured": true,
   "isNew": true,
   "importantDates": {
@@ -24,7 +24,8 @@
     "lastDate": "28/08/2025",
     "examDate": "06-07 & 21 December 2025",
     "resultDate": "18/09/2026",
-    "admitCardDate": "06/06/2026"
+    "admitCardDate": "06/06/2026",
+    "documentVerificationDate": "19/09/2026"
   },
   "links": {
     "checkResult": "https://uppsc.up.nic.in/Open_PDF.aspx?I4PnQ0tBagnQ0/TjMEfCjHNjHdrEpv0R",
@@ -45,6 +46,14 @@
     "artsResult": "https://doc.sarkariresults.org.in/UPPSC_LT_Arts_Result%20(1).pdf",
     "urduResult": "https://doc.sarkariresults.org.in/UPSSC_LT_Urdu_Result.pdf",
     "physicalEducationResult": "https://www.sarkariresult.com/upload/UPPSC_LT_BPED_Result_2026.pdf",
+    "documentVerificationNotice": "https://uppsc.up.nic.in/Open_PDF.aspx?I4PnQ0tBagmNKfqXmoSUnv2XgcCDttnM",
+    "mainsAdmitCard": "https://uppsc.up.nic.in/CandidatePages/Advertismentwise_DownloadDocument.aspx?inptprmtr=ac",
+    "computerAdmitCardNotice": "https://uppsc.up.nic.in/Open_PDF.aspx?I4PnQ0tBagmtuZKZH/Den5mpgVQnK5yB",
+    "mainsApplication": "https://uppsc.up.nic.in/CandidatePages/OTRAppForm/Applicant_OtrAuthentication.aspx?WEqGEem9m0+8Y4tNQqJiNYurmbKsjJR/fgSlThSTh6o=#no-back",
+    "computerNotice": "https://www.sarkariresult.com/wp-content/uploads/2026/06/uppscltcomputer.pdf",
+    "computerAnswerKey": "https://doc.sarkariresults.org.in/UPPSC_LT_Computer_PaperwithAnswerKey.pdf",
+    "answerKey": "https://uppsc.up.nic.in/CandidatePages/Status/ViewAnswerKey.aspx?ID=5",
+    "notification": "https://tinyurl.com/5c43hk7p",
     "serviceLinks": [
       { "label": "Science", "href": "https://uppsc.up.nic.in/Open_PDF.aspx?I4PnQ0tBagnQ0/TjMEfCjHNjHdrEpv0R", "text": "Download Science Result" },
       { "label": "Commerce", "href": "https://doc.sarkariresults.org.in/UPPSC_LT_Mains_Exam_Result_Commerce.pdf", "text": "Download Commerce Result" },
