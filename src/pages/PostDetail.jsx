@@ -172,6 +172,93 @@ function TableRow({ label, children, highlight }) {
   );
 }
 
+function getVacancyRows(details) {
+  const rawDetails = String(details || '').trim().replace(/[.]$/, '');
+  const leadingTotal = rawDetails.match(/^\d[\d,]*\s+(?:posts?|seats?|vacancies?)\s*:\s*(.*)$/i);
+
+  if (leadingTotal) {
+    const namedRows = leadingTotal[1]
+      .split(/,\s+|\s+and\s+/i)
+      .map((entry) => entry.trim())
+      .filter(Boolean);
+    if (namedRows.some((entry) => /\(\d[\d,]*\)/.test(entry))) {
+      return namedRows.map((entry) => {
+        const countMatch = entry.match(/^(.*?)(?:\s*\((\d[\d,]*)\))?$/);
+        return {
+          label: countMatch[1].trim(),
+          value: countMatch[2] ? `${countMatch[2]} posts` : 'Count not specified',
+        };
+      });
+    }
+
+    const countFirstRows = [...leadingTotal[1].matchAll(/(\d[\d,]*)\s+(.+?)(?=\s+and\s+\d[\d,]*\s+|\s+under\b|$)/gi)];
+    if (countFirstRows.length) {
+      return countFirstRows.map(([, count, label]) => ({
+        label: label.trim(),
+        value: `${count} posts`,
+      }));
+    }
+  }
+
+  const entries = rawDetails
+    .split(/;|,\s+(?=[A-Z][^,;]*\s+\d[\d,]*(?:\s*(?:posts?|seats?|vacancies?))?(?:\s*[,;]|$))/i)
+    .map((entry) => entry.trim())
+    .filter((entry) => entry && !/^total\s+/i.test(entry));
+
+  if (!entries.length) return [];
+  return entries.map((entry, index) => {
+    const colonIndex = entry.lastIndexOf(':');
+    const colonTail = colonIndex >= 0 ? entry.slice(colonIndex + 1).trim() : entry;
+    const normalizedEntry = /^[A-Z][^,;]*\d[\d,]*(?:\s*(?:posts?|seats?|vacancies?))?$/i.test(colonTail)
+      ? colonTail
+      : entry;
+    const countMatch = normalizedEntry.match(/^(.*?)[\s:-]+(\d[\d,]*)\s*(posts?|seats?|vacancies?)?$/i);
+
+    if (countMatch) {
+      return {
+        label: countMatch[1].trim(),
+        value: `${countMatch[2]} ${countMatch[3] || 'posts'}`,
+      };
+    }
+
+    const separatorIndex = normalizedEntry.indexOf(':');
+    return separatorIndex > 0
+      ? { label: normalizedEntry.slice(0, separatorIndex).trim(), value: normalizedEntry.slice(separatorIndex + 1).trim() }
+      : { label: entries.length > 1 ? `Vacancy ${index + 1}` : 'Vacancy Information', value: normalizedEntry };
+  });
+}
+
+function getQualificationRows(qualification) {
+  const text = String(qualification || '').trim().replace(/[.]$/, '');
+  if (!text) return [];
+
+  const teacherTraining = text.match(/^(.+?)\s+along with\s+(.+?),\s+and mandatory pass in\s+(.+)$/i);
+  if (teacherTraining) {
+    return [
+      { label: 'Degree / Education', value: teacherTraining[1].trim() },
+      { label: 'Teacher Training', value: teacherTraining[2].trim() },
+      { label: 'TET Requirement', value: teacherTraining[3].trim() },
+    ];
+  }
+
+  const structured = text.match(/^(.+?)\s+and\s+certification\s+(.+?)(?:,\s+with\s+(.+))?$/i);
+  if (structured) {
+    return [
+      { label: 'Degree / Education', value: structured[1].trim() },
+      { label: 'Certification', value: structured[2].trim() },
+      ...(structured[3] ? [{ label: 'Experience', value: structured[3].trim() }] : []),
+    ];
+  }
+
+  const parts = text.split(/;\s*|\n+|(?<=[.!?])\s+(?=[A-Z])/).map((part) => part.trim()).filter(Boolean);
+  return parts.length > 1
+    ? parts.map((part, index) => ({
+        label: /subedar/i.test(part) ? 'Subedar Steno Requirement' : /asi ministerial/i.test(part) ? 'ASI Ministerial Requirement' : index === 0 ? 'Basic Qualification' : `Qualification ${index + 1}`,
+        value: part,
+      }))
+    : [{ label: 'Educational Qualification', value: text }];
+}
+
 function LinkRow({ label, href, text }) {
   const safeText = String(text || '').trim();
   const isDateLike = /^(\d{1,2}[/-]\d{1,2}[/-]\d{2,4}|\d{4}[/-]\d{1,2}[/-]\d{1,2}|[A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4})$/i.test(safeText);
@@ -805,8 +892,8 @@ export default function PostDetail() {
             <div className="pd-section-head">
               <h2>💳 Application Fee</h2>
             </div>
-            <div className="pd-table-wrap">
-              <table className="pd-full-table">
+            <div className="pd-table-wrap pd-vacancy-table-wrap">
+              <table className="pd-full-table pd-vacancy-table">
                 <tbody>
                   <TableRow label="Fee Details" highlight>
                     {uniqueFactValue('applicationFee', val(post.applicationFee))}
@@ -836,7 +923,7 @@ export default function PostDetail() {
           </section>}
 
           {/* Vacancy + Eligibility */}
-          {!usesDynamicCategorySections && (isRecruitment || isAdmission) && (post.totalVacancies > 0 || val(post.vacancyDetails) || val(post.qualification) || val(post.selectionProcess)) && <section className="pd-section">
+          {(post.totalVacancies > 0 || val(post.vacancyDetails) || val(post.qualification) || val(post.selectionProcess)) && <section className="pd-section">
             <div className="pd-section-head">
               <h2>👥 Vacancy &amp; Eligibility Details</h2>
             </div>
@@ -846,10 +933,12 @@ export default function PostDetail() {
                   <TableRow label="Total Post" highlight>
                     {post.totalVacancies > 0 ? `${post.totalVacancies.toLocaleString('en-IN')} Posts` : null}
                   </TableRow>
-                  <TableRow label="Vacancy Information">{val(post.vacancyDetails)}</TableRow>
-                  <TableRow label="Educational Qualification" highlight>
-                    {uniqueFactValue('qualification', val(post.qualification))}
-                  </TableRow>
+                  {getVacancyRows(post.vacancyDetails).map(({ label, value }) => (
+                    <TableRow key={`${label}-${value}`} label={label}>{value}</TableRow>
+                  ))}
+                  {getQualificationRows(uniqueFactValue('qualification', val(post.qualification))).map(({ label, value }, index) => (
+                    <TableRow key={`${label}-${value}`} label={label} highlight={index === 0}>{value}</TableRow>
+                  ))}
                   <TableRow label="Pay Scale / Salary">{val(post.salary)}</TableRow>
                   <TableRow label="Selection Process">{uniqueFactValue('selectionProcess', val(post.selectionProcess))}</TableRow>
                 </tbody>

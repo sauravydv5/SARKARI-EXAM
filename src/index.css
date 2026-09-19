@@ -2573,6 +2573,45 @@ img {
   font-weight: 700;
 }
 
+.pd-vacancy-table {
+  table-layout: fixed;
+  font-size: 0.9rem;
+}
+
+.pd-vacancy-table th,
+.pd-vacancy-table td {
+  padding: 11px 15px;
+  line-height: 1.45;
+}
+
+.pd-vacancy-table th {
+  width: 28%;
+  min-width: 165px;
+  color: #334155;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+}
+
+.pd-vacancy-table td {
+  width: 72%;
+  color: #172033;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.pd-vacancy-table .pd-tr-hot th,
+.pd-vacancy-table .pd-tr-hot td {
+  background: #fff1f2;
+}
+
+.pd-vacancy-table .pd-tr-hot th {
+  color: #b91c1c;
+}
+
+.pd-vacancy-table .pd-tr-hot td {
+  color: #991b1b;
+}
+
 .pd-table-link {
   display: inline-flex;
   align-items: center;
@@ -2804,6 +2843,20 @@ img {
 
   .pd-full-table tr:last-child td {
     border-bottom: none;
+  }
+
+  .pd-vacancy-table th,
+  .pd-vacancy-table td {
+    width: 100% !important;
+    min-width: 0;
+  }
+
+  .pd-vacancy-table th {
+    padding-top: 9px;
+  }
+
+  .pd-vacancy-table td {
+    padding-bottom: 10px;
   }
 
   .pd-doc-list {
