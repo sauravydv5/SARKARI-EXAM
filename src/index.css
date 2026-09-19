@@ -5642,3 +5642,51 @@ table.data-table tr:last-child td {
   overflow-wrap: anywhere;
   white-space: normal;
 }
+
+/* Keep the detail page single-column on narrow iPhone viewports. */
+@media (max-width: 960px) {
+  .pd-page {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .pd-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+  }
+
+  .pd-main,
+  .pd-sidebar {
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .pd-sidebar {
+    order: 2 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .brand-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .brand-row .brand {
+    flex: 0 0 auto;
+  }
+
+  .brand-row .header-search {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+  }
+}
