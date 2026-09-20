@@ -30,6 +30,54 @@
   force = true
 
 [[redirects]]
+  from = "/post/ssc-je-2026"
+  to = "/post/ssc-je-2026/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/post/ssc-je-2026/"
+  to = "/post/ssc-je-2026/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/post/csbc-bihar-police-special-branch-pst-admit-card-2026"
+  to = "/post/csbc-bihar-police-special-branch-pst-admit-card-2026/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/post/csbc-bihar-police-special-branch-pst-admit-card-2026/"
+  to = "/post/csbc-bihar-police-special-branch-pst-admit-card-2026/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/post/ib-security-assistant-executive-final-result-2026"
+  to = "/404.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/post/bihar-police-csbc-constable-gd-result-2026"
+  to = "/404.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/post/rssb-forester-result-2026"
+  to = "/404.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/post/bpssc-havildar-instructor-result-2026"
+  to = "/404.html"
+  status = 410
+  force = true
+
+[[redirects]]
   from = "/post/*"
   to = "/post/:splat/index.html"
   status = 200
