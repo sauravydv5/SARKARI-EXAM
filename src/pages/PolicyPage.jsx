@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useSeo from '../hooks/useSeo';
@@ -5,22 +6,38 @@ import { policyPages } from '../data/policyPages';
 
 export default function PolicyPage() {
   const { slug } = useParams();
-  const page = policyPages.find((item) => item.slug === slug);
+
+  const page = policyPages.find(
+    (item) => item.slug === slug
+  );
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, [slug]);
 
   useSeo({
-    title: page ? `${page.title} - Sarkari Job Hub` : 'Page Not Found',
-    description: page?.description || 'This page is not available.',
-    url: `https://sarkarijobhub.website/${page?.slug || slug}`,
+    title: page?.title || 'Page Not Found',
+    description:
+      page?.description ||
+      'This page is not available on Sarkari Job Hub.',
+    url: `https://sarkarijobhub.website/${slug || ''}`,
     noIndex: !page,
-    keywords: page ? `${page.title}, sarkari job hub, government job portal, policy, editorial standards` : '',
+    keywords: page
+      ? `${page.title}, Sarkari Job Hub, government job portal`
+      : '',
+    schemaType: 'WebSite',
   });
 
   if (!page) {
-    return <div className="error-box">This page is not available. Please use the main navigation to continue.</div>;
+    return (
+      <div className="error-box">
+        This page is not available. Please use the
+        main navigation to continue.
+      </div>
+    );
   }
 
   return (
@@ -29,9 +46,15 @@ export default function PolicyPage() {
         <h1>{page.title}</h1>
         <p>{page.description}</p>
       </div>
+
       <section className="panel">
         <div className="panel-body">
-          <div className="content-html" dangerouslySetInnerHTML={{ __html: page.content }} />
+          <div
+            className="content-html"
+            dangerouslySetInnerHTML={{
+              __html: page.content,
+            }}
+          />
         </div>
       </section>
     </article>

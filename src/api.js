@@ -511,7 +511,7 @@ export const api = {
       .flatMap((taxonomy) => getPostsByTaxonomy(taxonomy))
       .filter((item, index, items) => item.slug !== post.slug && items.findIndex((candidate) => candidate.slug === item.slug) === index);
     const fallback = getPostsByCategory(post.category).filter((item) => item.slug !== post.slug);
-    return { data: post, related: [...related, ...fallback].filter((item, index, items) => items.findIndex((candidate) => candidate.slug === item.slug) === index).slice(0, 4) };
+    return { data: post, related: [...related, ...fallback].filter((item, index, items) => items.findIndex((candidate) => candidate.slug === item.slug) === index).slice(0, 8) };
   },
   login: () => Promise.resolve({ token: 'static-token', user: { email: 'admin@sarkariresult.local' } }),
   me: () => Promise.resolve({ user: { email: 'admin@sarkariresult.local' } }),

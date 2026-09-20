@@ -14,6 +14,7 @@ import {
 import {
   generateJobPostingSchema,
   generateArticleSchema,
+  generateBreadcrumbSchema,
   generateFAQSchema,
 } from '../utils/schemaGenerator';
 
@@ -542,6 +543,13 @@ export default function PostDetail() {
       author: { name: 'Sarkari Job Hub Editorial Team' },
     });
     if (articleSchema) setJsonLd(articleSchema, 'article-jsonld');
+
+    const breadcrumbSchema = generateBreadcrumbSchema([
+      { label: 'Home', url: 'https://sarkarijobhub.website/' },
+      { label: categoryMeta(post.category).label, url: `https://sarkarijobhub.website${categoryMeta(post.category).path}` },
+      { label: post.title, url: `https://sarkarijobhub.website/post/${post.slug}` },
+    ]);
+    if (breadcrumbSchema) setJsonLd(breadcrumbSchema, 'breadcrumb-jsonld');
 
     // FAQ schema for generated FAQ items
     if (currentFaqItems && currentFaqItems.length > 0) {
